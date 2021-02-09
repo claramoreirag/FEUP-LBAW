@@ -1,6 +1,6 @@
-#H1 Collaborative News
+# Collaborative News
 
-#H3 Team
+### Team
 - Clara Gadelho, up201806309@g.uporto.pt
 - Flávia Carvalhido, up201806857@g.uporto.pt
 - Leonor Gomes, up201806567@g.uporto.pt
