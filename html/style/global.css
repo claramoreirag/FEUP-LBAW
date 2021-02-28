@@ -1,0 +1,75 @@
+/* Fonts */
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url(fonts/open_sans/OpenSans-Regular.ttf);
+    font-weight: 400;
+  }
+  
+@font-face {
+    font-family: 'Open Sans';
+    src: url(fonts/open_sans/OpenSans-SemiBold.ttf);
+    font-weight: 600;
+}
+  
+@font-face {      
+    font-family: 'Open Sans';
+    src: url(fonts/open_sans/OpenSans-Bold.ttf);
+    font-weight: 700;
+}
+  
+@font-face {
+    font-family: 'Maven Pro';
+    src: url(fonts/maven_pro/MavenPro-Regular.ttf);
+    font-weight: 400;
+}
+  
+@font-face {
+    font-family: 'Maven Pro';
+    src: url(fonts/maven_pro/MavenPro-SemiBold.ttf);
+    font-weight: 600;
+}
+  
+@font-face {
+    font-family: 'Maven Pro';
+    src: url(fonts/maven_pro/MavenPro-Bold.ttf);
+    font-weight: 700;
+}
+
+
+:root {
+    --background-color: #e5eff6;
+    --text-color: #284B63;
+    --title-color: #CCF5AC;
+    --lightpink-color: #EB8A90;
+    --darkpink-color: #AA1155;
+    --lightblue-color: #BFD7EA;
+}
+
+body{
+    font-family: 'Open Sans';
+    background-color: var(--background-color);
+}
+
+#nav {
+    font-family: 'Open Sans';
+    background-color: #284B63;
+}
+#title {
+    font-size: x-large;
+    font-weight: 700;
+    color: var(--title-color);
+}
+
+.log{
+    text-decoration: none;
+    font-weight: 600;
+    color:var(--lightpink-color)
+}
+
+#post{
+    background-color: #AA1155;
+    margin-top: 20em;
+    border-color: #AA1155;
+}
+
