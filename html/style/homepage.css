@@ -38,3 +38,11 @@ body {
   margin: 3rem 2rem;
 }
 
+.search-container .searchbar{
+  color: var(--text-color);
+}
+
+.search-container .searchbar :hover{
+  color: var(--title-color);
+  border-color: var(--darkpink-color);
+}

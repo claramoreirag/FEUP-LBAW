@@ -35,13 +35,18 @@
 
         <div class="col-md-5">
 
-            <div class="row">
-                <div class="presentation">
-                    <p>GreenNews is bla bla bla
-                    </p>
-                    <img class="" src="" alt="template pic" width="300" height="300">
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </div>
+
 
             <div class="row">
                 <div class="input-group rounded search-container">
@@ -50,7 +55,7 @@
                         <i class="fas fa-search"></i>
                     </span>
                 </div>
-                
+
             </div>
         </div>
 
