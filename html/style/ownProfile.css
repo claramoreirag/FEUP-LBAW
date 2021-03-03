@@ -1,0 +1,91 @@
+body{
+  padding-top: 5rem;
+
+}
+
+#myPosts{
+  margin-right: 1rem;
+  border-style: solid;
+  border-color: #284B63;
+  border-radius: 1em;
+  background-color: var(--background-color);
+  font-family: 'Maven Pro';
+}
+
+#myPosts #postOptions{
+  margin-top: 0.3rem;
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+}
+
+#myPosts #postOptions .col-4{
+  padding-left: 0%;
+  padding-right: 0%;
+  
+}
+
+#myPosts #postOptions a{
+  width: 98%;
+  margin: 0.2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: var(--lightpink-color);
+  border-color: var(--darkpink-color);
+  border-width: 0.2rem;
+  border-radius: 1em;
+}
+
+#myPosts #postOptions a:hover{ /* how to make the color permanent once clicked*/
+  background-color: var(--darkpink-color);
+}
+
+#myInfo{
+  margin-left: 1rem;
+  border-style: solid;
+  border-color: #284B63;
+  border-radius: 1em;
+  background-color: var(--background-color);
+  font-family: 'Maven Pro';
+}
+
+#profileImg{
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+
+#profileImg img{
+  
+  object-fit: cover;
+  border-radius: 50%;
+  height: 10rem;
+  width: 10rem;
+  
+}
+
+#name{
+
+}
+
+#username{
+  padding-bottom: 1rem;
+}
+
+#infoNumbers{
+
+  margin-top: 1rem;
+}
+
+#infoNumbers ul{
+  list-style-type: none;
+}
+
+#infoNumbers li{
+  padding: 0.25rem;
+  font-size: 1.25rem;
+}
+
+#editProfile{
+  margin-top: 4rem;
+  padding-bottom: 1rem;
+  margin-left: 6rem;
+}

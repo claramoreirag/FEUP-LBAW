@@ -19,7 +19,7 @@
                 <div class="col-2" id="tags">Tag</div>
             </div>
 
-            <div class="row post-content ">
+            <div class="row justify-content-between post-content ">
                 <div class="col-8 ">
                     <p>jhhhhhhhhhhhhh <br> gggggggggfjfjfjfjffjfjfccccccccccjf<br>ccccccccccccccccccc</p>
                 </div>
@@ -28,14 +28,14 @@
                 </div>
             </div>
 
-            <div class="row post-interactions ">
-                <div class="col-2 details">See details</div>
+            <div class="row post-interactions justify-content-between">
+               
                 <div class="col-1 share"><i class="fas fa-share-alt"></i></div>
-                <div class="col-3"></div>
-                <div class="col-5" style="margin: 0.5rem;">
+               
+                <div class="col-3" style="margin-right:0rem; padding-right:0rem ;margin-top:0.5rem">
                     <div class="row justify-content-end votes">
-                        <div class="col-6"><i class="fas fa-arrow-up"></i> x Upvotes</div>
-                        <div class="col-6"><i class="fas fa-arrow-down"></i> y Downvotes</div>
+                        <div class="col-6"><i class="fas fa-arrow-up"></i> x </div>
+                        <div class="col-6"><i class="fas fa-arrow-down"></i> y </div>
                          
                     </div>
                 </div>
