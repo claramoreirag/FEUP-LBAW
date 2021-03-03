@@ -18,22 +18,29 @@
 
   #post{
     background-color: var(--lightpink-color);
-    margin: 1em;
-    border-color: #AA1155;
+    margin: 2em;
+    
+    
+    border-style: solid;
+    border-color: #284B63;
+    border-radius: 1em;
+    background-color: var(--background-color);
+    font-family: 'Maven Pro';
   }
 
-  #tags{
+#post  #tags{
       margin: 1em;
         padding: 0.5em;
+        margin-right: 1.5rem;
       background-color: var(--darkpink-color);
       color: var(--background-color);
-     
+     border-radius: 0.5rem;
       font-weight: 500;
   }
 
-.post-pic{
+#post .post-pic{
     margin: 1rem;
-    
+    margin-right: 1.3rem;
 }
 
 #post #profile-pic{
@@ -51,30 +58,28 @@
 #post #title{
     margin-top: 1rem;
     text-align: start;
+    color: var(--text-color);
 }
 
 
 .post-interactions .share{
-    margin: 0.5rem;
-    padding: 0.5rem;
+    margin: 0.5rem 0rem;
+    padding: 0.5rem 0rem;
+    text-align: start;
     margin-top: 0.75rem;
     font-size: larger;
     color: var(--darkpink-color);
 }
 
-.post-interactions .details{
-    margin: 0.5rem ;
-    padding:0.5rem  ;
-    background-color: var(--text-color);
-    color: var(--title-color);
-    font-weight: 600;
-
-}
 .post-interactions .votes{
     background-color: var(--text-color);
     color: var(--title-color);
     font-weight: 500;
     padding: 0.25rem;
     margin: 0.25rem;
+   border-radius: 0.5rem;
 }
 
+.post-preview{
+  
+}

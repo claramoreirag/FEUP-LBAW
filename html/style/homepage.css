@@ -12,7 +12,7 @@
 
 
 body {
-  background-color: var(--background-color);
+  background-color: white;
     padding-top: 5rem;
   }
 
@@ -45,4 +45,29 @@ body {
 .search-container .searchbar :hover{
   color: var(--title-color);
   border-color: var(--darkpink-color);
+}
+
+#searchbar:hover{
+ border-color: var(--text-color);
+  color: var(--background-color);
+  
+}
+
+#searchbar{
+  border-radius: 2rem;
+  color: var(--background-color);
+}
+
+
+.input-group-text  .search-icon #search-addon{
+  color: var(--text-color);
+  background-color: var(--text-color);
+}
+
+.homepage .filters-bar{
+  position: relative;
+}
+
+.homepage .filters-bar .filters{
+  margin-right: 5rem;
 }
