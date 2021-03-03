@@ -1,0 +1,80 @@
+
+:root {
+    --background-color: #e5eff6;
+    --text-color: #284B63;
+    --title-color: #CCF5AC;
+    --lightpink-color: #EB8A90;
+    --darkpink-color: #AA1155;
+    --darkpink-shade-color:#880D44;
+    --lightblue-color: #BFD7EA;
+  }
+  
+
+  .post-content{
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: justify;
+  }
+
+  #post{
+    background-color: var(--lightpink-color);
+    margin: 1em;
+    border-color: #AA1155;
+  }
+
+  #tags{
+      margin: 1em;
+        padding: 0.5em;
+      background-color: var(--darkpink-color);
+      color: var(--background-color);
+     
+      font-weight: 500;
+  }
+
+.post-pic{
+    margin: 1rem;
+    
+}
+
+#post #profile-pic{
+    margin: 1rem 0rem;
+    border-radius: 50%;
+
+}
+
+
+.post-interactions {
+    margin: 0.5rem;
+   padding: 0rem;
+}
+
+#post #title{
+    margin-top: 1rem;
+    text-align: start;
+}
+
+
+.post-interactions .share{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    margin-top: 0.75rem;
+    font-size: larger;
+    color: var(--darkpink-color);
+}
+
+.post-interactions .details{
+    margin: 0.5rem ;
+    padding:0.5rem  ;
+    background-color: var(--text-color);
+    color: var(--title-color);
+    font-weight: 600;
+
+}
+.post-interactions .votes{
+    background-color: var(--text-color);
+    color: var(--title-color);
+    font-weight: 500;
+    padding: 0.25rem;
+    margin: 0.25rem;
+}
+

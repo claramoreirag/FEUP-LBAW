@@ -1,0 +1,48 @@
+
+:root {
+  --background-color: #e5eff6;
+  --text-color: #284B63;
+  --title-color: #CCF5AC;
+  --lightpink-color: #EB8A90;
+  --darkpink-color: #AA1155;
+  --darkpink-shade-color:#880D44;
+  --lightblue-color: #BFD7EA;
+}
+
+
+
+body {
+  background-color: var(--background-color);
+    padding-top: 5rem;
+  }
+
+.home{
+  text-align: left;
+  padding-left: 1em;
+  color: var(--darkpink-color);
+}
+
+#new-post-btn{
+  background-color: var(--darkpink-color);
+  border-color: transparent;
+  margin: 0.5rem;
+}
+
+#new-post-btn:hover{
+  background-color:var(--darkpink-shade-color);
+  border-color: transparent;
+  margin: 0.5rem;
+}
+
+.search-container{
+  margin: 3rem 2rem;
+}
+
+.search-container .searchbar{
+  color: var(--text-color);
+}
+
+.search-container .searchbar :hover{
+  color: var(--title-color);
+  border-color: var(--darkpink-color);
+}
