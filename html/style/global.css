@@ -64,12 +64,7 @@ body{
 .log{
     text-decoration: none;
     font-weight: 600;
-    color:var(--lightpink-color)
+    color:var(--lightpink-color);
 }
 
-#post{
-    background-color: #AA1155;
-    margin-top: 20em;
-    border-color: #AA1155;
-}
 
