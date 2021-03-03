@@ -1,4 +1,4 @@
 <?php
   include_once('../templates/simpleHeader.php');
-  include_once('../templates/login.php');
+  include_once('../templates/signup.php');
 ?>

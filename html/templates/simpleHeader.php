@@ -1,5 +1,5 @@
 <?php?>
-
+<!-- HEADER WITH NO LOG IN OR SIGN UP -->
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -12,22 +12,19 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <div>
             <div class="row navbar navbar-expand-lg navbar-light fixed-top" id="nav">
                 <div class="col-1"></div>
                 <div class="col-10">
-                    <div class="row justify-content-between align-items-center">
+                    <div class="row align-items-center">
                         <div class="col-4" id="title">GreeNews</div>
-                        <div class="col-2">
-                            <a class="log" href="">Sign In</a>
-                            <a class="log" href=""> | Log In</a>
-                        </div> 
                     </div>
                 </div>
                 <div class="col-1"></div>
             </div>
         </div>
-    </header>   
+    </header>
 <?php?>
