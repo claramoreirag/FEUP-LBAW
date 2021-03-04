@@ -10,7 +10,7 @@
             <div class="col-10">
 
                 <div class="row post-header">
-                    <div class="col-7"><button type="button" class="btn icon-arrow-left btn-back"></button></div>
+                    <div class="col-7"><button type="button" class="btn icon-arrow-left btn-back" href="../pages/homepage.php"></button></div>
                     <div class="col-5"><p class="text-end">22-03-2020 | 22:22h</p></div><hr/>
                 </div>
 
@@ -127,7 +127,6 @@
                         </li>
                     </ul>
                 </div>
-
 
             </div>
             <div class="col-1"></div>
