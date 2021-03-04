@@ -36,17 +36,20 @@
       color: var(--background-color);
      border-radius: 0.5rem;
       font-weight: 500;
+      text-align: center;
   }
 
 #post .post-pic{
     margin: 1rem;
     margin-right: 1.3rem;
+    text-align: end;
 }
 
 #post #profile-pic{
-    margin: 1rem 0rem;
+    margin: 0rem 0rem;
     border-radius: 50%;
-
+    padding: 1rem;
+    margin-right: 0em;
 }
 
 
@@ -56,7 +59,9 @@
 }
 
 #post #title{
+    padding-left: 2rem;
     margin-top: 1rem;
+   
     text-align: start;
     color: var(--text-color);
 }
@@ -67,8 +72,31 @@
     padding: 0.5rem 0rem;
     text-align: start;
     margin-top: 0.75rem;
-    font-size: larger;
+    font-size: x-large;
     color: var(--darkpink-color);
+}
+
+.post-interactions .action:hover{
+  
+  color: var(--darkpink-shade-color);
+}
+
+.post-interactions .save{
+  margin: 0.5rem 0rem;
+  padding: 0.5rem 0rem;
+  text-align: start;
+  margin-top: 0.75rem;
+  font-size: x-large;
+  color: var(--darkpink-color);
+}
+
+.post-interactions .report{
+  margin: 0.5rem 0rem;
+  padding: 0.5rem 0rem;
+  text-align: start;
+  margin-top: 0.75rem;
+  font-size: x-large;
+  color: var(--darkpink-color);
 }
 
 .post-interactions .votes{
@@ -78,8 +106,12 @@
     padding: 0.25rem;
     margin: 0.25rem;
    border-radius: 0.5rem;
+   text-align: center;
 }
 
-.post-preview{
-  
+
+ .votes > div{
+  text-align: center;
+  padding: 0.1rem;
 }
+

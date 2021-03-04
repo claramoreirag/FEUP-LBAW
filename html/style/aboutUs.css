@@ -1,0 +1,53 @@
+:root {
+    --background-color: #e5eff6;
+    --text-color: #284B63;
+    --title-color: #CCF5AC;
+    --lightpink-color: #EB8A90;
+    --darkpink-color: #AA1155;
+    --darkpink-shade-color:#880D44;
+    --lightblue-color: #BFD7EA;
+  }
+  
+  
+
+ #aboutUs{
+  background-color: white;
+}
+
+
+#aboutUs{
+    color: var(--text-color);
+    font-family: 'Maven Pro';
+}
+
+#aboutUs .page-title{
+    color: var(--title-color);
+    font-family: 'Maven Pro';
+    font-weight: 600;
+}
+
+#aboutUs .team .subtitle{
+    font-size: large;
+    color: var(--darkpink-color);
+    
+    font-family: 'Maven Pro';
+}
+
+
+#aboutUs .main{
+    background-color: white;
+   
+}
+
+#aboutUs .team-card{
+    
+    border-style: solid;
+    border-color: #284B63;
+    border-radius: 1em;
+    background-color: var(--background-color);
+}
+
+
+#aboutUs .inside-team{
+    padding: 0rem;
+}
