@@ -1,0 +1,21 @@
+.title{
+    color: var(--darkpink-color);
+}
+
+.type_date{
+    display: inline-block;
+    font-weight: 600;
+    color: var(--text-color);
+    width: 100%;
+    margin-bottom: 0;
+    text-align: right;
+}
+
+.post-content{
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: #284B63 solid 1px;
+    border-radius: 1em;
+    padding: 0.7em;
+}
+
