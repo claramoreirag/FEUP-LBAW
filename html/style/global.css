@@ -64,7 +64,16 @@
     color:var(--lightpink-color);
 }
 
+.admin_head{
+    display: inline;
+    text-decoration: none;
+    font-weight: 600;
+    color:var(--lightpink-color);
+}
 
+.log:hover {
+    color: var(--darkpink-color);
+}
 
 
 /* -------------------- Full Post -----------------------------*/
