@@ -11,6 +11,14 @@
         <div class="col-4"><a href="" class="btn btn-primary">Saved News</a></div>
         <div class="col-4"><a href="" class="btn btn-primary">Upvotes</a></div>
       </div>
+      <div class="row" id="postResults">
+        <div class="col-12 d-flex justify-content-center">
+          <?php
+            drawOwnPost(0);
+          ?>
+        </div>
+
+      </div>
     </div>
     <div class="col-2" id="myInfo">
       <div class="container">

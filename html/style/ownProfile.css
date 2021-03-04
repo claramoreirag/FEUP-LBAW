@@ -10,12 +10,14 @@ body{
   border-radius: 1em;
   background-color: var(--background-color);
   font-family: 'Maven Pro';
+  overflow: auto;
 }
 
 #myPosts #postOptions{
   margin-top: 0.3rem;
   padding-left: 0.1rem;
   padding-right: 0.1rem;
+ 
 }
 
 #myPosts #postOptions .col-4{
@@ -39,6 +41,12 @@ body{
   background-color: var(--darkpink-color);
 }
 
+
+
+#myPosts #postResults .col-12{
+  margin-top: 0.75rem;
+}
+
 #myInfo{
   margin-left: 1rem;
   border-style: solid;
@@ -46,6 +54,7 @@ body{
   border-radius: 1em;
   background-color: var(--background-color);
   font-family: 'Maven Pro';
+  
 }
 
 #profileImg{
