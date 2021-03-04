@@ -5,7 +5,7 @@
   <div class="container py-5">
     <div class="row h-100 align-items-center py-5">
       <div class="col-lg-8">
-        <h1 class="display-3 page-title">GreenNews</h1>
+        <h1 class="display-3 page-title">GreeNews</h1>
         <p class="lead text-muted mb-0">Now more than ever, there are pressing matters regarding the environment that make it to the newspaper’s headlines every single day. <br>
         We aim to provide a platform that can support updated news, have a solid base of verified information to educate people on these matters, and call for action.</p>
         

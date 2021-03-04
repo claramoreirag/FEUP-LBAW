@@ -18,7 +18,7 @@
 
   #post{
     background-color: var(--lightpink-color);
-    margin: 2em;
+    margin-bottom: 2rem;
     
     
     border-style: solid;

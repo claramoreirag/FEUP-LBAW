@@ -1,5 +1,5 @@
 <?php?>
-<!-- HEADER WITH NO LOG IN OR SIGN UP -->
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -19,13 +19,16 @@
             <div class="row navbar navbar-expand-lg navbar-light fixed-top" id="nav">
                 <div class="col-1"></div>
                 <div class="col-10">
-                    <div class="row align-items-center">
-                    <a class="row" id="title" href="../pages/homepage.php">GreeNews</a>
-                            <a class="row" id="aboutus" href="../pages/aboutUs.php">About Us</a>
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-4" id="title">GreeNews</div>
+                        <div class="col-2">
+                            <p class="admin_head">Admin |</p>
+                            <a class="log" href=""> Log Out</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-1"></div>
             </div>
         </div>
     </header>
-<?php?>
+    <?php?>

@@ -58,11 +58,28 @@
     font-weight: 700;
     color: var(--title-color);
 }
+#aboutus {
+    text-decoration: none;
+    font-size: small;
+    font-weight: 700;
+    color: white;
+}
 
 .log{
     text-decoration: none;
     font-weight: 600;
     color:var(--lightpink-color);
+}
+
+.admin_head{
+    display: inline;
+    text-decoration: none;
+    font-weight: 600;
+    color:var(--lightpink-color);
+}
+
+.log:hover {
+    color: var(--darkpink-color);
 }
 
 

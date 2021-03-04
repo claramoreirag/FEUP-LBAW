@@ -33,7 +33,10 @@
                 <div class="col-1"></div>
                 <div class="col-10">
                     <div class="row justify-content-between align-items-center">
-                        <a class="col-4" id="title" href="../pages/homepage.php">GreeNews</a>
+                        <div class="col-4">
+                            <a class="row" id="title" href="../pages/homepage.php">GreeNews</a>
+                            <a class="row" id="aboutus" href="../pages/aboutUs.php">About Us</a>
+                        </div> 
                         <div class="col-2">
                             <a class="log" href="../pages/login.php">Sign In</a>
                             <a class="log" href="../pages/signup.php"> | Log In</a>
