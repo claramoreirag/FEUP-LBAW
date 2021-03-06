@@ -41,7 +41,7 @@
     --background-color: #e5eff6;
     --text-color: #284B63;
     --title-color: #CCF5AC;
-    --lightpink-color: #EB8A90;
+    --lightpink-color: #eb8a90;
     --darkpink-color: #AA1155;
     --lightblue-color: #BFD7EA;
 }
@@ -53,9 +53,16 @@
     background-color: #284B63;
 }
 #title {
+    text-decoration: none;
     font-size: x-large;
     font-weight: 700;
     color: var(--title-color);
+}
+#aboutus {
+    text-decoration: none;
+    font-size: small;
+    font-weight: 700;
+    color: white;
 }
 
 .log{
@@ -211,10 +218,47 @@
     font-family: 'Maven Pro';
 }
 
+#fullNewsForm h2{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 10em;
+    font-size: xx-large;
+    color: var(--darkpink-color);
+    font-weight: 800;
+}
+
 .newsFormContent{
     border-style: solid;
     border-color: var(--text-color);
     border-radius: 1em;
     background-color: var(--background-color);
     padding:2em 6em 2em 6em !important;
+}
+
+.title-section { 
+    margin:0.5em 0 0.5em 0;
+}
+.header-section { 
+    margin:0.5em 0 1em 0 !important;
+}
+.tags-section { 
+    margin-top:2em !important;
+}
+.images-section{ 
+    margin-top:2em !important;
+}
+.source-section{ 
+    margin-top:2em !important;
+}
+
+.btn-section{ 
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    border-style: solid;
+    border-color: var(--darkpink-color);
+    border-radius: 0.2em;
+    font-weight: 800;
+    font-size: large;
+    color: var(--darkpink-color);
+    background-color: var(--lightpink-color);
+    margin-top:2em !important;
 }

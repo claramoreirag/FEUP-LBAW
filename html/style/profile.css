@@ -10,12 +10,14 @@ body{
   border-radius: 1em;
   background-color: var(--background-color);
   font-family: 'Maven Pro';
+  overflow: auto;
 }
 
 #myPosts #postOptions{
   margin-top: 0.3rem;
   padding-left: 0.1rem;
   padding-right: 0.1rem;
+ 
 }
 
 #myPosts #postOptions .col-4{
@@ -39,6 +41,12 @@ body{
   background-color: var(--darkpink-color);
 }
 
+
+
+#myPosts #postResults .col-12{
+  margin-top: 0.75rem;
+}
+
 #myInfo{
   margin-left: 1rem;
   border-style: solid;
@@ -46,6 +54,9 @@ body{
   border-radius: 1em;
   background-color: var(--background-color);
   font-family: 'Maven Pro';
+  position: fixed;
+  left: 1100;
+  
 }
 
 #profileImg{
@@ -88,4 +99,25 @@ body{
   margin-top: 4rem;
   padding-bottom: 1rem;
   margin-left: 6rem;
+}
+
+
+#follow{
+  margin-top: 1rem;
+  padding-bottom: 2.5rem;
+}
+
+#follow a{
+  width: 98%;
+  margin: 0.2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: var(--lightpink-color);
+  border-color: var(--darkpink-color);
+  border-width: 0.2rem;
+  border-radius: 1em;
+}
+
+#follow a:hover{
+  background-color: var(--darkpink-color);
 }
