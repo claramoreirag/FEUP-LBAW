@@ -18,7 +18,7 @@
 
   #post{
     background-color: var(--lightpink-color);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     
     
     border-style: solid;
@@ -28,10 +28,14 @@
     font-family: 'Maven Pro';
   }
 
-#post  #tags{
+
+#post .tag-holder{
+ text-align: end;
+  }
+#post .tags{
       margin: 1em;
-        padding: 0.5em;
-        margin-right: 1.5rem;
+        padding:  0.5rem 1.5em;
+       border-color: var(--darkpink-shade-color);
       background-color: var(--darkpink-color);
       color: var(--background-color);
      border-radius: 0.5rem;
@@ -40,7 +44,7 @@
   }
 
 #post .post-pic{
-    margin: 1rem;
+   
     margin-right: 1.3rem;
     text-align: end;
 }
@@ -87,6 +91,7 @@
   text-align: start;
   margin-top: 0.75rem;
   font-size: x-large;
+  text-align: center;
   color: var(--darkpink-color);
 }
 
@@ -96,6 +101,7 @@
   text-align: start;
   margin-top: 0.75rem;
   font-size: x-large;
+  text-align: end;
   color: var(--darkpink-color);
 }
 
@@ -103,8 +109,8 @@
     background-color: var(--text-color);
     color: var(--title-color);
     font-weight: 500;
-    padding: 0.25rem;
-    margin: 0.25rem;
+    padding: 0.25rem ;
+    margin: 0.25rem 0rem;
    border-radius: 0.5rem;
    text-align: center;
 }
