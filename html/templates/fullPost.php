@@ -2,27 +2,27 @@
 {
 
 ?>
-
+    <link rel="stylesheet" href="../style/fullPost.css"">
     <div class="container" id="fullpost">
        
         <div class="row">
-            <div class="col-1"></div>
+            <div class="col-md-1 col-xs-0"></div>
 
-            <div class="col-10">
+            <div class="col-md-10 col-xs-12">
 
                 <div class="row post-header">
-                    <div class="col-7"><button type="button" class="btn icon-arrow-left btn-back" href="../pages/homepage.php"></button></div>
-                    <div class="col-5"><p class="text-end">22-03-2020 | 22:22h</p></div><hr/>
+                    <div class="col-md-7 col-xs-2"><button type="button" class="btn icon-arrow-left btn-back" href="../pages/homepage.php"></button></div>
+                    <div class="col-md-5 col-xs-8"><p class="text-end">22-03-2020 | 22:22h</p></div><hr/>
                 </div>
 
                 <div class="row justify-content-between post-all">
 
-                    <div class="col-6">
+                    <div class="col-md-6 col-xs-12">
                         <h2 class="row justify-content-between post-title"> Low-level jets create winds of change for turbines </h2>
                         <p class="post-newsheader">As one of the leading sources of clean and renewable energy, global wind power capacity has increased more than fivefold over the past decade, leading to larger turbines and pushing wind technology to its limits. </p>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-md-6 col-xs-12">
                         <div class="row justify-content-between post-images"> 
                             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-indicators">
