@@ -5,7 +5,7 @@
 
 
 <body>
-<link rel="stylesheet" href="../style/newPost.css"">
+<link rel="stylesheet" href="../style/newPost.css">
     <div class="container" id="fullNewsForm">
         <div class="row">
             <div class="col-md-1 col-xs-0"></div>

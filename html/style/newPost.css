@@ -52,6 +52,7 @@
 }
 
 /*-----------------Responsividade ---------------------*/
+
 @media screen and (max-width: 992px){
     .newsFormContent{
         border-style: solid;
