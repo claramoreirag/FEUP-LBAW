@@ -16,6 +16,15 @@
     
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+
+    <script src="https://cdn.tiny.cloud/1/up85hjw3nat4fck36d4b8sga07h0hs8y6j1nkiusyctbojab/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+
+
+
+
+
 </head>
 <body>
     <header>
@@ -24,10 +33,13 @@
                 <div class="col-1"></div>
                 <div class="col-10">
                     <div class="row justify-content-between align-items-center">
-                        <div class="col-4" id="title">GreeNews</div>
+                        <div class="col-4">
+                            <a class="row" id="title" href="../pages/homepage.php">GreeNews</a>
+                            <a class="row" id="aboutus" href="../pages/aboutUs.php">About Us</a>
+                        </div> 
                         <div class="col-2">
-                            <a class="log" href="">Sign In</a>
-                            <a class="log" href=""> | Log In</a>
+                            <a class="log" href="../pages/login.php">Sign In</a>
+                            <a class="log" href="../pages/signup.php"> | Log In</a>
                         </div> 
                     </div>
                 </div>

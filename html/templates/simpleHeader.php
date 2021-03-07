@@ -20,7 +20,8 @@
                 <div class="col-1"></div>
                 <div class="col-10">
                     <div class="row align-items-center">
-                        <div class="col-4" id="title">GreeNews</div>
+                    <a class="row" id="title" href="../pages/homepage.php">GreeNews</a>
+                            <a class="row" id="aboutus" href="../pages/aboutUs.php">About Us</a>
                     </div>
                 </div>
                 <div class="col-1"></div>
