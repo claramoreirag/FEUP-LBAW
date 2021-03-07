@@ -25,8 +25,9 @@
 
             <div class="row justify-content-between post-content ">
                 <div class="col-lg-8 col-md-9 col-sm-12">
-                    <p>Mauris consectetur vehicula facilisis. Etiam aliquet accumsan libero, et aliquam tortor tincidunt eget. Maecenas ut feugiat velit. Aenean fringilla fermentum eros, a efficitur nibh. Aenean vulputate erat et nisi tristique iaculis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ligula purus, iaculis quis ipsum elementum, ullamcorper condimentum lacus.
+                    <p class="post-text">Mauris consectetur vehicula facilisis. Etiam aliquet accumsan libero, et aliquam tortor tincidunt eget. Maecenas ut feugiat velit. Aenean fringilla fermentum eros, a efficitur nibh. Aenean vulputate erat et nisi tristique iaculis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ligula purus, iaculis quis ipsum elementum, ullamcorper condimentum lacus.
                     <br>In id enim efficitur dolor ornare tempus. Maecenas condimentum molestie volutpat. Phasellus sagittis erat metus, eu gravida metus lacinia ac.</p>
+                    <a href="../pages/fullPostPage.php" class="read-more">Read More</a>
                 </div>
                 <div class="col-3 post-pic">
                     <img class="" src="" alt="template pic" width="150" height="150">
@@ -89,8 +90,9 @@
 
             <div class="row justify-content-between post-content ">
                 <div class="col-lg-8 col-md-9 col-sm-12">
-                    <p>Mauris consectetur vehicula facilisis. Etiam aliquet accumsan libero, et aliquam tortor tincidunt eget. Maecenas ut feugiat velit. Aenean fringilla fermentum eros, a efficitur nibh. Aenean vulputate erat et nisi tristique iaculis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ligula purus, iaculis quis ipsum elementum, ullamcorper condimentum lacus.
+                    <p class="post-text">Mauris consectetur vehicula facilisis. Etiam aliquet accumsan libero, et aliquam tortor tincidunt eget. Maecenas ut feugiat velit. Aenean fringilla fermentum eros, a efficitur nibh. Aenean vulputate erat et nisi tristique iaculis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ligula purus, iaculis quis ipsum elementum, ullamcorper condimentum lacus.
                     <br>In id enim efficitur dolor ornare tempus. Maecenas condimentum molestie volutpat. Phasellus sagittis erat metus, eu gravida metus lacinia ac.</p>
+                    <a href="../pages/fullPostPage.php" class="read-more">Read More</a>
                 </div>
                 <div class="col-3 post-pic">
                     <img class="" src="" alt="template pic" width="150" height="150">
@@ -155,8 +157,9 @@
 
             <div class="row justify-content-between post-content ">
                 <div class="col-lg-8 col-md-9 col-sm-12">
-                    <p>Mauris consectetur vehicula facilisis. Etiam aliquet accumsan libero, et aliquam tortor tincidunt eget. Maecenas ut feugiat velit. Aenean fringilla fermentum eros, a efficitur nibh. Aenean vulputate erat et nisi tristique iaculis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ligula purus, iaculis quis ipsum elementum, ullamcorper condimentum lacus.
+                    <p class="post-text">Mauris consectetur vehicula facilisis. Etiam aliquet accumsan libero, et aliquam tortor tincidunt eget. Maecenas ut feugiat velit. Aenean fringilla fermentum eros, a efficitur nibh. Aenean vulputate erat et nisi tristique iaculis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ligula purus, iaculis quis ipsum elementum, ullamcorper condimentum lacus.
                     <br>In id enim efficitur dolor ornare tempus. Maecenas condimentum molestie volutpat. Phasellus sagittis erat metus, eu gravida metus lacinia ac.</p>
+                    <a href="../pages/fullPostPage.php" class="read-more">Read More</a>
                 </div>
                 <div class="col-3 post-pic">
                     <img class="" src="" alt="template pic" width="150" height="150">

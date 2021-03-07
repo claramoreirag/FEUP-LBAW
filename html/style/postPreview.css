@@ -14,7 +14,16 @@
     background-color: var(--background-color);
     color: var(--text-color);
     text-align: justify;
+    
   }
+  #post .post-text{
+    margin-bottom: 0em;
+  }
+
+  #post .posts-container{
+    margin:0em 0.5em;
+  }
+
 
   #post{
     background-color: var(--lightpink-color);
@@ -121,3 +130,10 @@
   padding: 0.1rem;
 }
 
+#post .read-more{
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: large;
+  margin-bottom: 3em;
+}

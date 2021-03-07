@@ -71,7 +71,7 @@
                 </div>
             </form>
         
-            <div class="row">
+            <div class="row posts-container">
                 <?php drawPost(0) ?>
                 <?php drawPost(0) ?>
                 <?php drawPost(0) ?>
