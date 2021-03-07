@@ -86,18 +86,29 @@ body {
 }
 
 
-.homepage .form-group{
-  margin-top: 1rem;
+.homepage .filter{
+  margin-bottom: 1rem;
 }
 
+.homepage .order-by{
+  margin-top: 0.75rem;
+}
+
+.homepage .feed-pref{
+  margin-top: 0.75rem;
+}
+
+#post .posts-container{
+  padding: 0em 0.5em;
+}
 
 .homepage .filters .label{
   font-size: larger;
-  margin-bottom: 0.25rem;
+   margin-bottom: 0.25rem; 
 }
 
 
-.homepage .filters .form-submit{
+.homepage  .form-submit{
   margin-top: 1.5rem;
   border-radius: 0.5rem;
   background-color: var(--text-color);

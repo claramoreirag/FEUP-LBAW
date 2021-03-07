@@ -54,6 +54,8 @@ body{
   border-radius: 1em;
   background-color: var(--background-color);
   font-family: 'Maven Pro';
+  position: fixed;
+  left: 75%;
   
 }
 
@@ -97,4 +99,25 @@ body{
   margin-top: 4rem;
   padding-bottom: 1rem;
   margin-left: 6rem;
+}
+
+
+#follow{
+  margin-top: 1rem;
+  padding-bottom: 2.5rem;
+}
+
+#follow a{
+  width: 98%;
+  margin: 0.2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: var(--lightpink-color);
+  border-color: var(--darkpink-color);
+  border-width: 0.2rem;
+  border-radius: 1em;
+}
+
+#follow a:hover{
+  background-color: var(--darkpink-color);
 }

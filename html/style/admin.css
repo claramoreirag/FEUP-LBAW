@@ -1,3 +1,8 @@
+body{
+  font-family: 'Maven Pro';
+}
+
+
 .title{
     color: var(--darkpink-color);
 }
@@ -11,7 +16,7 @@
     text-align: right;
 }
 
-.post-content{
+.post-content, .comment-content{
     background-color: var(--background-color);
     color: var(--text-color);
     border: #284B63 solid 1px;
@@ -19,3 +24,31 @@
     padding: 0.7em;
 }
 
+.actions button{
+    margin: 0 auto;
+    background-color: white;
+    border-style:none;
+    /* width:fit-content; */
+}
+
+.user{  
+    border-style: solid;
+    border-color: #284B63;
+    border-radius: 1em;
+    background-color: var(--background-color);
+}
+
+#user-pic{
+    margin: 0rem 0rem;
+    border-radius: 50%;
+    padding: 1rem 0rem;
+    margin-right: 0em;
+}
+
+#user-name{
+    padding-left: 2rem;
+    margin-top: 1rem;
+   
+    text-align: start;
+    color: var(--text-color);
+}

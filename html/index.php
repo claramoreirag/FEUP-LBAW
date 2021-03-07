@@ -1,3 +1,4 @@
 <?php
-    header('Location: pages/authUserFeed.php');
+    echo 'hello';
+    header('Location: pages/aboutUs.php');
 ?>
