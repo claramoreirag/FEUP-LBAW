@@ -2,27 +2,27 @@
 {
 
 ?>
-
+    <link rel="stylesheet" href="../style/fullPost.css"">
     <div class="container" id="fullpost">
        
         <div class="row">
-            <div class="col-1"></div>
+            <div class="col-md-1 col-xs-0"></div>
 
-            <div class="col-10">
+            <div class="col-md-10 col-xs-12">
 
                 <div class="row post-header">
-                    <div class="col-7"><button type="button" class="btn icon-arrow-left btn-back" href="../pages/homepage.php"></button></div>
-                    <div class="col-5"><p class="text-end">22-03-2020 | 22:22h</p></div><hr/>
+                    <div class="col-md-7 col-xs-2"><button type="button" class="btn icon-arrow-left btn-back" href="../pages/homepage.php"></button></div>
+                    <div class="col-md-5 col-xs-8"><p class="text-end">22-03-2020 | 22:22h</p></div><hr/>
                 </div>
 
                 <div class="row justify-content-between post-all">
 
-                    <div class="col-6">
+                    <div class="col-md-6 col-xs-12">
                         <h2 class="row justify-content-between post-title"> Low-level jets create winds of change for turbines </h2>
                         <p class="post-newsheader">As one of the leading sources of clean and renewable energy, global wind power capacity has increased more than fivefold over the past decade, leading to larger turbines and pushing wind technology to its limits. </p>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-md-6 col-xs-12">
                         <div class="row justify-content-between post-images"> 
                             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-indicators">
@@ -59,75 +59,79 @@
                                                 "As one of the leading renewable energy technologies, wind energy is expected to deliver major contributions to the expected growth in renewable energy production in the coming decades," he said. 
                         </p>
 
-                        <div class="row post-footer"> 
-                            <div class="col-8 justify-content-between post-font"> Story Source: Materials provided by American Institute of Physics. Note: Content may be edited for style and length.</div>
-                            <div class="col-2 justify-content-between post-votes"> 
-                                <!-- TODO: ADICIONAR FOOTER DE UM POST COM TODAS AS OPÇÕES -->
-                                <div class="row buttons">
-                                    <div class="col-1"> 
-                                        <button type="button" class="btn btn-light btn-upvotes">3 </button>
-                                    </div>
-                                    <div class="col-1">
-                                        <button type="button" class="btn btn-light btn-downvotes">1 </button>
-                                    </div>
+                        <div class="row post-font-title"> Story Source: </div>
+                        <div class="row post-font">  Materials provided by American Institute of Physics. Note: Content may be edited for style and length.</div>
+
+                
+
+                        <div class="row post-interactions justify-content-between">
+                            <div class="col-md-2 col-sm-4 actions"></i>
+                                <div class="row ">
+                                    <div class="col-4 share action"><i class="fas fa-share-alt"></i></div>
+                                    <div class="col-4 save action"><i class="fas fa-bookmark"></i></div>
+                                    <div class="col-4 report action"><i class="fas fa-exclamation-circle"></i></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-3 col-sm-4" style="margin: 0.5rem 0rem; padding:0rem ;">
+                                <div class="row justify-content-end votes">
+                                    <div class="col-6 upvote"><i class="fas fa-arrow-up"></i> 10 </div>
+                                    <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> 3 </div>
+                                    
                                 </div>
                             </div>
                         </div>
-                </div>
 
-                <div class="container post-comment">
-                    <h3 class="comments-title">Comments</h3><hr/>
 
-                    
-                    <form>
-                        <label for="inputComment" class="form-label">Collaborate with a comment here</label>
-                        <div class="row"> 
-                            <div class="col-12">
-                                <input type="email" class="form-control" id="inputComment">
+                    <div class="container post-comment">
+                        <h3 class="comments-title">Comments</h3><hr/>
+
+                        <form>
+                            <label for="inputComment" class="form-label">Collaborate with a comment here</label>
+                            <div class="row"> 
+                                <div class="col-12">
+                                    <input type="email" class="form-control" id="inputComment">
+                                </div>
+                                <div class="col-1">
+                                    <button type="submit" class="share-comments-btn">Share</button>
+                                </div>
                             </div>
-                            <div class="col-1">
-                                <button type="submit" class="share-comments-btn">Share</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
 
-
-
-                    <ul class="comments">
-                        <li class="clearfix">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_rB4VojlEI2f9u8bxiaLmoweo8oeAsROorA&usqp=CAU" class="rounded-circle avatar" alt="">
-                            <div class="post-comments">
-                                <p class="meta">Dec 18, 2014 <a href="#" class="commentlink">JohnDoe</a> says : <i class="pull-right"><a href="#" class="commentlink"><small>Reply</small></a> </i></p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Etiam a sapien odio, sit amet
-                                </p>
-                            </div>
-                        </li>
-                        <li class="clearfix">
-                            <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg" class="rounded-circle avatar" alt="">
-                            <div class="post-comments">
-                                <p class="meta">Dec 19, 2014 <a href="#" class="commentlink">JohnDoe</a> says : <i class="pull-right"><a href="#" class="commentlink"><small>Reply</small></a></i></p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Etiam a sapien odio, sit amet
-                                </p>
-                            </div>
-                            <ul class="comments">
-                                <li class="clearfix">
-                                    <img src="https://engenharia360.com/wp-content/uploads/2019/05/esta-pessoa-nao-existe-engenharia-360-2.png" class=" rounded-circle avatar" alt="">
-                                    <div class="post-comments">
-                                        <p class="meta">Dec 20, 2014 <a href="#" class="commentlink">JohnDoe</a> says : <i class="pull-right"><a href="#" class="commentlink"><small>Reply</small></a></i></p>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Etiam a sapien odio, sit amet
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                        <ul class="comments">
+                            <li class="clearfix">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_rB4VojlEI2f9u8bxiaLmoweo8oeAsROorA&usqp=CAU" class="rounded-circle avatar" alt="">
+                                <div class="post-comments">
+                                    <p class="meta">Dec 18, 2014 <a href="#" class="commentlink">JohnDoe</a> says : <i class="pull-right"><a href="#" class="commentlink"><small>Reply</small></a> </i></p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Etiam a sapien odio, sit amet
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg" class="rounded-circle avatar" alt="">
+                                <div class="post-comments">
+                                    <p class="meta">Dec 19, 2014 <a href="#" class="commentlink">JohnDoe</a> says : <i class="pull-right"><a href="#" class="commentlink"><small>Reply</small></a></i></p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Etiam a sapien odio, sit amet
+                                    </p>
+                                </div>
+                                <ul class="comments">
+                                    <li class="clearfix">
+                                        <img src="https://engenharia360.com/wp-content/uploads/2019/05/esta-pessoa-nao-existe-engenharia-360-2.png" class=" rounded-circle avatar" alt="">
+                                        <div class="post-comments">
+                                            <p class="meta">Dec 20, 2014 <a href="#" class="commentlink">JohnDoe</a> says : <i class="pull-right"><a href="#" class="commentlink"><small>Reply</small></a></i></p>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Etiam a sapien odio, sit amet
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
 
             </div>
             <div class="col-1"></div>
