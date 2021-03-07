@@ -52,6 +52,13 @@
     font-family: 'Open Sans';
     background-color: #284B63;
 }
+.navbar-toggler .menu #nav-btn{
+    
+}
+#nav .separator{
+    font-size: larger;
+    color: var(--lightpink-color);
+}
 #title {
     text-decoration: none;
     font-size: x-large;

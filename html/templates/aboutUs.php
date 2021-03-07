@@ -20,7 +20,7 @@
     <div class="row align-items-center mb-5">
       <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
         <h2 class="font-weight-light">Our Goals</h2>
-        <p class="font-italic text-muted mb-4"></p>GreeNews intends to promote an online information system that can compile news from several collaborators about sustainability and the environment. <br>
+        <p class=" mb-4"></p>GreeNews intends to promote an online information system that can compile news from several collaborators about sustainability and the environment. <br>
         This platform will be available to everyone interested in the environmental cause. It will stand out from similar platforms since our priority is to ensure the safety and accuracy of posted news.</p>
       </div>
       <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="../images/aboutUs/sustainability3.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
@@ -29,7 +29,7 @@
       <div class="col-lg-5 px-5 mx-auto"><img src="../images/aboutUs/sustainability4.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
       <div class="col-lg-6">
         <h2 class="font-weight-light">Our Vision</h2>
-        <p class="font-italic text-muted mb-4">Our vision is to provide an accurate platform where sustainability is empowered through the sharing and discussion of related matters, to bring awareness to everyone.</p>
+        <p class=" mb-4">Our vision is to provide an accurate platform where sustainability is empowered through the sharing and discussion of related matters, to bring awareness to everyone.</p>
       </div>
     </div>
   </div>

@@ -40,7 +40,7 @@
                         <div class=" share action"><i class="fas fa-share-alt"></i></div>
                        
                 </div>
-                <div class="col-sm-2 col-sm-4" >
+                <div class="col-lg-2 col-md-3 col-sm-4" >
                     <div class="row justify-content-end votes">
                         <div class="col-6 upvote"><i class="fas fa-arrow-up"></i> 10 </div>
                         <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> 3 </div>
@@ -72,7 +72,7 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="stylesheet" href="../style/postPreview.css"">
 
-    <div class=" container-fluid" id="post">
+    <div class=" container-fluid d-flex" id="post">
     <div class="row">
 
     <div class="col-12 justify-content-sm-end ">
@@ -89,7 +89,7 @@
             </div>
 
             <div class="row justify-content-between post-content ">
-                <div class="col-lg-8 col-md-9 col-sm-12">
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     <p class="post-text">Mauris consectetur vehicula facilisis. Etiam aliquet accumsan libero, et aliquam tortor tincidunt eget. Maecenas ut feugiat velit. Aenean fringilla fermentum eros, a efficitur nibh. Aenean vulputate erat et nisi tristique iaculis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ligula purus, iaculis quis ipsum elementum, ullamcorper condimentum lacus.
                     <br>In id enim efficitur dolor ornare tempus. Maecenas condimentum molestie volutpat. Phasellus sagittis erat metus, eu gravida metus lacinia ac.</p>
                     <a href="../pages/fullPostPage.php" class="read-more">Read More</a>
@@ -106,7 +106,7 @@
                         <div class="col-4 report action"><i class="fas fa-exclamation-circle"></i></div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-3 col-sm-4" style="margin: 0.5rem 0rem; padding:0rem ;">
+                <div class="col-lg-2 col-md-3 col-sm-4" >
                     <div class="row justify-content-end votes">
                         <div class="col-6 upvote"><i class="fas fa-arrow-up"></i> 10 </div>
                         <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> 3 </div>

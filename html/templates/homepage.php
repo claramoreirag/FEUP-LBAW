@@ -1,14 +1,14 @@
+
+
 <?php include_once('../templates/post.php');
 ?>
 
-
-<head>
     <link rel="stylesheet" href="../style/homepage.css"">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-</head>
 
 
-<body>
+
+
 <div class=" container homepage">
 
 
