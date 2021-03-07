@@ -10,7 +10,7 @@
         We aim to provide a platform that can support updated news, have a solid base of verified information to educate people on these matters, and call for action.</p>
         
       </div>
-      <div class="col-lg-4 d-none d-lg-block"><img src="../images/aboutUs/sustainability1.jpg" alt="" class="img-fluid"></div>
+      <div class="col-lg-4  d-lg-block"><img src="../images/aboutUs/sustainability1.jpg" alt="" class="img-fluid"></div>
     </div>
   </div>
 </div>
@@ -47,28 +47,18 @@
     <div class="row text-center justify-content-between">
       <!-- Team item-->
       <div class="col-xl-3 col-sm-5 mb-5 team-card">
-        <div class="  py-5 px-4 inside-team"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834132/avatar-4_ozhrib.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+        <div class="  py-5 px-4 inside-team"><img src="../images/aboutUs/clara.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
           <h5 class="mb-0">Clara Gadelho</h5><span class="small text-uppercase text-muted">Founder & Developer</span>
-          <ul class="social mb-0 list-inline mt-3">
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-          </ul>
+          
         </div>
       </div>
       <!-- End-->
 
       <!-- Team item-->
       <div class="col-xl-3 col-sm-5 mb-5 team-card">
-        <div class=" py-5 px-4 inside-team"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834132/avatar-4_ozhrib.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+        <div class=" py-5 px-4 inside-team"><img src="../images/aboutUs/flavia.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
           <h5 class="mb-0">Flávia Carvalhido</h5><span class="small text-uppercase text-muted">Founder & Developer</span>
-          <ul class="social mb-0 list-inline mt-3">
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-          </ul>
+         
         </div>
       </div>
       <!-- End-->
@@ -77,26 +67,16 @@
       <div class="col-xl-3 col-sm-5 mb-5 team-card">
         <div class="  py-5 px-4 inside-team"><img src="../images/aboutUs/leonor.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
           <h5 class="mb-0">Leonor Gomes</h5><span class="small text-uppercase text-muted">Founder & Developer</span>
-          <ul class="social mb-0 list-inline mt-3">
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-          </ul>
+         
         </div>
       </div>
       <!-- End-->
 
       <!-- Team item-->
       <div class="col-xl-3 col-sm-5 mb-5 team-card">
-        <div class="  py-5 px-4 inside-team"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834132/avatar-4_ozhrib.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+        <div class="  py-5 px-4 inside-team"><img src="../images/aboutUs/mariana.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
           <h5 class="mb-0">Mariana Ramos</h5><span class="text-uppercase text-muted">Founder & Developer</span>
-          <ul class="social mb-0 list-inline mt-3">
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fas fa-facebook-f"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fas fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fas fa-instagram"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fas fa-linkedin"></i></a></li>
-          </ul>
+         
         </div>
       </div>
       <!-- End-->

@@ -39,7 +39,16 @@
    
 }
 
-#aboutUs .team-card{
+/* #aboutUs .team-card{
+    
+    border-style: solid;
+    border-color: #284B63;
+    border-radius: 1em;
+    background-color: var(--background-color);
+}
+*/
+
+#aboutUs .inside-team{
     
     border-style: solid;
     border-color: #284B63;
@@ -48,6 +57,10 @@
 }
 
 
-#aboutUs .inside-team{
-    padding: 0rem;
+#aboutUs .social-link{
+    
+    border-style: solid;
+    border-color: #284B63;
+    border-radius: 1em;
+    background-color: var(--text-color);
 }
