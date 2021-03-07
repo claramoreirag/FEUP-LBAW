@@ -17,7 +17,7 @@
   }
 
   #post{
-    background-color: var(--lightpink-color);
+    background-color: var(--lightpink-color); /* TODO: dois backgrounds?*/
     margin-bottom: 2rem;
     
     
@@ -58,7 +58,7 @@
    padding: 0rem;
 }
 
-#post #title{
+#post #title {
     padding-left: 2rem;
     margin-top: 1rem;
    
