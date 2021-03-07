@@ -6,10 +6,11 @@
 
 
 <body>
+<link rel="stylesheet" href="../style/newPost.css">
     <div class="container" id="fullNewsForm">
         <div class="row">
-            <div class="col-1"></div>
-            <div class="col-10 newsFormContent" >
+            <div class="col-md-1 col-xs-0"></div>
+            <div class="col-md-10 col-xs-12 newsFormContent" >
             <h2> New Post </h2>
                 <form>
                     <div class="title-section">
@@ -18,11 +19,11 @@
                         <small id="titleHelp" class="form-text text-muted">Tip: Try a catchy name</small>
                     </div>
                     <div class="row ">
-                        <div class="col -6 header-section" >
+                        <div class="col-md-6 col-xs-12 header-section" >
                             <label for="inputNewsHeader">Header</label>
                             <input type="header" class="form-control" id="inputNewsHeader" placeholder="Header">
                         </div>
-                        <div class="col -6 tags-section " >
+                        <div class="col-md-6 col-xs-12 tags-section " >
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>Select the topic here</option>
                                 <option value="1">Water</option>
@@ -80,7 +81,7 @@
                     <button type="submit" class="btn-section" formaction="homepage.php">Publish</button>
                 </form>
             </div>
-            <div class="col-1"></div>
+            <div class="col-md-1 col-xs-0"></div>
         </div>
     </div>
 </body> 

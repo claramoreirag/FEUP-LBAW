@@ -1,12 +1,12 @@
 <?php?>
 
-<link rel="stylesheet" href="../style/login&signup.css"">
+<link rel="stylesheet" href="../style/login&signup.css">
 
 
-<div class=" container">
+<div class="container">
 <div class="row layout align-items-center">
-    <div class="col-4"></div>
-    <div class="col-4">
+    <div class="col-md-4 col-sm-2"></div>
+    <div class="col-12 col-md-4 col-sm-8">
         <div class="row login_form">
             <div class="col-1"></div>
             <div class="col-10">
@@ -47,7 +47,7 @@
             </div>
 
         </div>
-        <div class="col-4"></div>
+        <div class="col-md-4 col-sm-2"></div>
     </div>
 </div>
 <div class="row lower"></div>
