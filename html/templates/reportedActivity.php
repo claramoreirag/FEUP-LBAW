@@ -21,11 +21,11 @@
                         <div class="row justify-content-between post-header">
                             <div class="col-7">
                                 <div class="row">
-                                    <div class="col-1" id="profile-pic"><img class="" src=".././img/actors.png" alt="template pic" width="40" height="40" style="border-radius: 50%;"></div>
+                                    <div class="col-1" id="profile-pic"><img class="" src="../images/profilepic1.jpg" alt="template pic" width="40" height="40" style="border-radius: 50%;"></div>
                                     <div class="col-11" id="title">The Earth is Flat. Change my mind.</div>
                                 </div>
                             </div>
-                            <div class="col-2" id="tags">3 x reported</div>
+                            <div class="col-2 tags">3 x reported</div>
                         </div>
 
                         <div class="row justify-content-between post-content ">
@@ -98,11 +98,11 @@
                         <div class="row justify-content-between post-header">
                             <div class="col-7">
                                 <div class="row">
-                                    <div class="col-1" id="profile-pic"><img class="" src=".././img/actors.png" alt="template pic" width="40" height="40" style="border-radius: 50%;"></div>
+                                    <div class="col-1" id="profile-pic"><img class="" src="../images/profilepic1.jpg" alt="template pic" width="40" height="40" style="border-radius: 50%;"></div>
                                     <div class="col-11" id="title">@diesel_is_cool</div>
                                 </div>
                             </div>
-                            <div class="col-2" id="tags">5 x reported</div>
+                            <div class="col-2 tags">5 x reported</div>
                         </div>
 
                         <div class="row justify-content-between comment-content ">
