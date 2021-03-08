@@ -110,7 +110,7 @@
       <div class="row">
         <div class="col-2"></div>
         <div class="col-9" id="editProfile">
-          <span class="fas fa-edit"></span> Edit profile
+          <a class="fas fa-edit editProfilePage" id="editProfilePage" href="../pages/editProfile.php" >Edit profile</a>
         </div>
         <div class="col-1"></div>
       </div>
