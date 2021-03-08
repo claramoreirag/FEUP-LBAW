@@ -4,4 +4,6 @@
   drawMainHeader();
   include_once('../templates/editProfile.php');
 
+  include_once('../templates/footer.php');
+  drawFooter();
 ?>
