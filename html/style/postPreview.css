@@ -5,7 +5,7 @@
     --title-color: #CCF5AC;
     --lightpink-color: #EB8A90;
     --darkpink-color: #AA1155;
-    --darkpink-shade-color:#880D44;
+    --darkpink-shade-color:rgb(136, 13, 68);
     --lightblue-color: #BFD7EA;
   }
   
@@ -71,7 +71,7 @@
    padding: 0rem;
 }
 
-#post #title{
+#post #title {
     padding-left: 2rem;
     margin-top: 1rem;
    

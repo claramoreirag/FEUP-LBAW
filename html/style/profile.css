@@ -147,10 +147,8 @@ body{
   object-fit: cover;
   border-radius: 50%;
   height: 10rem;
-  width: 10rem;
-  
+  width: 10rem; 
 }
-
 
 #username{
   padding-bottom: 1rem;
