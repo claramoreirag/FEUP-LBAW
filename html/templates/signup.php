@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="../style/login&signup.css"">
 
 
-<div class=" container">
-<div class="row layout align-items-center">
+<div class="container">
+<div class="row layout align-items-center mt-5 mt-sm-0">
     <div class="col-md-4 col-sm-2"></div>
     <div class="col-12 col-md-4 col-sm-8">
         <div class="row login_form">

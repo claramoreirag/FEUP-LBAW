@@ -85,6 +85,8 @@
             <button type="button" class="btn btn-light"><i class="fas fa-user-clock"></i> Suspend User</button>
         </div>
 
+        <div class="row mt-2 mt-md-0"></div>
+
         <div class="col-6 col-sm-3 justify-content-center">
             <button type="button" class="btn btn-light"><i class="fas fa-user-slash"></i> Ban User</button>
         </div>
@@ -179,6 +181,8 @@
         <div class="col-6 col-sm-3 justify-content-center">
             <button type="button" class="btn btn-light"><i class="fas fa-user-clock"></i> Suspend User</button>
         </div>
+
+        <div class="row mt-2 mt-md-0"></div>
 
         <div class="col-6 col-sm-3 justify-content-center">
             <button type="button" class="btn btn-light"><i class="fas fa-user-slash"></i> Ban User</button>

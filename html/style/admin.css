@@ -25,10 +25,10 @@ body{
 }
 
 .actions button{
-    margin: 0 auto;
+    margin: auto;
     background-color: white;
     border-style:none;
-    /* width:fit-content; */
+    width:fit-content;
 }
 
 .user{  
@@ -39,16 +39,18 @@ body{
 }
 
 #user-pic{
-    margin: 0rem 0rem;
+    margin: 0rem;
     border-radius: 50%;
-    padding: 1rem 0rem;
-    margin-right: 0em;
+    padding: 0.7rem 3rem;
 }
 
 #user-name{
-    padding-left: 2rem;
     margin-top: 1rem;
-   
-    text-align: start;
+    text-align: left;
     color: var(--text-color);
 }
+
+#user-name h4{
+    margin-bottom: 0em;
+}
+
