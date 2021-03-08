@@ -74,7 +74,7 @@
 #post #title {
     padding-left: 2rem;
     margin-top: 1rem;
-   
+    overflow-wrap: break-word;
     text-align: start;
     color: var(--text-color);
 }
