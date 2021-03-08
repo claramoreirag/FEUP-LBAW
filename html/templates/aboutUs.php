@@ -1,7 +1,7 @@
 <?php?>
-<link rel="stylesheet" href="../style/aboutUs.css"">
-<body id="aboutUs">
-<div class="bg-white main">
+<link rel="stylesheet" href="../style/aboutUs.css">
+<div class="container" id="aboutUs">
+<div class=" main">
   <div class="container py-5">
     <div class="row h-100 align-items-center py-5">
       <div class="col-lg-8">
@@ -83,6 +83,7 @@
 
     </div>
   </div>
+</div>
 </div>
 </body>
 <php?>

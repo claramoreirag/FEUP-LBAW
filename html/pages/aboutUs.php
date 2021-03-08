@@ -1,6 +1,6 @@
 <?php
   include_once('../templates/header.php');
-  drawMainHeader();
+  drawAboutUsHeader();
   include_once('../templates/aboutUs.php');
 
 
