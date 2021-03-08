@@ -1,7 +1,7 @@
 /* -------------------- Full Post -----------------------------*/
 
 #fullpost{
-    margin-top: 5em;
+    margin-top: 8em;
     border-style: solid;
     border-color: #284B63;
     border-radius: 1em;
@@ -106,7 +106,7 @@
 /* ------------------------------- Comments Part --------------------------------------- */
 
 .post-comment{
-    padding-top:4em;
+    padding-top:3em;
 }
 
 .comments-title{
@@ -160,7 +160,7 @@
 }
 
 .post-comment .meta {
-	color: var(--darkpink-color);
+	color: var(--text-color);
 	padding-bottom: 8px;
 	margin-bottom: 10px !important;
 	border-bottom: 1px solid #eee;

@@ -3,5 +3,8 @@
   drawAboutUsHeader();
   include_once('../templates/aboutUs.php');
 
+  
+  include_once('../templates/footer.php');
+  drawFooter();
 
 ?>

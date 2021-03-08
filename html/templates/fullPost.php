@@ -11,7 +11,9 @@
             <div class="col-md-10 col-xs-12">
 
                 <div class="row post-header">
-                    <div class="col-md-7 col-xs-2"><button type="button" class="btn icon-arrow-left btn-back" href="../pages/homepage.php"></button></div>
+                    <div class="col-md-7 col-xs-2">
+                        <a class="btn icon-arrow-left btn-back" href="../pages/homepage.php"></a>
+                    </div>
                     <div class="col-md-5 col-xs-8"><p class="text-end">22-03-2020 | 22:22h</p></div><hr/>
                 </div>
 
