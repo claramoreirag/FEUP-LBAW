@@ -3,12 +3,93 @@ body{
 
 }
 
-#myPosts{
-  margin-right: 1rem;
+#myInfoSmall{
+  margin-top: 4rem;
+  margin-bottom: 1rem;
   border-style: solid;
   border-color: #284B63;
   border-radius: 1em;
   background-color: var(--background-color);
+}
+
+#profileImgSmall img{
+  border-radius: 50%;
+  height: auto;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;   
+}
+
+#editProfileSmall{
+  font-size: 3vw;
+  border-style: solid;
+  border-color: #284B63;
+  border-radius: 0.1em;
+  padding-right: 0rem;
+  padding-left: 0rem;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#editProfileSmall span{
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+#followBSmall{
+  width: 70%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: var(--darkpink-color);
+  border-color: var(--darkpink-shade-color);
+  border-width: 0.2rem;
+  border-radius: 1em;
+  float: none; 
+  margin: 0 auto;
+ 
+}
+
+#followBSmall:hover{
+  background-color: var(--darkpink-shade-color);
+}
+
+#nameSmall h3{
+  margin-top: 20%;
+  font-size: 4vw;
+}
+
+#userSmall h4{
+  margin-top: 5%;
+  font-size: 3vw;
+}
+
+#followersSmall{
+  font-size: 3vw;
+  margin-top: 5%;
+}
+
+#followingSmall{
+  font-size: 3vw;
+  margin-top: 20%;
+}
+
+#postsSmall{
+  font-size: 3vw;
+  margin-top: 7%;
+}
+
+#upvotesSmall{
+  font-size: 3vw;
+  margin-top: 31%;
+}
+
+#myPosts{
+  margin-right: 1rem;
+  /*border-style: solid;*/
+  /*border-color: #284B63;*/
+  border-radius: 1em;
+  /*background-color: var(--background-color);*/
   font-family: 'Maven Pro';
   overflow: auto;
 }
@@ -31,17 +112,15 @@ body{
   margin: 0.2rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background-color: var(--lightpink-color);
-  border-color: var(--darkpink-color);
+  background-color: var(--darkpink-color);
+  border-color: var(--darkpink-shade-color);
   border-width: 0.2rem;
   border-radius: 1em;
 }
 
-#myPosts #postOptions a:hover{ /* how to make the color permanent once clicked*/
-  background-color: var(--darkpink-color);
+#myPosts #postOptions a:hover{ 
+  background-color: var(--darkpink-shade-color);
 }
-
-
 
 #myPosts #postResults .col-12{
   margin-top: 0.75rem;
@@ -55,7 +134,7 @@ body{
   background-color: var(--background-color);
   font-family: 'Maven Pro';
   position: fixed;
-  left: 75%;
+  left: 77%;
   
 }
 
@@ -65,16 +144,10 @@ body{
 }
 
 #profileImg img{
-  
   object-fit: cover;
   border-radius: 50%;
   height: 10rem;
-  width: 10rem;
-  
-}
-
-#name{
-
+  width: 10rem; 
 }
 
 #username{
@@ -104,7 +177,7 @@ body{
 
 #follow{
   margin-top: 1rem;
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
 }
 
 #follow a{
@@ -112,12 +185,12 @@ body{
   margin: 0.2rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background-color: var(--lightpink-color);
-  border-color: var(--darkpink-color);
+  background-color: var(--darkpink-color);
+  border-color: var(--darkpink-shade-color);
   border-width: 0.2rem;
   border-radius: 1em;
 }
 
 #follow a:hover{
-  background-color: var(--darkpink-color);
+  background-color: var(--darkpink-shade-color);
 }
