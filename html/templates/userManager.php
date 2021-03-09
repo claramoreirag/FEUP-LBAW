@@ -25,7 +25,24 @@
             </div>
 
             <!-- Users -->
-            <?php drawUser(0) ?>
+            <table class="table table-hover mt-4">
+                <thead>
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Picture</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php drawUser(0) ?>
+                    <?php drawUser(0) ?>
+                    <?php drawUser(0) ?>
+                    <?php drawUser(0) ?>
+                    <?php drawUser(0) ?>
+                    <?php drawUser(0) ?>
+                </tbody>
+            </table>
 
         </div>
         <div class="col-1"></div>
