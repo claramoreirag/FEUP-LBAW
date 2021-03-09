@@ -187,4 +187,8 @@
     color: var(--darkpink-color)
 }
 
+/* ------------------------------- Buttons Admin --------------------------------------- */
 
+.buttons-adiministration{
+    margin-top: 8em;
+}

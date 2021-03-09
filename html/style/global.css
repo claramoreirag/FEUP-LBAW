@@ -94,6 +94,8 @@
 /* Footer */
   
 footer { 
+    
+  font-family: 'Maven Pro';
     margin-top: 2em ;
     background-color: var(--text-color) ;
     padding: 0.5rem 8rem ;
