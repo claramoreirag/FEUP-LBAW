@@ -34,8 +34,8 @@
 
                         <div class="row justify-content-between post-content ">
                             <div class="col-lg-8 col-md-9 col-sm-12">
-                                <p>Mauris consectetur vehicula facilisis. Etiam aliquet accumsan libero, et aliquam tortor tincidunt eget. Maecenas ut feugiat velit. Aenean fringilla fermentum eros, a efficitur nibh. Aenean vulputate erat et nisi tristique iaculis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ligula purus, iaculis quis ipsum elementum, ullamcorper condimentum lacus.
-                                    <br>In id enim efficitur dolor ornare tempus. Maecenas condimentum molestie volutpat. Phasellus sagittis erat metus, eu gravida metus lacinia ac.
+                                <p>If the world was round, then how come when I look at the horizon I see a straight line? It is clearly because the world if FLAT and anyone who says otherwise is just making you believe in a lie the government is telling us!
+                                    <br>They are teaching our children that the world is round when it's all wrong!! How can we trust our teachers when they teach us LIES?! The government has been hiding this for too long and I'm here to show you the TRUTH!!
                                 </p>
                             </div>
                             <div class="col-3 post-pic">
@@ -110,32 +110,32 @@
 
             <div class="row justify-content-end">
                 <div class="col">
-                    <p class="type_date">Comment, 02/03/2021 12:57</p>
+                    <p class="type_date">Comment, 04/02/2021 17:34</p>
                 </div>
             </div>
 
 
-            <div class="container-fluid d-flex" id="post">
+            <div class="container-fluid" id="post">
                 <div class="row">
 
                     <div class="col-12 justify-content-sm-end">
 
                         <div class="row justify-content-between post-header">
-                            <div class="col-7">
+                            <div class="col-8">
                                 <div class="row">
                                     <div class="col-1" id="profile-pic"><img class="" src="../images/profilepic1.jpg" alt="template pic" width="40" height="40" style="border-radius: 50%;"></div>
-                                    <div class="col-sm-5 col-md-4" id="title">@diesel_is_cool</div>
+                                    <div class="col-11" id="title">@diesel_is_cool</div>
                                 </div>
                             </div>
-                            <div class="col-sm-5 col-md-4 tag-holder ">
+                            <div class="col-4 tag-holder ">
                                 <p class="btn btn-primary tags">5 x reported</p>
                             </div>
                         </div>
 
-                        <div class="row justify-content-between comment-content ">
-                            <div class="col-lg-8 col-md-9 col-sm-12">
-                                <p>Mauris consectetur vehicula facilisis. Etiam aliquet accumsan libero, et aliquam tortor tincidunt eget. Maecenas ut feugiat velit. Aenean fringilla fermentum eros, a efficitur nibh. Aenean vulputate erat et nisi tristique iaculis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ligula purus, iaculis quis ipsum elementum, ullamcorper condimentum lacus.
-                                    <br>In id enim efficitur dolor ornare tempus. Maecenas condimentum molestie volutpat. Phasellus sagittis erat metus, eu gravida metus lacinia ac.
+                        <div class="row comment-content ">
+                            <div class="col">
+                                <p>I would NEVER drive electric! Only women drive electric! I need to feel the POWER of my car and those Prius are never gonna give that to me!
+                                    <br>I need GAS in my life! Electric is for girls and not-so-manly men!! PETROL FOR THE WIN!
                                 </p>
                             </div>
                         </div>
