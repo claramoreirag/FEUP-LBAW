@@ -1,6 +1,6 @@
 <?php?>
 
-<link rel="stylesheet" href="../style/login&signup.css">
+<link rel="stylesheet" href="../style/bootstrap.css">
 
 
 <div class="container">
@@ -21,7 +21,7 @@
                         <label for="floatingPassword">Password</label>
                     </div>
 
-                    <button type="submit" class="btn btn-outline-primary">Login</button>
+                    <button type="submit" class="btn btn-success">Login</button>
                 </form>
                 <div class="row dividing align-items-center">
                     <div class="col-5">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="row login_google">
                     <div class="col">
-                        <button type="submit" class="btn btn-outline-primary">Login with Google</button>
+                        <button type="submit" class="btn btn-success">Login with Google</button>
                     </div>
                 </div>
                 <div class="row align-items-center ">

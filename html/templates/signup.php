@@ -1,6 +1,6 @@
 <?php?>
 
-<link rel="stylesheet" href="../style/login&signup.css"">
+<link rel="stylesheet" href="../style/bootstrap.css"">
 
 
 <div class="container">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="row login_google">
                     <div class="col">
-                        <button type="submit" class="btn btn-outline-primary">Sign Up with Google</button>
+                        <button type="submit" class="btn btn-primary">Sign Up with Google</button>
                     </div>
                 </div>
                 <div class="row align-items-center ">

@@ -1,5 +1,5 @@
 <head>
-  <link rel="stylesheet" href="../style/profile.css">
+  <link rel="stylesheet" href="../style/bootstrap.css">
 </head>
 
 <body>

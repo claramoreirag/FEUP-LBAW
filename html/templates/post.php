@@ -5,7 +5,7 @@
 
 
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <link rel="stylesheet" href="../style/postPreview.css"">
+    <link rel="stylesheet" href="../style/bootstrap.css"">
 
     <div class=" container-fluid " id="post">
     <div class="row">
@@ -70,7 +70,7 @@
 ?>
 
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <link rel="stylesheet" href="../style/postPreview.css"">
+    <link rel="stylesheet" href="../style/bootstrap.css"">
 
     <div class=" container-fluid d-flex" id="post">
     <div class="row">
@@ -136,7 +136,7 @@
 ?>
 
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <link rel="stylesheet" href="../style/postPreview.css"">
+    <link rel="stylesheet" href="../style/bootstrap.css"">
 
     <div class=" container-fluid" id="post">
     <div class="row">

@@ -2,7 +2,7 @@
 {
 
 ?>
-    <link rel="stylesheet" href="../style/fullPost.css"">
+    <link rel="stylesheet" href="../style/bootstrap.css">
     <div class="container" id="fullpost">
        
         <div class="row">
@@ -90,11 +90,11 @@
                         <form>
                             <label for="inputComment" class="form-label">Collaborate with a comment here</label>
                             <div class="row"> 
-                                <div class="col-12">
+                                <div class="col-10">
                                     <input type="email" class="form-control" id="inputComment">
                                 </div>
-                                <div class="col-1">
-                                    <button type="submit" class="share-comments-btn">Share</button>
+                                <div class="col-2">
+                                    <button type="submit" class="btn btn-success ">Share</button>
                                 </div>
                             </div>
                         </form>
