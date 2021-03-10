@@ -105,8 +105,7 @@
                                 <div class="post-comments">
                                     <p class="meta">Dec 18, 2014 <a href="#" class="commentlink">JohnDoe</a> says : <i class="pull-right"><a href="#" class="commentlink"><small>Reply</small></a> </i></p>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Etiam a sapien odio, sit amet
+                                        So interesting! Wow I love it!!!
                                     </p>
                                 </div>
                             </li>
@@ -115,8 +114,7 @@
                                 <div class="post-comments">
                                     <p class="meta">Dec 19, 2014 <a href="#" class="commentlink">JohnDoe</a> says : <i class="pull-right"><a href="#" class="commentlink"><small>Reply</small></a></i></p>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Etiam a sapien odio, sit amet
+                                        I had no idea about this! Who else is with me?
                                     </p>
                                 </div>
                                 <ul class="comments">
@@ -125,8 +123,7 @@
                                         <div class="post-comments">
                                             <p class="meta">Dec 20, 2014 <a href="#" class="commentlink">JohnDoe</a> says : <i class="pull-right"><a href="#" class="commentlink"><small>Reply</small></a></i></p>
                                             <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Etiam a sapien odio, sit amet
+                                                Me me me!!
                                             </p>
                                         </div>
                                     </li>

@@ -1,8 +1,10 @@
 <?php?>
 
 <link rel="stylesheet" href="../style/admin.css">
+<link rel="stylesheet" href="../style/postPreview.css"">
 
-<div class="row" style="margin: 4em;"></div>
+<div class=" row" style="margin: 4em;">
+</div>
 
 <div class="row">
     <div class="col-1"></div>
@@ -10,19 +12,35 @@
 
         <h1 class="title">Reported Activity</h1>
 
-        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-        <link rel="stylesheet" href="../style/postPreview.css"">
-        
         <!-- show reported things -->
-        <?php drawReportedPost(0); ?>
-        <?php drawReportedComment(0); ?>
+        <table class="table table-hover mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">x Reported</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php drawReportedPost(0); ?>
+                <?php drawReportedComment(0); ?>
+                <?php drawReportedPost(0); ?>
+                <?php drawReportedComment(0); ?>
+                <?php drawReportedPost(0); ?>
+                <?php drawReportedComment(0); ?>
+                <?php drawReportedPost(0); ?>
+                <?php drawReportedComment(0); ?>
+                <?php drawReportedPost(0); ?>
+                <?php drawReportedComment(0); ?>
+            </tbody>
+        </table>
 
     </div>
-    <div class=" col-1">
-    </div>
+    <div class=" col-1"></div>
 </div>
 
-
-</body>
 
 <?php?>
