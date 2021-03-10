@@ -1,14 +1,29 @@
+<!DOCTYPE HTML>
 <?php
   include_once('../templates/header.php');
   drawAuthHeader();
 ?>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style/bootstrap.css">
+
+    <script src="https://cdn.tiny.cloud/1/up85hjw3nat4fck36d4b8sga07h0hs8y6j1nkiusyctbojab/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+
+  </head>
+   
 
 
 <body>
-<link rel="stylesheet" href="../style/newPost.css">
     <div class="container" id="fullNewsForm">
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-md-1 col-xs-0"></div>
             <div class="col-md-10 col-xs-12 newsFormContent" >
             <h2> New Post </h2>
@@ -19,11 +34,11 @@
                         <small id="titleHelp" class="form-text text-muted">Tip: Try a catchy name</small>
                     </div>
                     <div class="row ">
-                        <div class="col-md-6 col-xs-12 header-section" >
+                        <div class="col-md-6 col-xs-12 header-section mt-3" >
                             <label for="inputNewsHeader">Header</label>
                             <input type="header" class="form-control" id="inputNewsHeader" placeholder="Header">
                         </div>
-                        <div class="col-md-6 col-xs-12 tags-section " >
+                        <div class="col-md-6 col-xs-12 tags-section mt-5" >
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>Select the topic here</option>
                                 <option value="1">Water</option>
@@ -37,34 +52,10 @@
                             </select>
                         </div>
                     </div>
-                    <div class="container  body-section"> 
-                        <textarea id="editor"></textarea>
-                        <script>
-                            tinymce.init({
-                                selector: "textarea#editor",
-                                skin: "bootstrap",
-                                plugins: "lists, link, image, media",
-                                toolbar:
-                                    "h1 h2 bold italic strikethrough blockquote bullist numlist backcolor | link image media | removeformat help",
-                                menubar:true,
-                                setup: (editor) => {
-                                    // Apply the focus effect
-                                    editor.on("init", () => {
-                                    editor.getContainer().style.transition =
-                                        "border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out";
-                                    });
-                                    editor.on("focus", () => {
-                                    (editor.getContainer().style.boxShadow =
-                                        "0 0 0 .2rem rgba(0, 123, 255, .25)"),
-                                        (editor.getContainer().style.borderColor = "#80bdff");
-                                    });
-                                    editor.on("blur", () => {
-                                    (editor.getContainer().style.boxShadow = ""),
-                                        (editor.getContainer().style.borderColor = "");
-                                    });
-                                },
-                            });
-                        </script>
+                    <div class="row mt-3"> 
+                        <form method="post">
+                            <textarea id="mytextarea">Hello, World!</textarea>
+                        </form>
                     </div>
                     <div class="form-group images-section">
                         <label class="form-label" for="customFile">Default file input example</label>
@@ -78,7 +69,7 @@
                         <input type="source" class="form-control" id="inputNewsSource" placeholder="Enter news source">
                         <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
                     </div>
-                    <button type="submit" class="btn-section" formaction="homepage.php">Publish</button>
+                    <button type="submit" class="btn-primary" formaction="homepage.php">Publish</button>
                 </form>
             </div>
             <div class="col-md-1 col-xs-0"></div>
