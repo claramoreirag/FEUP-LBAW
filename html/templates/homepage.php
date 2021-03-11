@@ -9,7 +9,7 @@
 
 
 
-<div class=" container homepage " style="margin-top: 6rem;" >
+<div class=" container homepage " style="margin-top: 4rem;" >
 
 
     <div class="row">

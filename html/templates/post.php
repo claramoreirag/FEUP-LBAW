@@ -13,7 +13,7 @@
             </div>
             <div class="row">
                 <div class="col-1 " style="margin-right:1rem;">
-                    <img class="" src="../images/profilepic1.jpg" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
+                <a href="../pages/otherProfile.php"><img class="" src="../images/profilepic1.jpg" alt="profile pic" width="40" height="40" style="border-radius: 50%;"></a>
                 </div>
                 <div class="col-10">
                     <h4 class="card-title text-primary">Low-level jets create winds of change for turbines</h4>
@@ -21,7 +21,7 @@
 
             </div>
 
-            <h6 class="card-subtitle mt-2 mb-2 text-muted">By @johndoe on 20/01/2021 20:40</h6>
+            <h6 class="card-subtitle mt-2 mb-2 text-muted">By<a href="../pages/otherProfile.php"> @johndoe </a>on 20/01/2021 20:40</h6>
             <div class="card-text">
                 <div class="row">
 

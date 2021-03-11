@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="../style/bootstrap.css">
 
 
-<div class=" row" style="margin: 4em;">
+<div class=" row" style="margin: 3em;">
 </div>
 
 <div class="row">
@@ -28,6 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     <?php drawReportedPost(0); ?>
                     <?php drawReportedComment(0); ?>
                     <?php drawReportedPost(0); ?>

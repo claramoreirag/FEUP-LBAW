@@ -15,7 +15,7 @@
 
 <body>
 <header>
-            <nav class="row navbar navbar-expand-md navbar-dark bg-primary">
+            <nav class="row mx-0 navbar navbar-expand-md navbar-dark bg-primary">
                 <div class="col-1"></div>
                 <div class="col-10 ">
                     <div class="row justify-content-between">
