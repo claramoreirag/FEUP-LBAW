@@ -8,19 +8,18 @@
 
 
 
-<div class=" container homepage">
 
-    
+<div class=" container homepage " style="margin-top: 6rem;" >
 
 
     <div class="row">
-    <div class="col-md-2 filters-bar  ">
-            <div class="filters" style="position: fixed;">
+    <div class="col-md-2 filters-bar d-none d-lg-block ">
+            <div class="filters" style="position: fixed; margin-top:4rem;">
                 <h3 class="filters-title form-label ">Search filters</h3>
                 <form>
                     <legend class="form-label label ">Tags</legend>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="tag1">
+                        <input class="form-check-input " type="checkbox" value="" id="tag1">
                         <label class="form-check-label" for="flexCheckDefault">Energy</label>
                     </div>
                     <div class="form-check">
@@ -59,7 +58,7 @@
     <div class="col-md-1"></div>
         <div class="col-md-9  posts">
             <div class="row">
-                <div class="input-group rounded search-container">
+                <div class="input-group rounded search-container mb-3">
                     <input type="search" class="form-control rounded searchbar" style=" border-radius: 2rem;color: var(--text-color); background-color: var(--background-color);" id="searchbar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                     <span class="input-group-text border-0 search-icon">
                         <i class="fas fa-search"></i>
@@ -69,7 +68,7 @@
             </div>
 
             <form>
-                <div class="row ">
+                <div class="row d-lg-none">
                     <header class="filters-title form-label">Search filters</header>
                     <div class="col-sm-4 filter">
                         <legend class="form-label label">Tags</legend>
