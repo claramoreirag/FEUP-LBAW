@@ -58,10 +58,10 @@
     <div class="col-md-1"></div>
         <div class="col-md-9  posts">
             <div class="row">
-                <div class="input-group rounded search-container mb-3">
-                    <input type="search" class="form-control rounded searchbar" style=" border-radius: 2rem;color: var(--text-color); background-color: var(--background-color);" id="searchbar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                    <span class="input-group-text border-0 search-icon">
-                        <i class="fas fa-search"></i>
+                <div class="input-group rounded search-container mb-3 px-0">
+                    <input type="search" class="form-control rounded searchbar"  id="searchbar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <span class="input-group-text search-icon mx-1">
+                        <i class="fas fa-search text-primary"></i>
                     </span>
                 </div>
 
