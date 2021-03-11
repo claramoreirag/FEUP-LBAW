@@ -14,7 +14,7 @@
 
     <div class="row">
     <div class="col-md-2 filters-bar d-none d-lg-block ">
-            <div class="filters" style="position: fixed; margin-top:4rem;">
+            <div class="filters" style="position: fixed; ">
                 <h3 class="filters-title form-label ">Search filters</h3>
                 <form>
                     <legend class="form-label label ">Tags</legend>
