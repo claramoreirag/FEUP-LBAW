@@ -1,6 +1,9 @@
 <?php?>
 
+<link rel="stylesheet" href="../style/bootstrap.css">
 <link rel="stylesheet" href="../style/admin.css">
+
+
 
 <div class="row" style="margin: 4em;"></div>
 
