@@ -94,7 +94,7 @@
                         <div class="form-group">
                             <legend class="form-label label">Order By</legend>
 
-                            <div class="form-check">
+                            <div class="form-check text-">
                                 <input class="form-check-input" type="radio" name="feedType" id="top-news-">
                                 <label class="form-check-label" for="flexRadioDefault1">Top News</label>
                             </div>
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5 mt-2">
                         <button type="submit" class="btn btn-primary form-submit">Submit</button>
                     </div>
 
@@ -112,8 +112,8 @@
             </form>
 
             <div class="row posts-container">
-                <?php drawP(0) ?>
-                <?php drawP(0) ?>
+                <?php drawPost(0) ?>
+                <?php drawPost(0) ?>
                 <?php drawPost(0) ?>
             </div>
         </div>
