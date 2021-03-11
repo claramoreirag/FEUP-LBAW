@@ -8,7 +8,7 @@
         <div class="card-body ">
             <div class="row mb-2 justify-content-end">
                 <div class="col-sm-3 col-md-3  " style="text-align:end">
-                    <span class="badge badge-primary tag p-1">Tag</span>
+                    <span class="badge badge-primary tag p-1">Energy</span>
                 </div>
             </div>
             <div class="row">
@@ -69,7 +69,7 @@
         <div class="card-body ">
             <div class="row mb-2 justify-content-end">
                 <div class="col-sm-3 col-md-3  " style="text-align:end">
-                    <span class="badge badge-primary tag p-1">Tag</span>
+                    <span class="badge badge-primary tag p-1">Global Warming</span>
                 </div>
             </div>
             <div class="row">
@@ -215,7 +215,7 @@
                     </div>
                 </div>
                 <div class="col-sm-3 col-md-3 tag-holder ">
-                    <button class="btn btn-primary tags">Tag</button>
+                    <button class="btn btn-primary tags">Ambient</button>
                 </div>
             </div>
 

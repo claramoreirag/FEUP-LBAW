@@ -41,19 +41,17 @@
                             <h4><a class="row text-white nav-title" id="title" href="../pages/homepage.php">GreeNews</a></h4>
                             <h6> <a class="row text-white nav-subtitle" id="aboutus" href="../pages/aboutUs.php">About Us</a></h6>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-4">
                             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
+                            </button>
                         </div>
 
 
                         <div class="col-md-4  collapse navbar-collapse justify-content-end" id="navbarNav">
-
-                            <a class="text-white log nav-item nav-link" href="../pages/login.php">Sign In</a>
+                            <a class="text-white log nav-item nav-link" href="../pages/login.php">Log In</a>
                             <span class="text-white d-none d-md-block separator"> | </span>
-                            <a class="text-white log nav-item nav-link " href="../pages/signup.php"> Log In</a>
-
-
+                            <a class="text-white log nav-item nav-link " href="../pages/signup.php"> Sign Up</a>
                         </div>
 
                     </div>
@@ -63,6 +61,9 @@
                 <div class="col-1"></div>
 
             </nav>
+
+
+
         </header>
 
 
@@ -90,9 +91,9 @@
                     </div>
                     <div class="col-2 collapse navbar-collapse justify-content-end" id="navbarNav">
 
-                        <a class="log nav-item nav-link" href="../pages/login.php">Sign In</a>
+                        <a class="log nav-item nav-link" href="../pages/login.php">Log In</a>
                         <span class="d-none d-md-block separator"> | </span>
-                        <a class="log nav-item nav-link " href="../pages/signup.php"> Log In</a>
+                        <a class="log nav-item nav-link " href="../pages/signup.php"> Sign Up</a>
 
 
                     </div>
@@ -278,9 +279,9 @@
 
                                             <div class="col-md-4  collapse navbar-collapse justify-content-end" id="navbarNav">
 
-                                                <a class="text-white log nav-item nav-link" href="../pages/login.php">Sign In</a>
+                                                <a class="text-white log nav-item nav-link" href="../pages/login.php">Log In</a>
                                                 <span class="text-white d-none d-md-block separator"> | </span>
-                                                <a class="text-white log nav-item nav-link " href="../pages/signup.php"> Log In</a>
+                                                <a class="text-white log nav-item nav-link " href="../pages/signup.php"> Sign Up</a>
 
 
                                             </div>

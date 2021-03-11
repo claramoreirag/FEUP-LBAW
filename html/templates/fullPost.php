@@ -23,7 +23,7 @@
                 <div class="row justify-content-left">
                     <div class="col-md-12 col-12">
                         <h2 class="row justify-content-between post-title"> Low-level jets create winds of change for turbines </h2>
-                        <h6 class="row post-newsheader">As one of the leading sources of clean and renewable energy, global wind power capacity has increased more than fivefold over the past decade, leading to larger turbines and pushing wind technology to its limits. </h6>
+                        <h6 class="row mt-3 mb-3">As one of the leading sources of clean and renewable energy, global wind power capacity has increased more than fivefold over the past decade, leading to larger turbines and pushing wind technology to its limits. </h6>
                     </div>
 
                     <!--<div class="col-md-6 col-12">
@@ -54,7 +54,7 @@
                         </div>   -->
 
                         <div class="row">
-                            <p class="col-md-6 nopadding col-12">These much larger turbines are operating in very different atmospheric layers than smaller turbines used 5-10 years ago," said Srinidhi Gadde, one of the authors of a paper in the Journal of Renewable and Sustainable Energy, from AIP Publishing, that examines the impacts of turbine height. "At these scales, local meteorology and extreme shear events, which frequently occur, can impact power production." <br>
+                            <p class="col-md-6 ps-0 text-justify col-12">These much larger turbines are operating in very different atmospheric layers than smaller turbines used 5-10 years ago," said Srinidhi Gadde, one of the authors of a paper in the Journal of Renewable and Sustainable Energy, from AIP Publishing, that examines the impacts of turbine height. "At these scales, local meteorology and extreme shear events, which frequently occur, can impact power production." <br>
                                                 Low-level jets, which are maxima in wind velocity in the lower atmosphere, are one cause for concern with growing turbines. These strong, energetic wind flows can either have desirable or detrimental effects on the turbines, depending on how high the wind flows are in relation to the turbines. <br>
                             </p>
                             <div class="col-md-6 col-12"><img src="../images/news1.jpg" class="d-block w-100" alt="..."></img> </div>
