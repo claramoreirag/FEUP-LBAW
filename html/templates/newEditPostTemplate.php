@@ -1,8 +1,5 @@
 <!DOCTYPE HTML>
-<?php
-  include_once('../templates/header.php');
-  drawAuthHeader();
-?>
+
 
 <head>
     <meta charset="utf-8">
@@ -23,10 +20,10 @@
 
 <body>
     <div class="container" id="fullNewsForm">
-        <div class="row mt-5">
+        <div class="row mt-3">
             <div class="col-md-1 col-xs-0"></div>
             <div class="col-md-10 col-xs-12 newsFormContent" >
-            <h2> New Post </h2>
+          
                 <form>
                     <div class="title-section">
                         <label for="inputNewsTitle">News Title</label>

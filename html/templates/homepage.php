@@ -9,7 +9,7 @@
 
 
 
-<div class=" container homepage " style="margin-top: 6rem;" >
+<div class=" container homepage " style="margin-top: 4rem;" >
 
 
     <div class="row">
@@ -42,7 +42,7 @@
 
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="feedType" id="top-news">
-                            <label class="form-check-label" for="flexRadioDefault1">Top News</label>
+                            <label class="form-check-label" for="flexRadioDefault1">Most Upvoted News</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="feedType" id="newest" checked>

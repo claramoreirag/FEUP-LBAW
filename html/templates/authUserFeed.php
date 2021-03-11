@@ -19,19 +19,19 @@
                 <form >
                     <legend class="form-label label ">Tags</legend>
                     <div class="form-check">
-                        <input class="form-check-input green " type="checkbox" value="" id="tag1">
+                        <input class="form-check-input  " type="checkbox" value="" id="tag1">
                         <label class="form-check-label" for="flexCheckDefault">Energy</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input green" type="checkbox" value="" id="tag2" checked>
+                        <input class="form-check-input " type="checkbox" value="" id="tag2" checked>
                         <label class="form-check-label" for="flexCheckChecked">Clean Water</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input green" type="checkbox" value="" id="tag3">
+                        <input class="form-check-input " type="checkbox" value="" id="tag3">
                         <label class="form-check-label" for="flexCheckDefault">Animal Cruelty</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input green" type="checkbox" value="" id="tag4" checked>
+                        <input class="form-check-input " type="checkbox" value="" id="tag4" checked>
                         <label class="form-check-label" for="flexCheckChecked">Research</label>
                     </div>
 
@@ -54,11 +54,11 @@
                         <legend class="form-label label order-by">Order By</legend>
 
                         <div class="form-check">
-                            <input class="form-check-input green" type="radio" name="feedType" id="top-news">
+                            <input class="form-check-input " type="radio" name="feedType" id="top-news">
                             <label class="form-check-label" for="flexRadioDefault1">Top News</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input green" type="radio" name="feedType" id="newest" checked>
+                            <input class="form-check-input " type="radio" name="feedType" id="newest" checked>
                             <label class="form-check-label" for="flexRadioDefault2"> Newest</label>
                         </div>
                     </div>
@@ -111,21 +111,21 @@
                                 <label class="form-check-label" for="flexRadioDefault1">My Feed</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input green" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                                 <label class="form-check-label" for="flexRadioDefault2">Trending</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4 " style="vertical-align:top;">
-                        <div class="form-group green" style="color:#56cc9d!important">
+                        <div class="form-group " style="color:#56cc9d!important">
                             <legend class="form-label label">Order By</legend>
 
                             <div class="form-check">
-                                <input class="form-check-input green" type="radio" name="feedType" id="top-news-">
+                                <input class="form-check-input " type="radio" name="feedType" id="top-news-">
                                 <label class="form-check-label" for="flexRadioDefault1">Top News</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input green" type="radio" name="feedType" id="newest-" checked>
+                                <input class="form-check-input" type="radio" name="feedType" id="newest-" checked>
                                 <label class="form-check-label" for="flexRadioDefault2"> Newest</label>
                             </div>
                         </div>
