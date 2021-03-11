@@ -10695,14 +10695,13 @@ font-weight: 400;
 
 
 #myInfo{
-  margin-left: 1rem;
-  border-style: solid;
-  border-color: #284B63;
-  border-radius: 1em;
-  background-color: var(--background-color);
-  font-family: 'Maven Pro';
+  margin-top: 2rem;
+  margin-right: 1rem;
+  border-right-style: solid;
+  border-color: #78c2ad;
+  /*border-radius: 1em;
   position: fixed;
-  left: 77%;
+  left: 8%;*/
   
 }
 
@@ -10744,8 +10743,15 @@ font-weight: 400;
 
 #editProfilePage{
   text-decoration: none;
-  font-family: 'Maven Pro';
-  color: var(--text-color);
+  
 }
 
+#myPosts{
+  margin-top: 2rem;
+
+}
+
+#myPosts .tab-content{
+  margin-top: 1rem;
+}
 

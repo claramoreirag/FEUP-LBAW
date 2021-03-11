@@ -1,7 +1,9 @@
 <?php
 
   include_once('../templates/header.php');
-  drawMainHeader();
+
+  drawAuthHeader();
+  
   include_once('../templates/post.php');
   include_once('../templates/otherProfile.php');
 
