@@ -6,13 +6,13 @@
     <div class="container" id="fullpost">
        
         <div class="row">
-            <div class="col-md-1 col-xs-0"></div>
+            <div class="col-md-1 col-xs-1"></div>
 
-            <div class="col-md-10 col-xs-12">
+            <div class="col-md-10 col-xs-10">
 
-                <div class="row post-header">
+                <div class="row post-header mt-5">
                     <div class="col-md-7 col-xs-2">
-                        <a class="btn icon-arrow-left btn-back" href="../pages/homepage.php"></a>
+                        <a class="fas fa-arrow-left" href="../pages/homepage.php"></a>
                     </div>
                     <div class="col-md-5 col-xs-8"><p class="text-end">22-03-2020 | 22:22h</p></div><hr/>
                 </div>
@@ -21,7 +21,7 @@
 
                     <div class="col-md-6 col-xs-12">
                         <h2 class="row justify-content-between post-title"> Low-level jets create winds of change for turbines </h2>
-                        <p class="post-newsheader">As one of the leading sources of clean and renewable energy, global wind power capacity has increased more than fivefold over the past decade, leading to larger turbines and pushing wind technology to its limits. </p>
+                        <p class="row post-newsheader">As one of the leading sources of clean and renewable energy, global wind power capacity has increased more than fivefold over the past decade, leading to larger turbines and pushing wind technology to its limits. </p>
                     </div>
 
                     <div class="col-md-6 col-xs-12">
@@ -51,7 +51,7 @@
                             </div>
                         </div>
 
-                        <p class="post-newsbody">"These much larger turbines are operating in very different atmospheric layers than smaller turbines used 5-10 years ago," said Srinidhi Gadde, one of the authors of a paper in the Journal of Renewable and Sustainable Energy, from AIP Publishing, that examines the impacts of turbine height. "At these scales, local meteorology and extreme shear events, which frequently occur, can impact power production." <br>
+                        <p class="row post-newsbody">"These much larger turbines are operating in very different atmospheric layers than smaller turbines used 5-10 years ago," said Srinidhi Gadde, one of the authors of a paper in the Journal of Renewable and Sustainable Energy, from AIP Publishing, that examines the impacts of turbine height. "At these scales, local meteorology and extreme shear events, which frequently occur, can impact power production." <br>
                                                 Low-level jets, which are maxima in wind velocity in the lower atmosphere, are one cause for concern with growing turbines. These strong, energetic wind flows can either have desirable or detrimental effects on the turbines, depending on how high the wind flows are in relation to the turbines. <br>
                                                 "A simple way to think about LLJs is to visualize them as high-velocity 'rivers' or 'streams' of wind within the atmosphere," Gadde said.<br>
                                                 In their simulation of a wind farm with a 4-by-10 grid of turbines, Gadde and co-author Richard Stevens considered three different scenarios in which the LLJs were above, below, and in the middle of the turbine rotors. <br>
@@ -66,7 +66,7 @@
 
                 
 
-                        <div class="row post-interactions justify-content-between">
+                        <div class="row post-interactions justify-content-between mt-4">
                             <div class="col-md-2 col-sm-4 actions"></i>
                                 <div class="row ">
                                     <div class="col-4 share action"><i class="fas fa-share-alt"></i></div>
@@ -84,17 +84,18 @@
                         </div>
 
 
-                    <div class="container post-comment">
+                    <div class="row  post-comment">
                         <h3 class="comments-title">Comments</h3><hr/>
 
                         <form>
                             <label for="inputComment" class="form-label">Collaborate with a comment here</label>
                             <div class="row"> 
-                                <div class="col-10">
+                                <div class="col-11">
                                     <input type="email" class="form-control" id="inputComment">
                                 </div>
-                                <div class="col-2">
-                                    <button type="submit" class="btn btn-success ">Share</button>
+                                
+                                <div class="col-1">
+                                    <button type="submit" class="btn btn-success mb-3">Share</button>
                                 </div>
                             </div>
                         </form>
@@ -121,7 +122,7 @@
                                     <li class="clearfix">
                                         <img src="https://engenharia360.com/wp-content/uploads/2019/05/esta-pessoa-nao-existe-engenharia-360-2.png" class=" rounded-circle avatar" alt="">
                                         <div class="post-comments">
-                                            <p class="meta">Dec 20, 2014 <a href="#" class="commentlink">JohnDoe</a> says : <i class="pull-right"><a href="#" class="commentlink"><small>Reply</small></a></i></p>
+                                            <p class="meta">Dec 20, 2014 <a href="#" class="commentlink">JohnDoe</a> says : <i class="pull-right"></i></p>
                                             <p>
                                                 Me me me!!
                                             </p>

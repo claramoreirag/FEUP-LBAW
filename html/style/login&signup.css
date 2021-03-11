@@ -4,7 +4,6 @@ body{
   background-image: url("../images/back.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  font-family: 'Maven Pro';
 }
 
 .layout{    /*to align content according to the size of the screen*/
@@ -14,17 +13,11 @@ body{
 }
 
 .login_form{
-    
     padding: 0.5em;
-    background-color: var(--background-color);
-    border: #284B63 solid;
-    border-radius: 1em;
 }
 
 .login_form .title{
-    color: var(--darkpink-color);
     text-align: center;
-    margin: 0.25em;
 }
 
 .login_form form input {
@@ -32,7 +25,6 @@ body{
   background: transparent;
   border-bottom: 1px solid #fff;
   outline: none;
-  color: #284B63;
   margin: 1em 0;
 }
 
@@ -42,40 +34,24 @@ body{
   border-bottom: 1px solid #fff;
   outline: none;
 }
+
+.login_form form button, .login_google button{
+  margin: 0 auto; 
+  display:block;
+  padding: 0.6em 1em;
+}
+
 .dividing{
-    margin-bottom:0.75em;
+  margin-bottom:0.75em;
 }
 
 .dividing h5{
     text-align: center;
 }
 
-.login_form form button, .login_google button{
-  margin: 0 auto;
-  background: transparent;
-  color: #284B63;
-  border-color: #284B63;
-  transition: 250ms;
-  width: 100%;
-  font-weight: 600;
-}
-
-.login_form form button:hover, .login_google button:hover{
-  background: transparent;
-  background-color: #284B63;
-  color:#fff;
-  border-color: #284B63;
-}
 
 .signup_link, .login_link{
     text-align: center;
     width:100%;
     padding:0.25em;
-    text-decoration: none;
-    color:#EB8A90;
-}
-
-.signup_link:hover, .login_link:hover{
-    text-decoration: none;
-    color:#AA1155;
 }

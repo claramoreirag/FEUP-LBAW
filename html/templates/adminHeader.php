@@ -6,7 +6,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>GreeNews</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="../style/global.css">
+    <link rel="stylesheet" href="../style/bootstrap.css">
 
 
     <!-- Bootstrap CSS -->
@@ -34,7 +34,7 @@
     <header>
         <div>
 
-            <nav class="row navbar navbar-expand-md navbar-light sticky-top" id="nav">
+            <nav class="row navbar navbar-expand-md navbar-dark bg-primary sticky-top" id="nav">
                 <div class="col-1"></div>
                 <div class="col-10">
                     <div class="row justify-content-between ">

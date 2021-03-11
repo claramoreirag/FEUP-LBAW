@@ -1,7 +1,7 @@
 <?php
 
 function drawFooter(){ ?>
-            <footer>
+            <footer class="footer ml-5">
                 <p>LBAW 2021 - G54</p>
             </footer>
         </body>
