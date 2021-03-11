@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="../style/login&signup.css">
 
 
-
 <div class="container">
     <div class="row layout align-items-center">
         <div class="col-md-4 col-sm-2"></div>
@@ -15,15 +14,15 @@
                     <h1 class="title">Login</h1>
                     <form>
                         <div class="form-floating">
-                            <input type="username" class="form-control" id="floatingInput" placeholder="Username">
-                            <label for="floatingInput">Username</label>
+                            <input type="username" class="form-control" id="floatingInput" placeholder="Username" required>
+                            <label for="floatingInput">Username *</label>
                         </div>
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                            <label for="floatingPassword">Password *</label>
                         </div>
 
-                        <button type="submit" class="btn btn-success">Login</button>
+                        <button onclick="changePage()" type="submit" class="btn btn-success">Login</button>
                     </form>
                     <div class="row dividing align-items-center">
                         <div class="col-5">
@@ -38,7 +37,7 @@
                     </div>
                     <div class="row login_google">
                         <div class="col">
-                            <button type="submit" class="btn btn-success">Login with Google</button>
+                            <button onclick="changePage()" type="submit" class="btn btn-success">Login with Google</button>
                         </div>
                     </div>
                     <div class="row align-items-center ">
@@ -53,6 +52,8 @@
         </div>
     </div>
     <div class="row lower"></div>
+
+    <script defer src="../js/login.js"></script>
 
     </body>
     <?php?>

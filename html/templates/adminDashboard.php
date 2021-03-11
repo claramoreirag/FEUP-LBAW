@@ -46,5 +46,7 @@
     <div class=" col-1"></div>
 </div>
 
+<script defer src="../js/admin.js"></script>
+
 
 <?php?>
