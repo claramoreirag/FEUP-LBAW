@@ -21,7 +21,7 @@
         <div class="col-3"></div>
         <div class="col-6 d-flex justify-content-center">
           <h3 id="name">
-            Name
+            Alexander
           </h3>
         </div>
         <div class="col-3"></div>
@@ -30,7 +30,7 @@
         <div class="col-3"></div>
         <div class="col-6 d-flex justify-content-center">
           <h4 id="username">
-            @username
+            @alex_turner505
           </h4>
         </div>
         <div class="col-3"></div>
