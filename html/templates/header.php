@@ -37,17 +37,17 @@
                 <div class="col-1"></div>
                 <div class="col-10 ">
                     <div class="row justify-content-between">
-                        <div class="col-4 navbar-brand">
-                            <a class="row navbar-brand" id="title" href="../pages/homepage.php">GreeNews</a>
-                            <h5> <a class="row navbar-brand" id="aboutus" href="../pages/aboutUs.php">About Us</a></h5>
+                        <div class="col-4 ">
+                            <h4><a class="row text-white" id="title" href="../pages/homepage.php">GreeNews</a></h4>
+                            <h6> <a class="row text-white" id="aboutus" href="../pages/aboutUs.php">About Us</a></h6>
                         </div>
-                        <div class="col-2">
+                      <div class="col-md-1">
                         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
-                        </button>
+                        </div>
                     </div>
 
-                        <div class="col-4 collapse navbar-collapse justify-content-end" id="navbarNav">
+                        <div class="col-md-4 col-sm-6 collapse navbar-collapse justify-content-end" id="navbarNav">
                             
                             <a class="text-white log nav-item nav-link" href="../pages/login.php">Sign In</a>
                             <span class="text-white d-none d-md-block separator"> | </span>

@@ -12,14 +12,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
- <div class="col-lg-8 col-md-9 col-sm-12 ">
-                    <p class="post-text ">As one of the leading sources of clean and renewable energy, global wind power capacity has increased more than fivefold over the past decade, leading to larger turbines and pushing wind technology to its limits.</p>
-                    <a href="../pages/fullPostPage.php" class="read-more">Read More</a>
-                    <br>
-                </div>
-                <div class="col-3 post-pic">
-                    <img class="" src="../images/news1.jpg" alt="template pic" width="170">
-                </div>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 :root {
   --blue: #007bff;
