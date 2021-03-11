@@ -1,18 +1,7 @@
 
-:root {
-    --background-color: #e5eff6;
-    --text-color: #284B63;
-    --title-color: #CCF5AC;
-    --lightpink-color: #EB8A90;
-    --darkpink-color: #AA1155;
-    --darkpink-shade-color:rgb(136, 13, 68);
-    --lightblue-color: #BFD7EA;
-  }
-  
 
   .post-content{
-    background-color: var(--background-color);
-    color: var(--text-color);
+  
     text-align: justify;
     
   }
@@ -26,15 +15,8 @@
 
 
   #post{
-    background-color: var(--lightpink-color);
     margin-bottom: 1rem;
     
-    
-    border-style: solid;
-    border-color: #284B63;
-    border-radius: 1em;
-    background-color: var(--background-color);
-    font-family: 'Maven Pro';
   }
 
 
@@ -44,11 +26,8 @@
 #post .tags{
       margin: 1em;
         padding:  0.5rem 1.5em;
-       border-color: var(--darkpink-shade-color);
-      background-color: var(--darkpink-color);
-      color: var(--background-color);
-     border-radius: 0.5rem;
-      font-weight: 500;
+     
+   
       text-align: center;
       outline: none;
   }
@@ -57,10 +36,6 @@
     outline: 0;
 }
 
- .tags.btn-primary:focus {
-  -webkit-box-shadow: none!important;
-  box-shadow: none!important;
-}
 
 #post .post-pic{
    
@@ -70,7 +45,7 @@
 
 #post #profile-pic{
     margin: 0rem 0rem;
-    border-radius: 50%;
+
     padding: 1rem;
     margin-right: 0em;
 }
@@ -86,32 +61,26 @@
     margin-top: 1rem;
     overflow-wrap: break-word;
     text-align: start;
-    color: var(--text-color);
+  
 }
-
 
 .post-interactions .share{
     margin: 0.5rem 0rem;
     padding: 0.5rem 0rem;
     text-align: start;
     margin-top: 0.75rem;
-    font-size: x-large;
-    color: var(--darkpink-color);
+   
+  
 }
 
-.post-interactions .action:hover{
-  
-  color: var(--darkpink-shade-color);
-}
 
 .post-interactions .save{
   margin: 0.5rem 0rem;
   padding: 0.5rem 0rem;
   text-align: start;
   margin-top: 0.75rem;
-  font-size: x-large;
+  
   text-align: center;
-  color: var(--darkpink-color);
 }
 
 .post-interactions .report{
@@ -119,18 +88,17 @@
   padding: 0.5rem 0rem;
   text-align: start;
   margin-top: 0.75rem;
-  font-size: x-large;
+ 
   text-align: end;
-  color: var(--darkpink-color);
+
 }
 
 .post-interactions .votes{
-    background-color: var(--text-color);
-    color: var(--title-color);
-    font-weight: 500;
+   
+   
     padding: 0.25rem ;
     margin: 0.25rem 0rem;
-   border-radius: 0.5rem;
+  
    text-align: center;
 }
 
@@ -143,7 +111,7 @@
 #post .read-more{
   font-weight: 600;
   text-decoration: none;
-  color: var(--text-color);
+ 
   font-size: large;
   margin-bottom: 3em;
   padding-bottom: 1rem;

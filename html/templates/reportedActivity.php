@@ -8,13 +8,13 @@
         <td>@flat_world</td>
         <td>The Earth is Flat. Change my mind.</td>
         <td>
-            <button type="button" class="btn btn-light"><i class="far fa-trash-alt"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="far fa-trash-alt"></i></button>
 
-            <button type="button" class="btn btn-light"><i class="fas fa-user-clock"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-clock"></i></button>
 
-            <button type="button" class="btn btn-light"><i class="fas fa-user-slash"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-slash"></i></button>
 
-            <button type="button" class="btn btn-light"><i class="far fa-check-circle"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="far fa-check-circle"></i></button>
         </td>
     </tr>
 
@@ -127,13 +127,13 @@
         <td>@diesel_is_cool</td>
         <td>Electric is for women!!</td>
         <td>
-            <button type="button" class="btn btn-light"><i class="far fa-trash-alt"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="far fa-trash-alt"></i></button>
 
-            <button type="button" class="btn btn-light"><i class="fas fa-user-clock"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-clock"></i></button>
 
-            <button type="button" class="btn btn-light"><i class="fas fa-user-slash"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-slash"></i></button>
 
-            <button type="button" class="btn btn-light"><i class="far fa-check-circle"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="far fa-check-circle"></i></button>
         </td>
     </tr>
 
