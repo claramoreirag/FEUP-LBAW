@@ -42,7 +42,7 @@
                     <div class=" share action"><i class="fas fa-share-alt"></i></div>
                 </div> -->
                 <div class="col-lg-2 col-md-3 col-sm-4 mt-2">
-                    <div class="row justify-content-end votes">
+                    <div class="row justify-content-end votes text-secondary">
                         <div class="col-6 upvote"><i class="fas fa-arrow-up"></i> 10 </div>
                         <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> 3 </div>
 
@@ -108,7 +108,7 @@
                     </div>
                 </div>
                 <div class="col-xl-2 col-md-3 col-sm-4 mt-2">
-                    <div class="row justify-content-end votes">
+                    <div class="row justify-content-end votes text-secondary">
                         <div class="col-6 upvote"><i class="fas fa-arrow-up"></i> 10 </div>
                         <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> 3 </div>
 
@@ -238,7 +238,7 @@
                     </div>
                 </div>
                 <div class="col-2" style="margin-right:0rem; padding-right:0rem ;margin-top:0.5rem">
-                    <div class="row justify-content-end votes">
+                    <div class="row justify-content-end votes text-secondary">
                         <div class="col-6 upvote"><i class="fas fa-arrow-up"></i> 10 </div>
                         <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> 3 </div>
 

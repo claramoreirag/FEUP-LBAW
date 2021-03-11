@@ -38,26 +38,26 @@
                 <div class="col-10 ">
                     <div class="row justify-content-between">
                         <div class="col-4 ">
-                            <h4><a class="row text-white" id="title" href="../pages/homepage.php">GreeNews</a></h4>
-                            <h6> <a class="row text-white" id="aboutus" href="../pages/aboutUs.php">About Us</a></h6>
+                            <h4><a class="row text-white nav-title" id="title" href="../pages/homepage.php">GreeNews</a></h4>
+                            <h6> <a class="row text-white nav-subtitle" id="aboutus" href="../pages/aboutUs.php">About Us</a></h6>
                         </div>
-                      <div class="col-md-1">
-                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+                        <div class="col-md-1">
+                            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
                         </div>
-                    </div>
 
-                        <div class="col-md-4 col-sm-6 collapse navbar-collapse justify-content-end" id="navbarNav">
-                            
+
+                        <div class="col-md-4  collapse navbar-collapse justify-content-end" id="navbarNav">
+
                             <a class="text-white log nav-item nav-link" href="../pages/login.php">Sign In</a>
                             <span class="text-white d-none d-md-block separator"> | </span>
                             <a class="text-white log nav-item nav-link " href="../pages/signup.php"> Log In</a>
-                            
-                            
+
+
                         </div>
+
                     </div>
-                    
-                   
+
 
                 </div>
                 <div class="col-1"></div>
@@ -262,34 +262,36 @@
                     <body>
                         <header>
                             <div>
-
-
-
-                                <nav class="row navbar navbar-expand-md navbar-light fixed-top " id="nav">
+                                <nav class="row navbar navbar-expand-md navbar-dark bg-primary fixed-top">
                                     <div class="col-1"></div>
-                                    <div class="col-10">
-                                        <div class="row justify-content-between ">
-                                            <div class="col-4 navbar-brand">
-                                                <a class="row" id="title" href="../pages/homepage.php">GreeNews</a>
+                                    <div class="col-10 ">
+                                        <div class="row justify-content-between">
+                                            <div class="col-4 ">
+                                                <h4><a class="row text-white nav-title mt-2" id="title" href="../pages/homepage.php">GreeNews</a></h4>
 
                                             </div>
-                                            <div class="col-3 justify-content-between">
-                                                <button class="navbar-toggler menu " id="nav-btn" style=" margin-top: 0.8rem; border-width:0.15em; border-color: rgb(27, 52, 68);" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                            <div class="col-md-1">
+                                                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                                     <span class="navbar-toggler-icon"></span>
                                             </div>
-                                            </button>
-                                            <div class="col-2 collapse navbar-collapse justify-content-end" id="navbarNav">
 
-                                                <a class="log nav-item nav-link" href="../pages/login.php">Sign In</a>
-                                                <span class="d-none d-md-block separator"> | </span>
-                                                <a class="log nav-item nav-link " href="../pages/signup.php"> Log In</a>
+
+                                            <div class="col-md-4  collapse navbar-collapse justify-content-end" id="navbarNav">
+
+                                                <a class="text-white log nav-item nav-link" href="../pages/login.php">Sign In</a>
+                                                <span class="text-white d-none d-md-block separator"> | </span>
+                                                <a class="text-white log nav-item nav-link " href="../pages/signup.php"> Log In</a>
 
 
                                             </div>
+
                                         </div>
+
+
                                     </div>
                                     <div class="col-1"></div>
-                            </div>
+
+                                </nav>
                         </header>
 
 

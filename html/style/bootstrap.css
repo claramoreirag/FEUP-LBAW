@@ -10810,3 +10810,23 @@ font-weight: 400;
   margin-top: 1rem;
 }
 
+
+
+.form-check-input:checked{
+  background-color:var(--primary)!important;
+  border-color:var(--primary)!important  ;
+  box-shadow: var(--primary);
+}
+
+.form-check-input:focus{
+  
+  box-shadow: var(--primary);
+}
+
+.nav-title:hover{
+  text-decoration: none;
+}
+
+.nav-subtitle:hover{
+  text-decoration: none;
+}
