@@ -1,9 +1,14 @@
 <?php
 
 function drawFooter(){ ?>
-            <footer class="footer ml-5">
-                <p>LBAW 2021 - G54</p>
-            </footer>
-        </body>
-    </html>
+    <body class="d-flex flex-column">
+        <footer id="sticky-footer" class="py-4 text-50 mt-5">
+            <div class="container text-center">
+            <small>LBAW-2021-G54&copy;</small>
+            </div>
+        </footer>
+    </body>
+
 <?php } ?>
+
+

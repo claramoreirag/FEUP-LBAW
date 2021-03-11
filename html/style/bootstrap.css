@@ -6178,6 +6178,12 @@ a.close.disabled {
   }
 }
 
+@media (max-width: 500px) {
+  .modal-xs {
+    max-width: 500px;
+  }
+}
+
 .tooltip {
   position: absolute;
   z-index: 1070;
@@ -10635,7 +10641,7 @@ list-style-type: none;
 padding: 0;
 }
 
-.post-comment img.avatar {
+img.avatar {
 position: relative;
 float: left;
 margin-left: 0;
