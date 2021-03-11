@@ -1,41 +1,8 @@
-body{
-  font-family: 'Maven Pro';
-}
 
-
-.title{
-    color: var(--darkpink-color);
-}
-
-.type_date{
-    display: inline-block;
-    font-weight: 600;
-    color: var(--text-color);
-    width: 100%;
-    margin-bottom: 0;
-    text-align: right;
-}
-
-.post-content, .comment-content{
-    background-color: var(--background-color);
-    color: var(--text-color);
-    border: #284B63 solid 1px;
-    border-radius: 1em;
-    padding: 0.7em;
-}
-
-.actions button{
-    margin: auto;
-    background-color: white;
-    border-style:none;
-    width:fit-content;
-}
 
 .user{  
     border-style: solid;
-    border-color: #284B63;
     border-radius: 1em;
-    background-color: var(--background-color);
 }
 
 #user-pic{
@@ -47,7 +14,6 @@ body{
 #user-name{
     margin-top: 1rem;
     text-align: left;
-    color: var(--text-color);
 }
 
 #user-name h4{
