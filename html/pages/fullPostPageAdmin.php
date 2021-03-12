@@ -3,7 +3,7 @@
   include_once('../templates/footer.php');
   include_once('../templates/fullPostAdmin.php');
 
-  drawAuthHeader();
+  drawAdminHeader();
   drawFullPostAdmin(0);
   drawFooter();
 ?>
