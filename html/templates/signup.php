@@ -14,27 +14,27 @@
                     <h1 class="title">Sign Up</h1>
                     <form>
                         <div class="form-floating">
-                            <input type="username" class="form-control" id="floatingUser" placeholder="Username">
-                            <label for="floatingUser">Username</label>
+                            <input type="username" class="form-control" id="floatingUser" placeholder="Username" required>
+                            <label for="floatingUser">Username *</label>
                         </div>
                         <div class="form-floating">
-                            <input type="name" class="form-control" id="floatingName" placeholder="Name">
-                            <label for="floatingName">Name</label>
+                            <input type="name" class="form-control" id="floatingName" placeholder="Name" required>
+                            <label for="floatingName">Name *</label>
                         </div>
                         <div class="form-floating">
-                            <input type="email" class="form-control" id="floatingEmail" placeholder="Email">
-                            <label for="floatingEmail">Email</label>
+                            <input type="email" class="form-control" id="floatingEmail" placeholder="Email" required>
+                            <label for="floatingEmail">Email *</label>
                         </div>
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                            <label for="floatingPassword">Password *</label>
                         </div>
                         <div class="form-floating">
-                            <input type="confirm_password" class="form-control" id="floatingCPassword" placeholder="Confirm Password">
-                            <label for="floatingCPassword">Confirm Password</label>
+                            <input type="confirm_password" class="form-control" id="floatingCPassword" placeholder="Confirm Password" required>
+                            <label for="floatingCPassword">Confirm Password *</label>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                        <button onclick="changePage()" type="submit" class="btn btn-primary">Sign Up</button>
                     </form>
                     <div class="row dividing align-items-center">
                         <div class="col-5">
@@ -49,7 +49,7 @@
                     </div>
                     <div class="row login_google">
                         <div class="col">
-                            <button type="submit" class="btn btn-primary">Sign Up with Google</button>
+                            <button onclick="changePage()" type="submit" class="btn btn-primary">Sign Up with Google</button>
                         </div>
                     </div>
                     <div class="row align-items-center ">
@@ -64,6 +64,9 @@
         </div>
     </div>
     <div class="row lower"></div>
+
+    <script defer src="../js/login.js"></script>
+
 
     </body>
     <?php?>
