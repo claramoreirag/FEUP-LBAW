@@ -40,33 +40,26 @@
                                 <option selected>Select the topic here</option>
                                 <option value="1">Water</option>
                                 <option value="2">Climate Change</option>
-                                <option value="3">Polution</option>
+                                <option value="3">Pollution</option>
                                 <option value="4">Biodiversity</option>
-                                <option value="5">Ecosystem</option>
+                                <option value="5">Ecossystem</option>
                                 <option value="6">Human Rights</option>
-                                <option value="7">Womens Empowerment</option>
+                                <option value="7">Women's Empowerment</option>
                                 <option value="8">Transports</option>
                             </select>
                         </div>
                     </div>
-                    <div class="row mt-3"> 
+                    <div class="row my-4 mx-1"> 
                         <form method="post">
                             <textarea id="mytextarea">Hello, World!</textarea>
                         </form>
-                    </div>
-                    <div class="form-group images-section">
-                        <label class="form-label" for="customFile">Default file input example</label>
-                        <input type="file" class="form-control" id="customFile" />
-                        <input type="file" class="form-control" id="customFile" />
-                        <input type="file" class="form-control" id="customFile" />
-                        <input type="file" class="form-control" id="customFile" />
                     </div>
                     <div class="form-group source-section">
                         <label for="inputNewsSource">News Source</label>
                         <input type="source" class="form-control" id="inputNewsSource" placeholder="Enter news source">
                         <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
                     </div>
-                    <button type="submit" class="btn-primary" formaction="homepage.php">Publish</button>
+                    <button type="submit" class="btn btn-primary" formaction="../pages/homepage.php">Publish</button>
                 </form>
             </div>
             <div class="col-md-1 col-xs-0"></div>
