@@ -18,7 +18,6 @@
 
 
 
-<body>
     <div class="container" id="fullNewsForm">
         <div class="row mt-3">
             <div class="col-md-1 col-xs-0"></div>
@@ -68,7 +67,6 @@
 
     <script defer src="../js/newPost.js"></script>
 
-</body>
 
 <?php
 include_once('../templates/footer.php');
