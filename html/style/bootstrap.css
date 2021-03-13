@@ -10829,10 +10829,8 @@ font-weight: 400;
   box-shadow: var(--primary);
 }
 
-.nav-title:hover{
-  text-decoration: none;
-}
 
-.nav-subtitle:hover{
-  text-decoration: none;
+.post .action.icon:hover{
+  color: var(--primary);
+
 }

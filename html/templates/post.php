@@ -102,9 +102,9 @@
             <div class="row justify-content-between text-center">
                 <div class="col-md-3 col-sm-4 actions pt-3 pb-3"></i>
                     <div class="row text-secondary">
-                        <div class="col-4 share action"><i class="fas fa-share-alt"></i></div>
-                        <div class="col-4 save action"><i class="fas fa-bookmark"></i></div>
-                        <div class="col-4 report action"><i class="fas fa-exclamation-circle"></i></div>
+                        <div class="col-4 share action icon"><i class="fas fa-share-alt"></i></div>
+                        <div class="col-4 save action icon"><i class="fas fa-bookmark"></i></div>
+                        <div class="col-4 report action icon"><i class="fas fa-exclamation-circle"></i></div>
                     </div>
                 </div>
                 <div class="col-xl-2 col-md-3 col-sm-4 mt-2">
