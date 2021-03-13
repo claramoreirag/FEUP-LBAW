@@ -4,9 +4,9 @@
 ?>
     <link rel="stylesheet" href="../style/bootstrap.css">
 
-    <div class="row mt-5">
-        <div class="col-3"></div>
-        <div class="col-9">
+    <div class="row mt-5 px-0" style="width: 100%;" >
+     
+        <div class="col-12 px-0" style="text-align: center;">
             <button type="button" class="btn btn-outline-primary"><i class="far fa-trash-alt"></i> Delete</button>
             <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-clock"></i> Suspend User</button>
             <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-slash"></i> Ban User</button>

@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
 
 <?php
-  include_once('../templates/simpleHeader.php');
+  include_once('../templates/header.php');
+  drawAuthHeader();
 ?>
 
 <h2>
-<div class="row justify-content-center mt-5">
+<div class="row justify-content-center mt-5" style="margin-right:0rem;">
         Edit Post 
 </div>
 </h2>
