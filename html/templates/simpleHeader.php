@@ -1,4 +1,4 @@
-<?php?>
+
 <!-- HEADER WITH NO LOG IN OR SIGN UP -->
 <head>
     <meta charset='utf-8'>
@@ -40,4 +40,3 @@
 
 
         </header>
-<?php?>

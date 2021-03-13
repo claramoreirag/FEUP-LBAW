@@ -1,4 +1,4 @@
-<?php?>
+<?php  ?>
 
 <link rel="stylesheet" href="../style/admin.css">
 <link rel="stylesheet" href="../style/bootstrap.css">
@@ -50,4 +50,4 @@
 <script defer src="../js/admin.js"></script>
 
 
-<?php?>
+<?php  ?>

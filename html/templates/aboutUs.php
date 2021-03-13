@@ -1,4 +1,4 @@
-<?php?>
+<?php  ?>
 <link rel="stylesheet" href="../style/bootstrap.css">
 <div class="container" id="aboutUs">
 <div class=" main">

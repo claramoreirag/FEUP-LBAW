@@ -18,8 +18,8 @@
 
 
 
-    <div class="container" id="fullNewsForm">
-        <div class="row mt-3">
+    <div class="container" id="fullNewsForm" >
+        <div class="row mt-3 pb-5 mb-2">
             <div class="col-md-1 col-xs-0"></div>
             <div class="col-md-10 col-xs-12 newsFormContent">
 

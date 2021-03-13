@@ -1,4 +1,4 @@
-<?php?>
+<?php  ?>
 
 <link rel="stylesheet" href="../style/bootstrap.css">
 <link rel="stylesheet" href="../style/admin.css">
@@ -56,4 +56,4 @@
 
 </body>
 
-<?php?>
+<?php  ?>
