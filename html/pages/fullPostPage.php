@@ -1,6 +1,6 @@
 <?php
   include_once('../templates/header.php');
-  drawAuthHeader();
+  drawMainHeader();
   
   include_once('../templates/fullPost.php');
   drawFullPost(0);

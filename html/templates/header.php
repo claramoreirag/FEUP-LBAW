@@ -33,38 +33,30 @@
 
     <body>
         <header>
-            <nav class="row navbar navbar-expand-md navbar-dark bg-primary">
-                <div class="col-1"></div>
-                <div class="col-10 ">
-                    <div class="row justify-content-between">
-                        <div class="col-4 ">
-                            <h4><a class="row text-white nav-title" id="title" href="../pages/homepage.php">GreeNews</a></h4>
-                            <h6> <a class="row text-white nav-subtitle" id="aboutus" href="../pages/aboutUs.php">About Us</a></h6>
-                        </div>
-                        <div class="col-md-1 px-0">
-                            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                        </div>
-
-
-                        <div class="col-md-4  collapse navbar-collapse justify-content-end" id="navbarNav">
-
-                            <a class="text-white log nav-item nav-link" href="../pages/login.php">Sign In</a>
-                            <span class="text-white d-none d-md-block separator"> | </span>
-                            <a class="text-white log nav-item nav-link " href="../pages/signup.php"> Log In</a>
-
+                <nav class="row mx-0 navbar navbar-expand-md navbar-dark bg-primary">
+                    <div class="col-1"></div>
+                    <div class="col-10 ">
+                        <div class="row justify-content-between">
+                            <div class="col-4 ps-0">
+                                <h4><a class="row text-white nav-title"  href="../pages/homepage.php">GreeNews</a></h4>
+                                <h6> <a class="row text-white nav-subtitle"  href="../pages/aboutUs.php">About Us</a></h6>
+                            </div>
+                            <div class="col-md-1 ps-0">
+                                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                            </div>
+                            <div class="col-md-4 ps-0 collapse navbar-collapse justify-content-end" >
+                                <a class="text-white log nav-item nav-link" href="../pages/login.php">Log In</a>
+                                <span class="text-white d-none d-md-block separator"> | </span>
+                                <a class="text-white log nav-item nav-link " href="../pages/signup.php"> Sign Up</a>
+                            </div>
 
                         </div>
-
                     </div>
-
-
-                </div>
-                <div class="col-1"></div>
-
-            </nav>
+                    <div class="col-1"></div>
+                </nav>
         </header>
-
 
 
     <?php } ?>
@@ -108,7 +100,7 @@
 
         <body>
             <header>
-                <nav class="row navbar navbar-expand-md navbar-dark bg-primary">
+                <nav class="row mx-0 navbar navbar-expand-md navbar-dark bg-primary">
                     <div class="col-1"></div>
                     <div class="col-10 ">
                         <div class="row justify-content-between">
@@ -210,15 +202,15 @@
 
                 </head>
 
-                <body>
-                    <header>
-                       
-                            <nav class="row navbar navbar-expand-md navbar-dark bg-primary fixed-top">
-                                <div class="col-1"></div>
-                                <div class="col-10 ">
-                                    <div class="row justify-content-between">
-                                        <div class="col-4 ">
-                                            <h4><a class="row text-white nav-title mt-2" id="title" href="../pages/homepage.php">GreeNews</a></h4>
+    <body>
+        <header>
+            <div>
+                <nav class="row mx-0 navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+                    <div class="col-1"></div>
+                    <div class="col-10 ">
+                        <div class="row justify-content-between">
+                            <div class="col-4 ">
+                                <h4><a class="row text-white nav-title mt-2" id="title" href="../pages/homepage.php">GreeNews</a></h4>
 
                                         </div>
                                         <div class="col-md-1 px-0">
@@ -284,7 +276,7 @@
 
                     <body>
                         <header>
-                            <nav class="row navbar navbar-expand-md navbar-dark bg-primary">
+                            <nav class="row navbar mx-0 navbar-expand-md navbar-dark bg-primary">
                                 <div class="col-1"></div>
                                 <div class="col-10 ">
                                     <div class="row justify-content-between">
@@ -316,6 +308,6 @@
 
                             </nav>
 
-
+                        </header>
 
                         <?php } ?>

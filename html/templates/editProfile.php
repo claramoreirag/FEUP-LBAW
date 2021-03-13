@@ -14,12 +14,10 @@
 <body>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Click here to see demo modal for edit profile :)
-    </button>
+    
 
     <!-- Modal -->
-    <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
 
@@ -49,8 +47,8 @@
                     <div class="col-lg-md-3 sm-1"></div>
                     <div class="col-lg-md-6 sm-10" id="newInfo">
                       <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingInput" placeholder="Old Password Required">
-                        <label for="floatingInput">Old Password Required</label>
+                        <input type="password" class="form-control" id="floatingInput" placeholder="Old Password Required" required>
+                        <label for="floatingInput">Old Password *</label>
                       </div>
                       <div class="form-floating">
                         <input type="text" class="form-control" id="floatingInput" placeholder="Name">
@@ -67,7 +65,7 @@
                       
                     </div>
                   </div>
-                </form>
+                
                 <div class="col-lg-md-3 sm-1"></div>
               </div>
 
@@ -76,10 +74,10 @@
           <div class="modal-footer">
 
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Delete Account</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
             
           </div>
-
+          </form>
         </div>
       </div>
     </div>
