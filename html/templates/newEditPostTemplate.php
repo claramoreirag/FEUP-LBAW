@@ -26,16 +26,16 @@
                 <form>
                     <div class="title-section">
                         <label for="inputNewsTitle">News Title</label>
-                        <input type="title" class="form-control" id="inputNewsTitle" placeholder="Enter title">
+                        <input type="title" class="form-control" id="inputNewsTitle" placeholder="This is a cool title">
                         <small id="titleHelp" class="form-text text-muted">Tip: Try a catchy name</small>
                     </div>
                     <div class="row ">
                         <div class="col-md-6 col-xs-12 header-section mt-3">
                             <label for="inputNewsHeader">Header</label>
-                            <input type="header" class="form-control" id="inputNewsHeader" placeholder="Header">
+                            <input type="header" class="form-control" id="inputNewsHeader" placeholder="This is where you summarize your post">
                         </div>
                         <div class="col-md-6 col-xs-12 tags-section mt-5">
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" aria-label="Topic">
                                 <option selected>Select the topic here</option>
                                 <option value="1">Water</option>
                                 <option value="2">Climate Change</option>
@@ -50,12 +50,12 @@
                     </div>
                     <div class="row my-4 mx-1">
                         <form method="post">
-                            <textarea id="mytextarea">Hello, World!</textarea>
+                            <textarea id="mytextarea">Write your post here!</textarea>
                         </form>
                     </div>
                     <div class="form-group source-section">
                         <label for="inputNewsSource">News Source</label>
-                        <input type="source" class="form-control" id="inputNewsSource" placeholder="Enter news source">
+                        <input type="source" class="form-control" id="inputNewsSource" placeholder="Where did you get this content?">
                         <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
                     </div>
                     <button onclick="changePage()" type="submit" class="btn btn-primary" formaction="../pages/homepage.php">Publish</button>
