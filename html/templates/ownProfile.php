@@ -51,7 +51,8 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Edit Profile
           </button>
-</div>
+          <a class="btn btn-primary mt-2 ml-1 px-3" href="../pages/newPostPage.php">New Post</a>
+      </div>
       <div class="col-2"></div>
         <!--
           <a class="fas fa-edit editProfilePage" id="editProfilePage" href="../pages/editProfile.php">Edit profile</a>-->

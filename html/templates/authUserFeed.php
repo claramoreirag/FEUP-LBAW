@@ -18,7 +18,7 @@
                 <h3 class="filters-title form-label ">Search filters</h3>
                 <form >
                     <legend class="form-label label ">Tags</legend>
-                    <div class="form-check">
+                    <!--<div class="form-check">
                         <input class="form-check-input  " type="checkbox" value="" id="tag1">
                         <label class="form-check-label" for="flexCheckDefault">Energy</label>
                     </div>
@@ -33,7 +33,10 @@
                     <div class="form-check">
                         <input class="form-check-input " type="checkbox" value="" id="tag4" checked>
                         <label class="form-check-label" for="flexCheckChecked">Research</label>
-                    </div>
+                    </div>-->
+
+
+                    <input type="text" class="form-control mb-3" id="tokenfield" value="red x green x blue x" />
 
                    
 

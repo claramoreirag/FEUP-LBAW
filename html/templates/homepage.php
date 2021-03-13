@@ -9,6 +9,7 @@
 
 
 
+
 <div class=" container homepage " style="margin-top: 4rem;" >
 
 
@@ -18,7 +19,7 @@
                 <h3 class="filters-title form-label ">Search filters</h3>
                 <form>
                     <legend class="form-label label ">Tags</legend>
-                    <div class="form-check">
+                    <!--<div class="form-check">
                         <input class="form-check-input " type="checkbox" value="" id="tag1">
                         <label class="form-check-label" for="flexCheckDefault">Energy</label>
                     </div>
@@ -33,7 +34,12 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="tag4" checked>
                         <label class="form-check-label" for="flexCheckChecked">Research</label>
-                    </div>
+                    </div>-->
+                    
+
+                    <input type="text" class="form-control mb-3" id="tokenfield" value="Energy, Woman's Rights" />
+
+
 
 
 
@@ -72,7 +78,7 @@
                     <header class="filters-title form-label">Search filters</header>
                     <div class="col-sm-4 filter">
                         <legend class="form-label label">Tags</legend>
-                        <div class="form-check">
+                        <!--<div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="tag1-">
                             <label class="form-check-label" for="flexCheckDefault">Energy</label>
                         </div>
@@ -87,7 +93,10 @@
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="tag4-" checked>
                             <label class="form-check-label" for="flexCheckChecked">Research</label>
-                        </div>
+                        </div>-->
+
+
+                        <input type="text" class="form-control mb-3" id="tokenfield" value="Ambient, Woman's Rights" />
                     </div>
 
                     <div class="col-sm-4 " style="vertical-align:top;">
