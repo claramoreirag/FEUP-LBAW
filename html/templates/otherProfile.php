@@ -64,8 +64,32 @@
             <?php
             drawPost(0);
             ?>
+            <?php
+            drawPost(0);
+            ?>
+            <?php
+            drawPost(0);
+            ?>
+            <?php
+            drawPost(0);
+            ?>
+            <?php
+            drawPost(0);
+            ?>
           </div>
           <div class="tab-pane fade" id="upvotes">
+            <?php
+            drawPost(0);
+            ?>
+            <?php
+            drawPost(0);
+            ?>
+            <?php
+            drawPost(0);
+            ?>
+            <?php
+            drawPost(0);
+            ?>
             <?php
             drawPost(0);
             ?>
