@@ -4,12 +4,12 @@
 <link rel="stylesheet" href="../style/bootstrap.css">
 
 
-<div class=" row" style="margin: 3em;">
+<div class=" row" style="margin-top: 3em; ">
 </div>
 
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
+<div class="row" style="margin-right:0rem !important; margin-left:0rem !important; ">
+    <div class="col-1 "></div>
+    <div class="col-10 ">
 
         <h1 class="title">Reported Activity</h1>
 
@@ -42,9 +42,9 @@
                 </tbody>
             </table>
         </div>
+        <div class=" col-1 "></div>
 
     </div>
-    <div class=" col-1"></div>
 </div>
 
 <script defer src="../js/admin.js"></script>
