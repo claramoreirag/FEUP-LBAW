@@ -41,12 +41,12 @@
                                 <h4><a class="row text-white nav-title"  href="../pages/homepage.php">GreeNews</a></h4>
                                 <h6> <a class="row text-white nav-subtitle"  href="../pages/aboutUs.php">About Us</a></h6>
                             </div>
-                            <div class="col-md-1 ps-0">
+                            <div class="col-md-1 px-0">
                                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
                             </div>
-                            <div class="col-md-4 ps-0 collapse navbar-collapse justify-content-end" >
+                            <div class="col-md-4 ps-0 collapse navbar-collapse justify-content-end" id="navbarNav" >
                                 <a class="text-white log nav-item nav-link" href="../pages/login.php">Log In</a>
                                 <span class="text-white d-none d-md-block separator"> | </span>
                                 <a class="text-white log nav-item nav-link " href="../pages/signup.php"> Sign Up</a>
@@ -132,36 +132,7 @@
 
                 </nav>
 
-                <!--THIS IS OLD -->
-
-                <!--<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                        <div class="col-1"></div>
-                        <div class="col-10">
-                            <div class="row justify-content-between ">
-                                <div class="col-4 navbar-brand">
-                                    <a class="row" id="title" href="../pages/homepage.php">GreeNews</a>
-                                    <a class="row" id="aboutus" href="../pages/aboutUs.php">About Us</a>
-                                </div>
-                                <div class="col-3 justify-content-between">
-                                    <button class="navbar-toggler menu " id="nav-btn" style=" margin-top: 0.8rem; border-width:0.15em; border-color: rgb(27, 52, 68);" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="navbar-toggler-icon"></span>
-                                </div>
-                                </button>
-                                <div class="col-2 collapse navbar-collapse justify-content-end" id="navbarNav">
-
-                                    <a class="log nav-item nav-link " href="#"><i class="fas fa-bell"></i> </a>
-                                    <a class="log nav-item nav-link d-none d-md-block" href="../pages/myProfilePage.php">@username</a>
-                                    <a class="log nav-item nav-link d-md-none " href="../pages/myProfilePage.php"> My Profile</a>
-                                    <span class="d-none d-md-block separator"> | </span>
-                                    <a class="log nav-item nav-link " href="../pages/homepage.php"> Sign Out</a>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-1"></div>
-                
-            </header>-->
+               
 
 
             <?php } ?>
@@ -221,9 +192,9 @@
 
                                         <div class="col-md-4  collapse navbar-collapse justify-content-end" id="navbarNav">
 
-                                            <a class="text-white log nav-item nav-link" href="../pages/login.php">Sign In</a>
+                                            <a class="text-white log nav-item nav-link" href="../pages/login.php">Log In</a>
                                             <span class="text-white d-none d-md-block separator"> | </span>
-                                            <a class="text-white log nav-item nav-link " href="../pages/signup.php"> Log In</a>
+                                            <a class="text-white log nav-item nav-link " href="../pages/signup.php"> Sign Up</a>
 
 
                                         </div>
@@ -294,7 +265,7 @@
 
                                             <a class="log nav-item nav-link text-white" href="../pages/userManager.php"><i class="fas fa-users-cog"></i> </a>
                                             <a class="log nav-item nav-link text-white" href="../pages/adminDashboard.php"><i class="fas fa-exclamation-circle"></i> </a>
-                                            <a class="log nav-item nav-link d-none d-md-block text-white" href="../pages/myProfilePage.php">Admin</a>
+                                            <a class="log nav-item nav-link d-none d-md-block text-white">Admin</a>
                                             <span class="d-none d-md-block separator text-white"> | </span>
                                             <a class="log nav-item nav-link text-white" href="../pages/homepage.php"> Sign Out</a>
 
