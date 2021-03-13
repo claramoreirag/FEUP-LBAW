@@ -1,6 +1,6 @@
 <?php
   include_once('../templates/header.php');
-  drawMainHeader();
+  drawAuthHeader();
   include_once('../templates/authUserFeed.php');
   include_once('../templates/post.php');
   include_once('../templates/footer.php');

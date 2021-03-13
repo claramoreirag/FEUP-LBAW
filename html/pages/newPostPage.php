@@ -6,7 +6,7 @@
 ?>
 
 <h2>
-<div class="row justify-content-center mt-5" class="margin-right:0rem;">
+<div class="row justify-content-center mt-5" style="margin-right:0rem;">
          New Post 
 </div>
 </h2>

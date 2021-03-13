@@ -1,4 +1,4 @@
-<?php?>
+<?php  ?>
 
 <link rel="stylesheet" href="../style/bootstrap.css">
 <link rel="stylesheet" href="../style/login&signup.css">
@@ -56,4 +56,4 @@
     <script defer src="../js/login.js"></script>
 
     </body>
-    <?php?>
+    <?php  ?>

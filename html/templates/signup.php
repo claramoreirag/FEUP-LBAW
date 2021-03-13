@@ -1,4 +1,4 @@
-<?php?>
+<?php ?>
 
 <link rel="stylesheet" href="../style/bootstrap.css"">
 <link rel=" stylesheet" href="../style/login&signup.css">
@@ -69,4 +69,4 @@
 
 
     </body>
-    <?php?>
+    <?php ?>
