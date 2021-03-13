@@ -43,8 +43,8 @@
                 </div> -->
                 <div class="col-lg-2 col-md-3 col-sm-4 mt-2">
                     <div class="row justify-content-end votes text-secondary">
-                        <div class="col-6 upvote"><i class="fas fa-arrow-up"></i> 10 </div>
-                        <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> 3 </div>
+                        <div class="col-6 upvote"><a class="text-secondary" href=""><i class="fas fa-arrow-up"></i></a> 10 </div>
+                        <div class="col-6 downvote"><a class="text-secondary" href=""><i class="fas fa-arrow-down"></i></a> 3 </div>
 
                     </div>
                 </div>
@@ -82,7 +82,7 @@
 
             </div>
 
-            <h6 class="card-subtitle mt-2 mb-2 text-muted">By @johndoe on 20/01/2021 20:40</h6>
+            <h6 class="card-subtitle mt-2 mb-2 text-muted">By <a href="../pages/otherProfile.php"> @johndoe</a> on 20/01/2021 20:40</h6>
             <div class="card-text">
                 <div class="row">
 
@@ -101,16 +101,16 @@
         
             <div class="row justify-content-between text-center">
                 <div class="col-md-3 col-sm-4 actions pt-3 pb-3"></i>
-                    <div class="row text-secondary">
-                        <div class="col-4 share action icon"><i class="fas fa-share-alt"></i></div>
-                        <div class="col-4 save action icon"><i class="fas fa-bookmark"></i></div>
-                        <div class="col-4 report action icon"><i class="fas fa-exclamation-circle"></i></div>
+                    <div class="row text-secondary actions">
+                        <div class="col-4 share action icon"><a class="text-secondary" href=""><i class="fas fa-share-alt"></i></a></div>
+                        <div class="col-4 save action icon"><a class="text-secondary" href=""><i class="fas fa-bookmark"></i></a></div>
+                        <div class="col-4 report action icon"><a class="text-secondary" href=""><i class="fas fa-exclamation-circle"></i></a></div>
                     </div>
                 </div>
                 <div class="col-xl-2 col-md-3 col-sm-4 mt-2">
                     <div class="row justify-content-end votes text-secondary">
-                        <div class="col-6 upvote"><i class="fas fa-arrow-up"></i> 10 </div>
-                        <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> 3 </div>
+                        <div class="col-6 upvote"><a class="text-secondary" href=""><i class="fas fa-arrow-up"></i></a> 10 </div>
+                        <div class="col-6 downvote"><a class="text-secondary" href=""><i class="fas fa-arrow-down"></i></a> 3 </div>
 
                     </div>
                 </div>
@@ -168,15 +168,15 @@
         
             <div class="row post-interactions justify-content-between ">
                 <div class="col-xs-4 col-sm-4 col-md-2 actions mt-2 text-secondary pb-3"></i>
-                    <div class="row ">
+                    <div class="row actions">
                         <div class="col-md-6 col-xs-6 save action"><a href="../pages/editPostPage.php" ><span class="fas fa-edit"></a></div>
 
                     </div>
                 </div>
                 <div class="col-xs-4 col-sm-4 col-md-2 mt-2 text-center" >
                     <div class="row justify-content-end votes">
-                        <div class="col-6 upvote"><i class="fas fa-arrow-up"></i> 10 </div>
-                        <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> 3 </div>
+                        <div class="col-6 upvote"><a class="text-secondary" href=""><i class="fas fa-arrow-up"></i></a> 10 </div>
+                        <div class="col-6 downvote"><a class="text-secondary" href=""><i class="fas fa-arrow-down"></i></a> 3 </div>
 
                     </div>
                 </div>

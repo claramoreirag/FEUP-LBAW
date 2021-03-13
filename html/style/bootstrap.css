@@ -10829,8 +10829,9 @@ font-weight: 400;
   box-shadow: var(--primary);
 }
 
-
-.post .action.icon:hover{
-  color: var(--primary);
+.nav-link.nav-item:hover{
+  color: var(--dark)!important;
 
 }
+
+

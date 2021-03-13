@@ -114,9 +114,9 @@
                             </div>
 
 
-                            <div class="col-md-4  collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <div class="col-md-5  collapse navbar-collapse justify-content-end" id="navbarNav">
 
-                                <a class="log nav-item nav-link text-white" href="#"><i class="fas fa-bell"></i> </a>
+                                <a class="log nav-item nav-link text-white notification" href="#"><i class="fas fa-bell"></i> </a>
                                 <a class="log nav-item nav-link d-none d-md-block text-white" href="../pages/myProfilePage.php">@username</a>
                                 <a class="log nav-item nav-link d-md-none text-white" href="../pages/myProfilePage.php"> My Profile</a>
                                 <span class="d-none d-md-block separator text-white"> | </span>
@@ -190,7 +190,7 @@
                                         </div>
 
 
-                                        <div class="col-md-4  collapse navbar-collapse justify-content-end" id="navbarNav">
+                                        <div class="col-md-5  collapse navbar-collapse justify-content-end" id="navbarNav">
 
                                             <a class="text-white log nav-item nav-link" href="../pages/login.php">Log In</a>
                                             <span class="text-white d-none d-md-block separator"> | </span>
@@ -261,7 +261,7 @@
                                         </div>
 
 
-                                        <div class="col-md-5  collapse navbar-collapse justify-content-end" id="navbarNav">
+                                        <div class="col-md-6 collapse navbar-collapse justify-content-end" id="navbarNav">
 
                                             <a class="log nav-item nav-link text-white" href="../pages/userManager.php"><i class="fas fa-users-cog"></i> </a>
                                             <a class="log nav-item nav-link text-white" href="../pages/adminDashboard.php"><i class="fas fa-exclamation-circle"></i> </a>
