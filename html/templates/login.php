@@ -51,7 +51,6 @@
             <div class="col-md-4 col-sm-2"></div>
         </div>
     </div>
-    <div class="row lower"></div>
 
     <script defer src="../js/login.js"></script>
 

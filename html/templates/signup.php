@@ -5,7 +5,7 @@
 
 
 <div class="container">
-    <div class="row layout align-items-center mt-5 mt-sm-0">
+    <div class="row layout align-items-center">
         <div class="col-md-4 col-sm-2"></div>
         <div class="col-12 col-md-4 col-sm-8">
             <div class="row login_form">
@@ -63,7 +63,6 @@
             <div class="col-md-4 col-sm-2"></div>
         </div>
     </div>
-    <div class="row lower"></div>
 
     <script defer src="../js/login.js"></script>
 

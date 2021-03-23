@@ -44,6 +44,7 @@
                     <?php drawUser(0) ?>
                     <?php drawUser(0) ?>
                     <?php drawUser(0) ?>
+                    <?php drawUser(0) ?>
                 </tbody>
             </table>
 

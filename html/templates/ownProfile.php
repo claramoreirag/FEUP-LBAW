@@ -1,5 +1,5 @@
 <?php
-  include_once('../templates/editProfile.php');
+include_once('../templates/editProfile.php');
 ?>
 
 <head>
@@ -46,17 +46,17 @@
         </div>
       </div>
       <div class="row">
-      <div class="col-2"></div>
-      <div class="col-8">
+        <div class="col-2"></div>
+        <div class="col-8">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Edit Profile
           </button>
           <a class="btn btn-primary mt-2 ml-1 px-3" href="../pages/newPostPage.php">New Post</a>
-      </div>
-      <div class="col-2"></div>
+        </div>
+        <div class="col-2"></div>
         <!--
           <a class="fas fa-edit editProfilePage" id="editProfilePage" href="../pages/editProfile.php">Edit profile</a>-->
-    </div>
+      </div>
     </div>
     <div class="col-lg-8 md-12" id="myPosts">
       <div class="row" id="postOptions">
@@ -76,13 +76,49 @@
             <?php
             drawOwnPost(0);
             ?>
+            <?php
+            drawOwnPost(0);
+            ?>
+            <?php
+            drawOwnPost(0);
+            ?>
+            <?php
+            drawOwnPost(0);
+            ?>
+            <?php
+            drawOwnPost(0);
+            ?>
           </div>
           <div class="tab-pane fade" id="savedposts">
             <?php
             drawPost(0);
             ?>
+            <?php
+            drawPost(0);
+            ?>
+            <?php
+            drawPost(0);
+            ?>
+            <?php
+            drawPost(0);
+            ?>
+            <?php
+            drawPost(0);
+            ?>
           </div>
           <div class="tab-pane fade" id="upvotes">
+            <?php
+            drawPost(0);
+            ?>
+            <?php
+            drawPost(0);
+            ?>
+            <?php
+            drawPost(0);
+            ?>
+            <?php
+            drawPost(0);
+            ?>
             <?php
             drawPost(0);
             ?>
