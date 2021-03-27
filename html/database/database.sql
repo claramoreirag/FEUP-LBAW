@@ -26,6 +26,7 @@ CREATE TABLE post_vote (
     id_user INTEGER REFERENCES user (id),
     id_post INTEGER REFERENCES post (id),
     is_up BOOLEAN NOT NULL,
+    PRIMARY KEY (id_user, id_post)
 );
 
 CREATE TABLE comment (
@@ -66,10 +67,12 @@ CREATE TABLE reference(
 CREATE TABLE "notification"(
   id SERIAL PRIMARY KEY,
   "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-  TYPE notification_state NOT NULL,
+  is_read BOOLEAN,
   receiver INTEGER REFERENCES authenticated_user (id),
   vote_id REFERENCES post_vote(post_id), /*??*/
   comment_id REFERENCES comment(id),
   follower_id REFERENCES user(id)
 );
+
+
 
