@@ -42,8 +42,8 @@ CREATE TABLE comment (
     id INTEGER PRIMARY KEY,
     id_user INTEGER REFERENCES user (id),
     id_post INTEGER REFERENCES post (id),
-    body text,
-    date DateTime,
+    body  text NOT NULL,
+    date DateTime NOT NULL
 );
 
 CREATE TABLE report (
