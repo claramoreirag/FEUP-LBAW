@@ -1,6 +1,6 @@
 
 CREATE TYPE user_state AS ENUM ENUM ('Banned', 'Suspended', 'Active');
-CREATE TYPE report_state AS ENUM ('Accepted', 'Deleted', 'SuspendedUser', 'BanedUser');
+CREATE TYPE report_state AS ENUM ('Accepted', 'Deleted', 'SuspendedUser', 'BanedUser', 'NotAnswered');
 
 
 CREATE TABLE user(
@@ -17,16 +17,16 @@ CREATE TABLE user(
 CREATE TABLE post(
     id INTEGER PRIMARY KEY,
     "datetime" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-    user INTEGER REFERENCES user(id) NOT NULL,
+    user_id INTEGER REFERENCES user(id) NOT NULL,
     body TEXT NOT NULL,
     category INTEGER REFERENCES category(id) NOT NULL
 );
 
 CREATE TABLE post_vote (
-    id_user INTEGER REFERENCES user (id),
-    id_post INTEGER REFERENCES post (id),
+    user_id INTEGER REFERENCES user (id),
+    post_id INTEGER REFERENCES post (id),
     is_up BOOLEAN NOT NULL,
-    PRIMARY KEY (id_user, id_post)
+    PRIMARY KEY (user_id, post_id)
 );
 
 CREATE TABLE comment (
@@ -40,7 +40,7 @@ CREATE TABLE comment (
 
 CREATE TABLE report (
     id INTEGER PRIMARY KEY,
-    id_user INTEGER REFERENCES user (id),
+    user_id INTEGER REFERENCES user (id),
     date DateTime,
     state report_state NOT NULL,
     comment_id REFERENCES comment(id),
