@@ -22,6 +22,8 @@ CREATE TABLE post(
     header TEXT NOT NULL,
     body TEXT NOT NULL,
     category INTEGER REFERENCES category(id) NOT NULL
+    upvotes int NOT NULL DEFAULT 0,
+    downvotes int NOT NULL DEFAULT 0,
 );
 
 CREATE TABLE saved_post(
@@ -55,7 +57,7 @@ CREATE TABLE comment (
     post_id INTEGER REFERENCES post (id),
     body text,
     "datetime" DateTime DEFAULT Now,
-    comment_id REFERENCES comment(id)
+    comment_id REFERENCES comment(id) ON DELETE CASCADE
 );
 
 CREATE TABLE report (

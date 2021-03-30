@@ -180,7 +180,6 @@ FROM post, user, post_vote
 WHERE post.category=category.id AND post.user_id=user.id AND post_vote.post_id=post.id AND post_vote.user_id=$otherUserID AND post_vote.is_up=true
 ORDER BY DESC post.datetime;
 
-
 --userManager
 --get All users
 SELECT user.username, user.name, user.photo
