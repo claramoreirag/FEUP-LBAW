@@ -1,83 +1,57 @@
-
-
-/*notificaçao seguir
-notificaçao commentar
-notificação votar
-seguir
-deixar de seguir
-votar
-comentar
-datas de comments depois de datas de posts ->  3
+/*
 bloquear / suspender/ expulsar user 
 */
 
 
 /*TRIGGER 1*/
-CREATE FUNCTION create_notification() RETURNS TRIGGER AS
-$BODY$
-BEGIN
-    INSERT INTO notification (is_read, id) VALUES (FALSE, NEW.id);
-    RETURN NULL;
-END
-$BODY$
-LANGUAGE plpgsql;
- 
-CREATE TRIGGER create_notification
-    AFTER INSERT ON request
-    FOR EACH ROW
-    EXECUTE PROCEDURE create_notification();
-
-
-
-/*TRIGGER 2*/
 CREATE FUNCTION vote_on_post() RETURNS TRIGGER AS
 $BODY$
 BEGIN
+
 	IF TG_OP = 'INSERT'
 	THEN 
-    IF EXISTS ( SELECT *
-			          FROM post
-			          WHERE NEW.id_post = post.id AND NEW.id_user = post.id_author )
+		IF EXISTS ( SELECT *
+					FROM post
+					WHERE NEW.id_post = post.id AND NEW.id_user = post.id_author )
 		THEN
 			RAISE EXCEPTION 'A member_user cannot vote on their own posts.';
-	END IF;
+		END IF;
         
 	ELSIF TG_OP = 'UPDATE'
 	THEN 
-    IF OLD.is_up
+	IF OLD.is_up
 		THEN
 			UPDATE post
-				SET upvotes = upvotes - 1
-				WHERE id = OLD.id_post;
+			SET upvotes = upvotes - 1
+			WHERE id = OLD.id_post;
 
-	ELSIF OLD.vote_type = 'down'
+	ELSIF NOT OLD.is_up
 		THEN
 			UPDATE post
-				SET downvotes = downvotes - 1
-				WHERE id = OLD.id_post;
-    	END IF;
+			SET downvotes = downvotes - 1
+			WHERE id = OLD.id_post;
+		END IF;
 	END IF;
 	
-	IF NEW.vote_type = 'up'
-	THEN
-		UPDATE post
+	IF NEW.is_up
+		THEN
+			UPDATE post
 			SET upvotes = upvotes + 1
 			WHERE id = NEW.id_post;
-	ELSIF NEW.vote_type = 'down'
-	THEN
-		UPDATE post
+	ELSIF NOT NEW.is_up
+		THEN
+			UPDATE post
 			SET downvotes = downvotes + 1
 			WHERE id = NEW.id_post;
     END IF;
-	
-	UPDATE member_user 
-		SET credibility = credibility + sqrt(abs(subquery.upvotes - subquery.downvotes)) * sign(subquery.upvotes - subquery.downvotes) 
-		FROM (
-			SELECT post.id AS post_id, post.id_author AS author, post.upvotes AS upvotes, post.downvotes AS downvotes
-				FROM post
-				WHERE post.id = NEW.id_post) AS subquery 
-		WHERE member_user.id = subquery.author;
-	
+
+	/*Create notification part*/
+
+	WITH post_author AS (
+		SELECT *FROM post WHERE NEW.id_post = id
+	)
+	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, post_author, NEW.id, null, null);
+
     RETURN NEW;
 END
 $BODY$
@@ -89,57 +63,63 @@ CREATE TRIGGER vote_on_post
     EXECUTE PROCEDURE vote_on_post();
 
 
-
-/*Trigger 3*/
-CREATE FUNCTION check_comment_date() RETURNS TRIGGER AS
+/*TRIGGER 2*/
+CREATE FUNCTION comment_on_post() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     IF EXISTS (
-		SELECT *
+			SELECT *
 			FROM post
-			WHERE NEW.id_post = id AND NEW.time_stamp < time_stamp)
+			WHERE NEW.id_post = id AND NEW.time_stamp < time_stamp )
 		THEN
 			RAISE EXCEPTION 'The comment''s time_stamp must be after the post''s time_stamp. %', New.id_post ;
 	END IF;
+
+
+	WITH post_author AS (
+		SELECT *FROM post WHERE NEW.id_post = id
+	)
+	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, post_author , null, NEW.id, NEW.id);
 	
 	RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
  
-CREATE TRIGGER check_comment_date
+CREATE TRIGGER comment_on_post
     AFTER INSERT ON comment
     FOR EACH ROW
-    EXECUTE PROCEDURE check_comment_date();
+    EXECUTE PROCEDURE comment_on_post();
 
 
-    /*Trigger 4*/
-
-
-CREATE FUNCTION block_user() RETURNS TRIGGER AS 
-$BODY$ 
-BEGIN 
-	IF EXISTS (
-		SELECT *
-			FROM follow_user 
-			WHERE NEW.blocked_user = id_follower AND NEW.blocker_user = id_followed)  
-		THEN
-			DELETE
-				FROM follow_user
-				WHERE NEW.blocked_user = id_follower AND NEW.blocker_user = id_followed; 
-	END IF;
-	
-	IF EXISTS (
-			SELECT *
-			FROM follow_user 
-	 		WHERE NEW.blocker_user = id_follower AND NEW.blocked_user = id_followed)  
-		THEN 
-			DELETE
-				FROM follow_user
-				WHERE NEW.blocker_user = id_follower AND NEW.blocked_user = id_followed; 
-	END IF;
-
-	RETURN NEW; 
-END 
-$BODY$ 
+/*TRIGGER 3*/
+CREATE FUNCTION follow_user() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (false, NEW.followed, NULL, NULL, NEW.follower);
+	RETURN NEW;
+END
+$BODY$
 LANGUAGE plpgsql;
+ 
+CREATE TRIGGER follow_user
+    AFTER INSERT ON follow
+    FOR EACH ROW
+    EXECUTE PROCEDURE follow_user();
+
+
+
+/*TRIGGER 4*/
+CREATE FUNCTION delete_comments() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+	DELETE FROM comment WHERE id=OLD.id
+END
+$BODY$
+LANGUAGE plpgsql;
+ 
+CREATE TRIGGER delete_post
+    AFTER DELETE ON post
+    FOR EACH ROW
+    EXECUTE PROCEDURE delete_comments();
+
