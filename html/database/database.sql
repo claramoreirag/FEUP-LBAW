@@ -18,6 +18,8 @@ CREATE TABLE post(
     id INTEGER PRIMARY KEY,
     "datetime" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     user_id INTEGER REFERENCES user(id) NOT NULL,
+    title TEXT NOT NULL,
+    header TEXT NOT NULL,
     body TEXT NOT NULL,
     category INTEGER REFERENCES category(id) NOT NULL
 );
@@ -49,8 +51,8 @@ CREATE TABLE report (
 );
 
 CREATE TABLE follow(
-    follower INTEGER NOT NULL REFERENCES authenticated_user(id),
-    followed INTEGER NOT NULL REFERENCES authenticated_user(id)
+    follower INTEGER NOT NULL REFERENCES user(id),
+    followed INTEGER NOT NULL REFERENCES user(id)
 );
 
 
@@ -68,11 +70,27 @@ CREATE TABLE "notification"(
   id SERIAL PRIMARY KEY,
   "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
   is_read BOOLEAN,
-  receiver INTEGER REFERENCES authenticated_user (id),
+  receiver INTEGER REFERENCES user(id),
   vote_id REFERENCES post_vote(post_id), /*??*/
   comment_id REFERENCES comment(id),
   follower_id REFERENCES user(id)
 );
 
+CREATE TABLE saved_post(
+    user_id INTEGER REFERENCES user(id),
+    post_id INTEGER REFERENCES post(id),
+    PRIMARY KEY (user_id, post_id)
+);
+
+CREATE TABLE post_reference(
+    post_id INTEGER REFERENCES post(id),
+    reference_id INTEGER REFERENCES reference(id)
+    PRIMARY KEY (post_id, reference_id)
+);
 
 
+CREATE TABLE follow_category(
+    user_id INTEGER NOT NULL REFERENCES user(id),
+    category_id INTEGER NOT NULL REFERENCES category(id),
+    PRIMARY KEY (user_id, category_id)
+);
