@@ -47,7 +47,10 @@ BEGIN
 
 	/*Create notification part*/
 
-	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, /*???????????*/, NEW.id, null, null);
+	WITH post_author AS (
+		SELECT *FROM post WHERE NEW.id_post = id
+	)
+	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, post_author, NEW.id, null, null);
 
     RETURN NEW;
 END
@@ -72,7 +75,11 @@ BEGIN
 			RAISE EXCEPTION 'The comment''s time_stamp must be after the post''s time_stamp. %', New.id_post ;
 	END IF;
 
-	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, /*??????????*/ , null, NEW.id, NEW.id);
+
+	WITH post_author AS (
+		SELECT *FROM post WHERE NEW.id_post = id
+	)
+	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, post_author , null, NEW.id, NEW.id);
 	
 	RETURN NEW;
 END
