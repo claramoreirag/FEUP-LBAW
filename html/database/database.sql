@@ -24,6 +24,24 @@ CREATE TABLE post(
     category INTEGER REFERENCES category(id) NOT NULL
 );
 
+CREATE TABLE saved_post(
+    user_id INTEGER REFERENCES user (id),
+    post_id INTEGER REFERENCES post (id),
+    PRIMARY KEY (user_id, post_id)
+);
+
+CREATE TABLE follow_category(
+    user_id INTEGER NOT NULL REFERENCES user(id),
+    category_id INTEGER NOT NULL REFERENCES category(id),
+    PRIMARY KEY (user_id, category_id)
+);
+
+CREATE TABLE post_reference(
+    post_id INTEGER REFERENCES post (id),
+    reference_id INTEGER REFERENCES reference(id)
+    PRIMARY KEY (post_id, reference_id)
+);
+
 CREATE TABLE post_vote (
     user_id INTEGER REFERENCES user (id),
     post_id INTEGER REFERENCES post (id),
@@ -36,7 +54,7 @@ CREATE TABLE comment (
     user_id INTEGER REFERENCES user (id),
     post_id INTEGER REFERENCES post (id),
     body text,
-    "datetime" DateTime,
+    "datetime" DateTime DEFAULT Now,
     comment_id REFERENCES comment(id)
 );
 
