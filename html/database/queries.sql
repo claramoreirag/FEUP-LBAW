@@ -73,6 +73,7 @@ FROM "notification" FULL JOIN "comment" FULL JOIN "user"
 WHERE "notification".receiver=$userid 
     AND "notification".comment_id="comment".id 
     AND "notification".follower_id="user".id
+    AND "notification".vote_id = NULL 
 ORDER BY DESC "notification"."date"
 LIMIT 10 OFFSET 10;
 
