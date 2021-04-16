@@ -109,17 +109,5 @@ CREATE TRIGGER follow_user
 
 
 
-/*TRIGGER 4*/
-CREATE FUNCTION delete_comments() RETURNS TRIGGER AS
-$BODY$
-BEGIN
-	DELETE FROM comment WHERE id=OLD.id
-END
-$BODY$
-LANGUAGE plpgsql;
- 
-CREATE TRIGGER delete_post
-    AFTER DELETE ON post
-    FOR EACH ROW
-    EXECUTE PROCEDURE delete_comments();
+
 

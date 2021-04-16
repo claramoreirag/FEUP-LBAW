@@ -54,7 +54,7 @@ CREATE TABLE post_vote (
 CREATE TABLE comment (
     id INTEGER PRIMARY KEY,
     user_id INTEGER REFERENCES user (id),
-    post_id INTEGER REFERENCES post (id),
+    post_id INTEGER REFERENCES post (id) ON DELETE CASCADE,
     body text,
     "datetime" DateTime DEFAULT Now,
     comment_id REFERENCES comment(id) ON DELETE CASCADE
@@ -65,9 +65,9 @@ CREATE TABLE report (
     user_id INTEGER REFERENCES user (id),
     date DateTime,
     state report_state NOT NULL,
-    comment_id REFERENCES comment(id),
-    post_id REFERENCES post(id),
-    admin_id REFERENCES user(id)
+    comment_id REFERENCES comment(id) ON DELETE CASCADE,
+    post_id REFERENCES post(id) ON DELETE CASCADE,
+    admin_id REFERENCES user(id) ON DELETE CASCADE
 );
 
 CREATE TABLE follow(

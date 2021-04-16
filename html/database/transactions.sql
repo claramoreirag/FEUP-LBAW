@@ -1,8 +1,7 @@
 /*TRANSACTION 1*/
-/*When an user is banido apagar todos os posts e comments*/
-BEGIN TRANSACTION;
-SET TRANSACTION ISOLATION LEVEL READ COMMITTED
-	DELETE from comment where id_author = $id_user;
-	DELETE from post where id_author = $id_user;
-COMMIT;
 
+BEGIN TRANSACTION;
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
+INSERT INTO reference(id, name) VALUES ($id, $name);
+INSERT INTO post(id, "datetime", user_id, title, header, body, category, upvotes, downvotes) VALUES ($id, $datetime, $user_id, $title, $header, $body, $category, $upvotes, $downvotes); 
+COMMIT;
