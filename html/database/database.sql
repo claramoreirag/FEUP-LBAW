@@ -15,6 +15,27 @@ DROP TABLE IF EXISTS "user" CASCADE;
 DROP TYPE IF EXISTS user_state;
 DROP TYPE IF EXISTS report_state;
 
+DROP INDEX IF EXISTS post_category ; 
+DROP INDEX IF EXISTS post_user_id;  
+DROP INDEX IF EXISTS post_vote_value ;
+DROP INDEX IF EXISTS comment_info;
+DROP INDEX IF EXISTS get_notification;
+DROP INDEX IF EXISTS get_unanswered_reports;
+DROP INDEX IF EXISTS post_search_index;
+DROP INDEX IF EXISTS user_search_index;
+
+
+DROP FUNCTION IF EXISTS comment_on_post();
+DROP FUNCTION IF EXISTS vote_on_post();
+DROP FUNCTION IF EXISTS follow_user();
+
+DROP TRIGGER IF EXISTS comment_on_post on comment;
+DROP TRIGGER IF EXISTS vote_on_post on post;
+DROP TRIGGER IF EXISTS follow_user on follow;
+
+
+DROP EXTENSION IF EXISTS pgcrypto;
+
 CREATE TYPE user_state AS ENUM ('Banned', 'Suspended', 'Active');
 CREATE TYPE report_state AS ENUM ('Accepted', 'Deleted', 'SuspendedUser', 'BanedUser', 'NotAnswered');
 
@@ -114,3 +135,129 @@ CREATE TABLE "notification"(
   comment_id INTEGER REFERENCES comment(id),
   follower_id INTEGER REFERENCES "user"(id)
 );
+
+
+CREATE INDEX post_category ON post USING hash (category); 
+
+CREATE INDEX post_user_id ON post USING hash (user_id);  
+
+CREATE INDEX post_vote_value ON post_vote USING hash (is_up);
+
+CREATE INDEX comment_info ON comment USING btree (post_id, user_id);
+
+CREATE INDEX get_notification ON "notification" USING hash (receiver);
+
+CREATE INDEX get_unanswered_reports ON report USING btree (state, user_id);
+
+
+CREATE INDEX post_search_index ON post
+USING GIST ((setweight(to_tsvector('english', title),'A') || 
+       setweight(to_tsvector('english', header), 'B')|| 
+       setweight(to_tsvector('english', body), 'C')));
+
+
+CREATE INDEX user_search_index ON "user"
+USING GIST ((setweight(to_tsvector('english', username),'A') || 
+       setweight(to_tsvector('english', name), 'B')));
+
+
+CREATE FUNCTION vote_on_post() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+
+	IF TG_OP = 'INSERT'
+	THEN 
+		IF EXISTS ( SELECT *
+					FROM post
+					WHERE NEW.post_id = post.id AND NEW.user_id = post.user_id )
+		THEN
+			RAISE EXCEPTION 'A member_user cannot vote on their own posts.';
+		END IF;
+        
+	ELSIF TG_OP = 'UPDATE'
+	THEN 
+	IF OLD.is_up
+		THEN
+			UPDATE post
+			SET upvotes = upvotes - 1
+			WHERE id = OLD.post_id;
+
+	ELSIF NOT OLD.is_up
+		THEN
+			UPDATE post
+			SET downvotes = downvotes - 1
+			WHERE id = OLD.post_id;
+		END IF;
+	END IF;
+	
+	IF NEW.is_up
+		THEN
+			UPDATE post
+			SET upvotes = upvotes + 1
+			WHERE id = NEW.post_id;
+	ELSIF NOT NEW.is_up
+		THEN
+			UPDATE post
+			SET downvotes = downvotes + 1
+			WHERE id = NEW.post_id;
+    END IF;
+
+	/*Create notification part*/
+
+	
+	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, NEW.user_id, NEW.id, null, null);
+
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+ 
+CREATE TRIGGER vote_on_post
+    AFTER INSERT OR UPDATE ON post_vote
+    FOR EACH ROW
+    EXECUTE PROCEDURE vote_on_post();
+
+
+CREATE FUNCTION comment_on_post() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    IF EXISTS (
+			SELECT *
+			FROM post
+			WHERE NEW.post_id= id AND NEW."datetime" < "datetime" )
+		THEN
+			RAISE EXCEPTION 'The comment''s time_stamp must be after the post''s time_stamp. %', New.post_id ;
+	END IF;
+
+
+
+	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, NEW.user_id , null, NEW.id, NEW.id);
+	
+	RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+
+
+/*TRIGGER 3*/
+CREATE FUNCTION follow_user() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (false, NEW.followed, NULL, NULL, NEW.follower);
+	RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+ 
+CREATE TRIGGER follow_user
+    AFTER INSERT ON follow
+    FOR EACH ROW
+    EXECUTE PROCEDURE follow_user();
+
+
+ 
+CREATE TRIGGER comment_on_post
+    AFTER INSERT ON comment
+    FOR EACH ROW
+    EXECUTE PROCEDURE comment_on_post();
