@@ -12,7 +12,7 @@ BEGIN
 	THEN 
 		IF EXISTS ( SELECT *
 					FROM post
-					WHERE NEW.id_post = post.id AND NEW.id_user = post.id_author )
+					WHERE NEW.id = post.id AND NEW.user_id = post.user_id )
 		THEN
 			RAISE EXCEPTION 'A member_user cannot vote on their own posts.';
 		END IF;
@@ -23,13 +23,13 @@ BEGIN
 		THEN
 			UPDATE post
 			SET upvotes = upvotes - 1
-			WHERE id = OLD.id_post;
+			WHERE id = OLD.post_id;
 
 	ELSIF NOT OLD.is_up
 		THEN
 			UPDATE post
 			SET downvotes = downvotes - 1
-			WHERE id = OLD.id_post;
+			WHERE id = OLD.post_id;
 		END IF;
 	END IF;
 	
@@ -37,49 +37,34 @@ BEGIN
 		THEN
 			UPDATE post
 			SET upvotes = upvotes + 1
-			WHERE id = NEW.id_post;
+			WHERE id = NEW.post_id;
 	ELSIF NOT NEW.is_up
 		THEN
 			UPDATE post
 			SET downvotes = downvotes + 1
-			WHERE id = NEW.id_post;
+			WHERE id = NEW.post_id;
     END IF;
 
 	/*Create notification part*/
 
-	WITH post_author AS (
-		SELECT *FROM post WHERE NEW.id_post = id
-	)
-	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, post_author, NEW.id, null, null);
-
-    RETURN NEW;
-END
-$BODY$
-LANGUAGE plpgsql;
- 
-CREATE TRIGGER vote_on_post
-    AFTER INSERT OR UPDATE ON post_vote
-    FOR EACH ROW
-    EXECUTE PROCEDURE vote_on_post();
+	
 
 
-/*TRIGGER 2*/
+	
 CREATE FUNCTION comment_on_post() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     IF EXISTS (
 			SELECT *
 			FROM post
-			WHERE NEW.id_post = id AND NEW.time_stamp < time_stamp )
+			WHERE NEW.post_id= id AND NEW."datetime" < "datetime" )
 		THEN
-			RAISE EXCEPTION 'The comment''s time_stamp must be after the post''s time_stamp. %', New.id_post ;
+			RAISE EXCEPTION 'The comment''s time_stamp must be after the post''s time_stamp. %', New.post_id ;
 	END IF;
 
 
-	WITH post_author AS (
-		SELECT *FROM post WHERE NEW.id_post = id
-	)
-	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, post_author , null, NEW.id, NEW.id);
+
+	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, NEW.user_id , null, NEW.id, NEW.id);
 	
 	RETURN NEW;
 END
@@ -90,6 +75,9 @@ CREATE TRIGGER comment_on_post
     AFTER INSERT ON comment
     FOR EACH ROW
     EXECUTE PROCEDURE comment_on_post();
+
+
+
 
 
 /*TRIGGER 3*/

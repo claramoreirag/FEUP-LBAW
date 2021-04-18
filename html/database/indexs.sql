@@ -29,10 +29,8 @@ USING GIST ((setweight(to_tsvector('english', username),'A') ||
 
 SELECT title
 FROM post
-WHERE to_tsvector('english', title || ' ' || body) @@ plainto_tsquery('english', 'climate neutral')
-ORDER BY ts_rank(search, plainto_tsquery('english', 'climate neutral')) DESC
-
+WHERE to_tsvector('english', title || ' ' || body) @@ plainto_tsquery('english', 'climate neutral');
 
 SELECT username
-FROM user
-WHERE to_tsvector('english', 'marianaramos')
+FROM "user"
+WHERE  to_tsvector('english', username || ' ') @@ plainto_tsquery('english', 'marianaramos');
