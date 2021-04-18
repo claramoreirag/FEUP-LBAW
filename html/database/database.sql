@@ -114,3 +114,5 @@ CREATE TABLE follow_category(
     category_id INTEGER NOT NULL REFERENCES category(id),
     PRIMARY KEY (user_id, category_id)
 );
+
+
