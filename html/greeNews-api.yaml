@@ -1,0 +1,198 @@
+openapi: 3.0.0
+
+info:
+  version: '1.0'
+  title: 'LBAW GreeNews Web API'
+  description: 'Web Resources Specification (A7) for MediaLibrary'
+
+servers:
+- url: http://lbaw-prod.fe.up.pt
+  description: Production server
+
+externalDocs:
+  description: Find more info here.
+  url: 
+
+tags:
+  - name: 'M01: Authentication and Own Profile'
+  - name: 'M02: Posts, Feed and Search'
+  - name: 'M03: Comments'
+  - name: 'M04: User Administration '
+  - name: 'M05: Static pages'
+  - name: 'M06: Notifications'
+
+
+# R101: Login Action [/login] - DONE
+# R102: Logout Action [/logout] - DONE
+# R103: Register Action [/register] - DONE
+# R104: View Profile [/user/{user_id}] 
+# R105: Edit Profile Form [/settings]
+# R106: Edit Profile Action [/settings][/admin_dashboard]
+# R107: Delete Account Action [/settings]
+# R108: Follow User [/follow/{user_id}] - not high priority
+# R109: Unfollow User [/follow/{user_id}] - not high priority
+# R110: Block User [/block/{user_id}] - not high priority
+# R111: Unblock User [/block/{user_id}] - not high priority
+# R112: Search News [/search/{keyword}]
+# R113: Create Post [/create_post]
+# R114: Edit Post [/edit_post]
+# R115: Delete Post [/delete_post]
+# R116: Write Comments [/write_comment] Leonor
+# R117: View Own Post [/post/{post_id}] Leonor
+# R118: Report dashboard [/admin_dashboard] Leonor
+# R119: Delete posts [/admin/delete_post] Flavia 
+# R120: Delete comments [/admin/delete_comment] Flavia
+# R121: Delete accounts [/admin/delete_account] Flavia
+
+paths:
+
+# LOGIN: _____________________________________________________________________________________________________
+
+  /login:
+    get:
+      operationId: R101
+      summary: 'R101: Login Form'
+      description: 'Provide login form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Own Profile'
+      responses:
+        '200':
+          description: 'Ok. Show [UI07](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/login.php)'
+    post:
+      operationId: R102
+      summary: 'R102: Login Action'
+      description: 'Processes the login form submission. Access: PUB'
+      tags:
+        - 'M01: Authentication and Own Profile'
+ 
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:          # <!--- form field name
+                  type: string
+                password:    # <!--- form field name
+                  type: string
+              required:
+                - email
+                - password
+ 
+      responses:
+        '302':
+          description: 'Redirect after processing the login credentials.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful authentication. Redirect to user profile.'
+                  value: '/homepage'
+                302Error:
+                  description: 'Failed authentication. Redirect to login form.'
+                  value: '/login'
+
+# LOGOUT : _____________________________________________________________________________________________________
+
+  /logout:
+
+    post:
+      operationId: R103
+      summary: 'R103: Logout Action'
+      description: 'Logout the current authenticated used. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Own Profile'
+      responses:
+        '302':
+          description: 'Redirect after processing logout.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful logout. Redirect to login form.'
+                  value: '/homepage'
+                  
+# REGISTER: _____________________________________________________________________________________________________
+
+/signup:
+    get:
+      operationId: R104
+      summary: 'R104: Register Form'
+      description: 'Provide new user registration form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Own Profile'
+      responses:
+        '200':
+          description: 'Ok. Show [UI06](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/signup.php)'
+
+    post:
+      operationId: R105
+      summary: 'R105: Register Action'
+      description: 'Processes the new user registration form submission. Access: PUB'
+      tags:
+        - 'M01: Authentication and Own Profile'
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                confirm_password:
+                  type: string
+              required:
+                - username
+                - email
+                - name
+                - password
+                - confirm_password
+
+      responses:
+        '302':
+          description: 'Redirect after processing the new user information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful authentication. Redirect to user profile.'
+                  value: '/homepage'
+                302Failure:
+                  description: 'Failed authentication. Redirect to login form.'
+                  value: '/login'
+
+# EDIT PROFILE: ______________________________________________________________________________________________________
+
+/editProfile/{id}:
+    put:
+      operationId: R106
+      summary: 'R106: Edit user profile'
+      description: 'This web resource edit's the user information.'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        '200':
+          description: 'Ok. Show [UI14](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/otherProfile.php)'

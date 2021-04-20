@@ -88,3 +88,4 @@ INSERT INTO report(user_id,state,post_id) VALUES (8,'NotAnswered',1),(6,'NotAnsw
 INSERT INTO "notification"(is_read,receiver,vote_id) VALUES (FALSE,5,2), (TRUE,5,3),(FALSE,4,1), (FALSE,4,4);
 INSERT INTO "notification"(is_read,receiver,comment_id) VALUES (TRUE,5,2), (FALSE,5,3),(FALSE,4,1), (FALSE,4,4);
 INSERT INTO "notification"(is_read,receiver,follower_id) VALUES (FALSE,5,6), (FALSE,5,7),(FALSE,4,5), (FALSE,4,8),(TRUE,4,6), (TRUE,6,7);
+
