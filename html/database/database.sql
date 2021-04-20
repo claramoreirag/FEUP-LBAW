@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS category CASCADE;
 DROP TABLE IF EXISTS follow_category CASCADE;
-DROP TABLE IF EXISTS reference CASCADE;
+DROP TABLE IF EXISTS source CASCADE;
 DROP TABLE IF EXISTS post CASCADE;
 DROP TABLE IF EXISTS saved_post CASCADE;
-DROP TABLE IF EXISTS post_reference CASCADE;
+DROP TABLE IF EXISTS post_source CASCADE;
 DROP TABLE IF EXISTS post_vote CASCADE;
 DROP TABLE IF EXISTS comment CASCADE;
 DROP TABLE IF EXISTS report CASCADE;
@@ -61,7 +61,7 @@ CREATE TABLE follow_category(
     PRIMARY KEY (user_id, category_id)
 );
 
-CREATE TABLE reference(
+CREATE TABLE source(
   id SERIAL PRIMARY KEY,
   name text NOT NULL UNIQUE
 );
@@ -86,8 +86,8 @@ CREATE TABLE saved_post(
 
 CREATE TABLE post_reference(
     post_id INTEGER REFERENCES post(id),
-    reference_id INTEGER REFERENCES reference(id),
-    PRIMARY KEY(post_id, reference_id)
+    reference_id INTEGER REFERENCES source(id),
+    PRIMARY KEY(post_id, source_id)
 );
 
 
@@ -261,3 +261,6 @@ CREATE TRIGGER comment_on_post
     AFTER INSERT ON comment
     FOR EACH ROW
     EXECUTE PROCEDURE comment_on_post();
+
+
+

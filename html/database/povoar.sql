@@ -1,4 +1,3 @@
-
 DROP EXTENSION IF EXISTS pgcrypto;
 CREATE EXTENSION pgcrypto;
 
@@ -18,9 +17,7 @@ INSERT INTO "user" (username,password,name,email,state,is_admin) VALUES
 
 INSERT INTO "category" (name) VALUES ('Clean cities'),('Climate change'), ('Renewable energy'),('Recepies');
 
-INSERT INTO "follow_category" (user_id,category_id) VALUES (5,1),(5,2),(6,3),(6,1),(7,3),(9,2),(10,2),(10,1),(11,2);
-
-INSERT INTO "reference" (name) VALUES ('https://sustainablemobility.iclei.org/upcoming-ecologistics-report-2021/'),
+INSERT INTO "source" (name) VALUES ('https://sustainablemobility.iclei.org/upcoming-ecologistics-report-2021/'),
 ('https://talkofthecities.iclei.org/reloading-multilevel-climate-action-towards-glasgow-cop26/'),
 ('https://talkofthecities.iclei.org/tackling-climate-change-and-covid-19-at-the-local-level-in-africa/'),
 ('https://iclei.org/en/media/japan-to-go-climate-neutral-with-support-of-net-zero-cities'),
@@ -66,23 +63,24 @@ Solar geoengineering refers to a kind of climate engineering aimed at cooling th
 <br>Furthermore, solar geoengineering does not address the root cause of climate change — greenhouse gas emissions. It simply masks their warming effect on the planet. There are consequences of rising carbon dioxide levels, such as ocean acidification, that geoengineering can not address.
 <br>There is also the question of whether humans, and Earth, could become dependent on geoengineering. These practices, if begun, could become virtually impossible to stop if emissions continue to rise. Doing so could cause temperatures to skyrocket, according to some researchers.</pr></body>',3);
 
-INSERT INTO "post_vote" (user_id,post_id,is_up) VALUES (5,3,TRUE),(5,2,TRUE),(6,6,FALSE),(8,1,TRUE),(8,4,TRUE),(8,2,FALSE),(9,3,FALSE),(9,6,FALSE),(10,1,TRUE),(10,2,TRUE),(10,6,TRUE);
+INSERT INTO "post_vote" (user_id,post_id,is_up) VALUES (6,3,TRUE),(6,2,TRUE),(5,6,FALSE),(8,1,TRUE),(8,4,TRUE),(8,2,FALSE),(9,3,FALSE),(9,6,FALSE),(10,1,TRUE),(10,2,TRUE),(10,6,TRUE);
 
-INSERT INTO "post_reference" (post_id, reference_id) VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7);
+INSERT INTO "post_source" (post_id, source_id) VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7);
 
 INSERT INTO "saved_post" (user_id,post_id) VALUES (5,3),(6,2),(5,6),(8,1),(8,3),(8,2),(9,1),(9,5),(9,6),(10,1),(10,2),(10,5);
 
 INSERT INTO "follow" (follower,followed) VALUES (5,6),(7,5),(6,7),(7,8),(8,7),(8,5),(5,9),(9,6),(9,7);
 
+INSERT INTO "follow_category" (user_id,category_id) VALUES (5,1),(5,2),(6,3),(6,1),(7,3),(9,2),(10,2),(10,1),(11,2);
 
 INSERT INTO "comment" (user_id,post_id,body) VALUES (5,3,'Very good post'), (9,3,'It is a great thing that climate change is being adressed'),(7,4,'Very good post'), (8,6,'It is a great thing that climate change is being adressed');
 
 INSERT INTO "comment" (user_id,post_id,body,comment_id) VALUES (7,3,'Indeed',1), (9,3,'It really is',2);
 
 
+
 INSERT INTO report(user_id,state,comment_id) VALUES (5,'NotAnswered',1),(6,'NotAnswered',1), (7,'NotAnswered',2);
 INSERT INTO report(user_id,state,post_id) VALUES (8,'NotAnswered',1),(6,'NotAnswered',1), (7,'NotAnswered',2);
-
 
 
 INSERT INTO "notification"(is_read,receiver,vote_id) VALUES (FALSE,5,2), (TRUE,5,3),(FALSE,4,1), (FALSE,4,4);
