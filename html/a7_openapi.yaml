@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
   version: '1.0'
   title: 'LBAW GreeNews Web API'
-  description: 'Web Resources Specification (A7) for MediaLibrary'
+  description: 'Web Resources Specification (A7) for GreeNews'
 
 servers:
 - url: http://lbaw-prod.fe.up.pt
@@ -38,11 +38,12 @@ tags:
 # R114: Edit Post [/edit_post]
 # R115: Delete Post [/delete_post]
 # R116: Write Comments [/write_comment] Leonor
-# R117: View Own Post [/post/{post_id}] Leonor
-# R118: Report dashboard [/admin_dashboard] Leonor
-# R119: Delete posts [/admin/delete_post] Flavia 
-# R120: Delete comments [/admin/delete_comment] Flavia
-# R121: Delete accounts [/admin/delete_account] Flavia
+# R117: Write Comment Action 
+# R118: View Own Post [/post/own/{post_id}] Leonor
+# R119: Report dashboard [/admin_dashboard] Leonor
+# R120: Delete posts [/admin/delete_post] Flavia 
+# R121: Delete comments [/admin/delete_comment] Flavia
+# R122: Delete accounts [/admin/delete_account] Flavia
 
 paths:
 
@@ -285,7 +286,102 @@ paths:
             type: integer
           required: true
       responses:
-        '200':
-          description: 'Ok. Show [UI06](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/myProfilePage.php)'
-      
+        '200':_____________________________________________________
+          description: 'Ok. Show [UI14](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/otherProfile.php)'
+
+
+# WRITE COMMENTS: ______________________________________________________________________________________________________
+
+/write_comment:
+  get:
+    operationId: R116
+    summary: 'R116: Write comment'
+    description: 'Provides opportunity for user to comment. Access: USR, OWN'
+    tags:
+      - 'M03: Comments'
+
+    parameters:
+      - in: path
+        name: id # id do post
+        schema:
+          type: integer
+        required: true
+
+    responses:
+      '200':
+        description: 'Ok. Show ' #TODO falta link para o post em questão
+  
+  post:
+    operationId: R117
+    summary: 'R117: Write comment action'
+    description: 'Process the new comment. Access: USR, OWN'
+    tags:
+      - 'M03: Comments'
+
+    requestBody:
+      required: true
+      content: 
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              comment:
+                type: text
+            required:
+              - comment
+
+    responses: 
+      '302':
+        description: 'Redirect after processing the new comment.'
+        headers:
+          Location:
+            schema:
+              type: string
+            examples:
+              302Success:
+                description: 'Sucessful new comment. Redirect to post page'
+                value: #TODO valor do see post
+              302Failure: 
+                description: 'Failed adding new comment. Redirect to post page'
+                value: #TODO valor do see post
+                
+# SEE OWN POSTS: _______________________________________________________________________________________________________
+
+/post/own/{post_id}:
+  get:
+    operationId: R118
+    summary: 'R118: See own posts'
+    description: 'User can see their own posts. Access: OWN'
+
+    tags: 
+      - 'M01: Authentication and Own Profile'
+    
+    parameters:
+      - in: path
+        name: id #user id
+        schema:
+          type: integer
+        required: true
+    
+    responses: 
+      '200':
+        description: 'Ok. Show ' #TODO falta link para profile do user com a parte dos own posts
+    
+# REPORTS DASHBOARD: _______________________________________________________________________________________________________
+
+/admin_dashboard:
+  get:
+    operationId: R119
+    summary: 'R119: Reports Dashboard'
+    description: 'Admin can access a dashboard with reported posts and comments. Access: ADMN'
+
+    tags: 
+      - 'M04: User Administration'
+
+    # TODO vamos precisar de parametros ou os admin vão ver tudo igual?
+
+    responses: 
+      '200':
+        description: 'Ok. Show ' # TODO falta link para report dashboard
+
 
