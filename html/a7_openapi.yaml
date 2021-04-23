@@ -72,9 +72,9 @@ paths:
             schema:
               type: object
               properties:
-                email:          # <!--- form field name
+                email:         
                   type: string
-                password:    # <!--- form field name
+                password:  
                   type: string
               required:
                 - email
@@ -171,28 +171,121 @@ paths:
               examples:
                 302Success:
                   description: 'Successful authentication. Redirect to user profile.'
-                  value: '/homepage'
+                  value: '/homep age'
                 302Failure:
                   description: 'Failed authentication. Redirect to login form.'
                   value: '/login'
 
 # EDIT PROFILE: ______________________________________________________________________________________________________
 
-/editProfile/{id}:
-    put:
-      operationId: R106
-      summary: 'R106: Edit user profile'
-      description: 'This web resource edit's the user information.'
+/editProfile:
+    get:
+      operationId: R104
+      summary: 'R104: Edit Profile Form'
+      description: 'Provide the user an edit profile form. Access: OWN'
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M01: Authentication and Own Profile'
+      responses:
+        '200':
+          description: 'Ok. Show [UI06](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/editProfile.php)'
 
+    put:
+      operationId: R105
+      summary: 'R105: Edit Profile Action'
+      description: 'This web resource edits the user information.	Access: OWN'
+      tags:
+        - 'M01: Authentication and Own Profile'
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                confirm_password:
+                  type: string
+                photo:
+                 type: file
+              required:
+                - username
+                - email
+                - name
+                - password
+                - confirm_password
+        responses:
+        '302':
+          description: 'Redirect after processing the edited user information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful edit profile. Redirect to user profile.'
+                  value: '/myProfilePage'
+                302Failure:
+                  description: 'Failed edit profile. Redirect to edit profile form.'
+                  value: '/editProfile'
+
+    delete:
+
+      operationId: R105
+      summary: 'R105: Delete Profile Action'
+      description: 'This web resource allows a user to delete his account. Access: OWN'
+      tags:
+        - 'M01: Authentication and Own Profile'
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                delete_account:
+                  type: boolean
+
+      responses:
+        '302':
+          description: 'Redirect after processing the edited user information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful delete profile. Redirect to homepage.'
+                  value: '/homepage'
+                302Failure:
+                  description: 'Failed delete profile. Redirect to users profile.'
+                  value: '/myProfilePage'
+
+# SEE OWN PROFILE: ______________________________________________________________________________________________________
+
+
+/myProfilePage/{user_id}:
+    get:
+      operationId: R104
+      summary: 'R104: View Profile'
+      description: 'Page that shows the user profile and activity. Access: PUB'
+      tags:
+        - 'M01: Authentication and Own Profile'
       parameters:
         - in: path
           name: id
           schema:
             type: integer
           required: true
-
       responses:
         '200':
-          description: 'Ok. Show [UI14](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/otherProfile.php)'
+          description: 'Ok. Show [UI06](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/myProfilePage.php)'
+      
+
