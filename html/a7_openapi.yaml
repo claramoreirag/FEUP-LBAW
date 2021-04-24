@@ -385,3 +385,146 @@ paths:
         description: 'Ok. Show ' # TODO falta link para report dashboard
 
 
+
+
+
+# CREATE POST: _______________________________________________________________________________________________________
+
+/newPostPage:
+  get:
+    operationId: R113
+    summary: 'R113: Create Post'
+    description: 'User can create a new post. Access: USR'
+
+    tags: 
+      - 'M02: Posts, Feed and Search'
+    
+    responses:
+      '200':
+        description: 'Ok. Show [UI09](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/newPostPage.php)'
+  
+  post:
+    operationId: R114
+    summary: 'R114: Create Post Action'
+    description: 'Processes the post submission. Access: OWN'
+    tags:
+      - 'M02: Posts, Feed and Search'
+
+    requestBody:
+      required: true
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              title:          # <!--- form field name
+                type: string
+              header:    # <!--- form field name
+                type: string
+              body:          # <!--- form field name
+                type: string
+              category:    # <!--- form field name
+                type: string
+              source:
+                type: string
+            required:
+              - title
+              - header
+              - body
+              - category
+              - source
+              
+
+    responses:
+      '302':
+        description: 'Redirect after processing the post information'
+        headers:
+          Location:
+            schema:
+              type: string
+            examples:
+              302Success:
+                description: 'Successful publiction. Redirect to user profile.'
+                value: '/users/{id}'
+              302Error:
+                description: 'Failed authentication. Redirect to new post.'
+                value: '/newPostPage'
+
+# EDIT POST: _______________________________________________________________________________________________________
+/editPostPage:
+  get:
+    operationId: R115
+    summary: 'R115: Edit Post'
+    description: 'User can edit an existing post. Access: OWN'
+
+    tags: 
+      - 'M02: Posts, Feed and Search'
+    
+    responses:
+      '200':
+        description: 'Ok. Show [UI10](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/editPostPage.php)'
+  
+  post:
+    operationId: R114
+    summary: 'R116: Edit Post Action'
+    description: 'Processes the edited post submission. Access: OWN'
+    tags:
+      - 'M02: Posts, Feed and Search'
+
+    requestBody:
+      required: true
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              title:          # <!--- form field name
+                type: string
+              header:    # <!--- form field name
+                type: string
+              body:          # <!--- form field name
+                type: string
+              category:    # <!--- form field name
+                type: string
+              source:
+                type: string
+            required:
+              
+              
+
+    responses:
+      '302':
+        description: 'Redirect after processing the post information'
+        headers:
+          Location:
+            schema:
+              type: string
+            examples:
+              302Success:
+                description: 'Successful publiction. Redirect to user profile.'
+                value: '/users/{id}'
+              302Error:
+                description: 'Failed authentication. Redirect to edit post.'
+                value: '/editPostPage'
+
+
+# DELETE POST: _______________________________________________________________________________________________________
+/deletePost:
+
+    post:
+      operationId: R117
+      summary: 'R117: Delete Post Action'
+      description: 'Delete specified post. Access: OWN'
+      tags:
+        - 'M02: Posts, Feed and Search'
+      responses:
+        '302':
+          description: 'Redirect after processing deletion.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful deletion. Redirect to user profile.'
+                  value: '/users/{id}'
