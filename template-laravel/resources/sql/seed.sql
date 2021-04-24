@@ -84,9 +84,9 @@ CREATE TABLE saved_post(
     PRIMARY KEY (user_id, post_id)
 );
 
-CREATE TABLE post_reference(
+CREATE TABLE post_source(
     post_id INTEGER REFERENCES post(id),
-    reference_id INTEGER REFERENCES source(id),
+    source_id INTEGER REFERENCES source(id),
     PRIMARY KEY(post_id, source_id)
 );
 
