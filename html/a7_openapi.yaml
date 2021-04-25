@@ -510,7 +510,6 @@ paths:
 
 # DELETE POST: _______________________________________________________________________________________________________
 /deletePost:
-
     post:
       operationId: R117
       summary: 'R117: Delete Post Action'
@@ -528,3 +527,106 @@ paths:
                 302Success:
                   description: 'Successful deletion. Redirect to user profile.'
                   value: '/users/{id}'
+
+# DELETE POST ADMIN: _______________________________________________________________________________________________________
+
+/admin/delete_post:
+  post:
+      operationId: R120
+      summary: 'R120: Delete Post Action - Admin'
+      description: 'Delete specified post. Access: ADM'
+      tags:
+        - 'M04: User Administration '
+
+      requestBody:
+      required: true
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              post-id:          
+                type: integer
+            required:
+              - post-id
+
+      responses:
+        '302':
+          description: 'Redirect after processing deletion.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful deletion. Redirect to admin dashboard.'
+                  value: '/admin_dashboard'
+
+
+# DELETE COMMENT ADMIN: _______________________________________________________________________________________________________
+
+/admin/delete_comment:
+  post:
+      operationId: R121
+      summary: 'R121: Delete Comment Action - Admin'
+      description: 'Delete specified comment. Access: ADM'
+      tags:
+        - 'M04: User Administration '
+
+      requestBody:
+      required: true
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              comment-id:          
+                type: integer
+            required:
+              - comment-id
+
+      responses:
+        '302':
+          description: 'Redirect after processing deletion.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful deletion. Redirect to admin dashboard.'
+                  value: '/admin_dashboard'
+
+# DELETE ACCOUNT ADMIN: _______________________________________________________________________________________________________
+
+/admin/delete_account:
+  post:
+      operationId: R122
+      summary: 'R122: Delete Account Action - Admin'
+      description: 'Delete specified account. Access: ADM'
+      tags:
+        - 'M04: User Administration '
+
+      requestBody:
+      required: true
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              user-id:          
+                type: integer
+            required:
+              - user-id
+
+      responses:
+        '302':
+          description: 'Redirect after processing deletion.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful deletion. Redirect to user manager.'
+                  value: '/user_manager'
