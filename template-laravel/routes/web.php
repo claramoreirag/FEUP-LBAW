@@ -72,9 +72,44 @@ Route::put('api/cards/{card_id}/', 'ItemController@create');
 Route::post('api/item/{id}', 'ItemController@update');
 Route::delete('api/item/{id}', 'ItemController@delete');
 
+//---------------------------------------------------
+
 // Authentication
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/login', 'Auth\LoginController@login');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm');
+Route::post('/register', 'Auth\RegisterController@register')->name('register');
+
+Route::get('/ownprofile/{user_id}', 'Auth\OwnProfileController@editProfile');
+Route::get('/ownprofile/{user_id}', 'Auth\OwnProfileController@createPost');
+Route::get('/ownprofile/{user_id}', 'Auth\OwnProfileController@switchPosts');
+
+Route::get('/otherprofile/{user_id}', 'Auth\OtherProfileController@follow');
+Route::get('/otherprofile/{user_id}', 'Auth\OtherProfileController@switchPosts');
+
+// Search
+Route::get('/search', 'SearchController@search_results')->name('search');
+
+
+Route::get('/newpost', 'PostController@create')->name('new_post');
+Route::post('/newpost', 'PostController@store');
+ 
+
+//---------------------------------------------------
+
+
+// Post 
+Route::get('/post/{post_id}', 'PostController@show')->name('post');
+Route::delete('/post/{post_id}', 'PostController@delete');
+Route::put('/post/{post_id}', 'PostController@edit');
+Route::post('/post/{post_id}/vote', 'PostController@vote');
+Route::delete('/post/{post_id}/vote', 'PostController@remove_vote');
+Route::post('/post/{post_id}/report', 'PostController@report');
+Route::post('/post/{post_id}/save', 'PostController@save');
+
+//Comment
+Route::post('/comment', 'CommentController@newComment');
+Route::post('/reply', 'CommentController@replyComment');
+Route::delete('/comment/{comment_id}', 'CommentController@deleteComment');
+Route::put('/comment/{comment_id}', 'CommentController@editComment');

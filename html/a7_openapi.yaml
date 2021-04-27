@@ -97,7 +97,7 @@ paths:
                   value: '/homepage'
                   
 # REGISTER: _____________________________________________________________________________________________________
-/signup:
+/register:
     get:
       operationId: R104
       summary: 'R104: Register Form'
@@ -155,7 +155,7 @@ paths:
                   value: '/login'
 
 # SEE Own PROFILE: ______________________________________________________________________________________________________
-/myProfilePage/{user_id}:
+/ownprofile/{user_id}:
     get:
       operationId: R106
       summary: 'R106: View Own Profile'
@@ -174,7 +174,7 @@ paths:
 
 
 # SEE PROFILE: ______________________________________________________________________________________________________
-/users/{user_id}:
+/otherprofile/{user_id}:
     get:
       operationId: R107
       summary: 'R107: View Others Profile'
@@ -193,7 +193,7 @@ paths:
 
 
 # EDIT PROFILE: ______________________________________________________________________________________________________
-/editProfile:
+/editprofile:
     get:
       operationId: R108
       summary: 'R108: Edit Profile Form'
@@ -284,7 +284,7 @@ paths:
 
 # Search 
 
-/search:
+/authuserfeed:
     get:
       operationId: R111
       summary: 'R111: Search News and Users'
@@ -379,7 +379,7 @@ paths:
 
 
 # CREATE POST: _______________________________________________________________________________________________________
-/newPostPage:
+/newpost:
   get:
     operationId: R112
     summary: 'R112: Create Post Form'
@@ -440,7 +440,7 @@ paths:
                 value: '/newPostPage'
 
 # EDIT POST: _______________________________________________________________________________________________________
-/editPostPage:
+/fullpost:
   get:
     operationId: R114
     summary: 'R114: Edit Post Form' 
@@ -522,7 +522,7 @@ paths:
                   value: '/users/{id}'
 
 # WRITE COMMENTS: ______________________________________________________________________________________________________
-/write_comment:
+/comment:
   get:
     operationId: R117
     summary: 'R117: Write comment form'
@@ -597,7 +597,7 @@ paths:
         description: 'Ok. Show [UI05](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/520a9e403291da0d3b16a3bf5d2f0f58/myProfilePage1.png)' 
     
 # REPORTS DASHBOARD: _______________________________________________________________________________________________________
-/admin_dashboard:
+/admindashboard:
   get:
     operationId: R120
     summary: 'R120: Reports Dashboard'
@@ -615,7 +615,7 @@ paths:
 
 
 # DELETE POST ADMIN: _______________________________________________________________________________________________________
-
+# admin/posts/{post_id}
 /admin/delete_post:
   post:
       operationId: R121

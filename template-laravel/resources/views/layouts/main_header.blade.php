@@ -53,9 +53,9 @@
                         </button>
                     </div>
                     <div class="col-md-4 ps-0 collapse navbar-collapse justify-content-end" id="navbarNav">
-                        <a class="text-white log nav-item nav-link" href="../pages/login.php">Log In</a>
+                        <a class="text-white log nav-item nav-link" href="{{ url('/login') }}">Log In</a>
                         <span class="text-white d-none d-md-block separator"> | </span>
-                        <a class="text-white log nav-item nav-link " href="../pages/signup.php"> Sign Up</a>
+                        <a class="text-white log nav-item nav-link " href="{{ url('/register') }}"> Sign Up</a>
                     </div>
 
                 </div>
