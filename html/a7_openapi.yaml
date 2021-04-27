@@ -202,7 +202,7 @@ paths:
         - 'M01: Authentication and Profile'
       responses:
         '200':
-          description: 'Ok. Show [UI06](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/editProfile.php)'
+          description: 'Ok. Show [UI06](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/editProfile.php)' #TODO
 
     put:
       operationId: R109
@@ -390,7 +390,7 @@ paths:
     
     responses:
       '200':
-        description: 'Ok. Show [UI09](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/newPostPage.php)'
+        description: 'Ok. Show [UI09](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/464b25e6705bb1ca0df4870a432b6b9d/newPost.png)'
   
   post:
     operationId: R113
@@ -451,7 +451,7 @@ paths:
     
     responses:
       '200':
-        description: 'Ok. Show [UI10](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/editPostPage.php)'
+        description: 'Ok. Show [UI10](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/cb09ab3cbdedcd03276ed3ea1bb42455/editPost.png)'
   
   post:
     operationId: R115
@@ -539,7 +539,7 @@ paths:
 
     responses:
       '200':
-        description: 'Ok. Show ' #TODO falta link para o post em questão
+        description: 'Ok. Show [UI05](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/7a11234d3ed1dd34e81478de650ff28d/fullPostPage1.png)' 
   
   post:
     operationId: R118
@@ -594,7 +594,7 @@ paths:
     
     responses: 
       '200':
-        description: 'Ok. Show ' #TODO falta link para profile do user com a parte dos own posts
+        description: 'Ok. Show [UI05](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/520a9e403291da0d3b16a3bf5d2f0f58/myProfilePage1.png)' 
     
 # REPORTS DASHBOARD: _______________________________________________________________________________________________________
 /admin_dashboard:
@@ -610,7 +610,7 @@ paths:
 
     responses: 
       '200':
-        description: 'Ok. Show ' # TODO falta link para report dashboard
+        description: 'Ok. Show [UI11](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/33092f5314520f6336ae5dced22f7395/adminDashboard.png)' 
 
 
 
