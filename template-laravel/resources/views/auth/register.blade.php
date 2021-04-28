@@ -8,7 +8,8 @@
                 <div class="col-1"></div>
                 <div class="col-10">
                     <h1 class="title">Sign Up</h1>
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" class="text-start" data-toggle="validator">
+                      
                       {{ csrf_field() }}
                         <div class="form-floating">
                             <input type="username" class="form-control" id="username" placeholder="Username" required>
@@ -29,16 +30,16 @@
                             @endif
                         </div>
                         <div class="form-floating">
-                            <input type="email" class="form-control" id="floatingEmail" placeholder="Email" required>
-                            <label for="floatingEmail">Email *</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                            <label for="email">Email *</label>
                         </div>
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
-                            <label for="floatingPassword">Password *</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password" required>
+                            <label for="password">Password *</label>
                         </div>
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingCPassword" placeholder="Confirm Password" required>
-                            <label for="floatingCPassword">Confirm Password *</label>
+                            <input type="password" class="form-control" id="comfirmpassword" placeholder="Confirm Password" required>
+                            <label for="confirmpassword">Confirm Password *</label>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Sign Up</button>
