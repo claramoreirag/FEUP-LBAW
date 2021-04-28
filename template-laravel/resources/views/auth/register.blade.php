@@ -8,14 +8,25 @@
                 <div class="col-1"></div>
                 <div class="col-10">
                     <h1 class="title">Sign Up</h1>
-                    <form>
+                    <form method="POST" action="{{ route('register') }}">
+                      {{ csrf_field() }}
                         <div class="form-floating">
-                            <input type="username" class="form-control" id="floatingUser" placeholder="Username" required>
-                            <label for="floatingUser">Username *</label>
+                            <input type="username" class="form-control" id="username" placeholder="Username" required>
+                            <label for="username">Username *</label>
+                            @if ($errors->has('username'))
+                              <span class="error">
+                                  {{ $errors->first('username') }}
+                              </span>
+                            @endif
                         </div>
                         <div class="form-floating">
-                            <input type="name" class="form-control" id="floatingName" placeholder="Name" required>
-                            <label for="floatingName">Name *</label>
+                            <input type="name" class="form-control" id="name" placeholder="Name" required>
+                            <label for="name">Name *</label>
+                            @if ($errors->has('name'))
+                              <span class="error">
+                                  {{ $errors->first('name') }}
+                              </span>
+                            @endif
                         </div>
                         <div class="form-floating">
                             <input type="email" class="form-control" id="floatingEmail" placeholder="Email" required>
@@ -26,11 +37,11 @@
                             <label for="floatingPassword">Password *</label>
                         </div>
                         <div class="form-floating">
-                            <input type="confirm_password" class="form-control" id="floatingCPassword" placeholder="Confirm Password" required>
+                            <input type="password" class="form-control" id="floatingCPassword" placeholder="Confirm Password" required>
                             <label for="floatingCPassword">Confirm Password *</label>
                         </div>
 
-                        <button onclick="changePage()" type="submit" class="btn btn-primary">Sign Up</button>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
                     </form>
                     <div class="row dividing align-items-center">
                         <div class="col-5">
@@ -61,42 +72,4 @@
     </div>
     @endsection
 
-
-
-<!-- @section('content')
-<form method="POST" action="{{ route('register') }}">
-    {{ csrf_field() }}
-
-    <label for="name">Name</label>
-    <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
-    @if ($errors->has('name'))
-      <span class="error">
-          {{ $errors->first('name') }}
-      </span>
-    @endif
-
-    <label for="email">E-Mail Address</label>
-    <input id="email" type="email" name="email" value="{{ old('email') }}" required>
-    @if ($errors->has('email'))
-      <span class="error">
-          {{ $errors->first('email') }}
-      </span>
-    @endif
-
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" required>
-    @if ($errors->has('password'))
-      <span class="error">
-          {{ $errors->first('password') }}
-      </span>
-    @endif
-
-    <label for="password-confirm">Confirm Password</label>
-    <input id="password-confirm" type="password" name="password_confirmation" required>
-
-    <button type="submit">
-      Register
-    </button>
-    <a class="button button-outline" href="{{ route('login') }}">Login</a>
-</form> -->
 

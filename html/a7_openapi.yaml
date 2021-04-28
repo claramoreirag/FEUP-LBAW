@@ -135,7 +135,6 @@ paths:
                   
 # REGISTER: _____________________________________________________________________________________________________
 /register:
-
     get:
       operationId: R104
       summary: 'R104: Register Form'
@@ -203,7 +202,7 @@ paths:
         - 'M01: Authentication and Profile'
       parameters:
         - in: path
-          name: id
+          name: id #user_id
           schema:
             type: integer
           required: true
@@ -367,13 +366,13 @@ paths:
              schema:
             type: object
             properties:
-              title:          # <!--- form field name
+              title:          
                 type: string
-              header:    # <!--- form field name
+              header:    
                 type: string
-              body:          # <!--- form field name
+              body:          
                 type: string
-              category:    # <!--- form field name
+              category:    
                 type: string
               source:
                 type: string
@@ -422,13 +421,13 @@ paths:
           schema:
             type: object
             properties:
-              title:          # <!--- form field name
+              title:          
                 type: string
-              header:    # <!--- form field name
+              header:   
                 type: string
-              body:          # <!--- form field name
+              body:         
                 type: string
-              category:    # <!--- form field name
+              category:   
                 type: string
               source:
                 type: string
@@ -762,6 +761,7 @@ paths:
 
 
 # REPORTS DASHBOARD: _______________________________________________________________________________________________________
+
 /admin/reports/{filter}:
   get:
     operationId: R401
@@ -826,6 +826,8 @@ paths:
                 302Failure:
                   description: 'Failed delete post. Redirect to post.'
                   value: '/admin/reports/post/{post_id}'
+
+# REPORTED COMMENT DELETE: _______________________________________________________________________________________________________
 
 /admin/reports/comment/{comment_id}:
    delete:
