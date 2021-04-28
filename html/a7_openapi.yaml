@@ -20,8 +20,45 @@ tags:
   - name: 'M04: User Administration '
   - name: 'M05: Static pages'
   - name: 'M06: Notifications'
+  
 
 paths:
+
+# ------- Authentication and profile: -----------
+# R101: Login Form [/login] 
+# R102: Login Action [/login] 
+# R103: Logout Action [/logout] 
+# R104: Register Form [/register] 
+# R105: Register Action [/register] 
+# R106: View Profile [/user/{user_id}] 
+# R107: Edit Profile Form [/settings] 
+# R108: Edit Profile Action [/settings] 
+# R109: Delete Account Action [/settings] 
+
+# -------- Posts, Feed and Search: ----------------
+# R201: Home Page Posts[/{filter}] 
+# R202: View Post and Comments [/post/{post_id}] 
+# R203: Add Post Form [/new_post] 
+# R204: Add Post Action [/new_post] 
+# R205: Edit Post Action [/post/{post_id}] 
+# R206: Delete Post Action [/post/{post_id}]  
+# R207: Report Post Action [/post/{post_id}/report] 
+# R208: Search Results Page [/search/{query}] 
+
+# --------------- Comments: ----------------------
+# R301: Add Comment Action [/post/{post_id}/comment] 
+# R302: Add Reply Action [/comment/{comment_id}/reply] 
+# R303: Edit Comment Action [/comment/{comment_id}]  
+# R304: Delete Comment Action [/comment/{comment_id}] 
+
+# --------------- User admin: ---------------------
+# R401: View All Reports [/admin/{filter}] 
+# R402: View Post and Comments [/admin/post/{post_id}] 
+# R403: Delete Post Action [/admin/post/{post_id}] 
+# R404: Delete Comment Action [/admin/comment/{comment_id}] 
+# R405: View User Management [/admin/post/{post_id}] 
+# R406: Delete User Action [/admin/user/{user_id}] 
+
 
 # LOGIN: _____________________________________________________________________________________________________
   /login:
@@ -33,7 +70,7 @@ paths:
         - 'M01: Authentication and Profile'
       responses:
         '200':
-          description: 'Ok. Show [UI07](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/0a9eb2c8774c0eef1d0677384be22c61/login.png)'
+          description: 'Ok. Show [UI07](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/er#ui07)'
     post:
       operationId: R102
       summary: 'R102: Login Action'
@@ -67,7 +104,7 @@ paths:
                 302Success:
                   description: 'Successful authentication. Redirect to user profile.'
                   value: '/homepage'
-                302Error:
+                302Failure:
                   description: 'Failed authentication. Redirect to login form.'
                   value: '/login'
 
@@ -97,7 +134,8 @@ paths:
                   value: '/homepage'
                   
 # REGISTER: _____________________________________________________________________________________________________
-/signup:
+/register:
+
     get:
       operationId: R104
       summary: 'R104: Register Form'
@@ -106,7 +144,7 @@ paths:
         - 'M01: Authentication and Profile'
       responses:
         '200':
-          description: 'Ok. Show [UI06](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/a3fb22a386e5b2e19ec24ef55488f100/signup1.png)'
+          description: 'Ok. Show [UI06](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/er#ui06)'
 
     post:
       operationId: R105
@@ -148,14 +186,15 @@ paths:
                 type: string
               examples:
                 302Success:
-                  description: 'Successful authentication. Redirect to user profile.'
+                  description: 'Successful authentication. Redirect to homepage.'
                   value: '/homepage'
-                302Error:
+                302Failure:
                   description: 'Failed authentication. Redirect to login form.'
                   value: '/login'
 
-# SEE Own PROFILE: ______________________________________________________________________________________________________
-/myProfilePage/{user_id}:
+# VIEW PROFILE: ______________________________________________________________________________________________________
+/user/{user_id}:
+
     get:
       operationId: R106
       summary: 'R106: View Own Profile'
@@ -169,44 +208,25 @@ paths:
             type: integer
           required: true
       responses:
-        '200':_____________________________________________________
-          description: 'Ok. Show [UI03](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/520a9e403291da0d3b16a3bf5d2f0f58/myProfilePage1.png)'
-
-
-# SEE PROFILE: ______________________________________________________________________________________________________
-/users/{user_id}:
-    get:
-      operationId: R107
-      summary: 'R107: View Others Profile'
-      description: 'Page that shows the user profile and activity. Access: PUB and USR'
-      tags:
-        - 'M01: Authentication and Profile'
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
-      responses:
-        '200':_____________________________________________________
-          description: 'Ok. Show [UI04](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/1bdefbb79d925c4d8680915fe0fbc85c/otherProfile1.png)'
+        '200':
+          description: 'Ok. Show [UI03](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/er#ui03)'
 
 
 # EDIT PROFILE: ______________________________________________________________________________________________________
-/editProfile:
+/settings:
     get:
-      operationId: R108
-      summary: 'R108: Edit Profile Form'
+      operationId: R107
+      summary: 'R107: Edit Profile Form'
       description: 'Provide the user an edit profile form. Access: OWN'
       tags:
         - 'M01: Authentication and Profile'
       responses:
         '200':
-          description: 'Ok. Show [UI06](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/editProfile.php)' #TODO
+          description: 'Ok. Show [UI06](http://lbaw2154-piu.lbaw-prod.fe.up.pt/pages/editProfile.php)'
 
     put:
-      operationId: R109
-      summary: 'R109: Edit Profile Action'
+      operationId: R108
+      summary: 'R108: Edit Profile Action'
       description: 'This web resource edits the user information.	Access: OWN'
       tags:
         - 'M01: Authentication and Profile'
@@ -252,8 +272,8 @@ paths:
                   value: '/editProfile'
 
     delete:
-      operationId: R110
-      summary: 'R110: Delete Profile Action'
+      operationId: R109
+      summary: 'R109: Delete Profile Action'
       description: 'This web resource allows a user to delete his account. Access: OWN'
       tags:
         - 'M01: Authentication and Profile'
@@ -282,12 +302,222 @@ paths:
                   description: 'Failed delete profile. Redirect to users profile.'
                   value: '/myProfilePage'
 
-# Search 
+# HOMEPAGE POSTS: ______________________________________________________________________________________________________
 
-/search:
+/{filter}:
     get:
-      operationId: R111
-      summary: 'R111: Search News and Users'
+      operationId: R201
+      summary: 'R201: This web resource gets posts based on a certain criteria/filter. PUB'
+      description: 'This web resource get the results of a query.'
+      tags: 
+        - 'M02: Posts, Feed and Search'
+      parameters:
+          - in: query
+          name: filter
+          description: [newest,trending]
+          schema:
+            type: string
+          required: false
+      responses:
+      '200':
+        description: 'Ok. Show [UI01](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/er#ui01)'
+
+# VIEW POST: ______________________________________________________________________________________________________
+/post/{post_id}:
+  get:
+      operationId: R202
+      summary: 'R202: This resource shows the post page and it's comments. PUB'
+      description: 'This resource shows the post page and it's comments.'
+      tags: 
+        - 'M02: Posts, Feed and Search'
+      parameters:
+          - in: path
+          name: post_id
+          description: Post primary key of the post we want to see
+          schema:
+            type: integer
+          required: true
+      responses:
+      '200':
+        description: 'Ok. Show [UI05](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/er#ui05)'
+
+
+# NEW POST: ______________________________________________________________________________________________________
+/new_post:
+  get:
+      operationId: R203
+      summary: 'R203: New post form. Acess: USR'
+      description: 'Page with a form to add a new post.'
+      tags: 
+        - 'M02: Posts, Feed and Search'
+      responses:
+      '200':
+        description: 'Ok. Show [UI09](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/er#ui09)'
+
+  post:
+      operationId: R204
+      summary: 'R204: New Post Action Acess: USR'
+      description: 'This web resource allows a user to create a new post. Access: USR'
+      tags:
+        - 'M02: Posts, Feed and Search'
+
+      requestBody:
+        required: true
+        content:
+             schema:
+            type: object
+            properties:
+              title:          # <!--- form field name
+                type: string
+              header:    # <!--- form field name
+                type: string
+              body:          # <!--- form field name
+                type: string
+              category:    # <!--- form field name
+                type: string
+              source:
+                type: string
+            required:
+              - title
+              - header
+              - body
+              - category
+              - source
+              
+
+    responses:
+      '302':
+        description: 'Redirect after processing the post information'
+        headers:
+          Location:
+            schema:
+              type: string
+            examples:
+              302Success:
+                description: 'Successful publication. Redirect to user profile.'
+                value: '/users/{id}'
+              302Error:
+                description: 'Failed authentication. Redirect to new post.'
+                value: '/new_post'
+
+# EDIT POST: _______________________________________________________________________________________________________
+
+/post/{post_id}:
+  put:
+    operationId: R205
+    summary: 'R205: Edit Post Action'
+    description: 'Processes the edited post submission. Access: OWN'
+    tags:
+      - 'M02: Posts, Feed and Search'
+    parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+    requestBody:
+      required: true
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              title:          # <!--- form field name
+                type: string
+              header:    # <!--- form field name
+                type: string
+              body:          # <!--- form field name
+                type: string
+              category:    # <!--- form field name
+                type: string
+              source:
+                type: string
+            required:
+              - title
+              - header
+              - body
+              - category
+              - source
+    responses:
+      '302':
+        description: 'Redirect after processing the post information'
+        headers:
+          Location:
+            schema:
+              type: string
+            examples:
+              302Success:
+                description: 'Successful edition of post. Redirect to post.'
+                value: '/post/{post_id}'
+              302BadRequest:
+                description: 'Error. Error message is specified via an HTTP header.'
+                value: '/user/{user_id}'
+              302NotFound:
+                description: 'Error. No post with the specified primary key exists.'
+                value: '/user/{user_id}'
+   delete:
+      operationId: R206
+      summary: 'R206: Delete Post Action'
+      description: 'This web resource allows a user to delete a post. Access: OWN'
+      tags:
+        - 'M02: Posts, Feed and Search'
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '302':
+          description: 'Redirect after deleting post'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful delete post. Redirect to homepage.'
+                  value: '/homepage'
+                302Failure:
+                  description: 'Failed delete post. Redirect to users profile.'
+                  value: '/user/{user_id}'
+
+# REPORT POST: _______________________________________________________________________________________________________
+
+/post/{post_id}/report:
+  post:
+      operationId: R207
+      summary: 'R207: Report Post Action'
+      description: 'This web resource allows a user to report a post. Access: USR'
+      tags:
+        - 'M02: Posts, Feed and Search'
+       parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+    responses:
+      '302':
+        description: 'Redirect after processing the report'
+        headers:
+          Location:
+            schema:
+              type: string
+            examples:
+              302Success:
+                description: 'Successful report. Redirect to homepage.'
+                value: '/homepage'
+              302Error:
+                description: 'Failed report. Redirect to post.'
+                value: '/post/{post_id}'
+
+# SEARCH: _____________________________________________________________________________________________________________ 
+
+/search/{query}:
+    get:
+      operationId: R208
+      summary: 'R208: Search News and Users'
       description: 'This web resource get the results of a query.'
       tags: 
         - 'M02: Posts, Feed and Search'
@@ -377,177 +607,21 @@ paths:
                     datetime: 
                  
 
-
-# CREATE POST: _______________________________________________________________________________________________________
-/newPostPage:
-  get:
-    operationId: R112
-    summary: 'R112: Create Post Form'
-    description: 'User can create a new post. Access: USR'
-
-    tags: 
-      - 'M02: Posts, Feed and Search'
-    
-    responses:
-      '200':
-        description: 'Ok. Show [UI09](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/464b25e6705bb1ca0df4870a432b6b9d/newPost.png)'
-  
-  post:
-    operationId: R113
-    summary: 'R113: Create Post Action'
-    description: 'Processes the post submission. Access: OWN'
-    tags:
-      - 'M02: Posts, Feed and Search'
-
-    requestBody:
-      required: true
-      content:
-        application/x-www-form-urlencoded:
-          schema:
-            type: object
-            properties:
-              title:          # <!--- form field name
-                type: string
-              header:    # <!--- form field name
-                type: string
-              body:          # <!--- form field name
-                type: string
-              category:    # <!--- form field name
-                type: string
-              source:
-                type: string
-            required:
-              - title
-              - header
-              - body
-              - category
-              - source
-              
-
-    responses:
-      '302':
-        description: 'Redirect after processing the post information'
-        headers:
-          Location:
-            schema:
-              type: string
-            examples:
-              302Success:
-                description: 'Successful publication. Redirect to user profile.'
-                value: '/users/{id}'
-              302Error:
-                description: 'Failed authentication. Redirect to new post.'
-                value: '/newPostPage'
-
-# EDIT POST: _______________________________________________________________________________________________________
-/editPostPage:
-  get:
-    operationId: R114
-    summary: 'R114: Edit Post Form' 
-    description: 'User can edit an existing post. Access: OWN'
-
-    tags: 
-      - 'M02: Posts, Feed and Search'
-    
-    responses:
-      '200':
-        description: 'Ok. Show [UI10](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/cb09ab3cbdedcd03276ed3ea1bb42455/editPost.png)'
-  
-  post:
-    operationId: R115
-    summary: 'R115: Edit Post Action'
-    description: 'Processes the edited post submission. Access: OWN'
-    tags:
-      - 'M02: Posts, Feed and Search'
-
-    requestBody:
-      required: true
-      content:
-        application/x-www-form-urlencoded:
-          schema:
-            type: object
-            properties:
-              title:          # <!--- form field name
-                type: string
-              header:    # <!--- form field name
-                type: string
-              body:          # <!--- form field name
-                type: string
-              category:    # <!--- form field name
-                type: string
-              source:
-                type: string
-            required:
-              - title
-              - header
-              - body
-              - category
-              - source
-    responses:
-      '302':
-        description: 'Redirect after processing the post information'
-        headers:
-          Location:
-            schema:
-              type: string
-            examples:
-              302Success:
-                description: 'Successful publiction. Redirect to user profile.'
-                value: '/users/{id}'
-              302Error:
-                description: 'Failed authentication. Redirect to edit post.'
-                value: '/editPostPage'
-
-# DELETE POST: _______________________________________________________________________________________________________
-/deletePost:
-    post:
-      operationId: R116
-      summary: 'R116: Delete Post Action'
-      description: 'Delete specified post. Access: OWN'
-      tags:
-        - 'M02: Posts, Feed and Search'
-      responses:
-        '302':
-          description: 'Redirect after processing deletion.'
-          headers:
-            Location:
-              schema:
-                type: string
-              examples:
-                302Success:
-                  description: 'Successful deletion. Redirect to user profile.'
-                  value: '/users/{id}'
-                302Error:
-                  description: 'Error in deletion. Redirect to user profile.'
-                  value: '/users/{id}'
-
 # WRITE COMMENTS: ______________________________________________________________________________________________________
-/write_comment:
-  get:
-    operationId: R117
-    summary: 'R117: Write comment form'
-    description: 'Provides opportunity for user to comment. Access: USR, OWN'
+
+/post/{post_id}/comment:
+  post:
+    operationId: R301
+    summary: 'R301: Write comment action'
+    description: 'This web resource allows a user to comment on a post. Access: USR, OWN'
     tags:
       - 'M03: Comments'
-
     parameters:
       - in: path
         name: id # id do post
         schema:
           type: integer
         required: true
-
-    responses:
-      '200':
-        description: 'Ok. Show [UI05](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/7a11234d3ed1dd34e81478de650ff28d/fullPostPage1.png)' 
-  
-  post:
-    operationId: R118
-    summary: 'R118: Write comment action'
-    description: 'Process the new comment. Access: USR, OWN'
-    tags:
-      - 'M03: Comments'
-
     requestBody:
       required: true
       content: 
@@ -559,7 +633,6 @@ paths:
                 type: text
             required:
               - comment
-
     responses: 
       '302':
         description: 'Redirect after processing the new comment.'
@@ -570,158 +643,261 @@ paths:
             examples:
               302Success:
                 description: 'Sucessful new comment. Redirect to post page'
-                value: #TODO valor do see post
+                value: '/post/{post_id}'
               302Error: 
                 description: 'Failed adding new comment. Redirect to post page'
-                value: #TODO valor do see post
-                
-# SEE OWN POSTS: _______________________________________________________________________________________________________
-/post/own/{post_id}:
-  get:
-    operationId: R119
-    summary: 'R119: See own posts'
-    description: 'User can see their own posts. Access: OWN'
+                value: '/post/{post_id}'
+   
+# REPLY COMMENT: ______________________________________________________________________________________________________
 
-    tags: 
-      - 'M01: Authentication and Profile'
-    
+/comment/{comment_id}/reply:
+ put:
+    operationId: R302
+    summary: 'R302: Write reply to comment action'
+    description: '	This web resource allows a user to reply to a comment. Access: USR, OWN'
+    tags:
+      - 'M03: Comments'
     parameters:
       - in: path
-        name: id #user id
+        name: id # id do comment
         schema:
           type: integer
         required: true
-    
+    requestBody:
+      required: true
+      content: 
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              comment:
+                type: text
+            required:
+              - comment
     responses: 
-      '200':
-        description: 'Ok. Show [UI05](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/520a9e403291da0d3b16a3bf5d2f0f58/myProfilePage1.png)' 
-    
-# REPORTS DASHBOARD: _______________________________________________________________________________________________________
-/admin_dashboard:
-  get:
-    operationId: R120
-    summary: 'R120: Reports Dashboard'
-    description: 'Admin can access a dashboard with reported posts and comments. Access: ADMN'
+      '302':
+        description: 'Redirect after processing the comment reply.'
+        headers:
+          Location:
+            schema:
+              type: string
+            examples:
+              302Success:
+                description: 'Sucessful new comment. Redirect to comment.'
+                value: '/comment/{comment_id}'
+              302Error: 
+                description: 'Failed adding new comment. Redirect to comment.'
+                value: '/comment/{comment_id}'
 
+# EDIT COMMENT: ______________________________________________________________________________________________________
+
+/comment/{comment_id}:
+ put:
+    operationId: R303
+    summary: 'R303: Edit comment action'
+    description: '	This web resource allows a user to edit their comment on a post. Access: OWN'
+    tags:
+      - 'M03: Comments'
+    parameters:
+      - in: path
+        name: id # id do comment
+        schema:
+          type: integer
+        required: true
+    requestBody:
+      required: true
+      content: 
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              comment:
+                type: text
+            required:
+              - comment
+    responses: 
+      '302':
+        description: 'Redirect after processing the comment.'
+        headers:
+          Location:
+            schema:
+              type: string
+            examples:
+              302Success:
+                description: 'Sucessful edit comment. Redirect to comment '
+                value: '/comment/{comment_id}'
+              302Error: 
+                description: 'Failed edit comment. Redirect to comment'
+                value: '/comment/{comment_id}'
+
+  delete:
+      operationId: R304
+      summary: 'R304: Delete Comment Action'
+      description: 'This web resource allows a user to delete their comment on a post. Access: OWN'
+      tags:
+        - 'M03: Comments'
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '302':
+          description: 'Redirect after deleting comment'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful deletion of comment. Redirect to homepage.'
+                  value: '/homepage'
+                302BadRequest:
+                  description: 'Error. Error message is specified via an HTTP header.'
+                  value: '/comment/{comment_id}'
+                302NotFound:
+                  description: 'Error. No comment with the specified primary key exists.'
+                  value: '/comment/{comment_id}'
+
+
+# REPORTS DASHBOARD: _______________________________________________________________________________________________________
+/admin/reports/{filter}:
+  get:
+    operationId: R401
+    summary: 'R401: Reports Dashboard'
+    description: 'Admin can access a dashboard with reported posts and comments. Access: ADMN'
     tags: 
       - 'M04: User Administration'
-
-    # TODO vamos precisar de parametros ou os admin vão ver tudo igual?
-
+    parameters:
+          - in: query
+          name: filter
+          description: [comments,posts]
+          schema:
+            type: string
+          required: false
     responses: 
       '200':
-        description: 'Ok. Show [UI11](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/uploads/33092f5314520f6336ae5dced22f7395/adminDashboard.png)' 
+        description: 'Ok. Show [UI11](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/er#ui11)' 
 
+# REPORTED POST: _______________________________________________________________________________________________________
 
-
-# DELETE POST ADMIN: _______________________________________________________________________________________________________
-
-/admin/delete_post:
-  post:
-      operationId: R121
-      summary: 'R121: Delete Post Action - Admin'
-      description: 'Delete specified post. Access: ADM'
-      tags:
-        - 'M04: User Administration '
-
-      requestBody:
-      required: true
-      content:
-        application/x-www-form-urlencoded:
+/admin/reports/post/{post_id}:
+  get:
+    operationId: R402
+    summary: 'R402: View full post as administrator'
+    description: 'This resource shows the post page and its comments. Access: ADMN'
+    tags: 
+      - 'M04: User Administration'
+    parameters:
+          - in: path
+          name: post_id
+          description: Post primary key of the post we want to see
           schema:
-            type: object
-            properties:
-              post-id:          
-                type: integer
-            required:
-              - post-id
-
+            type: integer
+          required: true
+    responses: 
+      '200':
+        description: 'Ok. Show [UI13](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/er#ui13)' 
+  
+   delete:
+      operationId: R403
+      summary: 'R403: Delete Post Action Admin'
+      description: 'This web resource allows an administrator to delete a reported post. Access: ADM'
+      tags:
+        - 'M04: User Administration'
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
       responses:
         '302':
-          description: 'Redirect after processing deletion.'
+          description: 'Redirect after deleting post'
           headers:
             Location:
               schema:
                 type: string
               examples:
                 302Success:
-                  description: 'Successful deletion. Redirect to admin dashboard.'
-                  value: '/admin_dashboard'
-                302Error:
-                  description: 'Error in deletion. Redirect to admin dashboard.'
-                  value: '/admin_dashboard'
+                  description: 'Successful delete post. Redirect to adminpage.'
+                  value: '/admin'
+                302Failure:
+                  description: 'Failed delete post. Redirect to post.'
+                  value: '/admin/reports/post/{post_id}'
 
-
-# DELETE COMMENT ADMIN: _______________________________________________________________________________________________________
-
-/admin/delete_comment:
-  post:
-      operationId: R122
-      summary: 'R122: Delete Comment Action - Admin'
-      description: 'Delete specified comment. Access: ADM'
+/admin/reports/comment/{comment_id}:
+   delete:
+      operationId: R404
+      summary: 'R404: Delete Comment Action Admin'
+      description: 'This web resource allows an administrator to delete a reported comment. Access: ADM'
       tags:
-        - 'M04: User Administration '
-
-      requestBody:
-      required: true
-      content:
-        application/x-www-form-urlencoded:
+        - 'M04: User Administration'
+      parameters:
+        - in: path
+          name: id
           schema:
-            type: object
-            properties:
-              comment-id:          
-                type: integer
-            required:
-              - comment-id
-
+            type: integer
+          required: true
       responses:
         '302':
-          description: 'Redirect after processing deletion.'
+          description: 'Redirect after deleting comment'
           headers:
             Location:
               schema:
                 type: string
               examples:
                 302Success:
-                  description: 'Successful deletion. Redirect to admin dashboard.'
-                  value: '/admin_dashboard'
-                302Error:
-                  description: 'Error in deletion. Redirect to admin dashboard.'
-                  value: '/admin_dashboard'
+                  description: 'Successful delete comment. Redirect to adminpage.'
+                  value: '/admin'
+                302Failure:
+                  description: 'Failed delete comment. Redirect to comment.'
+                  value: '/admin/reports/comment/{comment_id}'
 
-# DELETE ACCOUNT ADMIN: _______________________________________________________________________________________________________
 
-/admin/delete_account:
-  post:
-      operationId: R123
-      summary: 'R123: Delete Account Action - Admin'
-      description: 'Delete specified account. Access: ADM'
+# ADMIN MANAGE USERS: _______________________________________________________________________________________________________
+
+/admin/user_manager:
+ get:
+    operationId: R405
+    summary: 'R405: View User Manager Dashboard'
+    description: 'Admin can access a dashboard with all the users. Access: ADMN'
+    tags: 
+      - 'M04: User Administration'
+    responses: 
+      '200':
+        description: 'Ok. Show [UI12](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/er#ui12)' 
+
+# ADMIN DELETE USER: _______________________________________________________________________________________________________
+
+/admin/user_manager/{user_id}:
+  delete:
+      operationId: R406
+      summary: 'R406: Delete User as Admin Action'
+      description: 'This web resource allows a administrator to delete a user. Access: ADM'
       tags:
-        - 'M04: User Administration '
-
-      requestBody:
-      required: true
-      content:
-        application/x-www-form-urlencoded:
+        - 'M04: User Administration'
+      parameters:
+        - in: path
+          name: id
           schema:
-            type: object
-            properties:
-              user-id:          
-                type: integer
-            required:
-              - user-id
-
+            type: integer
+          required: true
       responses:
         '302':
-          description: 'Redirect after processing deletion.'
+          description: 'Redirect after deleting user'
           headers:
             Location:
               schema:
                 type: string
               examples:
                 302Success:
-                  description: 'Successful deletion. Redirect to user manager.'
-                  value: '/user_manager'
-                302Error:
-                  description: 'Error in deletion. Redirect to user manager.'
-                  value: '/user_manager'
+                  description: 'Successful deletion of user. Redirect to homepage.'
+                  value: '/admin/user_manager'
+                302BadRequest:
+                  description: 'Error. Error message is specified via an HTTP header.'
+                  value: '/admin/user_manager/{user_id}'
+                302NotFound:
+                  description: 'Error. No user with the specified primary key exists.'
+                  value: '/admin/user_manager/{user_id}'
