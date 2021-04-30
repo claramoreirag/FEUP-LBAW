@@ -57,10 +57,10 @@
                             <div class="col-md-5  collapse navbar-collapse justify-content-end" id="navbarNav">
 
                                 <a class="log nav-item nav-link text-white notification" href="#"><i class="fas fa-bell"></i> </a>
-                                <a class="log nav-item nav-link d-none d-md-block text-white" href="../pages/myProfilePage.php">@username</a>
+                                <a class="log nav-item nav-link d-none d-md-block text-white" href="../pages/myProfilePage.php">{{ Auth::user()->username }}</a>
                                 <a class="log nav-item nav-link d-md-none text-white" href="../pages/myProfilePage.php"> My Profile</a>
                                 <span class="d-none d-md-block separator text-white"> | </span>
-                                <a class="log nav-item nav-link text-white" href="../pages/homepage.php"> Sign Out</a>
+                                <a class="log nav-item nav-link text-white" href="{{ url('/logout') }}""> Sign Out</a>
 
                             </div>
 

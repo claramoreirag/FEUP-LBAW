@@ -9,10 +9,9 @@
                 <div class="col-10">
                     <h1 class="title">Sign Up</h1>
                     <form method="POST" action="{{ route('register') }}" class="text-start" data-toggle="validator">
-                      
                       {{ csrf_field() }}
                         <div class="form-floating">
-                            <input type="username" class="form-control" id="username" placeholder="Username" required>
+                            <input type="username" name="username" class="form-control"  value="{{ old('username') }}" id="username" placeholder="Username" required>
                             <label for="username">Username *</label>
                             @if ($errors->has('username'))
                               <span class="error">
@@ -21,7 +20,7 @@
                             @endif
                         </div>
                         <div class="form-floating">
-                            <input type="name" class="form-control" id="name" placeholder="Name" required>
+                            <input type="name" name="name" class="form-control" value="{{ old('name') }}" id="name" placeholder="Name" required>
                             <label for="name">Name *</label>
                             @if ($errors->has('name'))
                               <span class="error">
@@ -30,15 +29,25 @@
                             @endif
                         </div>
                         <div class="form-floating">
-                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                            <input type="email" name="email" class="form-control" value="{{ old('email') }}" id="email" placeholder="Email" required>
                             <label for="email">Email *</label>
+                            @if ($errors->has('email'))
+                              <span class="error">
+                                  {{ $errors->first('email') }}
+                              </span>
+                            @endif
                         </div>
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="password" placeholder="Password" required>
+                            <input type="password" name="password"  class="form-control" id="password" placeholder="Password" required>
                             <label for="password">Password *</label>
+                            @if ($errors->has('password'))
+                              <span class="error">
+                                  {{ $errors->first('password') }}
+                              </span>
+                            @endif
                         </div>
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="comfirmpassword" placeholder="Confirm Password" required>
+                            <input type="password" name="password_confirmation" class="form-control" id="comfirmpassword" placeholder="Confirm Password" required>
                             <label for="confirmpassword">Confirm Password *</label>
                         </div>
 
@@ -61,7 +70,7 @@
                         </div>
                     </div>
                     <div class="row align-items-center ">
-                        <a class="login_link" href="../pages/login.php">Already have an account? Log In!</a>
+                        <a class="login_link" href="{{ route('login') }}">Already have an account? Log In!</a>
                         <br>
                     </div>
                     <div class="col-1"></div>

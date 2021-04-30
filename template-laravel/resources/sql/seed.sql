@@ -46,8 +46,8 @@ CREATE TABLE "user"(
     name TEXT NOT NULL,
     email TEXT UNIQUE NOT NULL,
     photo TEXT,
-    state user_state NOT NULL, 
-    is_admin BOOLEAN NOT NULL
+    state user_state NOT NULL DEFAULT 'Active', 
+    is_admin BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE category(

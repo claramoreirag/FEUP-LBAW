@@ -118,8 +118,8 @@
             </form>
 
             <div class="row posts-container">
-                @include('partials.authpost')
-                @include('partials.authpost')
+                @each('partials.authpost', $posts, 'post')
+               
             </div>
         </div>
 

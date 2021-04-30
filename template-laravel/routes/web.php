@@ -75,9 +75,9 @@ Route::delete('api/item/{id}', 'ItemController@delete');
 //---------------------------------------------------
 
 // Authentication
-Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('/login', 'Auth\LoginController@login');
-Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('login', 'Auth\LoginController@showLoginForm');
+Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('register', 'Auth\RegisterController@register')->name('register');
 
@@ -95,6 +95,8 @@ Route::get('/search', 'SearchController@search_results')->name('search');
 Route::get('/newpost', 'PostController@create')->name('new_post');
 Route::post('/newpost', 'PostController@store');
  
+Route::get('/authuserfeed', 'FeedController@show')->name('authuserfeed');
+
 
 //---------------------------------------------------
 
