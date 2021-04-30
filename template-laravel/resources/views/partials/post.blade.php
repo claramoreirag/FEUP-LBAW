@@ -1,4 +1,4 @@
-<article class="card mb-3">
+<article class="card mb-3" >
     <div class="card-body ">
         <div class="row mb-2 justify-content-end">
             <div class="col-sm-3 col-md-3  " style="text-align:end">

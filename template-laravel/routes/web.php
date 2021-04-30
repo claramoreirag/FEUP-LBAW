@@ -11,9 +11,7 @@
 |
 */
 // Home
-Route::get('/', function(){
-    return view('pages.homepage');
-});
+Route::get('/','FeedController@showhome')->name('homepage');
 
 
 //Homepage
@@ -96,7 +94,7 @@ Route::get('/newpost', 'PostController@create')->name('new_post');
 Route::post('/newpost', 'PostController@store');
  
 Route::get('/authuserfeed', 'FeedController@show')->name('authuserfeed');
-
+Route::get('homepage','FeedController@showhome')->name('homepage');
 
 //---------------------------------------------------
 
@@ -115,3 +113,4 @@ Route::post('/comment', 'CommentController@newComment');
 Route::post('/reply', 'CommentController@replyComment');
 Route::delete('/comment/{comment_id}', 'CommentController@deleteComment');
 Route::put('/comment/{comment_id}', 'CommentController@editComment');
+

@@ -22,10 +22,28 @@ class FeedController extends Controller {
 
         return view('pages.authuserfeed',
             [
-             'recentNews' => $recentNews
-            ]
-        );
-    }
+             'posts' => $recentNews
+             ]
+            );
+        }
+            
+        public function showhome() {
+        
+    
+            // hot posts
+            $request = new Request();
+           // $request->sortBy = "numerical";
+            $recentNews = Post::all();
+    
+            // random tags
+           // $randomTags = Tag::inRandomOrder()->limit(8)->get();
+    
+            return view('pages.homepage',
+                [
+                 'posts' => $recentNews
+                ]
+            );
+        }
 
 
 }

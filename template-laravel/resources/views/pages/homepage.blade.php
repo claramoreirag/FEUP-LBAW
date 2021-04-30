@@ -91,8 +91,7 @@
             </form>
 
             <div class="row posts-container">
-                @include('partials.post')
-                @include('partials.post')
+                @each('partials.post', $posts, 'post')
             </div>
         </div>
 
