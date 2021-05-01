@@ -42,20 +42,20 @@ class User extends Authenticatable
     ];
 
     public function posts(){
-        return $this->hasMany('App\Model\Post');
+        return $this->hasMany('App\Models\Post');
     }
 
     public function comments(){
-        return $this->hasMany('App\Model\Comment');
+        return $this->hasMany('App\Models\Comment');
     }
 
     public function reports(){
-        return $this->hasMany('App\Model\Report');
+        return $this->hasMany('App\Models\Report');
     }
 
     public function reportsAnalysed(){
         //testar se é admin
-        return $this->hasMany('App\Model\Report');
+        return $this->hasMany('App\Models\Report');
     }
 }
 

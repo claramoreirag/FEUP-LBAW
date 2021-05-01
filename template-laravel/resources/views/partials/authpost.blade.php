@@ -1,3 +1,5 @@
+
+
 <div class="card mb-3 " data-id="{{ $post->id }}">
     <div class="card-body ">
         <div class="row mb-2 justify-content-end">
@@ -15,13 +17,13 @@
 
         </div>
 
-        <h6 class="card-subtitle mt-2 mb-2 text-muted">By <a href="../pages/otherProfile.php"> {{$post->author->username}}</a> on 20/01/2021 20:40</h6>
+        <h6 class="card-subtitle mt-2 mb-2 text-muted">By <a href="../pages/otherProfile.php"> @<span>{{$post->author->username}}</span></a> on 20/01/2021 20:40</h6>
         <div class="card-text">
             <div class="row">
 
                 <div class="col-lg-8 col-md-9 col-sm-12 mb-2">
                     {{$post->header}}
-                    <a href="../pages/fullPostPage.php" class="read-more">Read More</a>
+                    <a href="/posts/{{$post->id}}" class="read-more">Read More</a>
                     <br>
                 </div>
                 <div class="col-md-4 col-xs-6 post-pic">

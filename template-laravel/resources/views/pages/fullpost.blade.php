@@ -1,5 +1,5 @@
 @extends('layouts.auth_header')
 @section('content')
-    @include('partials.fullPost')
+    @include('partials.fullPost',[$post])
 @endsection
 

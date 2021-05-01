@@ -24,8 +24,8 @@ class PostController extends Controller
         abort($post->getStatusCode());
       }
       $post = json_decode($post->getContent());
-      $this->authorize('show', $post);
-      return view('pages.post', ['post' => $post]);
+      
+      return view('pages.fullpost', ['post' => $post]);
     }
 
     /**
@@ -81,20 +81,23 @@ class PostController extends Controller
         }
 
         // check if the user has authorization to view the post
-        $this->authorize('view', $post);
+        //$this->authorize('view', $post);
 
         $post_author = null;
         // if post has no author (account deleted)
-        if ($post->content->user_id !== null) {
+        //var_dump($post);
+        if ($post->user_id !== null) {
             
             $post_author = [
-                'id'=> $post->content->author->id,
-                'name'=> $post->content->author->name,
-                'username' => $post->content->author->username,
-                'photo' => $post->content->author->photo,
+                'id'=> $post->author->id,
+                'name'=> $post->author->name,
+                'username' => $post->author->username,
+                'photo' => $post->author->photo,
             ];
         }
 
+        //var_dump($post->category);
+        
 
         return response()->json([
             'id' => $post->id,
