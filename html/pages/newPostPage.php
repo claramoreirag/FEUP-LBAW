@@ -11,5 +11,5 @@
 </div>
 </h2>
 <?php
-  include_once('../templates/newEditPostTemplate.php');
+  include_once('../templates/newPostTemplate.php');
 ?>

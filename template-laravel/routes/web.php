@@ -102,6 +102,7 @@ Route::get('homepage','FeedController@showhome')->name('homepage');
 // Post 
 Route::get('/post/{post_id}', 'PostController@show')->name('post');
 Route::delete('/post/{post_id}', 'PostController@delete');
+Route::get('/post/{post_id}', 'PostController@showEdit');
 Route::put('/post/{post_id}', 'PostController@edit');
 Route::post('/post/{post_id}/vote', 'PostController@vote');
 Route::delete('/post/{post_id}/vote', 'PostController@remove_vote');

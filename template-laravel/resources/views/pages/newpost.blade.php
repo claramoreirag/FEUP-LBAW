@@ -5,5 +5,5 @@
             New Post 
     </div>
 </h2>
-@include('partials.editnewpost')
+@include('partials.newpost')
 @endsection

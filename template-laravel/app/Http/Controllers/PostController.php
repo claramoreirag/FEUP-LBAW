@@ -111,4 +111,20 @@ class PostController extends Controller
 
     }
 
+    public function showEdit($id){
+      $post = PostController::getPost($id);
+      if ($post->getStatusCode() !== 200) {
+        abort($post->getStatusCode());
+      }
+      $post = json_decode($post->getContent());
+      $this->authorize('show', $post);
+      return view('pages.post', ['post' => $post]); //não é pages.post, é o quê?
+    }
+
+    public function edit($id, $request){
+     //calma ai
+    }
+
+
+
 }
