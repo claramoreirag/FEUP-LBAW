@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Source;
 use App\Models\Post;
 use DateTime;
 
@@ -95,9 +96,13 @@ class PostController extends Controller
                 'photo' => $post->author->photo,
             ];
         }
-
-        //var_dump($post->category);
-        
+        $sources=array();
+        foreach($post->sources as $s){
+            $source =Source::find($s->source_id);
+            array_push($sources, $source->name);
+        }
+        $category=Category::find($post->category)->name;
+       // var_dump($category);
 
         return response()->json([
             'id' => $post->id,
@@ -106,12 +111,15 @@ class PostController extends Controller
             'header' => $post->header,
             'body' => $post->body,
             'author' => $post_author,
-            'category' => $post->category,
+            'category' => $category,
             'upvotes'=> $post->upvotes,
             'downvotes' => $post->downvotes,
+            'sources'=>$sources
 
         ], 200);
 
     }
+
+    
 
 }

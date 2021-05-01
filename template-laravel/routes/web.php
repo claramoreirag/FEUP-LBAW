@@ -11,7 +11,7 @@
 |
 */
 // Home
-Route::get('/','FeedController@showhome')->name('homepage');
+Route::get('/','FeedController@show')->name('homepage');
 
 
 //Homepage
@@ -93,8 +93,8 @@ Route::get('/search', 'SearchController@search_results')->name('search');
 Route::get('/newpost', 'PostController@create')->name('new_post');
 Route::post('/newpost', 'PostController@store');
  
-Route::get('/authuserfeed', 'FeedController@show')->name('authuserfeed');
-Route::get('homepage','FeedController@showhome')->name('homepage');
+Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');
+Route::get('homepage','FeedController@show')->name('homepage');
 
 //---------------------------------------------------
 

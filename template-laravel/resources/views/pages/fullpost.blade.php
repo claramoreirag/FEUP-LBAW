@@ -1,4 +1,12 @@
-@extends('layouts.auth_header')
+
+{{-- @if (Auth::check())
+    @extends('layouts.auth_header')
+@endif --}}
+
+@if (!Auth::check())
+    @extends('layouts.main_header')
+@endif
+
 @section('content')
     @include('partials.fullPost',[$post])
 @endsection

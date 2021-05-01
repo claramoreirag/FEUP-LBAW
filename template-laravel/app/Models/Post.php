@@ -14,7 +14,7 @@ class Post extends Model
 
     protected $casts = [
         'id' => 'integer',
-        'datetime' => 'datetime',
+        'datetime' => 'string',
         'user_id' => 'integer',
         'title' => 'string',
         'header' => 'string',
@@ -23,6 +23,7 @@ class Post extends Model
         'upvotes' => 'integer',
         'downvotes' => 'integer'
     ];
+ 
 
     public function comments(){
         return $this->hasMany('App\Models\Comment');
@@ -41,6 +42,13 @@ class Post extends Model
         return $this->hasMany('App\Models\PostSource');
     }
     
+    public function getSources(){
+        $sources=array();
+        foreach($this->sources as $s){
+            $source =Source::find($s->source_id);
+            array_push($sources, $source->name);
+        }
+    }
 
 
 }

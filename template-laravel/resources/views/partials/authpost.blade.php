@@ -17,7 +17,7 @@
 
         </div>
 
-        <h6 class="card-subtitle mt-2 mb-2 text-muted">By <a href="../pages/otherProfile.php"> @<span>{{$post->author->username}}</span></a> on 20/01/2021 20:40</h6>
+    <h6 class="card-subtitle mt-2 mb-2 text-muted">By <a href="../pages/otherProfile.php"> @<span>{{$post->author->username}}</span></a> on <span>{{$post->datetime}}</span></h6>
         <div class="card-text">
             <div class="row">
 

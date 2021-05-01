@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Post;
-
+use Illuminate\Support\Facades\Auth;
 
 class FeedController extends Controller {
     public function show() {
@@ -25,31 +25,23 @@ class FeedController extends Controller {
             array_push($posts,json_decode($p->getContent()));
         }
 
-
+        if(Auth::check()){
         return view('pages.authuserfeed',
             [
              'posts' => $posts
              ]
             );
         }
-            
-        public function showhome() {
-        
-    
-            // hot posts
-            $request = new Request();
-           // $request->sortBy = "numerical";
-            $recentNews = Post::all();
-    
-            // random tags
-           // $randomTags = Tag::inRandomOrder()->limit(8)->get();
-    
+        else{
             return view('pages.homepage',
-                [
-                 'posts' => $recentNews
-                ]
+            [
+             'posts' => $posts
+            ]
             );
-        }
+        }   
+    }
+            
+      
 
 
 }
