@@ -24,18 +24,18 @@ class Report extends Model
     ];
 
     public function user(){
-        return $this->belongsTo('App\Model\User', 'user_id');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     public function comment(){
-        return $this->belongsTo('App\Model\User', 'comment_id');
+        return $this->belongsTo('App\Models\User', 'comment_id');
     }
 
     public function post(){
-        return $this->belongsTo('App\Model\Post', 'post_id');
+        return $this->belongsTo('App\Models\Post', 'post_id');
     }
 
     public function admin(){
-        return $this->belongsTo('App\Model\User', 'admin_id');
+        return $this->belongsTo('App\Models\User', 'admin_id');
     }
 }

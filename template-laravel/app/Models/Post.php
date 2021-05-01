@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = 'post';
-    protected $fillable = ['datetime','user_id', 'title', 'header', 'body', 'category', 'upvotes', 'downvotes'];
+    protected $fillable = ['datetime','user_id', 'title', 'header', 'body', 'category_id', 'upvotes', 'downvotes'];
 
     protected $casts = [
         'id' => 'integer',
@@ -19,26 +19,26 @@ class Post extends Model
         'title' => 'string',
         'header' => 'string',
         'body' => 'string',
-        'category' => 'integer',
+        'category_id' => 'integer',
         'upvotes' => 'integer',
         'downvotes' => 'integer'
     ];
 
     public function comments(){
-        return $this->hasMany('App\Model\Comment');
+        return $this->hasMany('App\Models\Comment');
     }    
 
     public function author(){
-        return $this->belongsTo('App\Model\User', 'user_id');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     public function category(){
-        return $this->belongsTo('App\Model\Category', 'category');
+        return $this->belongsTo('App\Models\Category','category_id');
     }
 
 
     public function sources(){
-        return $this->hasMany('App\Model\PostSource');
+        return $this->hasMany('App\Models\PostSource');
     }
     
 

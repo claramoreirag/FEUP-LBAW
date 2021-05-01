@@ -19,10 +19,16 @@ class FeedController extends Controller {
 
         // random tags
        // $randomTags = Tag::inRandomOrder()->limit(8)->get();
+        $posts=array();
+        foreach($recentNews as $n){
+            $p=PostController::getPost($n->id);
+            array_push($posts,json_decode($p->getContent()));
+        }
+
 
         return view('pages.authuserfeed',
             [
-             'posts' => $recentNews
+             'posts' => $posts
              ]
             );
         }

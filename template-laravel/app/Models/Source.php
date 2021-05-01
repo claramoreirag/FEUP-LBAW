@@ -19,6 +19,6 @@ class Source extends Model
     ];
 
     public function posts(){
-        return $this->hasMany('App\Model\PostSource');
+        return $this->hasMany('App\Models\PostSource');
     }
 }

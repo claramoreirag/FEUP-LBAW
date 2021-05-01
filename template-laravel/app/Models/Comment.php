@@ -26,14 +26,14 @@ class Comment extends Model
     ];
 
     public function post(){
-        return $this->belongsTo('App\Model\Post', 'post_id');
+        return $this->belongsTo('App\Models\Post', 'post_id');
     }
 
     public function user(){
-        return $this->belongsTo('App\Model\User', 'user_id');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     public function reports(){
-        return $this->hasMany('App\Model\Report');
+        return $this->hasMany('App\Models\Report');
     }
 }

@@ -19,7 +19,7 @@
             
             <div class="row justify-content-left">
                 <div class="col-md-12 col-12">
-                    <h2 class="row justify-content-between post-title"> Low-level jets create winds of change for turbines </h2>
+                    <h2 class="row justify-content-between post-title"> {{$post->title}} </h2>
                     <div class="row font-weight-bold mt-4 mb-4">As one of the leading sources of clean and renewable energy, global wind power capacity has increased more than fivefold over the past decade, leading to larger turbines and pushing wind technology to its limits. </div>
                 </div>
                 

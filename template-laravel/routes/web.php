@@ -100,7 +100,7 @@ Route::get('homepage','FeedController@showhome')->name('homepage');
 
 
 // Post 
-Route::get('/post/{post_id}', 'PostController@show')->name('post');
+Route::get('/posts/{id}', 'PostController@show')->where(['id' => '[0-9]+']);
 Route::delete('/post/{post_id}', 'PostController@delete');
 Route::put('/post/{post_id}', 'PostController@edit');
 Route::post('/post/{post_id}/vote', 'PostController@vote');

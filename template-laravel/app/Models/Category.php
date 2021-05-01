@@ -13,6 +13,7 @@ class Category extends Model
 
     protected $table = 'category';
 
+    
     protected $fillable = ['name'];
 
     protected $casts = [
@@ -21,6 +22,6 @@ class Category extends Model
     ];
 
     public function posts(){
-        return $this->hasMany('App\Model\Post');
+        return $this->hasMany('App\Models\Post');
     }
 }

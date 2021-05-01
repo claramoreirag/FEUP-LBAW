@@ -20,10 +20,10 @@ class PostSource extends Model
     ];
 
     public function source(){
-        $this->belongsTo('App\Model\Source', 'source_id');
+        $this->belongsTo('App\Models\Source', 'source_id');
     }
 
     public function post(){
-        $this->belongsTo('App\Model\Post', 'post_id');
+        $this->belongsTo('App\Models\Post', 'post_id');
     }
 }
