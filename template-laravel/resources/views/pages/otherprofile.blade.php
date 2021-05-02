@@ -59,16 +59,16 @@
         </ul>
         <div id="myTabContent" class="tab-content">
           <div class="tab-pane fade active show" id="posts">
+            {{-- @include('partials.authpost')
             @include('partials.authpost')
             @include('partials.authpost')
-            @include('partials.authpost')
-            @include('partials.authpost')
+            @include('partials.authpost') --}}
           </div>
           <div class="tab-pane fade" id="upvotes">
+            {{-- @include('partials.authpost')
             @include('partials.authpost')
             @include('partials.authpost')
-            @include('partials.authpost')
-            @include('partials.authpost')
+            @include('partials.authpost') --}}
           </div>
         </div>
       </div>

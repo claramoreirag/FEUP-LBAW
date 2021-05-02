@@ -1,9 +1,9 @@
 
-    <article class="card mb-3">
+    <article class="card mb-3"  data-id="{{ $post->id }}">
         <div class="card-body ">
             <div class="row mb-2 justify-content-end">
                 <div class="col-sm-3 col-md-3  " style="text-align:end">
-                    <span class="badge badge-primary tag p-1">Tag</span>
+                    <span class="badge badge-primary tag p-1">{{$post->category}}</span>
                 </div>
             </div>
             <div class="row">
@@ -11,18 +11,18 @@
                     <img class="" src="../images/profilepic1.jpg" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
                 </div>
                 <div class="col-10">
-                    <h4 class="card-title text-primary">Low-level jets create winds of change for turbines</h4>
+                    <h4 class="card-title text-primary">{{$post->title}}</h4>
                 </div>
 
             </div>
 
-            <h6 class="card-subtitle mt-2 mb-2 text-muted">By @johndoe on 20/01/2021 20:40</h6>
+            <h6 class="card-subtitle mt-2 mb-2 text-muted">By you on <span>{{$post->datetime}}</span></h6>
             <div class="card-text">
                 <div class="row">
 
                     <div class="col-lg-8 col-md-9 col-sm-12 mb-2">
-                        <p class="mb-0">As one of the leading sources of clean and renewable energy, global wind power capacity has increased more than fivefold over the past decade, leading to larger turbines and pushing wind technology to its limits.</p>
-                        <a href="../pages/fullPostPage.php" class="read-more">Read More</a>
+                        <p class="mb-0">{{$post->header}}</p>
+                        <a href="/posts/{{$post->id}}" class="read-more">Read More</a>
                         <br>
                     </div>
                     <div class="col-md-4 col-xs-6 post-pic">
@@ -36,7 +36,7 @@
             <div class="row post-interactions justify-content-between ">
                 <div class="col-xs-4 col-sm-4 col-md-2 actions mt-2 text-secondary pb-3"></i>
                     <div class="row actions">
-                        <div class="col-md-6 col-xs-6 save action"><a href="../pages/editPostPage.php" ><span class="fas fa-edit"></a></div>
+                        <div class="col-md-6 col-xs-6 save action"><a href='/post/{{$post->id}}/edit' ><span class="fas fa-edit"> edit</a></div>
 
                     </div>
                 </div>

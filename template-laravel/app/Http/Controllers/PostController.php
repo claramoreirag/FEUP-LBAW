@@ -25,7 +25,7 @@ class PostController extends Controller
         abort($post->getStatusCode());
       }
       $post = json_decode($post->getContent());
-      
+      $categories=Category::all();
       return view('pages.fullpost', ['post' => $post]);
     }
 
@@ -120,6 +120,23 @@ class PostController extends Controller
 
     }
 
-    
+    public function showEdit($id){
+      $post = PostController::getPost($id);
+      if ($post->getStatusCode() !== 200) {
+        abort($post->getStatusCode());
+      }
+
+      $post = json_decode($post->getContent());
+     // $this->authorize('show', $post);
+     $categories=Category::all();
+     
+      return view('pages.editpost', ['post' => $post,'categories'=>$categories]); //não é pages.post, é o quê?
+    }
+
+    public function edit($id, $request){
+     //calma ai
+    }
+
+
 
 }

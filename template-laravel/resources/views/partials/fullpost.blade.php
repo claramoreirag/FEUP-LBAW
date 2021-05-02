@@ -9,7 +9,7 @@
             
             <div class="row post-header mt-5">
                 <div class="col-md-7 col-2">
-                    <a class="fas fa-arrow-left" href="../pages/homepage.php"></a>
+                    <a class="fas fa-arrow-left" href="{{ url('/authuserfeed') }}"></a>
                 </div>
                 <div class="col-md-5 col-10"><p class="text-end">{{$post->datetime}}</p></div>
                 <!--Imagem do avatar-->

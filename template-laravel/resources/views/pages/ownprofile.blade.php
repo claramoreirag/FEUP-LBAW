@@ -67,22 +67,20 @@
         </ul>
         <div id="myTabContent" class="tab-content">
           <div class="tab-pane fade active show" id="posts">
-            @include('partials.ownpost')
-            @include('partials.ownpost')
-            @include('partials.ownpost')
-            @include('partials.ownpost')
+            @each('partials.ownpost',$ownposts,'post')
+          
           </div>
           <div class="tab-pane fade" id="savedposts">
+            {{-- @include('partials.authpost')
             @include('partials.authpost')
             @include('partials.authpost')
-            @include('partials.authpost')
-            @include('partials.authpost')
+            @include('partials.authpost') --}}
           </div>
           <div class="tab-pane fade" id="upvotes">
+            {{-- @include('partials.authpost')
             @include('partials.authpost')
             @include('partials.authpost')
-            @include('partials.authpost')
-            @include('partials.authpost')
+            @include('partials.authpost') --}}
           </div>
         </div>
       </div>

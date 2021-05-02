@@ -35,7 +35,7 @@
                             <input type="header" class="form-control" id="inputNewsHeader" placeholder="This is where you summarize your post">
                         </div>
                         <div class="col-md-6 col-xs-12 tags-section mt-5">
-                            <select class="form-select" aria-label="Topic">
+                            <select class="form-select" aria-label="Topic"> <!-- ir buscar à BD as categorias -->
                                 <option selected>Select the topic here</option>
                                 <option value="1">Water</option>
                                 <option value="2">Climate Change</option>

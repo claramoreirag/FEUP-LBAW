@@ -79,9 +79,10 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('register', 'Auth\RegisterController@register')->name('register');
 
-Route::get('/ownprofile/{user_id}', 'Auth\OwnProfileController@editProfile');
-Route::get('/ownprofile/{user_id}', 'Auth\OwnProfileController@createPost');
-Route::get('/ownprofile/{user_id}', 'Auth\OwnProfileController@switchPosts');
+Route::get('/ownprofile/{user_id}', 'UserController@show');
+//Route::get('/ownprofile/{user_id}', 'Auth\OwnProfileController@editProfile');
+//Route::get('/ownprofile/{user_id}', 'Auth\OwnProfileController@createPost');
+//Route::get('/ownprofile/{user_id}', 'Auth\OwnProfileController@switchPosts');
 
 Route::get('/otherprofile/{user_id}', 'Auth\OtherProfileController@follow');
 Route::get('/otherprofile/{user_id}', 'Auth\OtherProfileController@switchPosts');
@@ -102,6 +103,7 @@ Route::get('homepage','FeedController@show')->name('homepage');
 // Post 
 Route::get('/posts/{id}', 'PostController@show')->where(['id' => '[0-9]+']);
 Route::delete('/post/{post_id}', 'PostController@delete');
+Route::get('/post/{post_id}/edit', 'PostController@showEdit');
 Route::put('/post/{post_id}', 'PostController@edit');
 Route::post('/post/{post_id}/vote', 'PostController@vote');
 Route::delete('/post/{post_id}/vote', 'PostController@remove_vote');

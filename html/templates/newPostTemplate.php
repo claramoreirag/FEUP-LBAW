@@ -1,6 +1,11 @@
+<!DOCTYPE HTML>
+
 
 <head>
-  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style/bootstrap.css">
+
     <script src="https://cdn.tiny.cloud/1/up85hjw3nat4fck36d4b8sga07h0hs8y6j1nkiusyctbojab/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
@@ -61,3 +66,9 @@
     </div>
 
     <script defer src="../js/newPost.js"></script>
+
+
+<?php
+include_once('../templates/footer.php');
+drawFooter();
+?>
