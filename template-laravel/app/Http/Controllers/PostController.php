@@ -63,8 +63,8 @@ class PostController extends Controller
 
     // $this->authorize('delete', $card);
     $post->delete();
-
-    return $post;
+    return redirect()->route('profile',['user_id'=>Auth::id()]);
+   
   }
 
 

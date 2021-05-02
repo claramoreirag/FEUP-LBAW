@@ -79,7 +79,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('register', 'Auth\RegisterController@register')->name('register');
 
-Route::get('/ownprofile/{user_id}', 'UserController@show');
+Route::get('/ownprofile/{user_id}', 'UserController@show')->name('profile');
 //Route::get('/ownprofile/{user_id}', 'Auth\OwnProfileController@editProfile');
 //Route::get('/ownprofile/{user_id}', 'Auth\OwnProfileController@createPost');
 //Route::get('/ownprofile/{user_id}', 'Auth\OwnProfileController@switchPosts');
