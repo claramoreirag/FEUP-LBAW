@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS comment CASCADE;
 DROP TABLE IF EXISTS report CASCADE;
 DROP TABLE IF EXISTS follow CASCADE;
 DROP TABLE IF EXISTS "notification" CASCADE;
-DROP TABLE IF EXISTS "users" CASCADE;
+DROP TABLE IF EXISTS "user" CASCADE;
 
 
 DROP TYPE IF EXISTS user_state CASCADE;
@@ -39,7 +39,7 @@ DROP EXTENSION IF EXISTS pgcrypto;
 CREATE TYPE user_state AS ENUM ('Banned', 'Suspended', 'Active');
 CREATE TYPE report_state AS ENUM ('Accepted', 'Deleted', 'SuspendedUser', 'BanedUser', 'NotAnswered');
 
-CREATE TABLE "users"(
+CREATE TABLE "user"(
     id SERIAL PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE category(
 );
 
 CREATE TABLE follow_category(
-    user_id INTEGER NOT NULL REFERENCES "users"(id),
+    user_id INTEGER NOT NULL REFERENCES "user"(id),
     category_id INTEGER NOT NULL REFERENCES category(id),
     PRIMARY KEY (user_id, category_id)
 );
@@ -69,7 +69,7 @@ CREATE TABLE source(
 CREATE TABLE post(
     id SERIAL PRIMARY KEY,
     "datetime" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-    user_id INTEGER REFERENCES "users"(id) NOT NULL,
+    user_id INTEGER REFERENCES "user"(id) NOT NULL,
     title TEXT NOT NULL,
     header TEXT NOT NULL,
     body TEXT NOT NULL,
@@ -79,13 +79,13 @@ CREATE TABLE post(
 );
 
 CREATE TABLE saved_post(
-    user_id INTEGER REFERENCES "users" (id),
-    post_id INTEGER REFERENCES post (id),
+    user_id INTEGER REFERENCES "user" (id),
+    post_id INTEGER REFERENCES post (id) ON DELETE CASCADE,
     PRIMARY KEY (user_id, post_id)
 );
 
 CREATE TABLE post_source(
-    post_id INTEGER REFERENCES post(id),
+    post_id INTEGER REFERENCES post(id) ON DELETE CASCADE,
     source_id INTEGER REFERENCES source(id),
     PRIMARY KEY(post_id, source_id)
 );
@@ -93,14 +93,14 @@ CREATE TABLE post_source(
 
 CREATE TABLE post_vote (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES "users" (id),
-    post_id INTEGER REFERENCES post (id),
+    user_id INTEGER REFERENCES "user" (id),
+    post_id INTEGER REFERENCES post (id)  ON DELETE CASCADE,
     UNIQUE(user_id,post_id),
     is_up BOOLEAN NOT NULL
 );
 CREATE TABLE comment (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES "users" (id),
+    user_id INTEGER REFERENCES "user" (id),
     post_id INTEGER REFERENCES post (id) ON DELETE CASCADE,
     body text,
     "datetime" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
@@ -109,19 +109,19 @@ CREATE TABLE comment (
 
 CREATE TABLE report (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES "users" (id),
+    user_id INTEGER REFERENCES "user" (id),
     date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     state report_state NOT NULL,
     comment_id INTEGER REFERENCES comment(id) ON DELETE CASCADE,
     post_id INTEGER REFERENCES post(id) ON DELETE CASCADE,
-    admin_id INTEGER REFERENCES "users"(id) ON DELETE CASCADE,
+    admin_id INTEGER REFERENCES "user"(id) ON DELETE CASCADE,
     UNIQUE(user_id,comment_id),
     UNIQUE(user_id,post_id)
 );
 
 CREATE TABLE follow(
-    follower INTEGER NOT NULL REFERENCES "users"(id),
-    followed INTEGER NOT NULL REFERENCES "users"(id),
+    follower INTEGER NOT NULL REFERENCES "user"(id),
+    followed INTEGER NOT NULL REFERENCES "user"(id),
     PRIMARY KEY (follower, followed)
 );
 
@@ -130,10 +130,10 @@ CREATE TABLE "notification"(
   id SERIAL PRIMARY KEY,
   "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
   is_read BOOLEAN,
-  receiver INTEGER REFERENCES "users"(id),
-  vote_id INTEGER REFERENCES post_vote(id), 
-  comment_id INTEGER REFERENCES comment(id),
-  follower_id INTEGER REFERENCES "users"(id)
+  receiver INTEGER REFERENCES "user"(id) ON DELETE CASCADE,
+  vote_id INTEGER REFERENCES post_vote(id) ON DELETE CASCADE, 
+  comment_id INTEGER REFERENCES comment(id) ON DELETE CASCADE,
+  follower_id INTEGER REFERENCES "user"(id) ON DELETE CASCADE
 );
 
 
@@ -156,7 +156,7 @@ USING GIST ((setweight(to_tsvector('english', title),'A') ||
        setweight(to_tsvector('english', body), 'C')));
 
 
-CREATE INDEX user_search_index ON "users"
+CREATE INDEX user_search_index ON "user"
 USING GIST ((setweight(to_tsvector('english', username),'A') || 
        setweight(to_tsvector('english', name), 'B')));
 
@@ -267,7 +267,7 @@ CREATE TRIGGER comment_on_post
 DROP EXTENSION IF EXISTS pgcrypto;
 CREATE EXTENSION pgcrypto;
 
-INSERT INTO "users" (username,password,name,email,state,is_admin) VALUES 
+INSERT INTO "user" (username,password,name,email,state,is_admin) VALUES 
 ('claramoreirag',crypt('LIA7AJZ0YL', gen_salt('bf')),'Clara Moreira','clara.moreira@gmail.com','Active',TRUE),
 ('leonormgomes',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Leonor Gomes','leonor.gomes@gmail.com','Active',TRUE),
 ('marianaramos',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Mariana Ramos','mariana.ramos@gmail.com','Active',TRUE),
@@ -281,7 +281,7 @@ INSERT INTO "users" (username,password,name,email,state,is_admin) VALUES
 ('jorgetavares',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Jorge Tavares','jorge.tavares@gmail.com','Active',FALSE),
 ('inesribeiro',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Inês Ribeiro','ines.ribeiro@gmail.com','Active',FALSE);
 
-INSERT INTO "category" (name) VALUES ('Clean cities'),('Climate change'), ('Renewable energy'),('Recepies');
+INSERT INTO "category" (name) VALUES ('Clean cities'),('Climate change'), ('Renewable energy'),('Recipies');
 
 INSERT INTO "source" (name) VALUES ('https://sustainablemobility.iclei.org/upcoming-ecologistics-report-2021/'),
 ('https://talkofthecities.iclei.org/reloading-multilevel-climate-action-towards-glasgow-cop26/'),
