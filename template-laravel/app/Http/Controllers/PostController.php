@@ -41,23 +41,49 @@ class PostController extends Controller
     
     }
 
-    // /**
-    //  * Creates a new card.
-    //  *
-    //  * @return Card The card created.
-    //  */
-    // public function create(Request $request)
-    // {
-    //   $card = new Card();
 
-    //   $this->authorize('create', $card);
+     public function showNewPost()
+     {
+      $categories=Category::all();
+      return view('pages.newpost',['categories'=>$categories]);
+     }
 
-    //   $card->name = $request->input('name');
-    //   $card->user_id = Auth::user()->id;
-    //   $card->save();
+     public function storeNewPost(Request $request)
+     {
+      $post = new Post();
 
-    //   return $card;
-    // }
+      $input = $request->all();
+
+     
+
+      //$this->authorize('storeNewPost', $post);
+  
+      $validatedData = [];
+
+      /*
+      // Request validation
+      if ($post->type == 1) {
+          // Post type has title
+          $validatedData = $request->validate([
+            'title' => 'required|min:15',
+            'body' => 'required|min:19',
+        ]);
+      } else {
+        $validatedData = $request->validate([
+          'body' => 'required|min:19',
+      ]);
+      }*/
+
+      $post->user_id = Auth::user()->id;
+      $post->title = $request->input('title');
+      $post->header = $request->input('header');
+      $post->body = $request->input('mytextarea');
+      $post->category = $request->input($categories);
+      $post->source=$request->input('source');
+      $post->save();
+
+      return redirect('/ownprofile/{{Auth::id()}}');
+     }
 
     // public function delete(Request $request, $id)
     // {

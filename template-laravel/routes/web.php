@@ -90,9 +90,8 @@ Route::get('/otherprofile/{user_id}', 'Auth\OtherProfileController@switchPosts')
 // Search
 Route::get('/search', 'SearchController@search_results')->name('search');
 
-
-Route::get('/newpost', 'PostController@create')->name('new_post');
-Route::post('/newpost', 'PostController@store');
+Route::get('/newpost', 'PostController@showNewPost');
+Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post');
  
 Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');
 Route::get('homepage','FeedController@show')->name('homepage');
