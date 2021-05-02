@@ -9,11 +9,11 @@ DROP TABLE IF EXISTS comment CASCADE;
 DROP TABLE IF EXISTS report CASCADE;
 DROP TABLE IF EXISTS follow CASCADE;
 DROP TABLE IF EXISTS "notification" CASCADE;
-DROP TABLE IF EXISTS "user" CASCADE;
+DROP TABLE IF EXISTS "users" CASCADE;
 
 
-DROP TYPE IF EXISTS user_state;
-DROP TYPE IF EXISTS report_state;
+DROP TYPE IF EXISTS user_state CASCADE;
+DROP TYPE IF EXISTS report_state CASCADE;
 
 DROP INDEX IF EXISTS post_category ; 
 DROP INDEX IF EXISTS post_user_id;  
@@ -39,7 +39,7 @@ DROP EXTENSION IF EXISTS pgcrypto;
 CREATE TYPE user_state AS ENUM ('Banned', 'Suspended', 'Active');
 CREATE TYPE report_state AS ENUM ('Accepted', 'Deleted', 'SuspendedUser', 'BanedUser', 'NotAnswered');
 
-CREATE TABLE "user"(
+CREATE TABLE "users"(
     id SERIAL PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE category(
 );
 
 CREATE TABLE follow_category(
-    user_id INTEGER NOT NULL REFERENCES "user"(id),
+    user_id INTEGER NOT NULL REFERENCES "users"(id),
     category_id INTEGER NOT NULL REFERENCES category(id),
     PRIMARY KEY (user_id, category_id)
 );
@@ -69,7 +69,7 @@ CREATE TABLE source(
 CREATE TABLE post(
     id SERIAL PRIMARY KEY,
     "datetime" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-    user_id INTEGER REFERENCES "user"(id) NOT NULL,
+    user_id INTEGER REFERENCES "users"(id) NOT NULL,
     title TEXT NOT NULL,
     header TEXT NOT NULL,
     body TEXT NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE post(
 );
 
 CREATE TABLE saved_post(
-    user_id INTEGER REFERENCES "user" (id),
+    user_id INTEGER REFERENCES "users" (id),
     post_id INTEGER REFERENCES post (id),
     PRIMARY KEY (user_id, post_id)
 );
@@ -93,14 +93,14 @@ CREATE TABLE post_source(
 
 CREATE TABLE post_vote (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES "user" (id),
+    user_id INTEGER REFERENCES "users" (id),
     post_id INTEGER REFERENCES post (id),
     UNIQUE(user_id,post_id),
     is_up BOOLEAN NOT NULL
 );
 CREATE TABLE comment (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES "user" (id),
+    user_id INTEGER REFERENCES "users" (id),
     post_id INTEGER REFERENCES post (id) ON DELETE CASCADE,
     body text,
     "datetime" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
@@ -109,19 +109,19 @@ CREATE TABLE comment (
 
 CREATE TABLE report (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES "user" (id),
+    user_id INTEGER REFERENCES "users" (id),
     date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     state report_state NOT NULL,
     comment_id INTEGER REFERENCES comment(id) ON DELETE CASCADE,
     post_id INTEGER REFERENCES post(id) ON DELETE CASCADE,
-    admin_id INTEGER REFERENCES "user"(id) ON DELETE CASCADE,
+    admin_id INTEGER REFERENCES "users"(id) ON DELETE CASCADE,
     UNIQUE(user_id,comment_id),
     UNIQUE(user_id,post_id)
 );
 
 CREATE TABLE follow(
-    follower INTEGER NOT NULL REFERENCES "user"(id),
-    followed INTEGER NOT NULL REFERENCES "user"(id),
+    follower INTEGER NOT NULL REFERENCES "users"(id),
+    followed INTEGER NOT NULL REFERENCES "users"(id),
     PRIMARY KEY (follower, followed)
 );
 
@@ -130,10 +130,10 @@ CREATE TABLE "notification"(
   id SERIAL PRIMARY KEY,
   "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
   is_read BOOLEAN,
-  receiver INTEGER REFERENCES "user"(id),
+  receiver INTEGER REFERENCES "users"(id),
   vote_id INTEGER REFERENCES post_vote(id), 
   comment_id INTEGER REFERENCES comment(id),
-  follower_id INTEGER REFERENCES "user"(id)
+  follower_id INTEGER REFERENCES "users"(id)
 );
 
 
@@ -156,7 +156,7 @@ USING GIST ((setweight(to_tsvector('english', title),'A') ||
        setweight(to_tsvector('english', body), 'C')));
 
 
-CREATE INDEX user_search_index ON "user"
+CREATE INDEX user_search_index ON "users"
 USING GIST ((setweight(to_tsvector('english', username),'A') || 
        setweight(to_tsvector('english', name), 'B')));
 
@@ -267,7 +267,7 @@ CREATE TRIGGER comment_on_post
 DROP EXTENSION IF EXISTS pgcrypto;
 CREATE EXTENSION pgcrypto;
 
-INSERT INTO "user" (username,password,name,email,state,is_admin) VALUES 
+INSERT INTO "users" (username,password,name,email,state,is_admin) VALUES 
 ('claramoreirag',crypt('LIA7AJZ0YL', gen_salt('bf')),'Clara Moreira','clara.moreira@gmail.com','Active',TRUE),
 ('leonormgomes',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Leonor Gomes','leonor.gomes@gmail.com','Active',TRUE),
 ('marianaramos',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Mariana Ramos','mariana.ramos@gmail.com','Active',TRUE),
@@ -292,14 +292,14 @@ INSERT INTO "source" (name) VALUES ('https://sustainablemobility.iclei.org/upcom
 ('https://www.nationalacademies.org/news/2021/03/new-report-says-u-s-should-cautiously-pursue-solar-geoengineering-research-to-better-understand-options-for-responding-to-climate-change-risks');
 
 INSERT INTO "post" (user_id,title,header,body,category) VALUES 
-(14,'Creating liveable cities through low-carbon freight','Freight transport and emissions are increasing rapidly and, until now, cities were not equipped to handle the associated challenges. Only about 21 percent of the Nationally Determined Contributions (NDCs) highlighting transport refers to freight transport. Nonetheless, general understanding and awareness on sustainable freight have grown exponentially in recent years.',
+(4,'Creating liveable cities through low-carbon freight','Freight transport and emissions are increasing rapidly and, until now, cities were not equipped to handle the associated challenges. Only about 21 percent of the Nationally Determined Contributions (NDCs) highlighting transport refers to freight transport. Nonetheless, general understanding and awareness on sustainable freight have grown exponentially in recent years.',
 '<body><p>As governments set ambitious targets to decarbonize transport, it is critical that they use data to evaluate and make science-based decisions. However, there exists a range of common urban freight data issues.
 <br>Calculating emissions is the first step. Through the EcoLogistics project, nine cities have used the ICLEI EcoLogistics Self-monitoring Tool to compile and evaluate the data on the urban freight activities taking place in their jurisdictions. The data compiled forms a baseline for these cities to take informed, effective action to curb freight emissions – contributing to a sustainable low-carbon future.
 <br>These cities are some of the first to compile this body of data on urban freight activities. Here is what they found and what peer cities can learn from their experience:
 <br>Air quality and emission reduction: Bottom-line incentives to tackle the urban freight sector
 <br>Most cities are confronted with problems of air- and noise-pollution caused by road traffic. Heavy-duty trucks consume 7.3 percent of global energy-related emissions and will almost double according to the International Energy Agency. Reducing emissions from these vehicles presents an opportunity to slow the rate of near-term climate change and to achieve substantial public health benefits.
 <br>Studies of the Metropolitan Region of the Aburrá Valley (AMVA), which is composed of 10 municipalities and is the second most populous metropolitan area in Colombia, show that motorized vehicles were responsible for 81 percent of PM2.5  emissions in 2015; trucks were responsible for 64 percent of PM2.5, despite comprising only 4 percent of total vehicles in the region. In response, AMVA’s Comprehensive Air Quality Management Plan set out a renewal program for freight vehicles to phase in ultra-low and zero-emission vehicles.</p></body>',1),
-(14,'Betting on Multilevel Climate Action for COP26 in Glasgow','On 17-18 March 2021, the Ministry of Environment of Japan will convene the Zero Carbon City International Forum, which has been recognized as 2021’s first global dialogue to advance multilevel action under the Paris Agreement. This dialogue is convened in collaboration with the UN Climate Change Secretariat (UNFCCC), the Institute for Global Environmental Strategies (IGES), and ICLEI – Local Governments for Sustainability.','<body><p>The event comes at a critical moment in the road to COP26. The current state of the global climate agenda is relatively opaque. Despite an urgent call by the UN Secretary-General Antonio Guterres to kick off virtual negotiations, preparations for COP26 in Glasgow are still in limbo.
+(5,'Betting on Multilevel Climate Action for COP26 in Glasgow','On 17-18 March 2021, the Ministry of Environment of Japan will convene the Zero Carbon City International Forum, which has been recognized as 2021’s first global dialogue to advance multilevel action under the Paris Agreement. This dialogue is convened in collaboration with the UN Climate Change Secretariat (UNFCCC), the Institute for Global Environmental Strategies (IGES), and ICLEI – Local Governments for Sustainability.','<body><p>The event comes at a critical moment in the road to COP26. The current state of the global climate agenda is relatively opaque. Despite an urgent call by the UN Secretary-General Antonio Guterres to kick off virtual negotiations, preparations for COP26 in Glasgow are still in limbo.
 <br>And more dire news continues to roll in from the UN’s own reports. According to a recently-launched report by the UN Climate Change, the revised Nationally Determined Contributions (NDCs) would reduce less than 1 percent of global greenhouse gas emissions in comparison to the 45-50 percent needed by 2030. The UN Environment’s flagship report “Making Peace with Nature” focuses on the dire need to address the interconnected climate, biodiversity and pollution emergencies.
 <br>However, in the face of these challenges, we are seeing increased conversations on how to implement multilevel climate action. At the heart of these conversations are national and global institutions that are engaging with and empowering local and regional governments. Through this work, they are setting a precedent for what collaborative, multilevel climate action could become.
 <br>So, the Zero Carbon City International Forum in Japan is an important opportunity to refresh and elevate the vision and achievements of the Local Governments and Municipal Authorities (LGMA) Constituency to the UNFCCC towards COP26, especially the 7-pillar vision for a “Multilevel Action COP”</p></body>',2),
