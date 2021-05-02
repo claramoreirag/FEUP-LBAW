@@ -9,7 +9,7 @@
         </div>
         <div class="row">
             <div class="col-1 " style="margin-right:1rem;">
-                <img class="" src="../images/profilepic1.jpg" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
+                <img class="" src="https://expertphotography.com/wp-content/uploads/2018/10/cool-profile-pictures-retouching-1.jpg" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
             </div>
             <div class="col-10">
                 <h4 class="card-title text-primary">{{$post->title}}</h4>
@@ -27,7 +27,7 @@
                     <br>
                 </div>
                 <div class="col-md-4 col-xs-6 post-pic">
-                    <img class="img-fluid" src="../images/news1.jpg" alt="template pic">
+                    <img class="img-fluid" src="https://images.theconversation.com/files/374780/original/file-20201214-23-1dv2o1f.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip" alt="template pic">
                 </div>
             </div>
 

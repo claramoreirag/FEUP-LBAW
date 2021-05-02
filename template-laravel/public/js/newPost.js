@@ -1,3 +1,3 @@
 function changePage(){
-    location.href = "../pages/myProfilePage.php";
+    location.href = "authuserfeed";
 }

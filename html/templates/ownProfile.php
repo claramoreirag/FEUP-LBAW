@@ -6,6 +6,7 @@ include_once('../templates/editProfile.php');
   <link rel="stylesheet" href="../style/bootstrap.css">
 </head>
 
+
 <body>
   <div class="row">
     <div class="col-lg-1 md-0"></div>
@@ -51,7 +52,7 @@ include_once('../templates/editProfile.php');
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Edit Profile
           </button>
-          <a class="btn btn-primary mt-2 ml-1 px-3" href="../pages/newPostPage.php">New Post</a>
+          <a class="btn btn-primary mt-2 ml-1 px-3" href="/newpost">New Post</a>
         </div>
         <div class="col-2"></div>
         <!--

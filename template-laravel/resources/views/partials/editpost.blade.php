@@ -35,14 +35,18 @@
                     </div>
                 </div>
                 <div class="row my-4 mx-1">
-                    <form method="post">
+                   
                         <textarea id="mytextarea" name="body">{{$post->body}}</textarea>
-                    </form>
+                   
                 </div>
                 <div class="form-group source-section">
+                    <label for="source">News Source</label>
+                    <input type="source" class="form-control" id="source" placeholder="Where did you get this content?">
+                    <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
+                </div>
+                {{-- <div class="form-group source-section">
                     <label for="inputNewsSource">News Source</label>
-                    {{-- <input type="source" class="form-control" id="inputNewsSource" name = "source" placeholder="{{$post->sources()[0]}}">
-                    <!-- N faço a ideia se é assim --> --}}
+                 
                     <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
                     <div class="container">
                         <div class="row">
@@ -58,8 +62,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <button onclick="changePage()" type="submit" class="btn-sm btn-primary" formaction="../pages/homepage.php">Publish</button>
+                </div> --}}
+                <button  type="submit" method="put" class="btn-sm btn-primary" formaction="{{ route('editpost', ['post_id'=>$post->id])}}">Publish</button>
             </form>
             <form action="/post/{{$post->id}}" method="post">
                 <!-- <a class="btn-sm btn-danger" href="/post/{{$post->id}}">DeletePost</a> -->

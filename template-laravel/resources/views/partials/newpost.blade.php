@@ -12,48 +12,43 @@
 </head>
 
 
-
   <div class="container" id="fullNewsForm" >
       <div class="row mt-3 pb-5 mb-2">
           <div class="col-md-1 col-xs-0"></div>
           <div class="col-md-10 col-xs-12 newsFormContent">
 
-              <form>
+              <form action = "{{ route('create_new_post') }}" method="POST">
+              {{ csrf_field() }}
                   <div class="title-section">
-                      <label for="inputNewsTitle">News Title</label>
-                      <input type="title" class="form-control" id="inputNewsTitle" placeholder="This is a cool title">
+                      <label for="title">News Title</label>
+                      <input type="title" class="form-control" id="title" placeholder="This is a cool title">
                       <small id="titleHelp" class="form-text text-muted">Tip: Try a catchy name</small>
                   </div>
                   <div class="row ">
                       <div class="col-md-6 col-xs-12 header-section mt-3">
-                          <label for="inputNewsHeader">Header</label>
-                          <input type="header" class="form-control" id="inputNewsHeader" placeholder="This is where you summarize your post">
+                          <label for="header">Header</label>
+                          <input type="header" class="form-control" id="header" placeholder="This is where you summarize your post">
                       </div>
                       <div class="col-md-6 col-xs-12 tags-section mt-5">
                           <select class="form-select" aria-label="Topic">
-                              <option selected>Select the topic here</option>
-                              <option value="1">Water</option>
-                              <option value="2">Climate Change</option>
-                              <option value="3">Pollution</option>
-                              <option value="4">Biodiversity</option>
-                              <option value="5">Ecossystem</option>
-                              <option value="6">Human Rights</option>
-                              <option value="7">Women's Empowerment</option>
-                              <option value="8">Transports</option>
+                          <option selected>Select the topic here</option>
+                                @foreach($categories as $cat)
+                                        <option value={{$cat->id}}>{{$cat->name}}</option>
+                                @endforeach
                           </select>
                       </div>
                   </div>
                   <div class="row my-4 mx-1">
-                      <form method="post">
+                      {{-- <form method="post"> --}}
                           <textarea id="mytextarea">Write your post here!</textarea>
-                      </form>
+                      {{-- </form> --}}
                   </div>
                   <div class="form-group source-section">
-                      <label for="inputNewsSource">News Source</label>
-                      <input type="source" class="form-control" id="inputNewsSource" placeholder="Where did you get this content?">
+                      <label for="source">News Source</label>
+                      <input type="source" class="form-control" id="source" placeholder="Where did you get this content?">
                       <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
                   </div>
-                  <button onclick="changePage()" type="submit" class="btn btn-primary" formaction="../pages/homepage.php">Publish</button>
+                  <button type="submit" class="btn btn-primary" formaction="{{ route('create_new_post') }}">Publish</button>
               </form>
           </div>
           <div class="col-md-1 col-xs-0"></div>

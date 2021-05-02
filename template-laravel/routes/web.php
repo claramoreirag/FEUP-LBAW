@@ -90,9 +90,8 @@ Route::get('/otherprofile/{user_id}', 'Auth\OtherProfileController@switchPosts')
 // Search
 Route::get('/search', 'SearchController@search_results')->name('search');
 
-
-Route::get('/newpost', 'PostController@create')->name('new_post');
-Route::post('/newpost', 'PostController@store');
+Route::get('/newpost', 'PostController@showNewPost');
+Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post');
  
 Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');
 Route::get('homepage','FeedController@show')->name('homepage');
@@ -104,7 +103,7 @@ Route::get('homepage','FeedController@show')->name('homepage');
 Route::get('/posts/{id}', 'PostController@show')->where(['id' => '[0-9]+']);
 Route::delete('/post/{post_id}', 'PostController@delete');
 Route::get('/post/{post_id}/edit', 'PostController@showEdit');
-Route::put('/post/{post_id}', 'PostController@edit');
+Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
 Route::post('/post/{post_id}/vote', 'PostController@vote');
 Route::delete('/post/{post_id}/vote', 'PostController@remove_vote');
 Route::post('/post/{post_id}/report', 'PostController@report');

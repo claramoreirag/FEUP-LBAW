@@ -7,7 +7,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12 d-flex justify-content-center" id="profileImg">
-            <img src="../images/profilepic1.jpg" alt="profile picture">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU" alt="profile picture">
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Edit Profile
           </button>
-          <a class="btn btn-primary mt-2 ml-1 px-3" href="../pages/newPostPage.php">New Post</a>
+          <a class="btn btn-primary mt-2 ml-1 px-3" href="/newpost">New Post</a>
         </div>
         <div class="col-2"></div>
         <!--
