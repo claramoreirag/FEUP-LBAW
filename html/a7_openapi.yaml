@@ -43,10 +43,11 @@ paths:
 # R202: View Post and Comments [/post/{post_id}] 
 # R203: Add Post Form [/new_post] 
 # R204: Add Post Action [/new_post] 
-# R205: Edit Post Action [/post/{post_id}] 
-# R206: Delete Post Action [/post/{post_id}]  
-# R207: Report Post Action [/post/{post_id}/report] 
-# R208: Search Results Page [/search/{query}] 
+# R205: Edit Post Form [/post/{post_id}/edit] 
+# R206: Edit Post Action [/post/{post_id}] 
+# R207: Delete Post Action [/post/{post_id}]  
+# R208: Report Post Action [/post/{post_id}/report] 
+# R209: Search Results Page [/search/{query}] 
 
 # --------------- Comments: ----------------------
 # R301: Add Comment Action [/post/{post_id}/comment] 
@@ -300,6 +301,8 @@ paths:
           description: 'Ok. Show [UI01](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/er#ui01)'
 
 
+
+
   /post/{post_id}:
     get:
       operationId: R202
@@ -318,8 +321,8 @@ paths:
         '200':
           description: 'Ok. Show [UI05](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/er#ui05)'
     put:
-      operationId: R205
-      summary: 'R205: Edit Post Action'
+      operationId: R206
+      summary: 'R206: Edit Post Action'
       description: 'Processes the edited post submission. Access: OWN'
       tags:
         - 'M02: Posts, Feed and Search'
@@ -371,8 +374,8 @@ paths:
                   value: '/user/{user_id}'
   
     delete:
-        operationId: R206
-        summary: 'R206: Delete Post Action'
+        operationId: R207
+        summary: 'R207: Delete Post Action'
         description: 'This web resource allows a user to delete a post. Access: OWN'
         tags:
           - 'M02: Posts, Feed and Search'
@@ -397,6 +400,23 @@ paths:
                     description: 'Failed delete post. Redirect to users profile.'
                     value: '/user/{user_id}'
 
+  /post/{post_id}/edit:
+     get:
+      operationId: R208
+      summary: 'R208: This resource shows the post edit page. OWN'
+      description: 'This resource shows the post edit page.'
+      tags: 
+        - 'M02: Posts, Feed and Search'
+      parameters:
+        - in: path
+          name: post_id
+          description: 'Post primary key of the post we want to see'
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'Ok. Show [UI10](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154/-/wikis/er#ui10)'
 
 
   /new_post:
@@ -457,8 +477,8 @@ paths:
 
   /post/{post_id}/report:
     post:
-      operationId: R207
-      summary: 'R207: Report Post Action'
+      operationId: R208
+      summary: 'R208: Report Post Action'
       description: 'This web resource allows a user to report a post. Access: USR'
       tags:
         - 'M02: Posts, Feed and Search'
@@ -486,8 +506,8 @@ paths:
   
   /search:
     get:
-      operationId: R208
-      summary: 'R208: Search News and Users'
+      operationId: R209
+      summary: 'R209: Search News and Users'
       description: 'This web resource get the results of a query.'
       tags: 
         - 'M02: Posts, Feed and Search'

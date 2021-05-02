@@ -57,8 +57,8 @@
                         @if (Auth::check())
 
                         <a class="log nav-item nav-link text-white notification" href="#"><i class="fas fa-bell"></i> </a>
-                        <a class="log nav-item nav-link d-none d-md-block text-white" href="/ownprofile/{{Auth::id()}}">{{ Auth::user()->username }}</a>
-                        <a class="log nav-item nav-link d-md-none text-white" href="/ownprofile/{{Auth::id()}}"> My Profile</a>
+                        <a class="log nav-item nav-link d-none d-md-block text-white" href="/user/{{Auth::id()}}">{{ Auth::user()->username }}</a>
+                        <a class="log nav-item nav-link d-md-none text-white" href="/user/{{Auth::id()}}"> My Profile</a>
                         <span class="d-none d-md-block separator text-white"> | </span>
                         <a class="log nav-item nav-link text-white" href="{{ url('/logout') }}"> Sign Out</a>
                         @endif
