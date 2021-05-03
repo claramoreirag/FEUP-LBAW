@@ -8,7 +8,7 @@
             </div>
             <div class="row">
                 <div class="col-1 " style="margin-right:1rem;">
-                    <img class="" src="../images/profilepic1.jpg" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
+                    <img class="" src="https://writestylesonline.com/wp-content/uploads/2016/08/Follow-These-Steps-for-a-Flawless-Professional-Profile-Picture.jpg" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
                 </div>
                 <div class="col-10">
                     <h4 class="card-title text-primary">{{$post->title}}</h4>
@@ -26,7 +26,7 @@
                         <br>
                     </div>
                     <div class="col-md-4 col-xs-6 post-pic">
-                        <img class="img-fluid" src="../images/news1.jpg" alt="template pic">
+                      <!--  <img class="img-fluid" src="" alt="template pic">-->
                     </div>
                 </div>
 
