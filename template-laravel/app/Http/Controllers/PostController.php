@@ -63,10 +63,8 @@ class PostController extends Controller
      public function storeNewPost(Request $request)
      {
       $post = new Post();
+      $src = new Source();
 
-      $input = $request->all();
-
-     
 
       //$this->authorize('storeNewPost', $post);
   
@@ -91,10 +89,10 @@ class PostController extends Controller
       $post->header = $request->input('header');
       $post->body = $request->input('mytextarea');
       $post->category = $request->input('categories');
-      $post->source=$request->input('source');
+      $post->source=$src;
       $post->save();
 
-      return redirect('/ownprofile/{{Auth::id()}}');
+      return redirect('/user/{{Auth::id()}}');
      }
 
     // public function delete(Request $request, $id)

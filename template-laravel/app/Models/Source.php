@@ -21,4 +21,11 @@ class Source extends Model
     public function posts(){
         return $this->hasMany('App\Models\PostSource');
     }
+
+    protected function create(array $data)
+    {
+        return Source::create([
+            'name' => $data['name'],
+        ]);
+    }
 }
