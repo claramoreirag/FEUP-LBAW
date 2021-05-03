@@ -21,7 +21,7 @@
 
                 <div class="col-lg-8 col-md-9 col-sm-12 mb-2">
                     <p class="mb-0">{{$post->header}}</p>
-                    <a href="/posts/{{$post->id}}" class="read-more">Read More</a>
+                    <a href="/post/{{$post->id}}" class="read-more">Read More</a>
                     <br>
                 </div>
                 <div class="col-md-4 col-xs-6 post-pic">
