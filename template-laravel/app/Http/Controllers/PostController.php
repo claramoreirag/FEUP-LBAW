@@ -63,47 +63,29 @@ class PostController extends Controller
      public function storeNewPost(Request $request)
      {
       $post = new Post();
-      $src = new Source();
-
-
+      //$src = Source().create($request->input('source'));
       //$this->authorize('storeNewPost', $post);
-  
+      
       $validatedData = [];
-
-      /*
-      // Request validation
-      if ($post->type == 1) {
-          // Post type has title
-          $validatedData = $request->validate([
-            'title' => 'required|min:15',
-            'body' => 'required|min:19',
-        ]);
-      } else {
-        $validatedData = $request->validate([
-          'body' => 'required|min:19',
+      
+      $validatedData = $request->validate([
+          'title' => 'required|min:10',
+          'header' => 'required|min:10',
+          'body' => 'required|min:10',
       ]);
-      }*/
 
-      $post->user_id = Auth::user()->id;
-      $post->title = $request->input('title');
+      $post->user_id = Auth::id();
+      $post->title=$request->input('title');
       $post->header = $request->input('header');
-      $post->body = $request->input('mytextarea');
+      $post->body = $request->input('body');
       $post->category = $request->input('categories');
-      $post->source=$src;
+     // $post->source = $src;
       $post->save();
 
-      return redirect('/user/{{Auth::id()}}');
+      return redirect('/user/'.Auth::id());
      }
 
-    // public function delete(Request $request, $id)
-    // {
-    //   $card = Card::find($id);
-
-    //   $this->authorize('delete', $card);
-    //   $card->delete();
-
-    //   return $card;
-    // }
+  
 
 
     public static function getPost($id) {
