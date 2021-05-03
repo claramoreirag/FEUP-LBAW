@@ -101,12 +101,16 @@ class PostController extends Controller
       ]);
       }*/
 
+      $input = $request->all();
+      print_r($input);
+      if ($request->has('title')) {echo('ahhhhhhhhh');}
       $post->user_id = Auth::user()->id;
-      $post->title = $request->input('title');
-      $post->header = $request->input('header');
-      $post->body = $request->input('mytextarea');
-      $post->category = $request->input('categories');
-      $post->source=$src;
+      $post->title = $request->get('title', 'this is a title');
+      $post->header = $request->get('header', ' this is an header');
+      $post->body = $request->get('mytextarea', 'this is the body');
+      $post->category = $request->get('categories', '1');
+
+     // $post->source=$src;
       $post->save();
 
       return redirect('/user/{{Auth::id()}}');
