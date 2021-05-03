@@ -26,9 +26,9 @@
                     <a href="/post/{{$post->id}}" class="read-more">Read More</a>
                     <br>
                 </div>
-                <div class="col-md-4 col-xs-6 post-pic">
+                {{-- <div class="col-md-4 col-xs-6 post-pic">
                     <img class="img-fluid" src="https://images.theconversation.com/files/374780/original/file-20201214-23-1dv2o1f.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip" alt="template pic">
-                </div>
+                </div> --}}
             </div>
 
         </div>
