@@ -13,21 +13,22 @@
     <div class="row mt-3 pb-5 mb-2">
         <div class="col-md-1 col-xs-0"></div>
         <div class="col-md-10 col-xs-12 newsFormContent">
-
-            <form action="/post/{{$post->id}}" method="PUT">
+            {{ method_field('PUT') }}
+            <form action="/post/{{$post->id}}" method="Post">
+                <input name="_method" type="hidden" value="PUT">
                 <div class="title-section">
                     <label for="inputNewsTitle">News Title</label>
-                    <input type="title" class="form-control" name="title" id="inputNewsTitle" placeholder={{$post->title}} value={{$post->title}}>
+                    <input type="text-box" class="form-control" name="title" id="inputNewsTitle" placeholder={{$post->title}} value="{{$post->title}}">
                     <small id="titleHelp" class="form-text text-muted">Tip: Try a catchy name</small>
                 </div>
                 <div class="row ">
                     <div class="col-md-6 col-xs-12 header-section mt-3">
                         <label for="inputNewsHeader">Header</label>
-                        <input type="header" class="form-control" name="header" id="inputNewsHeader" placeholder="{{$post->header}}">
+                        <input type="header" class="form-control" name="header" id="inputNewsHeader" placeholder="{{$post->header}}" value="{{$post->header}}">
                     </div>
                     <div class="col-md-6 col-xs-12 tags-section mt-5">
                         <select class="form-select" aria-label="Topic" name="categories">
-                            <option selected>Select the topic here</option>
+                           
                             @foreach($categories as $cat)
                             <option value={{$cat->id}}>{{$cat->name}}</option>
                             @endforeach
@@ -36,8 +37,8 @@
                 </div>
                 <div class="row my-4 mx-1">
                    
-                        <textarea id="mytextarea" name="body">{{$post->body}}</textarea>
-                   
+                        <textarea id="mytextarea"   name="body">{{$post->body}}</textarea>
+                       
                 </div>
                 <div class="form-group source-section">
                     <label for="source">News Source</label>
@@ -63,11 +64,13 @@
                         </div>
                     </div>
                 </div> --}}
-                <button  type="submit" method="put" class="btn-sm btn-primary" formaction="{{ route('editpost', ['post_id'=>$post->id])}}">Publish</button>
+                <input  type="submit" class="btn-sm btn-primary" value="Publish" formaction="{{ route('editpost', ['post_id'=>$post->id])}}">
+                @method('put')
+                @csrf
             </form>
             <form action="/post/{{$post->id}}" method="post">
                 <!-- <a class="btn-sm btn-danger" href="/post/{{$post->id}}">DeletePost</a> -->
-                <input class="btn-sm btn-danger" type="submit" value="Delete" >Delete Post</input>
+                <input class="btn-sm btn-danger" type="submit" value="Delete" >
                 @method('delete')
                 @csrf
             </form>
@@ -75,4 +78,5 @@
         <div class="col-md-1 col-xs-0"></div>
     </div>
 </div>
-<script defer type="text/javascript" src="{{ URL::asset('js/sources.js') }}"></script>
+{{-- <script defer type="text/javascript" src="{{ URL::asset('js/sources.js') }}"></script> --}}
+{{-- <script defer type="text/javascript" src="{{ URL::asset('js/tinymce.js') }}"></script> --}}

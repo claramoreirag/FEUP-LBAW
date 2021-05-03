@@ -40,23 +40,6 @@ class PostController extends Controller
     $posts = Post::all();
   }
 
-  // /**
-  //  * Creates a new card.
-  //  *
-  //  * @return Card The card created.
-  //  */
-  // public function create(Request $request)
-  // {
-  //   $card = new Card();
-
-  //   $this->authorize('create', $card);
-
-  //   $card->name = $request->input('name');
-  //   $card->user_id = Auth::user()->id;
-  //   $card->save();
-
-  //   return $card;
-  // }
 
   public function delete(Request $request, $id)
   {
@@ -188,8 +171,15 @@ class PostController extends Controller
       return view('pages.editpost', ['post' => $post,'categories'=>$categories]); //não é pages.post, é o quê?
     }
 
-    public function edit($id, $request){
-      $post= Item::find($id);
+    public function edit(Request $request,$id){
+      var_dump($request->input('title'));
+      $post= Post::find($id);
+      $post->title=$request->input('title');
+      $post->header = $request->input('header');
+      $post->body = $request->input('body');
+      $post->category = $request->input('categories');
+      $post->save();
+      return redirect('/ownprofile/'.Auth::id());
     }
 
 

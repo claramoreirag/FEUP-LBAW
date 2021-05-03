@@ -100,10 +100,10 @@ Route::get('homepage','FeedController@show')->name('homepage');
 
 
 // Post 
-Route::get('/posts/{id}', 'PostController@show')->where(['id' => '[0-9]+']);
+Route::get('/post/{id}', 'PostController@show')->where(['id' => '[0-9]+']);
 Route::delete('/post/{post_id}', 'PostController@delete');
 Route::get('/post/{post_id}/edit', 'PostController@showEdit');
-Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
+Route::put('/post/{post_id}/', 'PostController@edit')->name('editpost');
 Route::post('/post/{post_id}/vote', 'PostController@vote');
 Route::delete('/post/{post_id}/vote', 'PostController@remove_vote');
 Route::post('/post/{post_id}/report', 'PostController@report');
