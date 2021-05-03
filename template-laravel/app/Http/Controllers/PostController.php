@@ -170,14 +170,20 @@ class PostController extends Controller
     }
 
     public function edit(Request $request,$id){
-      var_dump($request->input('title'));
+      
       $post= Post::find($id);
       $post->title=$request->input('title');
       $post->header = $request->input('header');
       $post->body = $request->input('body');
       $post->category = $request->input('categories');
       $post->save();
-      return redirect('/ownprofile/'.Auth::id());
+      var_dump($request->input('source'));
+      if($request->input('source')!=""){
+        $src=new Source();
+        $src->name=$request->input('source');
+        $src->save();
+      }
+      return redirect('/user/'.Auth::id());
     }
 
 

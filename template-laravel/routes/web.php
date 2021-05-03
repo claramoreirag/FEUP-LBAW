@@ -15,7 +15,7 @@ Route::get('/','FeedController@show')->name('homepage');
 
 
 //Homepage
-Route::get('homepage',function(){
+Route::get('home',function(){
     return view('pages.homepage');
 });
 
@@ -73,7 +73,7 @@ Route::get('/user/{user_id}', 'UserController@show')->name('profile');
 
 //Feed
 Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');
-Route::get('homepage','FeedController@show')->name('homepage');
+Route::get('home','FeedController@show')->name('home');
 
 // Post 
 Route::get('/post/{id}', 'PostController@show')->where(['id' => '[0-9]+']);
