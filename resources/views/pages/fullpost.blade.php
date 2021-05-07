@@ -8,6 +8,6 @@
 @endif
 
 @section('content')
-    @include('partials.fullPost',[$post])
+    @include('partials.fullpost',[$post])
 @endsection
 

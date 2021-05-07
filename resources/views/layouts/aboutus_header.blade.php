@@ -44,7 +44,7 @@
                 <div class="col-10 ">
                     <div class="row justify-content-between">
                         <div class="col-4 ">
-                            <h4><a class="row text-white nav-title mt-2" id="title" href="../pages/homepage.php">GreeNews</a></h4>
+                            <h4><a class="row text-white nav-title mt-2" id="title"  href="{{ url('/authuserfeed') }}">GreeNews</a></h4>
 
                                     </div>
                                     <div class="col-md-1 px-0">
@@ -52,17 +52,24 @@
                                             <span class="navbar-toggler-icon"></span>
                                     </div>
 
-
                                     <div class="col-md-5  collapse navbar-collapse justify-content-end" id="navbarNav">
-
-                                    <a class="text-white log nav-item nav-link" href="{{ url('/login') }}">Log In</a>
+                                        @if (Auth::check())
+                
+                                        <a class="log nav-item nav-link text-white notification" href="#"><i class="fas fa-bell"></i> </a>
+                                        <a class="log nav-item nav-link d-none d-md-block text-white" href="/user/{{Auth::id()}}">{{ Auth::user()->username }}</a>
+                                        <a class="log nav-item nav-link d-md-none text-white" href="/user/{{Auth::id()}}"> My Profile</a>
+                                        <span class="d-none d-md-block separator text-white"> | </span>
+                                        <a class="log nav-item nav-link text-white" href="{{ url('/logout') }}"> Sign Out</a>
+                                        @endif
+                
+                                        @if (!Auth::check())
+                                        <a class="text-white log nav-item nav-link" href="{{ url('/login') }}">Log In</a>
                                         <span class="text-white d-none d-md-block separator"> | </span>
                                         <a class="text-white log nav-item nav-link " href="{{ url('/register') }}"> Sign Up</a>
-
-
+                                        @endif
+                
                                     </div>
-
-                                </div>
+                              
 
 
                             </div>

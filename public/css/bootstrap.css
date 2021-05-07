@@ -10839,4 +10839,8 @@ div.hello{
  
  }
  
+
+ .form-check input{
+   color: var(--primary)!important;
+ }
  
