@@ -20,6 +20,11 @@
                     <label for="inputNewsTitle">News Title</label>
                     <input type="text-box" class="form-control" name="title" id="inputNewsTitle" placeholder="This is a cool title">
                     <small id="titleHelp" class="form-text text-muted">Tip: Try a catchy name</small>
+                    @if ($errors->has('title'))
+                        <span class="error">
+                            {{ $errors->first('email') }}
+                        </span>
+                     @endif
                 </div>
                 <div class="row ">
                     <div class="col-md-6 col-xs-12 header-section mt-3">
@@ -40,10 +45,26 @@
                         <textarea id="mytextarea"   name="body">Write your post here!</textarea>
                        
                 </div>
-                <div class="form-group source-section">
+                {{-- <div class="form-group source-section">
                     <label for="source">News Source</label>
                     <input type="source" class="form-control" name="source" id="source" placeholder="Where did you get this content?">
                     <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
+                </div> --}}
+                <div class="form-group source-section">
+                    <label for="inputNewsSource">News Source</label>
+                 
+                    <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
+                    <div class="container">
+                        <div class="row">
+                            <input type="hidden" name="count" value="1" />
+                            <div class="control-group" id="fields">
+                                <div class="controls" id="profs">
+                                        <div id="source"><input autocomplete="off" class=" form-text form-control" id="source1" name="source[]" type="text" placeholder="Type something" data-items="8" /><button id="b1" class=" py-0 px-1 btn btn-primary add-more" type="button">+</button></div>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
       
                 <input  type="submit" class="btn btn-primary" value="Publish" formaction="{{ route('create_new_post') }}">
@@ -54,5 +75,5 @@
         <div class="col-md-1 col-xs-0"></div>
     </div>
 </div>
-{{-- <script defer type="text/javascript" src="{{ URL::asset('js/sources.js') }}"></script> --}}
+<script defer type="text/javascript" src="{{ URL::asset('js/sources.js') }}"></script>
 {{-- <script defer type="text/javascript" src="{{ URL::asset('js/tinymce.js') }}"></script> --}}

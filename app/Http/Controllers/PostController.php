@@ -71,7 +71,7 @@ class PostController extends Controller
       $validatedData = [];
       
       $validatedData = $request->validate([
-          'title' => 'required|min:10',
+          'title' => 'required|min:5',
           'header' => 'required|min:10',
           'body' => 'required|min:10',
       ]);
@@ -81,10 +81,11 @@ class PostController extends Controller
       $post->header = $request->input('header');
       $post->body = $request->input('body');
       $post->category = $request->input('categories');
-      var_dump($request->input('source'));
-      $source=SourceController::create($request->input('source'));
-      $post->source = $source->id;
+    
       $post->save();
+      foreach($request->input('source') as $s){
+        if($s!=null)SourceController::create($s,$post->id);
+      }
 
       return redirect('/user/'.Auth::id());
      }
@@ -163,12 +164,11 @@ class PostController extends Controller
       $post->body = $request->input('body');
       $post->category = $request->input('categories');
       $post->save();
-      var_dump($request->input('source'));
-      if($request->input('source')!=""){
-        $src=new Source();
-        $src->name=$request->input('source');
-        $src->save();
+     
+      foreach($request->input('source') as $s){
+          if($s!=null)SourceController::create($s,$id);
       }
+      
       return redirect('/user/'.Auth::id());
     }
 

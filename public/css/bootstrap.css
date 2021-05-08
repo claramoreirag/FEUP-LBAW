@@ -10625,6 +10625,10 @@ div.hello{
    font-size: larger;
  }
  
+
+ .error{
+   color: var(--secondary)!important;
+ }
  .share-comments-btn {
    color:white;
    font-weight: 800;

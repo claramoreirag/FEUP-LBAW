@@ -33,7 +33,7 @@
                             @endif
                         </div>
 
-                        <button  type="submit" class="btn btn-success">Login</button>
+                        <button  type="submit" class="btn btn-primary">Login</button>
                     </form>
                     <div class="row dividing align-items-center">
                         <div class="col-5">
@@ -48,7 +48,7 @@
                     </div>
                     <div class="row login_google">
                         <div class="col">
-                            <button onclick="changePage()" class="btn btn-success">Login with Google</button>
+                            <button onclick="changePage()" class="btn btn-primary">Login with Google</button>
                         </div>
                     </div>
                     <div class="row align-items-center ">
