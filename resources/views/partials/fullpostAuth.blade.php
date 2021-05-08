@@ -1,3 +1,5 @@
+
+
 <div class="container" id="fullpost">
     
     <div class="row">
@@ -39,13 +41,9 @@
                     
                     <h6 class="row"> Story Sources: </h6>
                     <div class="row post-font">  
-                        @php
-                        foreach($post->sources as $s){
-                            @endphp
+                        @foreach($post->sources  as $s)
                             <a href="{{$s}}">{{$s}}</a>
-                        @php
-                        }
-                        @endphp
+                        @endforeach
                     </div>
                     
                     
@@ -66,7 +64,7 @@
                             </div>
                         </div>
                     </div>
+
             </div>
         </div>
     </div>
-</div>

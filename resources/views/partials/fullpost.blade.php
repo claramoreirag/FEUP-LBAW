@@ -41,13 +41,12 @@
                     
                     <h6 class="row"> Story Sources: </h6>
                     <div class="row post-font">  
-                        @php
-                        foreach($post->sources as $s){
-                            @endphp
+                        
+                        @foreach($post->sources  as $s)
+                           
                             <a href="{{$s}}">{{$s}}</a>
-                        @php
-                        }
-                        @endphp
+                        
+                        @endforeach
                     </div>
                     
                     
@@ -55,9 +54,8 @@
                     <div class="row post-interactions justify-content-between mt-4">
                         <div class="col-md-2 col-sm-4 actions"></i>
                             <div class="row ">
-                                <div class="col-4 share action"><i class="fas fa-share-alt"></i></div>
-                                <div class="col-4 save action"><i class="fas fa-bookmark"></i></div>
-                                <div class="col-4 report action"><i class="fas fa-exclamation-circle"></i></div>
+                                <div class="share action"><i class="fas fa-share-alt"></i></div>
+                               
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-3 col-sm-4" style="margin: 0.5rem 0rem; padding:0rem ;">

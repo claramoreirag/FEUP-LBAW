@@ -60,6 +60,8 @@ class PostController extends Controller
       return view('pages.newpost',['categories'=>$categories]);
      }
 
+
+
      public function storeNewPost(Request $request)
      {
       $post = new Post();
@@ -79,7 +81,9 @@ class PostController extends Controller
       $post->header = $request->input('header');
       $post->body = $request->input('body');
       $post->category = $request->input('categories');
-     // $post->source = $src;
+      var_dump($request->input('source'));
+      $source=SourceController::create($request->input('source'));
+      $post->source = $source->id;
       $post->save();
 
       return redirect('/user/'.Auth::id());

@@ -42,28 +42,10 @@
                 </div>
                 <div class="form-group source-section">
                     <label for="source">News Source</label>
-                    <input type="source" class="form-control" id="source" placeholder="Where did you get this content?">
+                    <input type="source" class="form-control" name="source" id="source" placeholder="Where did you get this content?">
                     <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
                 </div>
-                {{-- <div class="form-group source-section">
-                    <label for="inputNewsSource">News Source</label>
-                 
-                    <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
-                    <div class="container">
-                        <div class="row">
-                            <input type="hidden" name="count" value="1" />
-                            <div class="control-group" id="fields">
-                                <div class="controls" id="profs">
-                                    <form class="input-append">
-                                        <div id="field"><input autocomplete="off" class=" form-text form-control" id="field1" name="prof1" type="text" placeholder="Type something" data-items="8" /><button id="b1" class=" py-0 px-1 btn btn-primary add-more" type="button">+</button></div>
-                                    </form>
-                                    <br>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
+      
                 <input  type="submit" class="btn btn-primary" value="Publish" formaction="{{ route('create_new_post') }}">
                 @method('POST')
                 @csrf
