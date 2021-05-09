@@ -70,6 +70,8 @@ Route::post('register', 'Auth\RegisterController@register')->name('register');
 
 // Profile
 Route::get('/user/{user_id}', 'UserController@show')->name('profile');
+Route::get('/settings', 'UserController@showEditProfile');
+Route::put('/settings', 'UserController@editProfile'); 
 
 //Feed
 Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');
