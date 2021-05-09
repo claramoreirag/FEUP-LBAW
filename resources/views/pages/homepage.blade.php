@@ -71,9 +71,15 @@
             <div class="filters" style="position: fixed; ">
                 <h3 class="filters-title form-label ">Search filters</h3>
                 <form>
-                    <legend class="form-label label ">Tags</legend>
-                    <input type="text" class="form-control mb-3" id="tokenfield" value="Energy, Woman's Rights" />
-
+                    <div class="form-group">
+                        <legend class="form-label label text-left">Categories</legend>
+                        @foreach ($categories as $c)
+                            <div class="form-check pl-0">
+                                <input type="checkbox" checked id="{{$c->id}}" name="{{$c->name}}" value="{{$c->id}}">
+                                <label for="{{$c->id}}"> {{$c->name}}</label><br>
+                            </div>
+                        @endforeach
+                    </div>
                     <div class="form-group">
                         <legend class="form-label label order-by">Order By</legend>
 
@@ -113,26 +119,15 @@
                 <div class="row d-lg-none">
                     <header class="filters-title form-label">Search filters</header>
                     <div class="col-sm-4 filter">
-                        <legend class="form-label label">Tags</legend>
-                        <!--<div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="tag1-">
-                            <label class="form-check-label" for="flexCheckDefault">Energy</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="tag2-" checked>
-                            <label class="form-check-label" for="flexCheckChecked">Clean Water</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="tag3-">
-                            <label class="form-check-label" for="flexCheckDefault">Animal Cruelty</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="tag4-" checked>
-                            <label class="form-check-label" for="flexCheckChecked">Research</label>
-                        </div>-->
-
-
-                        <input type="text" class="form-control mb-3" id="tokenfield" value="Ambient, Woman's Rights" />
+                       <div class="form-group">
+                        <legend class="form-label label text-left">Categories</legend>
+                        @foreach ($categories as $c)
+                            <div class="form-check pl-0">
+                                <input type="checkbox" checked id="{{$c->id}}" name="{{$c->name}}" value="{{$c->id}}">
+                                <label for="{{$c->id}}"> {{$c->name}}</label><br>
+                            </div>
+                        @endforeach
+                    </div>
                     </div>
 
                     <div class="col-sm-4 " style="vertical-align:top;">

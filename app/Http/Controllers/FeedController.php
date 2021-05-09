@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Post;
@@ -17,7 +18,7 @@ class FeedController extends Controller {
         $request = new Request();
        // $request->sortBy = "numerical";
         $recentNews = Post::all();
-
+        $categories = Category::all();
         // random tags
        // $randomTags = Tag::inRandomOrder()->limit(8)->get();
         $posts=array();
@@ -29,14 +30,14 @@ class FeedController extends Controller {
         if(Auth::check()){
         return view('pages.authuserfeed',
             [
-             'posts' => $posts
+             'posts' => $posts,'categories'=>$categories
              ]
             );
         }
         else{
             return view('pages.homepage',
             [
-             'posts' => $posts
+             'posts' => $posts,'categories'=>$categories
             ]
             );
         }   
