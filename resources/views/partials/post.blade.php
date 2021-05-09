@@ -19,7 +19,7 @@
         <div class="card-text">
             <div class="row">
 
-                <div class="col-lg-8 col-md-9 col-sm-12 mb-2">
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
                     <p class="mb-0">{{$post->header}}</p>
                     <a href="/post/{{$post->id}}" class="read-more">Read More</a>
                     <br>

@@ -46,9 +46,7 @@ Route::get('ownprofile',function(){
     return view('pages.ownprofile');
 });
 
-Route::get('newpost',function(){
-    return view('pages.newpost');
-});
+
 
 Route::get('otherprofile',function(){
     return view('pages.otherprofile');
@@ -57,6 +55,7 @@ Route::get('otherprofile',function(){
 Route::get('usermanager',function(){
     return view('pages.usermanager');
 });
+
 
 
 //---------------------------------------------------
@@ -83,6 +82,8 @@ Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
 Route::get('/newpost', 'PostController@showNewPost');
 Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post');
  
+
+
 
 //---------------------------------------------------
 

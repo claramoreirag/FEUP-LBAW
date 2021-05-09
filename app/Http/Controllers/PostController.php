@@ -60,6 +60,8 @@ class PostController extends Controller
       return view('pages.newpost',['categories'=>$categories]);
      }
 
+
+
      public function storeNewPost(Request $request)
      {
       $post = new Post();
@@ -69,7 +71,7 @@ class PostController extends Controller
       $validatedData = [];
       
       $validatedData = $request->validate([
-          'title' => 'required|min:10',
+          'title' => 'required|min:5',
           'header' => 'required|min:10',
           'body' => 'required|min:10',
       ]);
@@ -79,8 +81,11 @@ class PostController extends Controller
       $post->header = $request->input('header');
       $post->body = $request->input('body');
       $post->category = $request->input('categories');
-     // $post->source = $src;
+    
       $post->save();
+      foreach($request->input('source') as $s){
+        if($s!=null)SourceController::create($s,$post->id);
+      }
 
       return redirect('/user/'.Auth::id());
      }
@@ -159,15 +164,15 @@ class PostController extends Controller
       $post->body = $request->input('body');
       $post->category = $request->input('categories');
       $post->save();
-      var_dump($request->input('source'));
-      if($request->input('source')!=""){
-        $src=new Source();
-        $src->name=$request->input('source');
-        $src->save();
+     
+      foreach($request->input('source') as $s){
+          if($s!=null)SourceController::create($s,$id);
       }
+      
       return redirect('/user/'.Auth::id());
     }
 
 
+    
 
 }

@@ -76,6 +76,7 @@ Route::put('/settings', 'UserController@editProfile');
 //Feed
 Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');
 Route::get('home','FeedController@show')->name('home');
+Route::get('search','FeedController@search')->name('search');
 
 // Post 
 Route::get('/post/{id}', 'PostController@show')->where(['id' => '[0-9]+']);
@@ -85,6 +86,9 @@ Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
 Route::get('/newpost', 'PostController@showNewPost');
 Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post');
  
+Route::get('/searchUsers', 'UserController@searchUsers')->name('searchUsers');
+Route::get('/searchPosts', 'FeedController@searchPosts')->name('searchPosts');
+Route::get('/showPosts', 'FeedController@showPosts')->name('showPosts');
 
 //---------------------------------------------------
 

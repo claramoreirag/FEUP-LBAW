@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class PostSource extends Model
 {
     use HasFactory;
+    protected $primaryKey = null;
 
+    public $incrementing = false;
     protected $table = 'post_source';
 
     public $timestamps = false;

@@ -13,6 +13,14 @@ use DateTime;
 
 class UserController extends Controller
 {
+
+  public function searchUsers(Request $request){
+    
+    $users = User::where('username', 'like', '%' . $request->get('searchQuery') . '%' )->get();
+
+    return json_encode($users);
+  }
+
     public function show($id)
     {
       $user = User::find($id);
