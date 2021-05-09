@@ -1,4 +1,4 @@
-@extends('layouts.main_header')
+@extends('layouts.auth_header')
 @section('content')
 <div class="container">
     <div class="row layout align-items-center">
