@@ -25,8 +25,9 @@ class PostController extends Controller
         abort($post->getStatusCode());
       }
       $post = json_decode($post->getContent());
-      $categories=Category::all();
-      return view('pages.fullpost', ['post' => $post]);
+      $comments=CommentController::getAllFromPost($id);
+    
+      return view('pages.fullpost', ['post' => $post, 'comments'=>$comments]);
     }
   
 
@@ -81,7 +82,7 @@ class PostController extends Controller
       $post->header = $request->input('header');
       $post->body = $request->input('body');
       $post->category = $request->input('categories');
-    
+      
       $post->save();
       foreach($request->input('source') as $s){
         if($s!=null)SourceController::create($s,$post->id);
@@ -126,7 +127,7 @@ class PostController extends Controller
         }
         $category=Category::find($post->category)->name;
        // var_dump($category);
-
+        
         return response()->json([
             'id' => $post->id,
             'datetime' => $post->datetime,
@@ -143,6 +144,10 @@ class PostController extends Controller
 
     }
 
+
+
+
+
     public function showEdit($id){
       $post = PostController::getPost($id);
       if ($post->getStatusCode() !== 200) {
@@ -155,6 +160,11 @@ class PostController extends Controller
      
       return view('pages.editpost', ['post' => $post,'categories'=>$categories]); //não é pages.post, é o quê?
     }
+
+
+
+
+
 
     public function edit(Request $request,$id){
       

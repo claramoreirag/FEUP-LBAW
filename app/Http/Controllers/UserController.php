@@ -29,4 +29,16 @@ class UserController extends Controller
         return view('pages.otherprofile', ['user' => $user]);
       }
     }
+
+
+    
+  public function delete(Request $request)
+  {
+    $user =User::find(Auth::id());
+
+    $user->delete();
+    return redirect()->route('homepage');
+   
+  }
+
 }

@@ -70,6 +70,7 @@ Route::post('register', 'Auth\RegisterController@register')->name('register');
 
 // Profile
 Route::get('/user/{user_id}', 'UserController@show')->name('profile');
+Route::delete('/settings', 'UserController@delete');
 
 //Feed
 Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');
@@ -84,6 +85,11 @@ Route::get('/newpost', 'PostController@showNewPost');
 Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post');
  
 
+//Comment
+Route::post('/post/{post_id}/comment', 'CommentController@newComment')->name('comment');
+Route::post('/comment/{comment_id}/reply', 'CommentController@replyComment')->name('reply');
+Route::delete('/comment/{comment_id}', 'CommentController@deleteComment');
+Route::put('/comment/{comment_id}', 'CommentController@editComment');
 //---------------------------------------------------
 
 /*Route::post('/post/{post_id}/vote', 'PostController@vote');
@@ -91,11 +97,6 @@ Route::delete('/post/{post_id}/vote', 'PostController@remove_vote');
 Route::post('/post/{post_id}/report', 'PostController@report');
 Route::post('/post/{post_id}/save', 'PostController@save');
 
-//Comment
-Route::post('/comment', 'CommentController@newComment');
-Route::post('/reply', 'CommentController@replyComment');
-Route::delete('/comment/{comment_id}', 'CommentController@deleteComment');
-Route::put('/comment/{comment_id}', 'CommentController@editComment');
 
 // Search
 Route::get('/search', 'SearchController@search_results')->name('search');*/

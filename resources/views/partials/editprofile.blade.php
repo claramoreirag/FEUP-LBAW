@@ -74,7 +74,7 @@
 
           <div class="modal-footer">
 
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Delete Account</button>
+            <button type="button" class="btn btn-secondary" data-dismis="examplemodal" data-toggle="modal" data-target="#deletemodal">Delete Account</button>
             <button type="submit" class="btn btn-primary">Save changes</button>
             
           </div>
@@ -89,3 +89,28 @@
 
 
 </body>
+
+
+<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> Are you sure you want to delete your account?
+          This is a permanent action.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Go back</button>
+        {{-- <button type="button" class="btn btn-secondary">Delete</button> --}}
+        <form action="/settings" method="post">
+          <button class="btn-sm btn-secondary" type="submit" value="Delete" >Delete</button>
+          @method('delete')
+          @csrf
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

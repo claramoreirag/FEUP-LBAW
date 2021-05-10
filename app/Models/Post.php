@@ -14,7 +14,7 @@ class Post extends Model
 
     protected $casts = [
         'id' => 'integer',
-        'datetime' => 'string',
+        'datetime' => 'datetime',
         'user_id' => 'integer',
         'title' => 'string',
         'header' => 'string',
