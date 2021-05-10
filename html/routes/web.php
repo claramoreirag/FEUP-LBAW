@@ -46,9 +46,7 @@ Route::get('ownprofile',function(){
     return view('pages.ownprofile');
 });
 
-Route::get('newpost',function(){
-    return view('pages.newpost');
-});
+
 
 Route::get('otherprofile',function(){
     return view('pages.otherprofile');
@@ -57,6 +55,7 @@ Route::get('otherprofile',function(){
 Route::get('usermanager',function(){
     return view('pages.usermanager');
 });
+
 
 
 //---------------------------------------------------
@@ -70,14 +69,10 @@ Route::post('register', 'Auth\RegisterController@register')->name('register');
 
 // Profile
 Route::get('/user/{user_id}', 'UserController@show')->name('profile');
-Route::delete('/settings', 'UserController@delete');
-Route::get('/settings', 'UserController@showEditProfile');
-Route::put('/settings', 'UserController@editProfile'); 
 
 //Feed
 Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');
 Route::get('home','FeedController@show')->name('home');
-Route::get('search','FeedController@search')->name('search');
 
 // Post 
 Route::get('/post/{id}', 'PostController@show')->where(['id' => '[0-9]+']);
@@ -87,15 +82,9 @@ Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
 Route::get('/newpost', 'PostController@showNewPost');
 Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post');
  
-Route::get('/searchUsers', 'UserController@searchUsers')->name('searchUsers');
-Route::get('/searchPosts', 'FeedController@searchPosts')->name('searchPosts');
-Route::get('/showPosts', 'FeedController@showPosts')->name('showPosts');
 
-//Comment
-Route::post('/post/{post_id}/comment', 'CommentController@newComment')->name('comment');
-Route::post('/comment/{comment_id}/reply', 'CommentController@replyComment')->name('reply');
-Route::delete('/comment/{comment_id}', 'CommentController@deleteComment');
-Route::put('/comment/{comment_id}', 'CommentController@editComment');
+
+
 //---------------------------------------------------
 
 /*Route::post('/post/{post_id}/vote', 'PostController@vote');
@@ -103,6 +92,11 @@ Route::delete('/post/{post_id}/vote', 'PostController@remove_vote');
 Route::post('/post/{post_id}/report', 'PostController@report');
 Route::post('/post/{post_id}/save', 'PostController@save');
 
+//Comment
+Route::post('/comment', 'CommentController@newComment');
+Route::post('/reply', 'CommentController@replyComment');
+Route::delete('/comment/{comment_id}', 'CommentController@deleteComment');
+Route::put('/comment/{comment_id}', 'CommentController@editComment');
 
 // Search
 Route::get('/search', 'SearchController@search_results')->name('search');*/

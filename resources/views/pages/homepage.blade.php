@@ -1,9 +1,70 @@
 @extends('layouts.main_header')
 
+
 @section('content')
 
-<div class=" container homepage " style="margin-top: 4rem;" >
+<script type="text/javascript">
 
+    function encodeForAjax(data){
+        if(data==null) return null;
+        return Object.keys(data).map(function(k){
+        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+    }).join('&')
+    }
+    function sendAjaxRequest(method,url,data,handler){
+        let request = new XMLHttpRequest();
+        request.open(method,url + '?' + encodeForAjax(data),true);
+        request.setRequestHeader('X-Requested-With','XMLHttpRequest');
+        request.addEventListener('load',handler);
+        request.send();
+    }
+
+    $('body').on('keyup','#searchbarusers', function(){
+        var searchQuery=$(this).val();
+        sendAjaxRequest('GET','{{ route("searchUsers") }}',{
+                '_token': '{{csrf_token() }}',
+                searchQuery:searchQuery,
+            },userSearchUpdate);
+           
+    });
+
+    function userSearchUpdate(){
+        let response = JSON.parse(this.responseText);
+
+        var tableRow = '';
+
+        $('#dlsearchbar').html('');
+
+        $.each(response,function(index, value){
+            tableRow='<option value= @'+value.username+' ></option>';
+            $('#dlsearchbar').append(tableRow);
+        })
+    }
+
+
+   
+    $('body').on('keyup','#searchbar', function(){
+        var searchQuery=$(this).val();
+        console.log(searchQuery);
+        sendAjaxRequest('GET','{{ route("searchPosts") }}',{
+                '_token': '{{csrf_token() }}',
+                searchQuery:searchQuery,
+            },postSearchUpdate);
+           
+    });
+
+    function postSearchUpdate(){
+        let response = JSON.parse(this.responseText);
+
+        console.log(response);
+
+      //  return redirect()->route('showPosts',['response'=>response]);
+        
+    }
+
+</script>
+
+<div class=" container homepage " style="margin-top: 4rem;" >
 
     <div class="row">
     <div class="col-md-2 filters-bar d-none d-lg-block ">
@@ -41,8 +102,13 @@
         <div class="col-md-9  posts">
             <div class="row">
                 <div class="input-group rounded search-container mb-3 px-0">
-                    <input type="search" class="form-control rounded searchbar"  id="searchbar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <input type="search" class="form-control rounded searchbar"  id="searchbar" placeholder="Search posts" aria-label="Search" aria-describedby="search-addon" />
                     <span class="input-group-text search-icon mx-1">
+                        <i class="fas fa-search text-primary"></i>
+                    </span>
+                    <input type="search" class="form-control rounded searchbar"  id="searchbarusers" list="dlsearchbar" placeholder="Search users" aria-label="Search" aria-describedby="search-addon" />
+                    <datalist id="dlsearchbar"></datalist>
+                    <span class="input-group-text search-icon mx-1" id="searchUserButton">
                         <i class="fas fa-search text-primary"></i>
                     </span>
                 </div>
@@ -85,15 +151,10 @@
                 </div>
             </form>
 
-            <div class="row posts-container">
+            <div class="row posts-container" id="postslist">
                 @each('partials.post', $posts, 'post')
             </div>
         </div>
-
-        
-        
-
-
     </div>
 </div>
 @endsection

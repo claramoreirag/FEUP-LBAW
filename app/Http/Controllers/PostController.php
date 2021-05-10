@@ -158,7 +158,7 @@ class PostController extends Controller
      // $this->authorize('show', $post);
      $categories=Category::all();
      
-      return view('pages.editpost', ['post' => $post,'categories'=>$categories]); //não é pages.post, é o quê?
+      return view('pages.editpost', ['post' => $post,'categories'=>$categories]); 
     }
 
 
@@ -183,5 +183,6 @@ class PostController extends Controller
     }
 
 
+    
 
 }

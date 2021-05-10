@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
-    
+    //use Searchable;
     use Notifiable;
+
 
     // Don't add create and update timestamps in database.
     public $timestamps  = false;
@@ -41,6 +43,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public function searchableAs()
+    {
+        return 'username';
+    }
+
+    public function getScoutKey()
+    {
+        return $this->username;
+    }
+
     public function posts(){
         return $this->hasMany('App\Models\Post');
     }
@@ -57,6 +70,11 @@ class User extends Authenticatable
         //testar se é admin
         return $this->hasMany('App\Models\Report');
     }
+
+
+    
+
+   
 }
 
 
