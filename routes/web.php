@@ -86,7 +86,6 @@ Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post'
  
 Route::get('/searchUsers', 'UserController@searchUsers')->name('searchUsers');
 Route::get('/searchPosts', 'FeedController@searchPosts')->name('searchPosts');
-Route::get('/showPosts', 'FeedController@showPosts')->name('showPosts');
 
 //---------------------------------------------------
 

@@ -5,6 +5,7 @@
 
 <script type="text/javascript">
 
+//  src="{{ asset('js/search.js')}}">
     function encodeForAjax(data){
         if(data==null) return null;
         return Object.keys(data).map(function(k){
@@ -28,6 +29,7 @@
            
     });
 
+
     function userSearchUpdate(){
         let response = JSON.parse(this.responseText);
 
@@ -36,12 +38,20 @@
         $('#dlsearchbar').html('');
 
         $.each(response,function(index, value){
-            tableRow='<option value= @'+value.username+' ></option>';
+            tableRow='<option id='+value.id+' value= '+ value.username + '> ' +value.name + ' </option>';
             $('#dlsearchbar').append(tableRow);
-        })
+        });
+
     }
 
-
+    $('body').on('click', '#searchUserButton', function(){
+        var textval = document.getElementById("searchbarusers").value;
+        $('#dlsearchbar option').each(function(){
+            if($(this).val() == textval){
+                window.location.href = '/user/' + $(this).attr('id');
+            }
+        });
+    });
    
     $('body').on('keyup','#searchbar', function(){
         var searchQuery=$(this).val();
@@ -55,11 +65,7 @@
 
     function postSearchUpdate(){
         let response = JSON.parse(this.responseText);
-
-        console.log(response);
-
-      //  return redirect()->route('showPosts',['response'=>response]);
-        
+        $('#postslist').html(response.html);
     }
 
 </script>
@@ -102,13 +108,12 @@
         <div class="col-md-9  posts">
             <div class="row">
                 <div class="input-group rounded search-container mb-3 px-0">
-                    <input type="search" class="form-control rounded searchbar"  id="searchbar" placeholder="Search posts" aria-label="Search" aria-describedby="search-addon" />
-                    <span class="input-group-text search-icon mx-1">
-                        <i class="fas fa-search text-primary"></i>
-                    </span>
-                    <input type="search" class="form-control rounded searchbar"  id="searchbarusers" list="dlsearchbar" placeholder="Search users" aria-label="Search" aria-describedby="search-addon" />
-                    <datalist id="dlsearchbar"></datalist>
-                    <span class="input-group-text search-icon mx-1" id="searchUserButton">
+                    <input type="search" class="form-control searchbar mr-2"  id="searchbar" placeholder='Search posts ' aria-label="Search" aria-describedby="search-addon" />
+                    
+                    <input type="search" class="form-control searchbar"  id="searchbarusers" list="dlsearchbar" placeholder="Search users" aria-label="Search" aria-describedby="search-addon" />
+                    <datalist id="dlsearchbar">
+                    </datalist>
+                    <span class="input-group-text search-icon" id="searchUserButton">
                         <i class="fas fa-search text-primary"></i>
                     </span>
                 </div>
@@ -150,7 +155,6 @@
 
                 </div>
             </form>
-
             <div class="row posts-container" id="postslist">
                 @each('partials.post', $posts, 'post')
             </div>
