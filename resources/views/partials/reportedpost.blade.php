@@ -1,9 +1,9 @@
 <tr onclick="changePage()" class="align-middle">
         <th scope="row">Post</th>
-        <td>3</td>
-        <td>02/03/2021 12:57</td>
-        <td>@flat_world</td>
-        <td>The Earth is Flat. Change my mind.</td>
+        <td>{{$report->number}}</td>
+        <td width=15%>{{$report->date}}</td>
+        <td width=15%>{{$report->user->username}}</td>
+        <td width=30%>{{$report->post->title}}</td>
         <td>
             <button type="button" class="btn btn-outline-primary"><i class="far fa-trash-alt"></i></button>
 

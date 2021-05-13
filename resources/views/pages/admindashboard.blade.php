@@ -24,16 +24,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @include('partials.reportedpost')
-                    @include('partials.reportedcomment')
-                    @include('partials.reportedpost')
-                    @include('partials.reportedcomment')
-                    @include('partials.reportedpost')
-                    @include('partials.reportedcomment')
-                    @include('partials.reportedpost')
-                    @include('partials.reportedcomment')
-                    @include('partials.reportedpost')
-                    @include('partials.reportedcomment')
+                @each('partials.reportedpost', $reportedPosts, 'report')
+                @each('partials.reportedcomment', $reportedComments, 'report')
                 </tbody>
             </table>
         </div>

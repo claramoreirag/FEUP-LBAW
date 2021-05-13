@@ -78,6 +78,7 @@ Route::put('/settings', 'UserController@editProfile');
 Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');
 Route::get('home','FeedController@show')->name('home');
 Route::get('search','FeedController@search')->name('search');
+Route::get('/admin/reports','AdminController@show')->name('reports');
 
 // Post 
 Route::get('/post/{id}', 'PostController@show')->where(['id' => '[0-9]+']);
