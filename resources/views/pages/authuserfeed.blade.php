@@ -1,99 +1,6 @@
 @extends('layouts.main_header')
 @section('content')
 
-
-<script type="text/javascript">
-
-//  src="{{ asset('js/search.js')}}">
-
-    function encodeForAjax(data){
-        if(data==null) return null;
-        return Object.keys(data).map(function(k){
-        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&')
-    }
-    function sendAjaxRequest(method,url,data,handler){
-        let request = new XMLHttpRequest();
-        request.open(method,url + '?' + encodeForAjax(data),true);
-        request.setRequestHeader('X-Requested-With','XMLHttpRequest');
-        request.addEventListener('load',handler);
-        request.send();
-    }
-
-    $('body').on('keyup','#searchbarusers', function(){
-        var searchQuery=$(this).val();
-        sendAjaxRequest('GET','{{ route("searchUsers") }}',{
-                '_token': '{{csrf_token() }}',
-                searchQuery:searchQuery,
-            },userSearchUpdate);
-           
-    });
-
-
-    function userSearchUpdate(){
-        let response = JSON.parse(this.responseText);
-        var tableRow = '';
-        $('#dlsearchbar').html('');
-        $.each(response,function(index, value){
-            tableRow='<option id='+value.id+' value= '+ value.username + '> ' +value.name + ' </option>';
-            $('#dlsearchbar').append(tableRow);
-        });
-
-    }
-
-    $('body').on('click', '#searchUserButton', function(){
-        var textval = document.getElementById("searchbarusers").value;
-        $('#dlsearchbar option').each(function(){
-            if($(this).val() == textval){
-                window.location.href = '/user/' + $(this).attr('id');
-            }
-        });
-    });
-   
-    $('body').on('keyup','#searchbar', function(){
-        var searchQuery=$(this).val();
-        console.log(searchQuery);
-        sendAjaxRequest('GET','{{ route("searchPosts") }}',{
-                '_token': '{{csrf_token() }}',
-                searchQuery:searchQuery,
-            },postSearchUpdate);
-    });
-
-    $('body').on('submit','#formSettings', function(e){
-        e.preventDefault();
-        var searchQuery=$('#searchbar').val();
-        var categories = [];
-        $("#settingsCategory input[type='checkbox']:checked").each((_, {value}) => {
-            categories.push(value);
-        });
-        var preference;
-        $("#settingsPreference input[type='radio']:checked").each((_, {id}) => {
-            preference = id;
-        });
-        var order;
-        $("#settingsOrder input[type='radio']:checked").each((_, {id}) => {
-            order = id;
-        });
-        console.log(categories);
-        console.log(preference);
-        console.log(order);
-        sendAjaxRequest('GET','{{ route("searchPosts") }}',{
-                '_token': '{{csrf_token() }}',
-                categories:categories,
-                preference:preference,
-                order:order,
-                searchQuery:searchQuery,
-            },postSearchUpdate);
-    });
-
-
-    function postSearchUpdate(){
-        let response = JSON.parse(this.responseText);
-        $('#postslist').html(response.html);
-    }
-
-</script>
-
 <div class=" container homepage d-flex align-items-center" style="margin-top: 6rem;">
 
 
@@ -212,7 +119,6 @@
 
             <div class="row posts-container" id="postslist">
                 @each('partials.authpost', $posts, 'post')
-               
             </div>
         </div>
 
@@ -223,3 +129,6 @@
     </div>
 </div>
 @endsection
+
+
+<script defer type="text/javascript" src="{{ URL::asset('js/search.js') }}" ></script>

@@ -24,8 +24,6 @@
                     <div class="row font-weight-bold mt-4 mb-4">{{$post->header}} </div>
                 </div>
                 
-              
-                    
                 
                     <p class="row">
                         <div class="col-md-12 ps-0 text-justify col-12"> 
@@ -34,10 +32,7 @@
                             @endphp
                         </div>
                     </p>
-                    
-                    
-                    
-                    
+
                     
                     <h6 class="row"> Story Sources: </h6>
                     <div class="row post-font">  
@@ -45,8 +40,6 @@
                             <a href="{{$s}}">{{$s}}</a>
                         @endforeach
                     </div>
-                    
-                    
 
                     <div class="row post-interactions justify-content-between mt-4">
                         <div class="col-md-2 col-sm-4 actions"></i>
@@ -65,6 +58,30 @@
                         </div>
                     </div>
 
+
+                    <div class="row  post-comment">
+                        <h3 class="comments-title">Comments</h3><hr/>
+                        
+                        <form action="{{ route('comment',['post_id'=>$post->id]) }}" method="Post">
+                            <label for="inputComment" class="form-label">Collaborate with a comment here</label>
+                            <div class="row"> 
+                                <div class="col-11">
+                                    <input type="text" class="form-control" name="body" id="inputComment">
+                                </div>
+                                <input type="hidden" id="custId" name="post_id" value="{{$post->id}}">
+                                <div class="col-1">
+                                    <button type="submit" class="btn btn-success mb-3" formaction="{{ route('comment',['post_id'=>$post->id]) }}">Share</button>
+                                    @method('POST')
+                                    @csrf
+                                </div>
+                            </div>
+                        </form>
+    
+                    
+                        <ul class="comments">
+                            @each('partials.comment', $comments, 'comment')    
+                        </ul>
+                    </div>
             </div>
         </div>
     </div>

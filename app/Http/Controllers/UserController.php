@@ -36,5 +36,33 @@ class UserController extends Controller
       else{
         return view('pages.otherprofile', ['user' => $user]);
       }
+    }
+
+
+  public function delete(Request $request)
+  {
+    $user =User::find(Auth::id());
+
+    $user->delete();
+    return redirect()->route('homepage');
+   
   }
+
+    public function showEditProfile(){
+      //TODO
+      $id = Auth::id();
+    }
+
+    public function editProfile(Request $request){
+      //TODO
+      //Falta testar se a old password corresponde à que ele tem
+      //Falta ver como atualizar a palavra passe
+      $id = Auth::id();
+      $user = User::find($id);
+      $user->username = $request->username;
+      $user->name = $request->name;
+      $user->password = $request->password;
+      $user->save();
+
+    }
 }

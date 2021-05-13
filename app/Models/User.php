@@ -8,13 +8,12 @@ use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
-    use Searchable;
+    //use Searchable;
     use Notifiable;
 
 
     // Don't add create and update timestamps in database.
     public $timestamps  = false;
-    protected $table = 'user';
 
     /**
      * The attributes that are mass assignable.

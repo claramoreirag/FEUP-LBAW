@@ -43,24 +43,27 @@
                 <!--this is supposed to be a button-->
               </div>
               <div class="container">
-                <form>
+              <!-- isto está bem? -->
+              {{ method_field('PUT') }}
+                <form action="/settings" method="Post">
+                  <input name="_method" type="hidden" value="PUT">
                   <div class="row align-items-center">
                     <div class="col-lg-md-3 sm-1"></div>
                     <div class="col-lg-md-6 sm-10" id="newInfo">
                       <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingInput" placeholder="Old Password Required" required>
+                        <input type="password" class="form-control" id="floatingInput" placeholder="Old Password Required" required name="oldPassword">
                         <label for="floatingInput">Old Password *</label>
                       </div>
                       <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Name">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name">
                         <label for="floatingInput">Name</label>
                       </div>
                       <div class="form-floating">
-                        <input type="username" class="form-control" id="floatingInput" placeholder="Username">
+                        <input type="username" class="form-control" id="floatingInput" placeholder="Username" name="username">
                         <label for="floatingInput">Username</label>
                       </div>
                       <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingInput" placeholder="New Password">
+                        <input type="password" class="form-control" id="floatingInput" placeholder="New Password" name="password">
                         <label for="floatingInput">New Password</label>
                       </div>
                       
@@ -74,9 +77,13 @@
 
           <div class="modal-footer">
 
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Delete Account</button>
+            <button type="button" class="btn btn-secondary" data-dismis="examplemodal" data-toggle="modal" data-target="#deletemodal">Delete Account</button>
+            {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Delete Account</button>
+            @method('delete') <!-- ainda falta cenas para o delete-->
+            @csrf --}}
             <button type="submit" class="btn btn-primary">Save changes</button>
-            
+            @method('put')
+            @csrf
           </div>
           </form>
         </div>
@@ -89,3 +96,28 @@
 
 
 </body>
+
+
+<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> Are you sure you want to delete your account?
+          This is a permanent action.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Go back</button>
+        {{-- <button type="button" class="btn btn-secondary">Delete</button> --}}
+        <form action="/settings" method="post">
+          <button class="btn-sm btn-secondary" type="submit" value="Delete" >Delete</button>
+          @method('delete')
+          @csrf
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

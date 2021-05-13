@@ -47,13 +47,16 @@ class FeedController extends Controller {
 
     public function searchPosts(Request $request){
         $cat = [];
-        //parse_str($request->get('categories'), $cat);
+        $cat = array_map('intval', explode(',', $request->get('categories')));
 
-        $cat = array_map(function($value) {
-            return intval($value);
-        }, array($request->get('categories')));
-
-        $posts = Post::whereIn('category',$cat)->where('header', 'like', '%' . $request->get('searchQuery') . '%' )->orWhere('title', 'like', '%' . $request->get('searchQuery') . '%' )->get();
-        return response()->json(['html'=>view('partials.management.posts',[ 'posts' => $posts])->render()]);
+        
+        $po = Post::where('header', 'like', '%' . $request->get('searchQuery') . '%' )->where('title', 'like', '%' . $request->get('searchQuery') . '%' )->whereIn('category',$cat)->get();
+        $posts=array();
+        foreach($po as $n){
+            $p=PostController::getPost($n->id);
+            array_push($posts,json_decode($p->getContent()));
+        }
+        
+        return response()->json(['html'=>view('partials.management.posts',['posts' => $posts])->render()]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Category;
 
 class Post extends Model
 {
@@ -14,7 +15,7 @@ class Post extends Model
 
     protected $casts = [
         'id' => 'integer',
-        'datetime' => 'string',
+        'datetime' => 'datetime',
         'user_id' => 'integer',
         'title' => 'string',
         'header' => 'string',
