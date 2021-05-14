@@ -78,7 +78,7 @@ Route::put('/settings', 'UserController@editProfile');
 Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');
 Route::get('home','FeedController@show')->name('home');
 Route::get('search','FeedController@search')->name('search');
-Route::get('/admin/reports','AdminController@show')->name('reports');
+
 
 // Post 
 Route::get('/post/{id}', 'PostController@show')->where(['id' => '[0-9]+']);
@@ -96,6 +96,11 @@ Route::post('/post/{post_id}/comment', 'CommentController@newComment')->name('co
 Route::post('/comment/{comment_id}/reply', 'CommentController@replyComment')->name('reply');
 Route::delete('/comment/{comment_id}', 'CommentController@deleteComment');
 Route::put('/comment/{comment_id}', 'CommentController@editComment');
+
+//Admin
+Route::get('/admin/reports','AdminController@show')->name('reports');
+Route::get('/admin/reports/posts/{post_id}','AdminController@viewPost')->name('reported_post');
+
 //---------------------------------------------------
 
 /*Route::post('/post/{post_id}/vote', 'PostController@vote');

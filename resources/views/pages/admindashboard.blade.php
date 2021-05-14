@@ -18,7 +18,7 @@
                         <th scope="col">Type</th>
                         <th scope="col">x Reported</th>
                         <th scope="col">Date</th>
-                        <th scope="col">User</th>
+                        <th scope="col">Written By</th>
                         <th scope="col">Content</th>
                         <th scope="col">Options</th>
                     </tr>

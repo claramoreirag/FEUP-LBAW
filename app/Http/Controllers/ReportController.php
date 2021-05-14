@@ -73,8 +73,6 @@ class ReportController extends Controller
         $timesReported=null;
 
         $comment = null;
-        // if post has no author (account deleted)
-        //var_dump($post);
         if ($report->comment_id !== null) {
             $comment = [
                 'id'=> $report->comment->id,
@@ -83,18 +81,16 @@ class ReportController extends Controller
                 'body' =>$report->comment->body,
                 'datetime' => $report->comment->datetime,
             ];
-            $wordlist = Report::where('comment_id', '<=', $report->comment->id)->get();
-            $timesReported = $wordlist->count();
+            $contagem = Report::select('comment_id', DB::raw('count(*) as total'))->groupBy('comment_id')->where('comment_id','<=',$report->comment->id)->get();
+            $timesReported=$contagem[0]["total"];
         }
 
         $post = null;
-        // if post has no author (account deleted)
-        //var_dump($post);
         if ($report->post_id !== null) {
             $post = [
                 'id'=> $report->post->id,
                 'datetime' => $report->post->datetime,
-                'user' => $report->post->user,
+                'user' => $report->post->author,
                 'title' => $report->post->title,
                 'header' => $report->post->header,
                 'body' =>$report->post->body,
@@ -102,10 +98,14 @@ class ReportController extends Controller
                 'upvotes' => $report->post->upvotes,
                 'downvotes' => $report->post->downvotes
             ];
-            $wordlist = Report::where('post_id', '<=', $report->post->id)->get();
-            $timesReported = $wordlist->count();  
+          
+            $contagem = Report::select('post_id', DB::raw('count(*) as total'))
+            ->groupBy('post_id')
+            ->where('post_id','<=',$report->post->id)
+            ->get();
+            $timesReported=$contagem[0]["total"];
         }
-        
+
         return response()->json([
             'id' => $report->id,
             'user' => $report_author,
