@@ -60,8 +60,8 @@ class UserController extends Controller
       //Falta ver como atualizar a palavra passe
       $id = Auth::id();
       $user = User::find($id);
-      $user->username = $request->username;
-      $user->name = $request->name;
+      $user->username = $request->input('username');
+      $user->name = $request->input('name');
       $user->password = $request->password;
       $user->save();
 

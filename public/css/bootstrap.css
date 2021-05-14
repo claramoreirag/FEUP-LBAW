@@ -10848,3 +10848,13 @@ div.hello{
    color: var(--primary)!important;
  }
  
+
+ .hidden{
+  display: none!important;
+ }
+
+ .hiddenbutton{
+  background: none!important;
+  padding: 0px!important;
+  border: none!important;
+ }

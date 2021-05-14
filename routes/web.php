@@ -93,9 +93,10 @@ Route::get('/showPosts', 'FeedController@showPosts')->name('showPosts');
 
 //Comment
 Route::post('/post/{post_id}/comment', 'CommentController@newComment')->name('comment');
-Route::post('/comment/{comment_id}/reply', 'CommentController@replyComment')->name('reply');
-Route::delete('/comment/{comment_id}', 'CommentController@deleteComment');
-Route::put('/comment/{comment_id}', 'CommentController@editComment');
+Route::post('/comment/{comment_id}/reply', 'CommentController@replyComment')->name('reply')->where(['comment_id' => '[0-9]+']);
+Route::delete('/comment/{comment_id}', 'CommentController@deleteComment')->name('delete_comment');
+Route::put('/comment/{comment_id}', 'CommentController@editComment')->name('edit_comment');
+//Route::get('/get_comment/{comment_id}','CommentController@getComment')->where(['comment_id' => '[0-9]+']);
 //---------------------------------------------------
 
 /*Route::post('/post/{post_id}/vote', 'PostController@vote');
