@@ -10858,3 +10858,9 @@ div.hello{
   padding: 0px!important;
   border: none!important;
  }
+
+
+ .action:hover{
+    color: var(--pink)!important;
+    cursor: pointer!important;
+ }

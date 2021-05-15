@@ -1,5 +1,11 @@
 
 
+@php
+use App\Http\Controllers\ReportController;
+$already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
+
+@endphp
+
 <div class="container" id="fullpost">
     
     <div class="row">
@@ -46,7 +52,12 @@
                             <div class="row ">
                                 <div class="col-4 share action"><i class="fas fa-share-alt"></i></div>
                                 <div class="col-4 save action"><i class="fas fa-bookmark"></i></div>
-                                <div class="col-4 report action"><i class="fas fa-exclamation-circle"></i></div>
+                                @if($already_reported)
+                                    <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#ModalAlreadyReported" >r<i class="fas fa-exclamation-circle"></i></div>
+                                    @endif
+                                    @if(!$already_reported)
+                                <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#exampleModalCenter{{$post->id}}" ><i class="fas fa-exclamation-circle"></i></div>
+                                    @endif
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-3 col-sm-4" style="margin: 0.5rem 0rem; padding:0rem ;">
@@ -85,3 +96,56 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <div data-id="{{ $post->id }}" class="modal fade" id="ModalAlreadyReported" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+         
+    
+        
+            <div class="modal-content">
+                
+                <div class="modal-body">
+                  You already reported this post!
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                 
+                  {{-- <a class="btn btn-primary" href="{{route('report_post',['post_id'=>$post->id])}}">Report</a> --}}
+                </div>
+              </div>
+           
+    
+           
+        </div>
+      </div>
+    
+    <div data-id="{{ $post->id }}" class="modal fade" id="exampleModalCenter{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Report</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              
+            </div>
+            <div class="modal-body">
+              Are you sure you want to report this user?
+             
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <form action="{{route('report_post',['post_id'=>$post->id])}}" method="post">
+                <button class="btn btn-primary" type="submit" value="Report" >Report</button>
+                @method('post')
+                @csrf
+            </form>
+             
+            </div>
+          </div>
+        </div>
+      </div>

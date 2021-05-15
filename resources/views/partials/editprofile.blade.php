@@ -35,21 +35,25 @@
             
               <div class="row">
                 <div class="col-4"></div>
-                <div class="col-4 d-flex justify-content-center" id="editProfilePic">
+                {{-- <div class="col-4 d-flex justify-content-center" id="editProfilePic">
                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU" alt="profile picture edit">
                   <i class="fas fa-arrow-up"></i>
-                </div>
+                </div> --}}
                 <div class="col-4"> </div>
                 <!--this is supposed to be a button-->
               </div>
               <div class="container">
               <!-- isto está bem? -->
               {{ method_field('PUT') }}
-                <form action="/settings" method="Post">
+                <form action="/settings" enctype="multipart/form-data" method="Post">
                   <input name="_method" type="hidden" value="PUT">
                   <div class="row align-items-center">
                     <div class="col-lg-md-3 sm-1"></div>
                     <div class="col-lg-md-6 sm-10" id="newInfo">
+                      <div class="form-floating">
+                        <input id="profile_image" type="file" class="form-control" name="image">
+                        <label for="floatingInput">Profile Photo</label>
+                      </div>
                       <div class="form-floating">
                         <input type="password" class="form-control" id="floatingInput" required placeholder="Old Password Required" required name="oldPassword">
                         <label for="floatingInput">Old Password *</label>
@@ -65,6 +69,11 @@
                       <div class="form-floating">
                         <input type="password" class="form-control" id="floatingInput" placeholder="New Password" name="password">
                         <label for="floatingInput">New Password</label>
+                      </div>
+
+                      <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingInput" placeholder="New Password" name="confirm_password">
+                        <label for="floatingInput">Confirm New Password</label>
                       </div>
                       
                     </div>

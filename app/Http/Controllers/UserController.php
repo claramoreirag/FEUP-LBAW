@@ -58,12 +58,35 @@ class UserController extends Controller
       //TODO
       //Falta testar se a old password corresponde à que ele tem
       //Falta ver como atualizar a palavra passe
+
+      $request->validate([
+        'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+      
       $id = Auth::id();
       $user = User::find($id);
-      $user->username = $request->input('username');
-      $user->name = $request->input('name');
-      $user->password = $request->password;
-      $user->save();
 
+      var_dump($request->file);
+      if($request->input('image')!=null){
+        $imageName = Auth::id().'.'.$request->file->extension();
+        $request->file->move(public_path('img/profile'), $imageName);
+        $user->photo=$imageName;
+      }
+      if($request->input('username')!=null){
+        $user->username = $request->input('username');
+      }
+      if($request->input('name')!=null){
+        $user->name = $request->input('name');
+      }
+      if($request->input('password')!=null){
+        if($request->input('password')==$request->input('confirm_password')){
+          $user->password = bcrypt($request->password);
+      
+        }
+      }
+      
+
+      $user->save();
+     // return redirect('/user/'.Auth::id());
     }
 }
