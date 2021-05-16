@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Scout\Searchable;
+use Psy\TabCompletion\Matcher\FunctionsMatcher;
 
 class User extends Authenticatable
 {
@@ -14,7 +15,6 @@ class User extends Authenticatable
 
     // Don't add create and update timestamps in database.
     public $timestamps  = false;
-    protected $table = 'user';
 
     /**
      * The attributes that are mass assignable.
@@ -70,11 +70,14 @@ class User extends Authenticatable
         //testar se é admin
         return $this->hasMany('App\Models\Report');
     }
-
-
-    
-
    
+    public function followers(){
+        return $this->belongsToMany('App\Models\User', 'follow', 'followed', 'follower');
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany('App\Models\User', 'follow', 'follower', 'followed');
+    }
+
 }
-
-

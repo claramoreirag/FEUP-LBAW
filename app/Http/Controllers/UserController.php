@@ -24,14 +24,24 @@ class UserController extends Controller
     public function show($id)
     {
       $user = User::find($id);
-     
+      $followers = $user->followers()->get()->count();
+      $following = $user->following()->get()->count();
+      $posts = $user->posts()->get()->count();
+      
+      $post_list = $user->posts()->get();
+      $count_upvotes = 0;
+      foreach($post_list as $p){
+        $count_upvotes += $p->upvotes();
+      }
+
+
       if(Auth::check() && Auth::id()==$id){
         $ownposts=array();
         foreach($user->posts as $p){
           array_push($ownposts,json_decode(PostController::getPost($p->id)->getContent()));
 
         }
-        return view('pages.ownprofile', ['user' => $user,'ownposts'=>$ownposts]);
+        return view('pages.ownprofile', ['user' => $user,'ownposts'=>$ownposts, 'followers'=>$followers, 'following'=>$following, 'posts'=>$posts, 'upvotes'=>$count_upvotes]);
       }
       else{
         return view('pages.otherprofile', ['user' => $user]);
