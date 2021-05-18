@@ -179,10 +179,23 @@ class PostController extends Controller
           if($s!=null)SourceController::create($s,$id);
       }
       
-      return redirect('/user/'.Auth::id());
+      return redirect('/post/'.$id);
     }
 
+
+
+
+    public function report($id){
+      
+      
+      ReportController::createPostReport(Auth::id(),$id);
+      return redirect('/post/'.$id);
+    }
+
+    
 
     
 
 }
+
+

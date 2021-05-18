@@ -70,7 +70,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Report');
     }
 
-
+    // public function followedCategories(){
+    //     return $this->h('App\Models\Category')
+    // }
     
 
    
