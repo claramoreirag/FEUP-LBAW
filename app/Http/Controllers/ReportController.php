@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Category;
@@ -117,5 +116,26 @@ class ReportController extends Controller
         ], 200);
 
     }    
+
+
+
+    public static function createPostReport($user_id, $post_id)
+    {
+        $report=new Report();
+        $report->user_id=$user_id;
+        $report->state='NotAnswered';
+        $report->post_id=$post_id;
+        $report->save();
+    
+    
+    
+    }
+
+    public static function postAlreadyReported($user_id,$post_id){
+        if (Report::where('post_id', '=', $post_id)->where('user_id', '=', $user_id)->exists()) {
+            return true;
+         }
+         else return false;
+    }
 
 }

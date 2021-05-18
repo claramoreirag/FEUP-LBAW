@@ -32,7 +32,7 @@ class CommentController extends Controller
     public function newComment(Request $request){
         $comment = new Comment();
         //$src = Source().create($request->input('source'));
-        //$this->authorize('storeNewPost', $post);
+        //$this->authorize('storeNewcomment', $comment);
         
         
   
@@ -46,10 +46,23 @@ class CommentController extends Controller
         return redirect('/post/'.$request->input('post_id'));
     }
 
+    public function editComment(Request $request){
+        $comment = Comment::find($request->input('id'));
+        //$src = Source().create($request->input('source'));
+        //$this->authorize('storeNewcomment', $comment);
+        var_dump($request->input('post_id'));
+    
+        $comment->body = $request->input('body');
+        $comment->save();
+
+  
+        return redirect('/post/'.$request->input('post_id'));
+    }
+
     public function replyComment(Request $request){
         $comment = new Comment();
         //$src = Source().create($request->input('source'));
-        //$this->authorize('storeNewPost', $post);
+        //$this->authorize('storeNewcomment', $comment);
         
     
         $comment->user_id = Auth::id();
@@ -61,5 +74,52 @@ class CommentController extends Controller
   
         return redirect('/post/'.$request->input('post_id'));
     }
+
     
+    public static function getComment($id) {
+        $comment = Comment::find($id);
+        if (is_null($comment)) {
+            return response()->json([
+                'status' => 'failure',
+                'status_code' => 404,
+                'message' => 'Not Found',
+                'errors' => ['comment' => 'There is no comment with id ' . $id],
+            ], 404);
+        }
+
+        if ($comment->user_id !== null) {
+            
+            $comment_author = [
+                'id'=> $comment->user->id,
+                'name'=> $comment->user->name,
+                'username' => $comment->user->username,
+                'photo' => $comment->user->photo,
+            ];
+        }
+        
+        return response()->json([
+            'id' => $comment->id,
+            'datetime' => $comment->datetime,
+            'body' => $comment->body,
+            'author' => $comment_author,
+            'post_id' =>$comment->post_id,
+            'comment_id'=>$comment->comment_id
+            
+           
+
+        ], 200);
+
+    }
+
+
+    
+  public function deleteComment(Request $request, $id)
+  {
+    $comment = Comment::find($id);
+    var_dump($comment);
+    // $this->authorize('delete', $card);
+    $comment->delete();
+
+    return redirect('/post/'.$request->input('post_id'));
+  }
 }

@@ -10848,3 +10848,32 @@ div.hello{
    color: var(--primary)!important;
  }
  
+
+ .hidden{
+  display: none!important;
+ }
+
+ .hiddenbutton{
+  background: none!important;
+  padding: 0px!important;
+  border: none!important;
+ }
+
+
+ .action:hover{
+    color: var(--pink)!important;
+    cursor: pointer!important;
+ }
+
+ .action-bg-green:hover{
+  background-color: var(--teal)!important;
+  cursor: pointer!important;
+ }
+
+ .green{
+   color: var(--primary)!important;
+ }
+ .action-green:hover{
+  color: var(--teal)!important;
+  cursor: pointer!important;
+ }
