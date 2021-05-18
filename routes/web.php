@@ -73,6 +73,8 @@ Route::get('/user/{user_id}', 'UserController@show')->name('profile');
 Route::delete('/settings', 'UserController@delete');
 Route::get('/settings', 'UserController@showEditProfile');
 Route::put('/settings', 'UserController@editProfile'); 
+Route::post('user/{user_id}/follow_category','UserController@followCategory')->name('follow_cat');
+Route::delete('user/{user_id}/unfollow_category','UserController@unfollowCategory')->name('unfollow_cat');
 
 //Feed
 Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');
@@ -88,6 +90,9 @@ Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
 Route::get('/newpost', 'PostController@showNewPost');
 Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post');
  
+
+
+
 Route::get('/searchUsers', 'UserController@searchUsers')->name('searchUsers');
 Route::get('/searchPosts', 'FeedController@searchPosts')->name('searchPosts');
 Route::get('/showPosts', 'FeedController@showPosts')->name('showPosts');

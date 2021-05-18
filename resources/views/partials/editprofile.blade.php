@@ -59,11 +59,11 @@
                         <label for="floatingInput">Old Password *</label>
                       </div>
                       <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name">
+                        <input type="text" class="form-control" id="floatingInput"  value="{{ $user->name }}" placeholder="Name" name="name">
                         <label for="floatingInput">Name</label>
                       </div>
                       <div class="form-floating">
-                        <input type="username" class="form-control" id="floatingInput" placeholder="Username" name="username">
+                        <input type="username" class="form-control" id="floatingInput" value="{{ $user->username }}" placeholder="Username" name="username">
                         <label for="floatingInput">Username</label>
                       </div>
                       <div class="form-floating">
@@ -72,7 +72,7 @@
                       </div>
 
                       <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingInput" placeholder="New Password" name="confirm_password">
+                        <input type="password" class="form-control" id="floatingInput" placeholder="New Password" name="password_confirmation">
                         <label for="floatingInput">Confirm New Password</label>
                       </div>
                       

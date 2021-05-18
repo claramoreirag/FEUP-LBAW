@@ -2,7 +2,10 @@
 
 @php
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\UserController;
 $already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
+
+$already_follow=  UserController::alreadyFollowCat($post->category);
 
 @endphp
 

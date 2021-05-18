@@ -1,7 +1,10 @@
 
 @php
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\UserController;
 $already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
+
+$already_follow=  UserController::alreadyFollowCat($post->category);
 
 @endphp
 
@@ -10,7 +13,14 @@ $already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
     <div class="card-body ">
         <div class="row mb-2 justify-content-end">
             <div class="col-sm-3 col-md-3  " style="text-align:end">
-                <span class="badge badge-primary tag p-1"> {{$post->category}}</span>
+              @if($already_follow)
+              <span class="badge badge-primary action-green tag p-1" data-toggle="modal" data-target="#unfollowTag{{$post->id}}"> {{$post->category}}</span>
+              @endif
+              @if(!$already_follow)
+              <span class="badge badge-primary action-green tag p-1" data-toggle="modal" data-target="#followTag{{$post->id}}"> {{$post->category}}</span>
+              @endif
+
+                </ul>
             </div>
         </div>
         <div class="row">
@@ -46,7 +56,7 @@ $already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
                     <div class="col-4 share action icon"><a class="text-secondary" href=""><i class="fas fa-share-alt"></i></a></div>
                     <div class="col-4 save action icon"><a class="text-secondary" href=""><i class="fas fa-bookmark"></i></a></div>
                     @if($already_reported)
-                    <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#ModalAlreadyReported" >r<i class="fas fa-exclamation-circle"></i></div>
+                    <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#ModalAlreadyReported" ><i class="fas fa-exclamation-circle"></i></div>
                     @endif
                     @if(!$already_reported)
                 <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#exampleModalCenter{{$post->id}}" ><i class="fas fa-exclamation-circle"></i></div>
@@ -69,26 +79,18 @@ $already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
 
 <div data-id="{{ $post->id }}" class="modal fade" id="ModalAlreadyReported" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-     
-
-    
         <div class="modal-content">
-            
             <div class="modal-body">
               You already reported this post!
-              
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
-             
-              {{-- <a class="btn btn-primary" href="{{route('report_post',['post_id'=>$post->id])}}">Report</a> --}}
             </div>
           </div>
-       
-
-       
     </div>
   </div>
+
+
 
 <div data-id="{{ $post->id }}" class="modal fade" id="exampleModalCenter{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -101,7 +103,7 @@ $already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
           
         </div>
         <div class="modal-body">
-          Are you sure you want to report this user?
+          Are you sure you want to report this post?
          
         </div>
         <div class="modal-footer">
@@ -114,5 +116,51 @@ $already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
          
         </div>
       </div>
+    </div>
+  </div>
+  {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
+
+
+
+<div class="modal fade" id="followTag{{$post->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+          Do you want to follow this tag?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <form action="{{route('follow_cat',['user_id'=>Auth::id()])}}" method="post">
+            <input type="hidden" id="category"  name="category" value="{{$post->category}}"> 
+            <button class="btn btn-primary" type="submit" value="Yes" >Yes</button>
+            @method('post')
+            @csrf
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div data-id="{{ $post->id }}" class="modal fade" id="unfollowTag{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+              You already follow this tag! Do you want to unfollow?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <form action="{{route('unfollow_cat',['user_id'=>Auth::id()])}}" method="post">
+                <input type="hidden" id="category"  name="category" value="{{$post->category}}"> 
+                <button class="btn btn-primary" type="submit" value="Yes" >Yes</button>
+                @method('delete')
+                @csrf
+            </form>
+            </div>
+          </div>
     </div>
   </div>

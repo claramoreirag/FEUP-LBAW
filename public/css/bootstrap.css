@@ -10864,3 +10864,8 @@ div.hello{
     color: var(--pink)!important;
     cursor: pointer!important;
  }
+
+ .action-green:hover{
+  background-color: var(--teal)!important;
+  cursor: pointer!important;
+ }
