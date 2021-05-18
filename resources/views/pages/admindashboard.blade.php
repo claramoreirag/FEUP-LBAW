@@ -18,22 +18,14 @@
                         <th scope="col">Type</th>
                         <th scope="col">x Reported</th>
                         <th scope="col">Date</th>
-                        <th scope="col">User</th>
+                        <th scope="col">Written By</th>
                         <th scope="col">Content</th>
                         <th scope="col">Options</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @include('partials.reportedpost')
-                    @include('partials.reportedcomment')
-                    @include('partials.reportedpost')
-                    @include('partials.reportedcomment')
-                    @include('partials.reportedpost')
-                    @include('partials.reportedcomment')
-                    @include('partials.reportedpost')
-                    @include('partials.reportedcomment')
-                    @include('partials.reportedpost')
-                    @include('partials.reportedcomment')
+                @each('partials.reportedpost', $reportedPosts, 'report')
+                @each('partials.reportedcomment', $reportedComments, 'report')
                 </tbody>
             </table>
         </div>

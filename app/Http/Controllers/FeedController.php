@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FeedController extends Controller {
 
@@ -40,34 +41,20 @@ class FeedController extends Controller {
             );
         }   
     }
-            
-    public function searchPosts(Request $request){
-        $posts = Post::where('header', 'like', '%' . $request->get('searchQuery') . '%' )->get();
-        return json_encode($posts);
-    }
 
-    public function showPosts(Response $response){
+
+    public function searchPosts(Request $request){
+        $cat = [];
+        $cat = array_map('intval', explode(',', $request->get('categories')));
+
         
+        $po = Post::where('header', 'like', '%' . $request->get('searchQuery') . '%' )->where('title', 'like', '%' . $request->get('searchQuery') . '%' )->whereIn('category',$cat)->get();
         $posts=array();
-        foreach($response as $value){
-            $p=PostController::getPost($value->id);
+        foreach($po as $n){
+            $p=PostController::getPost($n->id);
             array_push($posts,json_decode($p->getContent()));
         }
-
-        if(Auth::check()){
-            return view('pages.authuserfeed',
-                [
-                 'posts' => $posts
-                 ]
-                );
-            }
-            else{
-                return view('pages.homepage',
-                [
-                 'posts' => $posts
-                ]
-                );
-            }   
+        
+        return response()->json(['html'=>view('partials.management.posts',['posts' => $posts])->render()]);
     }
-
 }

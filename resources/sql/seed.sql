@@ -231,7 +231,7 @@ BEGIN
 
 
 
-	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, NEW.user_id , null, NEW.id, NEW.id);
+	INSERT INTO notification (is_read, receiver,  vote_id, comment_id, follower_id) VALUES (FALSE, NEW.user_id , null, NEW.id,null);
 	
 	RETURN NEW;
 END
@@ -342,7 +342,6 @@ INSERT INTO "follow_category" (user_id,category_id) VALUES (5,1),(5,2),(6,3),(6,
 INSERT INTO "comment" (user_id,post_id,body) VALUES (5,3,'Very good post'), (9,3,'It is a great thing that climate change is being adressed'),(7,4,'Very good post'), (8,6,'It is a great thing that climate change is being adressed');
 
 INSERT INTO "comment" (user_id,post_id,body,comment_id) VALUES (7,3,'Indeed',1), (9,3,'It really is',2);
-
 
 
 INSERT INTO report(user_id,state,comment_id) VALUES (5,'NotAnswered',1),(6,'NotAnswered',1), (7,'NotAnswered',2);

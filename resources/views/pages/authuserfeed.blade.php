@@ -1,7 +1,6 @@
 @extends('layouts.main_header')
 @section('content')
 
-
 <div class=" container homepage d-flex align-items-center" style="margin-top: 6rem;">
 
 
@@ -9,35 +8,36 @@
         <div class="col-md-2 filters-bar d-none d-lg-block ">
             <div class="filters" style="position: fixed; margin-top:4rem;">
                 <h3 class="filters-title form-label ">Search filters</h3>
-                <form >
-                    <div class="form-group">
+
+                <form id="formSettings">
+
+                    <div class="form-group" >
                         <legend class="form-label label text-left">Categories</legend>
                         @foreach ($categories as $c)
-                            <div class="form-check pl-0">
-                                <input type="checkbox" checked id="{{$c->id}}" name="{{$c->name}}" value="{{$c->id}}">
+                            <div class="form-check pl-0" id="settingsCategory" >
+                                <input type="checkbox" checked id="{{$c->name}}" name="{{$c->name}}" value="{{$c->id}}">
                                 <label for="{{$c->id}}"> {{$c->name}}</label><br>
                             </div>
                         @endforeach
                     </div>
 
-                   
-
                         <div class="form-group">
                             <legend class="form-label label text-left">Feed Preference</legend>
-                            <div class="form-check">
-                                <input class="form-check-input green" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">My Feed</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input green" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">Trending</label>
+                            <div class="row form-check" id=settingsPreference>
+                                <div class="form-check">
+                                    <input class="form-check-input green" type="radio" name="flexRadioDefault" id="my-feed">
+                                    <label class="form-check-label" for="flexRadioDefault1">My Feed</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input green" type="radio" name="flexRadioDefault" id="trending" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">Trending</label>
+                                </div>
                             </div>
                         </div>
                 
 
-                    <div class="form-group">
+                    <div class="form-group" id=settingsOrder>
                         <legend class="form-label label order-by">Order By</legend>
-
                         <div class="form-check">
                             <input class="form-check-input " type="radio" name="feedType" id="top-news">
                             <label class="form-check-label" for="flexRadioDefault1">Top News</label>
@@ -47,19 +47,22 @@
                             <label class="form-check-label" for="flexRadioDefault2"> Newest</label>
                         </div>
                     </div>
-
-                    <button type="submit" class="btn btn-primary form-submit mt-2">Submit</button>
+                    <button id="formbtn" type="submit" class="btn btn-primary form-submit mt-2">Submit</button>
                 </form>
 
             </div>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-9  posts">
-            <div class="row">
-                <div class="input-group rounded search-container mb-3">
-                    <input type="search" class="form-control rounded searchbar" style=" border-radius: 2rem;color: var(--text-color); background-color: var(--background-color);" id="searchbar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                    <span class="input-group-text border-0 search-icon">
-                        <i class="fas fa-search"></i>
+        <div class="row">
+                <div class="input-group rounded search-container mb-3 px-0">
+                    <input type="search" class="form-control searchbar mr-2"  id="searchbar" placeholder='Search posts ' aria-label="Search" aria-describedby="search-addon" />
+                    
+                    <input type="search" class="form-control searchbar"  id="searchbarusers" list="dlsearchbar" placeholder="Search users" aria-label="Search" aria-describedby="search-addon" />
+                    <datalist id="dlsearchbar">
+                    </datalist>
+                    <span class="input-group-text search-icon" id="searchUserButton">
+                        <i class="fas fa-search text-primary"></i>
                     </span>
                 </div>
 
@@ -114,9 +117,8 @@
                 </div>
             </form>
 
-            <div class="row posts-container">
+            <div class="row posts-container" id="postslist">
                 @each('partials.authpost', $posts, 'post')
-               
             </div>
         </div>
 
@@ -127,3 +129,6 @@
     </div>
 </div>
 @endsection
+
+
+<script defer type="text/javascript" src="{{ URL::asset('js/search.js') }}" ></script>

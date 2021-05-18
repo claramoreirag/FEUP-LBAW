@@ -73,29 +73,40 @@ Route::get('/user/{user_id}', 'UserController@show')->name('profile');
 Route::delete('/settings', 'UserController@delete');
 Route::get('/settings', 'UserController@showEditProfile');
 Route::put('/settings', 'UserController@editProfile'); 
+Route::post('user/{user_id}/follow_category','UserController@followCategory')->name('follow_cat');
+Route::delete('user/{user_id}/unfollow_category','UserController@unfollowCategory')->name('unfollow_cat');
 
 //Feed
 Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');
 Route::get('home','FeedController@show')->name('home');
 Route::get('search','FeedController@search')->name('search');
 
+
 // Post 
 Route::get('/post/{id}', 'PostController@show')->where(['id' => '[0-9]+']);
-Route::delete('/post/{post_id}', 'PostController@delete');
+Route::delete('/post/{post_id}', 'PostController@delete')->where(['post_id' => '[0-9]+']);
+Route::post('/post/{post_id}/report', 'PostController@report')->where(['post_id' => '[0-9]+'])->name('report_post');
 Route::get('/post/{post_id}/edit', 'PostController@showEdit');
 Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
 Route::get('/newpost', 'PostController@showNewPost');
 Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post');
  
+
+
+
 Route::get('/searchUsers', 'UserController@searchUsers')->name('searchUsers');
 Route::get('/searchPosts', 'FeedController@searchPosts')->name('searchPosts');
-Route::get('/showPosts', 'FeedController@showPosts')->name('showPosts');
 
 //Comment
 Route::post('/post/{post_id}/comment', 'CommentController@newComment')->name('comment');
-Route::post('/comment/{comment_id}/reply', 'CommentController@replyComment')->name('reply');
-Route::delete('/comment/{comment_id}', 'CommentController@deleteComment');
-Route::put('/comment/{comment_id}', 'CommentController@editComment');
+Route::post('/comment/{comment_id}/reply', 'CommentController@replyComment')->name('reply')->where(['comment_id' => '[0-9]+']);
+Route::delete('/comment/{comment_id}', 'CommentController@deleteComment')->name('delete_comment');
+Route::put('/comment/{comment_id}', 'CommentController@editComment')->name('edit_comment');
+//Route::get('/get_comment/{comment_id}','CommentController@getComment')->where(['comment_id' => '[0-9]+']);
+
+//Admin
+Route::get('/admin/reports','AdminController@show')->name('reports');
+Route::get('/admin/reports/posts/{post_id}','AdminController@viewPost')->name('reported_post');
 //---------------------------------------------------
 
 /*Route::post('/post/{post_id}/vote', 'PostController@vote');

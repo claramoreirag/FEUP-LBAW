@@ -43,8 +43,17 @@ class LoginController extends Controller
     }
 
     public function home() {
-       
         return route('authuserfeed');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        if($user->isAdmin()) {
+            return redirect()->intended('/admin/reports');
+        } 
+        else {
+            return redirect()->intended('/authuserfeed');
+        }
     }
 
 }
