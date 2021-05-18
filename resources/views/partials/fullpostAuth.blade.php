@@ -56,7 +56,7 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                                 <div class="col-4 share action"><i class="fas fa-share-alt"></i></div>
                                 <div class="col-4 save action"><i class="fas fa-bookmark"></i></div>
                                 @if($already_reported)
-                                    <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#ModalAlreadyReported" >r<i class="fas fa-exclamation-circle"></i></div>
+                                    <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#ModalAlreadyReported" ><i class="fas fa-exclamation-circle"></i></div>
                                     @endif
                                     @if(!$already_reported)
                                 <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#exampleModalCenter{{$post->id}}" ><i class="fas fa-exclamation-circle"></i></div>
@@ -65,8 +65,8 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                         </div>
                         <div class="col-lg-2 col-md-3 col-sm-4" style="margin: 0.5rem 0rem; padding:0rem ;">
                             <div class="row justify-content-end votes">
-                                <div class="col-6 upvote"><i class="fas fa-arrow-up"></i> 10 </div>
-                                <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> 3 </div>
+                                <div class="col-6 upvote"><i class="fas fa-arrow-up"></i>  {{$post->upvotes}} </div>
+                                <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> {{$post->downvotes}} </div>
                                 
                             </div>
                         </div>
