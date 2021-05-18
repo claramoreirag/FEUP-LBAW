@@ -4,7 +4,8 @@
 
     <script>
         tinymce.init({
-            selector: '#mytextarea'
+            selector: '#mytextarea',
+            menubar: false
         });
     </script>
 
@@ -27,42 +28,38 @@
                      @endif
                 </div>
                 <div class="row ">
-                    <div class="col-md-6 col-xs-12 header-section mt-3">
-                        <label for="inputNewsHeader">Header</label>
-                        <input type="header" class="form-control" name="header" id="inputNewsHeader" placeholder="This is where you summarize your post">
+                    <div class="col header-section mt-3">
+                        <label for="inputNewsHeader">Abstract</label>
+                        <textarea type="header" class="form-control input-lg" name="header" aria-label="Large"​ id="inputNewsHeader" placeholder="This is where you summarize your post" ></textarea>
                     </div>
-                    <div class="col-md-6 col-xs-12 tags-section mt-5">
-                        <select class="form-select" aria-label="Topic" name="categories">
-                           
+                </div>
+                <div class="row ">
+                    <div class="col my-4 tags-section mt-3">
+                    <label for="categories">Category</label>
+                        <select class="form-select text-muted" aria-label="Topic" name="categories">
                             @foreach($categories as $cat)
                             <option value={{$cat->id}}>{{$cat->name}}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div class="row my-4 mx-1">
-                   
-                        <textarea id="mytextarea"   name="body">Write your post here!</textarea>
-                       
+                <div >
+                    <label for="body">News body</label>
+                    <textarea id="mytextarea" class="text-muted" name="body" >Write your post here!</textarea>
                 </div>
-                {{-- <div class="form-group source-section">
-                    <label for="source">News Source</label>
-                    <input type="source" class="form-control" name="source" id="source" placeholder="Where did you get this content?">
-                    <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
-                </div> --}}
-                <div class="form-group source-section">
+                
+                <div class="form-group source-section mt-4">
                     <label for="inputNewsSource">News Source</label>
-                 
                     <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
-                    <div class="container">
-                        <div class="row">
+                    <div class="row">
                             <input type="hidden" name="count" value="1" />
                             <div class="control-group" id="fields">
                                 <div class="controls" id="profs">
-                                        <div id="source"><input autocomplete="off" class=" form-text form-control" id="source1" name="source[]" type="text" placeholder="Type something" data-items="8" /><button id="b1" class=" py-0 px-1 btn btn-primary add-more" type="button">+</button></div>
-                                  
+                                        <div id="source">
+                                            <input  class=" form-text form-control" id="source1" name="source[]" type="text" placeholder="http://" data-items="8" />
+                                            <button id="b1" class="py-1 px-1 btn btn-light add-more" type="button">Add another source</button>
+                                        </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>

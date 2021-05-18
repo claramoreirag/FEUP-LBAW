@@ -24,8 +24,8 @@ class UserController extends Controller
     return json_encode($users);
   }
 
-    public function show($id)
-    {
+  public function show($id)
+  {
       $user = User::find($id);
      
       if(Auth::check() && Auth::id()==$id){
@@ -42,7 +42,6 @@ class UserController extends Controller
     }
 
 
-    
   public function delete(Request $request)
   {
     $user =User::find(Auth::id());
