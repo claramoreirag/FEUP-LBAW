@@ -28,7 +28,7 @@ class Report extends Model
     }
 
     public function comment(){
-        return $this->belongsTo('App\Models\User', 'comment_id');
+        return $this->belongsTo('App\Models\Comment', 'comment_id');
     }
 
     public function post(){
