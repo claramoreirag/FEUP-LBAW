@@ -10865,7 +10865,15 @@ div.hello{
     cursor: pointer!important;
  }
 
- .action-green:hover{
+ .action-bg-green:hover{
   background-color: var(--teal)!important;
+  cursor: pointer!important;
+ }
+
+ .green{
+   color: var(--primary)!important;
+ }
+ .action-green:hover{
+  color: var(--teal)!important;
   cursor: pointer!important;
  }

@@ -6,7 +6,7 @@
 
 <li class="row clearfix justify-content-end">
     <div class="col-md-8 post-comments " id="{{$id}}">
-        <p class=""> <a  href="/user/{{$comment->user->id}}"> @<span>{{$comment->user->username}}</span></a> said: {{$comment->body}} </p>
+        <p class="mb-0"> <a  href="/user/{{$comment->user->id}}"> @<span>{{$comment->user->username}}</span></a> replied: {{$comment->body}} </p>
         <form class="hidden" id="edit" action="{{ route("edit_comment",["comment_id"=>$comment->id]) }}" method="Post">
             <div class="row"> 
                 <div class="col-10 px-0">
@@ -18,29 +18,30 @@
                 <button type="submit" class="btn btn-success py-1" formaction="{{ route("edit_comment",["comment_id"=>$comment->id]) }}"><i class="fas fa-check"></i></button>
                 @method("PUT")@csrf
             </div>
-            <div class="col-xs-2 col-md-1 px-0"> 
+            {{-- <div class="col-xs-2 col-md-1 px-0"> 
                 <button class="btn btn-secondary py-1" onclick="cancel("{{$id}}")"><i class="px-0 py-0 fas fa-times"></i></button> 
-            </div> </div> </form>
+            </div> --}}
+         </div> </form>
         <div class="row justify-content-between">
-            <div class="col-md-5 col-sm-5">
-                {{$comment->datetime}}
+            <div class="col-md-5 col-sm-8">
+               On {{$comment->datetime}}
             
             </div>  
             <div class="col-md-5 col-sm-5 text-right">
                 <div class="row justify-content-end">
                     @if($comment->user->id==Auth::id())
-                    <div class="col-2 pr-1 icon" >
+                    <div class="col-3 col-xs-3  pr-1 icon" >
                         <form action="{{ route("delete_comment",["comment_id"=>$comment->id]) }}" method="Post">
                             <input type="hidden" id="postId"  name="post_id" value="{{$comment->post_id}}"> 
-                            <button type="submit"  class="hiddenbutton"><i class="fas fa-trash-alt"></i></button>
+                            <button type="submit"  class="hiddenbutton"><i class="action-green green fas fa-trash-alt"></i></button>
                           @method("delete")@csrf
                         </form>
                     </div>
-                        <div class="col-2 px-1 icon"  onclick="edit('{{$id}}')"><i class="fas fa-edit text-primary "></i></div>
+                        <div class="col-3 col-xs-3 px-1 icon"  onclick="edit('{{$id}}')"><i class="fas action-green fa-edit text-primary "></i></div>
                         
                     @endif
                     @if($comment->user->id!=Auth::id() && Auth::check())
-                        <div class="col-2 px-1 " ><a class="text-secondary" href=""><i class="fas fa-exclamation-circle"></i></a></div>
+                        <div class="col-2 px-1 " ><a class="text-secondary" href=""><i class="action fas fa-exclamation-circle"></i></a></div>
                        
                     @endif
                 </div>

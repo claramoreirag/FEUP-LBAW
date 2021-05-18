@@ -14,10 +14,10 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
         <div class="row mb-2 justify-content-end">
             <div class="col-sm-3 col-md-3  " style="text-align:end">
               @if($already_follow)
-              <span class="badge badge-primary action-green tag p-1" data-toggle="modal" data-target="#unfollowTag{{$post->id}}"> {{$post->category}}</span>
+              <span class="badge badge-primary action-bg-green tag p-1" data-toggle="modal" data-target="#unfollowTag{{$post->id}}"> {{$post->category}}</span>
               @endif
               @if(!$already_follow)
-              <span class="badge badge-primary action-green tag p-1" data-toggle="modal" data-target="#followTag{{$post->id}}"> {{$post->category}}</span>
+              <span class="badge badge-primary action-bg-green tag p-1" data-toggle="modal" data-target="#followTag{{$post->id}}"> {{$post->category}}</span>
               @endif
 
                 </ul>
