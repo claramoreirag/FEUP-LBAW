@@ -37,10 +37,6 @@ class Post extends Model
         return $this->belongsTo('App\Models\Category','category_id');
     }
 
-    public function upvotes(){
-        return 'upvotes';
-    }
-
     public function sources(){
         return $this->hasMany('App\Models\PostSource');
     }

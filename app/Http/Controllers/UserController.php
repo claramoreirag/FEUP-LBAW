@@ -27,13 +27,26 @@ class UserController extends Controller
       $followers = $user->followers()->get()->count();
       $following = $user->following()->get()->count();
       $posts = $user->posts()->get()->count();
+      $saved_posts_ids = $user->savedPosts()->get();
+      $upvoted_posts_ids = $user->upvotedPosts()->get();
       
       $post_list = $user->posts()->get();
       $count_upvotes = 0;
       foreach($post_list as $p){
-        $count_upvotes += $p->upvotes();
+        $count_upvotes += $p->upvotes;
       }
 
+      $saved_posts = array();
+      foreach($saved_posts_ids as $sp){
+        $p = PostController::getPost($sp->id);
+        array_push($saved_posts, json_decode($p->getContent()));
+      }
+
+      $upvoted_posts=array();
+      foreach ($upvoted_posts_ids as $up) {
+        $p = PostController::getPost($up->id);
+        array_push($upvoted_posts, json_decode($p->getContent()));
+      }
 
       if(Auth::check() && Auth::id()==$id){
         $ownposts=array();
@@ -41,10 +54,15 @@ class UserController extends Controller
           array_push($ownposts,json_decode(PostController::getPost($p->id)->getContent()));
 
         }
-        return view('pages.ownprofile', ['user' => $user,'ownposts'=>$ownposts, 'followers'=>$followers, 'following'=>$following, 'posts'=>$posts, 'upvotes'=>$count_upvotes]);
+        return view('pages.ownprofile', ['user' => $user,'ownposts'=>$ownposts, 'followers'=>$followers, 'following'=>$following, 'posts'=>$posts, 'upvotes'=>$count_upvotes, 'savedPosts' => $saved_posts, 'upvotedPosts' => $upvoted_posts]);
       }
       else{
-        return view('pages.otherprofile', ['user' => $user]);
+        $otherposts = array();
+        foreach ($user->posts as $p) {
+          array_push($otherposts, json_decode(PostController::getPost($p->id)->getContent()));
+        }
+
+        return view('pages.otherprofile', ['user' => $user, 'otherposts'=> $otherposts, 'followers' => $followers, 'following' => $following, 'posts' => $posts, 'upvotes' => $count_upvotes, 'savedPosts' =>$saved_posts, 'upvotedPosts' => $upvoted_posts]);
       }
     }
 

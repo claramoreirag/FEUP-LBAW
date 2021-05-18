@@ -80,4 +80,12 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\User', 'follow', 'follower', 'followed');
     }
 
+    public function savedPosts(){
+        return $this->belongsToMany('App\Models\User', 'saved_post', 'user_id', 'post_id');
+    }
+
+    public function upvotedPosts(){
+        return $this->belongsToMany('App\Models\User', 'post_vote', 'user_id', 'post_id')->where('is_up', '=', true);
+    }
+
 }

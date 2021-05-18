@@ -12,7 +12,7 @@ class PostVote extends Model
     protected $table = 'post_vote';
 
     public $timestamps = false;
-    protected $fillable = ['user_id', 'post_id', 'is_up',];
+    protected $fillable = ['user_id', 'post_id', 'is_up'];
 
     protected $casts = [
         'id' => 'integer',
