@@ -122,7 +122,7 @@ class UserController extends Controller
     }
     
       $user->save();
-     // return redirect('/user/'.Auth::id());
+      return redirect('/user/'.Auth::id());
     }
 
 

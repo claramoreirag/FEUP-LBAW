@@ -122,4 +122,14 @@ class CommentController extends Controller
 
     return redirect('/post/'.$request->input('post_id'));
   }
+
+  public function reportComment($id){
+    ReportController::createCommentReport(Auth::id(),$id);
+    
+  }
+
+
+
+
+
 }

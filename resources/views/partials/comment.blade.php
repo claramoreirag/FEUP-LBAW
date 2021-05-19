@@ -2,6 +2,8 @@
       //$id='replies'.$comment['info']->id;
         $id=$comment['info']->id;
         $reply_id="reply".$comment['info']->id;
+        use App\Http\Controllers\ReportController;
+        $already_reported_comment=ReportController::commentAlreadyReported(Auth::id(),$comment['info']->id);
     @endphp
 
     <li class="clearfix">
@@ -48,7 +50,12 @@
                         <div class="col-3 col-xs-3 pl-1" onclick="addReply('{{$reply_id}}')"><i class="text-primary action-green fa fa-reply"></i></div>
                     @endif
                     @if($comment['info']->user->id!=Auth::id() && Auth::check())
-                        <div class="col-3 col-xs-3px-1 " ><a class="text-secondary" href=""><i class="action fas fa-exclamation-circle"></i></a></div>
+                        @if($already_reported_comment)
+                            <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#alreadyReportedComment" ><i class="fas fa-exclamation-circle"></i></div>
+                        @endif
+                        @if(!$already_reported_comment)
+                            <div class="col-2 px-1 " data-toggle="modal" data-target="#reportComment{{$comment['info']->id}}"><i class="text-secondary action fas fa-exclamation-circle"></i></div>
+                        @endif
                         <div class="col-3 col-xs-3 pl-1" onclick="addReply('{{$reply_id}}')"><i class="action-green text-primary fa fa-reply"></i></div>
                     @endif
                 </div>
@@ -81,5 +88,49 @@
     </article>
     </li>
 
+
+    <div data-id="{{ $comment['info']->id }}" class="modal fade" id="reportComment{{$comment['info']->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Report</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              
+            </div>
+            <div class="modal-body">
+              Are you sure you want to report this comment?
+             
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <form action="{{route('report_comment',['comment_id'=>$comment['info']->id])}}" method="post">
+                <button class="btn btn-primary" type="submit" value="Report" >Report</button>
+                @method('post')
+                @csrf
+            </form>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script defer type="text/javascript" src="{{ URL::asset('js/comments.js') }}"></script>
+    
+    
+    <div data-id="{{ $comment['info']->id }}" class="modal fade" id="alreadyReportedComment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                  You already reported this comment!
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+              </div>
+        </div>
+      </div>
 
 <script defer type="text/javascript" src="{{ URL::asset('js/comments.js') }}"></script>
