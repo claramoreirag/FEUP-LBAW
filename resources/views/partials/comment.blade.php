@@ -47,7 +47,7 @@
                         </form>
                     </div>
                         <div class="col-3 col-xs-3 px-1 icon"  onclick="edit('{{$id}}')"><i class="fas fa-edit action-green text-primary "></i></div>
-                        <div class="col-3 col-xs-3 pl-1" onclick="addReply('{{$reply_id}}')"><i class="text-primary action-green fa fa-reply"></i></div>
+                        <div class="col-3 col-xs-3 pl-1" onclick="addReply('{{$reply_id}}')">r<i class="text-primary action-green fa fa-reply"></i></div>
                     @endif
                     @if($comment['info']->user->id!=Auth::id() && Auth::check())
                         @if($already_reported_comment)
@@ -67,12 +67,12 @@
         </div>
         
     <ul class="replies" id="{{$reply_id}}">
-        <form class="pb-2 hidden" id="reply" action="{{ route("reply",["comment_id"=>$comment["info"]->id]) }}" method="POST">
+    <form class="pb-2 hidden" id="formreply{{$comment['info']->id}}" action="{{ route("reply",["comment_id"=>$comment["info"]->id]) }}" method="POST">
             <div class="row"> 
                 <div class="col-10">
-                    <input type="text" class="form-control" name="body" id="inputComment">
-                </div><input type="hidden" id="custId" name="post_id" value="{{$comment["info"]->post_id}}">
-                <input type="hidden" id="custId" name="comment_id" value="{{$comment["info"]->id}}">
+                    <input type="text" class="form-control" id="body" name="body" id="inputComment">
+                </div><input type="hidden" id="post_id" name="post_id" value="{{$comment["info"]->post_id}}">
+                <input type="hidden" id="comment_id" name="comment_id" value="{{$comment["info"]->id}}">
                 <div class="col-1">
                     <button type="submit" class="btn btn-success py-1" formaction="{{ route("reply",["comment_id"=>$comment["info"]->id]) }}">Share</button>
                     @method("POST")@csrf
@@ -134,3 +134,69 @@
       </div>
 
 <script defer type="text/javascript" src="{{ URL::asset('js/comments.js') }}"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+<script type="text/javascript">
+
+jQuery.fn.preventDoubleSubmit = function() {
+  jQuery(this).submit(function() {
+    if (this.beenSubmitted)
+      return false;
+    else
+      this.beenSubmitted = true;
+  });
+};
+
+jQuery('#reply{{$comment['info']->id}}').preventDoubleSubmit(); 
+
+ $('#reply{{$comment['info']->id}}').off().on('submit',function(event){
+     event.preventDefault();
+
+     let body = $('#body').val();
+     let post_id = $('#post_id').val();
+     let comment_id = $('#comment_id').val();
+     let url="/comment/"+comment_id+"/reply";
+
+     $.ajax({
+       url: url,
+       type:"POST",
+       data:{
+         "_token": "{{ csrf_token() }}",
+         body:body,
+         comment_id:comment_id,
+         post_id:post_id,
+       },
+       success:function(response){
+         console.log(response.comment);
+         
+         let query="#formreply"+comment_id;
+            console.log(query);
+            let rep  =document.querySelector(query);
+            if(  rep.classList.contains("hidden") ){
+                rep.classList.remove("hidden");
+            }
+            else{
+                rep.classList.add("hidden");
+            }
+          let ul=document.querySelector("#reply"+comment_id);
+          let newReply=document.createElement("div");
+          newReply.innerHTML=response.comment
+          //ul.appendChild(newReply)
+          console.log(ul)
+         ul.insertBefore(newReply,ul.childNodes[0]);
+       },
+      })
+      .done(function(data) {
+            // log data to the console so we can see
+            console.log('done');
+            
+            // here we will handle errors and validation messages
+        });
+
+        // stop the form from submitting the normal way and refreshing the page
+        event.preventDefault();
+
+     });
+   </script>

@@ -60,6 +60,7 @@ class CommentController extends Controller
     }
 
     public function replyComment(Request $request){
+
         $comment = new Comment();
         //$src = Source().create($request->input('source'));
         //$this->authorize('storeNewcomment', $comment);
@@ -70,9 +71,11 @@ class CommentController extends Controller
         $comment->post_id = $request->input('post_id');
         $comment->comment_id = $request->input('comment_id');
         $comment->save();
-        
+        $c=Comment::find($comment->id);
+        $view=view('partials.reply',['comment'=>$c])->render();
   
-        return redirect('/post/'.$request->input('post_id'));
+        return response()->json(['success'=>'Form is successfully submitted!','comment'=>$view]);
+        
     }
 
     

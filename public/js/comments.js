@@ -3,7 +3,7 @@
        
         let element = document.getElementById(id);
         console.log(element);
-        let rep  =element.querySelector("#reply");
+        let rep  =element.querySelector("#form"+id);
             if(  rep.classList.contains("hidden") ){
                 rep.classList.remove("hidden");
             }

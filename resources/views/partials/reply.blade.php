@@ -16,8 +16,8 @@ $already_reported_reply=ReportController::commentAlreadyReported(Auth::id(),$com
                 <div class="col-10 px-0">
                 <input type="text" class="form-control" value="{{$comment->id}}" name="body" id="inputComment">
             </div> 
-            <input type="hidden" id="custId"  name="id" value="{{$comment->id}}"> 
-            <input type="hidden" id="postId"  name="post_id" value="{{$comment->post_id}}"> 
+            <input type="hidden" id="id"  name="id" value="{{$comment->id}}"> 
+            <input type="hidden" id="post_idd"  name="post_id" value="{{$comment->post_id}}"> 
             <div class="col-xs-2 col-md-1 px-0 "> 
                 <button type="submit" class="btn btn-success py-1" formaction="{{ route("edit_comment",["comment_id"=>$comment->id]) }}"><i class="fas fa-check"></i></button>
                 @method("PUT")@csrf
@@ -108,3 +108,4 @@ $already_reported_reply=ReportController::commentAlreadyReported(Auth::id(),$com
           </div>
     </div>
   </div>
+
