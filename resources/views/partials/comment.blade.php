@@ -169,10 +169,8 @@ jQuery('#reply{{$comment['info']->id}}').preventDoubleSubmit();
          post_id:post_id,
        },
        success:function(response){
-         console.log(response.comment);
-         
+      
          let query="#formreply"+comment_id;
-            console.log(query);
             let rep  =document.querySelector(query);
             if(  rep.classList.contains("hidden") ){
                 rep.classList.remove("hidden");
@@ -183,19 +181,13 @@ jQuery('#reply{{$comment['info']->id}}').preventDoubleSubmit();
           let ul=document.querySelector("#reply"+comment_id);
           let newReply=document.createElement("div");
           newReply.innerHTML=response.comment
-          //ul.appendChild(newReply)
-          console.log(ul)
-         ul.insertBefore(newReply,ul.childNodes[0]);
+          
+         ul.insertBefore(newReply,ul.childNodes[2]);
        },
       })
       .done(function(data) {
-            // log data to the console so we can see
-            console.log('done');
-            
-            // here we will handle errors and validation messages
+          
         });
-
-        // stop the form from submitting the normal way and refreshing the page
         event.preventDefault();
 
      });
