@@ -41,9 +41,16 @@ class CommentController extends Controller
         $comment->post_id = $request->input('post_id');
         
         $comment->save();
-        
+        $c=Comment::find($comment->id);
+        $replies=Comment::where('comment_id','=',$c->id)->get();
+        $comment=array();
+        $comment['info']=$c;
+        $comment['replies']=$replies;
+        $view=view('partials.comment',['comment'=>$comment])->render();
   
-        return redirect('/post/'.$request->input('post_id'));
+        return response()->json(['success'=>'Form is successfully submitted!','comment'=>$view]);
+  
+      
     }
 
     public function editComment(Request $request){
