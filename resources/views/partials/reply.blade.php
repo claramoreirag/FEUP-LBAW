@@ -10,14 +10,14 @@ $already_reported_reply=ReportController::commentAlreadyReported(Auth::id(),$com
  
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_rB4VojlEI2f9u8bxiaLmoweo8oeAsROorA&usqp=CAU" class="rounded-circle avatar" alt="">
     <div class="post-comments " id="{{$id}}">
-        <p class="mb-0"> <a  href="/user/{{$comment->user->id}}"> @<span>{{$comment->user->username}}</span></a> replied: {{$comment->body}} </p>
-        <form class="hidden" id="edit" action="{{ route("edit_comment",["comment_id"=>$comment->id]) }}" method="Post">
+        <p class="mb-0"> <a  href="/user/{{$comment->user->id}}"> @<span>{{$comment->user->username}}</span></a> replied: <span id="comment_info{{$comment->id}}"> {{$comment->body}} </span></p>
+        <form class="hidden" id="edit{{$comment->id}}" action="{{ route("edit_comment",["comment_id"=>$comment->id]) }}" method="Post">
             <div class="row"> 
                 <div class="col-10 px-0">
-                <input type="text" class="form-control" value="{{$comment->id}}" name="body" id="inputComment">
+                <input type="text" class="form-control" value="{{$comment->body}}" name="body" id="inputComment{{$comment->id}}">
             </div> 
-            <input type="hidden" id="id"  name="id" value="{{$comment->id}}"> 
-            <input type="hidden" id="post_idd"  name="post_id" value="{{$comment->post_id}}"> 
+            <input type="hidden" id="comment_id{{$comment->id}}"  name="id" value="{{$comment->id}}"> 
+            <input type="hidden" id="post_id{{$comment->id}}"  name="post_id" value="{{$comment->post_id}}"> 
             <div class="col-xs-2 col-md-1 px-0 "> 
                 <button type="submit" class="btn btn-success py-1" formaction="{{ route("edit_comment",["comment_id"=>$comment->id]) }}"><i class="fas fa-check"></i></button>
                 @method("PUT")@csrf
@@ -35,9 +35,9 @@ $already_reported_reply=ReportController::commentAlreadyReported(Auth::id(),$com
                 <div class="row justify-content-end">
                     @if($comment->user->id==Auth::id())
                     <div class="col-3 col-xs-3  pr-1 icon" >
-                        <form action="{{ route("delete_comment",["comment_id"=>$comment->id]) }}" method="Post">
+                        <form id="delete{{$comment->id}}" action="{{ route("delete_comment",["comment_id"=>$comment->id]) }}" method="Post">
                             <input type="hidden" id="postId"  name="post_id" value="{{$comment->post_id}}"> 
-                            <button type="submit"  class="hiddenbutton"><i class="action-green green fas fa-trash-alt"></i></button>
+                        <button type="submit"  class="hiddenbutton">d<i class="action-green green fas fa-trash-alt"></i></button>
                           @method("delete")@csrf
                         </form>
                     </div>
@@ -109,3 +109,61 @@ $already_reported_reply=ReportController::commentAlreadyReported(Auth::id(),$com
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+  <script type="text/javascript">
+  
+   
+  
+   
+
+       $('#edit{{$comment->id}}').off().on('submit',function(event){
+       event.preventDefault();
+  
+       let body = $('#inputComment{{$comment->id}}').val();
+       let post_id = $('#post_id{{$comment->id}}').val();
+       let comment_id = $('#comment_id{{$comment->id}}').val();
+       let url="/comment/"+comment_id;
+      //  let comment= new Object();
+      //  comment.body=body;
+      //  comment.post_id=post_id;
+      //  comment.comment_id=comment_id;
+       $.ajax({
+         url: url,
+         type:"PUT",
+         dataType:'json',
+         data:{
+          "_token": "{{ csrf_token() }}",
+           body:body,
+           comment_id:comment_id,
+           post_id:post_id,
+         }
+         ,
+         success:function(response){
+        
+          //  let query="#edit{{$comment->id}}";
+          //     let rep  =document.querySelector(query);
+          //     if(  rep.classList.contains("hidden") ){
+          //         rep.classList.remove("hidden");
+          //     }
+          //     else{
+          //         rep.classList.add("hidden");
+          //     }
+          //     let element = document.getElementById("{{$comment->id}}");
+          //     let info=element.querySelector("#comment_info{{$comment->id}}");
+          //     info.innerHTML=response.comment;
+          //     console.log(response);
+          //   let ul=document.querySelector("#reply"+comment_id);
+          //   let newReply=document.createElement("div");
+          //   newReply.innerHTML=response.comment
+            
+          //  ul.insertBefore(newReply,ul.childNodes[2]);
+         },
+        })
+        .done(function(data) {
+            console.log('don')
+          });
+          event.preventDefault();
+  
+       });
+     </script>

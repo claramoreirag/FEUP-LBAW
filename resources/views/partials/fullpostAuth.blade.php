@@ -155,7 +155,8 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
 
 
 
-      <script type="text/javascript">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript">
 
         
          $('#comment').off().on('submit',function(event){
@@ -192,4 +193,4 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                 event.preventDefault();
         
              });
-           </script>
+    </script>

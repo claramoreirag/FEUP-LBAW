@@ -17,13 +17,19 @@
         
             let element = document.getElementById(id);
             console.log(element);
-            let rep  =element.querySelector("#edit");
+            let info=element.querySelector("#comment_info"+id);
+            let innerinfo=document.getElementById("inputComment"+id).value;
+            console.log(innerinfo);
+            let rep  =element.querySelector("#edit"+id);
                  if(  rep.classList.contains("hidden") ){
                      rep.classList.remove("hidden");
+                     info.innerHTML="";
                  }
                  else{
                      rep.classList.add("hidden");
+                     info.innerHTML=innerinfo;
                  }
+            
          //    if(element.querySelector("#edit") == null){
          
          //    element.innerHTML = '<form id="edit" action="{{ route("edit_comment",["comment_id"=>$comment["info"]->id]) }}" method="Post"><div class="row"> <div class="col-10 px-0"><input type="text" class="form-control" value="{{$comment["info"]->id}}" ame="body" id="inputComment"></div> <input type="hidden" id="custId" name="id" value="{{$comment["info"]->id}}"> <div class="col-xs-2 col-md-1 px-0 "> <button type="submit" class="btn btn-success py-1" formaction="{{ route("edit_comment",["comment_id"=>$comment["info"]->id]) }}"><i class="fas fa-check"></i></button>@method("PUT")@csrf</div><div class="col-xs-2 col-md-1 px-0"> <button class="btn btn-secondary py-1" onclick="cancel("{{$id}}")"><i class="px-0 py-0 fas fa-times"></i></button> </div> </div> </form>';

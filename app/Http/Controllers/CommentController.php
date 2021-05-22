@@ -53,17 +53,35 @@ class CommentController extends Controller
       
     }
 
-    public function editComment(Request $request){
-        $comment = Comment::find($request->input('id'));
-        //$src = Source().create($request->input('source'));
-        //$this->authorize('storeNewcomment', $comment);
-        var_dump($request->input('post_id'));
-    
-        $comment->body = $request->input('body');
-        $comment->save();
+    public function editComment(Request $request,$comment_id){
+        //var_dump($request);
 
-  
-        return redirect('/post/'.$request->input('post_id'));
+        $comment = Comment::find($request->input('comment_id'));
+        // //$src = Source().create($request->input('source'));
+        // //$this->authorize('storeNewcomment', $comment);
+        // var_dump($request->input('post_id'));
+    
+         $comment->body = $request->input('body');
+         $comment->save();
+        //$c=Comment::find($comment->id);
+        // if($c->comment_id!=null){
+        //     $view=view('partials.reply',['comment'=>$c])->render();
+        // }
+        // else{
+        //     $replies=Comment::where('comment_id','=',$c->id)->get();
+        //     $comment=array();
+        //     $comment['info']=$c;
+        //     $comment['replies']=$replies;
+        //     $view=view('partials.comment',['comment'=>$comment])->render();
+        // }
+
+        return response()->json(['success'=>'Form is successfully submitted!','comment'=>$comment->body]);
+       // return response()->json(['success'=>'Form is successfully submitted!']);
+        // return response()->json(['success'=>'Form is successfully submitted!','comment'=>$view]);
+        
+       
+       
+        //return redirect('/post/'.$request->input('post_id'));
     }
 
     public function replyComment(Request $request){
