@@ -141,21 +141,21 @@ $already_reported_reply=ReportController::commentAlreadyReported(Auth::id(),$com
          ,
          success:function(response){
         
-          //  let query="#edit{{$comment->id}}";
-          //     let rep  =document.querySelector(query);
-          //     if(  rep.classList.contains("hidden") ){
-          //         rep.classList.remove("hidden");
-          //     }
-          //     else{
-          //         rep.classList.add("hidden");
-          //     }
-          //     let element = document.getElementById("{{$comment->id}}");
-          //     let info=element.querySelector("#comment_info{{$comment->id}}");
-          //     info.innerHTML=response.comment;
-          //     console.log(response);
-          //   let ul=document.querySelector("#reply"+comment_id);
-          //   let newReply=document.createElement("div");
-          //   newReply.innerHTML=response.comment
+           let query="#edit{{$comment->id}}";
+              let rep  =document.querySelector(query);
+              if(  rep.classList.contains("hidden") ){
+                  rep.classList.remove("hidden");
+              }
+              else{
+                  rep.classList.add("hidden");
+              }
+              let element = document.getElementById("{{$comment->id}}");
+              let info=element.querySelector("#comment_info{{$comment->id}}");
+              info.innerHTML=response.comment;
+              console.log(response);
+            let ul=document.querySelector("#reply"+comment_id);
+            let newReply=document.createElement("div");
+            newReply.innerHTML=response.comment
             
           //  ul.insertBefore(newReply,ul.childNodes[2]);
          },
