@@ -57,23 +57,11 @@ class CommentController extends Controller
         //var_dump($request);
 
         $comment = Comment::find($request->input('comment_id'));
-        // //$src = Source().create($request->input('source'));
-        // //$this->authorize('storeNewcomment', $comment);
-        // var_dump($request->input('post_id'));
+
     
          $comment->body = $request->input('body');
          $comment->save();
-        //$c=Comment::find($comment->id);
-        // if($c->comment_id!=null){
-        //     $view=view('partials.reply',['comment'=>$c])->render();
-        // }
-        // else{
-        //     $replies=Comment::where('comment_id','=',$c->id)->get();
-        //     $comment=array();
-        //     $comment['info']=$c;
-        //     $comment['replies']=$replies;
-        //     $view=view('partials.comment',['comment'=>$comment])->render();
-        // }
+       
 
         return response()->json(['success'=>'Form is successfully submitted!','comment'=>$comment->body]);
        // return response()->json(['success'=>'Form is successfully submitted!']);
@@ -144,12 +132,15 @@ class CommentController extends Controller
   public function deleteComment(Request $request, $id)
   {
     $comment = Comment::find($id);
-    var_dump($comment);
+   
     // $this->authorize('delete', $card);
+    
     $comment->delete();
-
-    return redirect('/post/'.$request->input('post_id'));
+    return response()->json(['success'=>'Form is successfully submitted!']);
+    // return redirect('/post/'.$request->input('post_id'));
   }
+
+
 
   public function reportComment($id){
     ReportController::createCommentReport(Auth::id(),$id);

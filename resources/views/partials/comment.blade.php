@@ -6,7 +6,7 @@
         $already_reported_comment=ReportController::commentAlreadyReported(Auth::id(),$comment['info']->id);
     @endphp
 
-    <li class="clearfix">
+  <li id="entireComment{{$comment['info']->id}}" class="clearfix">
     <article class=" mb-3" >
         {{-- TODO change to profile pic --}}
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_rB4VojlEI2f9u8bxiaLmoweo8oeAsROorA&usqp=CAU" class="rounded-circle img-fluid avatar" alt="">
@@ -40,9 +40,9 @@
                 <div class="row justify-content-end">
                     @if($comment['info']->user->id==Auth::id())
                     <div class="col-3 col-xs-3 pr-1 icon" >
-                        <form action="{{ route("delete_comment",["comment_id"=>$comment["info"]->id]) }}" method="Post">
+                        <form id="delete{{$comment['info']->id}}" action="{{ route("delete_comment",["comment_id"=>$comment["info"]->id]) }}" method="Post">
                             <input type="hidden" id="postId"  name="post_id" value="{{$comment["info"]->post_id}}"> 
-                            <button type="submit"  class="hiddenbutton "><i class=" text-secodary green action-green fas fa-trash-alt"></i></button>
+                            <button type="submit"  class="hiddenbutton ">d<i class=" text-secodary green action-green fas fa-trash-alt"></i></button>
                           @method("delete")@csrf
                         </form>
                     </div>
@@ -236,6 +236,34 @@
       })
       .done(function(data) {
           console.log('don')
+        });
+        event.preventDefault();
+
+     });
+
+
+     $('#delete{{$comment['info']->id}}').off().on('submit',function(event){
+     event.preventDefault();
+     let url="/comment/{{$comment['info']->id}}";
+     $.ajax({
+       url: url,
+       type:"DELETE",
+       dataType:'json',
+       data:{
+        "_token": "{{ csrf_token() }}",
+        
+       }
+       ,
+       success:function(response){
+      
+        let query="#entireComment{{$comment['info']->id}}";
+        let rep  =document.querySelector(query);
+        rep.remove();
+        
+       },
+      })
+      .done(function(data) {
+       
         });
         event.preventDefault();
 

@@ -6,7 +6,7 @@ $already_reported_reply=ReportController::commentAlreadyReported(Auth::id(),$com
 
 
 @endphp
-<li class=" clearfix">
+<li id="entireComment{{$comment->id}}" class=" clearfix">
  
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_rB4VojlEI2f9u8bxiaLmoweo8oeAsROorA&usqp=CAU" class="rounded-circle avatar" alt="">
     <div class="post-comments " id="{{$id}}">
@@ -166,4 +166,31 @@ $already_reported_reply=ReportController::commentAlreadyReported(Auth::id(),$com
           event.preventDefault();
   
        });
+
+       $('#delete{{$comment->id}}').off().on('submit',function(event){
+     event.preventDefault();
+     let url="/comment/{{$comment->id}}";
+     $.ajax({
+       url: url,
+       type:"DELETE",
+       dataType:'json',
+       data:{
+        "_token": "{{ csrf_token() }}",
+        
+       }
+       ,
+       success:function(response){
+      
+        let query="#entireComment{{$comment->id}}";
+        let rep  =document.querySelector(query);
+        rep.remove();
+        
+       },
+      })
+      .done(function(data) {
+       
+        });
+        event.preventDefault();
+
+     });
      </script>
