@@ -35,7 +35,7 @@ class CommentController extends Controller
         //$this->authorize('storeNewcomment', $comment);
         
         
-  
+        $this->authorize('create', $comment);
         $comment->user_id = Auth::id();
         $comment->body = $request->input('body');
         $comment->post_id = $request->input('post_id');
@@ -57,7 +57,7 @@ class CommentController extends Controller
         //var_dump($request);
 
         $comment = Comment::find($request->input('comment_id'));
-
+        $this->authorize('update', $comment);
     
          $comment->body = $request->input('body');
          $comment->save();
@@ -78,7 +78,7 @@ class CommentController extends Controller
         //$src = Source().create($request->input('source'));
         //$this->authorize('storeNewcomment', $comment);
         
-    
+        $this->authorize('create', $comment);
         $comment->user_id = Auth::id();
         $comment->body = $request->input('body');
         $comment->post_id = $request->input('post_id');
@@ -133,7 +133,7 @@ class CommentController extends Controller
   {
     $comment = Comment::find($id);
    
-    // $this->authorize('delete', $card);
+    $this->authorize('delete', $comment);
     
     $comment->delete();
     return response()->json(['success'=>'Form is successfully submitted!']);
