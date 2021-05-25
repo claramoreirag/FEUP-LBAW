@@ -1,10 +1,8 @@
 <tr onclick="" class="align-middle">
-
-        <th scope="row">Post</th>
-        <td><a href="">{{$report->number}}</a></td>
-        <td width=15%>{{$report->date}}</td>
-        <td width=15%>{{$report->post->user->username}}</td>
-        <td width=30%>{{$report->post->title}}</td>
+        <th scope="row"><a href="/admin/reports/posts/{{$report->post->id}}">Post</a></th>
+        <td width=45%><a href="/admin/reports/posts/{{$report->post->id}}">{{$report->post->title}}</a></td>
+        <td width=15%><a href="/user/{{$report->post->user->id}}">{{$report->post->user->username}}</a></td>
+        <td>{{$report->number}}</td>
         <td>
             <button type="button" class="btn btn-outline-primary"><i class="far fa-trash-alt"></i></button>
 

@@ -11,7 +11,7 @@ class Post extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = 'post';
-    protected $fillable = ['datetime','user_id', 'title', 'header', 'body', 'category_id', 'upvotes', 'downvotes'];
+    protected $fillable = ['datetime','user_id', 'title', 'header', 'body', 'category_id', 'upvotes', 'downvotes', 'isVisible',];
 
     protected $casts = [
         'id' => 'integer',
@@ -22,9 +22,11 @@ class Post extends Model
         'body' => 'string',
         'category_id' => 'integer',
         'upvotes' => 'integer',
-        'downvotes' => 'integer'
+        'downvotes' => 'integer',
+        'isVisible' => 'boolean'
     ];
  
+
 
     public function comments(){
         return $this->hasMany('App\Models\Comment');
@@ -38,7 +40,6 @@ class Post extends Model
         return $this->belongsTo('App\Models\Category','category_id');
     }
 
-
     public function sources(){
         return $this->hasMany('App\Models\PostSource');
     }
@@ -49,6 +50,11 @@ class Post extends Model
             $source =Source::find($s->source_id);
             array_push($sources, $source->name);
         }
+    }
+
+    public function isPostVisible()
+    {
+        return $this->isVisible;
     }
 
 

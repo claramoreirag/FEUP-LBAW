@@ -49,7 +49,6 @@ class PostController extends Controller
     // $this->authorize('delete', $card);
     $post->delete();
     return redirect()->route('profile',['user_id'=>Auth::id()]);
-   
   }
 
 
@@ -128,6 +127,7 @@ class PostController extends Controller
         $category=Category::find($post->category)->name;
        // var_dump($category);
         
+       $bool=$post->isPostVisible();
         return response()->json([
             'id' => $post->id,
             'datetime' => $post->datetime,
@@ -138,8 +138,8 @@ class PostController extends Controller
             'category' => $category,
             'upvotes'=> $post->upvotes,
             'downvotes' => $post->downvotes,
-            'sources'=>$sources
-
+            'sources'=>$sources,
+            'isVisible'=>$bool
         ], 200);
 
     }
@@ -187,12 +187,9 @@ class PostController extends Controller
 
     public function report($id){
       
-      
       ReportController::createPostReport(Auth::id(),$id);
       return redirect('/post/'.$id);
     }
-
-    
 
     
 

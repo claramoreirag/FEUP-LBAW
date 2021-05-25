@@ -109,6 +109,7 @@ class ReportController extends Controller
             'id' => $report->id,
             'user' => $report_author,
             'date' => $report->datetime,
+            'state'=>$report->state,
             'comment' => $comment,
             'post' => $post,
             'admin' =>  $admin_resp,
@@ -126,9 +127,6 @@ class ReportController extends Controller
         $report->state='NotAnswered';
         $report->post_id=$post_id;
         $report->save();
-    
-    
-    
     }
 
     public static function postAlreadyReported($user_id,$post_id){
@@ -138,4 +136,48 @@ class ReportController extends Controller
          else return false;
     }
 
+    public function deletePostAdmin(Request $request, $id){
+        // $this->authorize('delete', $card);
+        $post = Post::find($id);
+        $post->setAttribute('isVisible', false);
+        $post->save();
+
+        $re=Report::all();
+        foreach($re as $n){
+          
+          $r=ReportController::getReport($n->id);
+          $post=json_decode($r->getContent())->post;
+          if($post!=null){
+          if($post->id==$id){
+            $report=Report::find($n->id);
+            $report->setAttribute('state', 'Deleted');
+            $report->save();
+          }
+        }
+      }
+
+     return redirect()->route('reports');
+    }
+
+    public function deleteCommentAdmin(Request $request, $id){
+        // $this->authorize('delete', $card);
+        $comment = Comment::find($id);
+        $comment->setAttribute('isVisible', false);
+        $comment->save();
+
+        $re=Report::all();
+        foreach($re as $n){
+          $r=ReportController::getReport($n->id);
+          $comment=json_decode($r->getContent())->comment;
+          if($comment!=null){
+          if($comment->id==$id){
+            $report=Report::find($n->id);
+            $report->setAttribute('state', 'Deleted');
+            $report->save();
+          }
+        }
+      }
+
+     return redirect()->route('reports');
+    }
 }

@@ -1,9 +1,8 @@
-<tr onclick="" class="align-middle">
-    <th scope="row">Comment</th>
-    <td><a href="">{{$report->number}}</a></td>
-    <td width=15%>{{$report->date}}</td>
-    <td width=15%>{{$report->comment->user->username}}</td>
-    <td width=30%>{{$report->comment->body}}</td>
+<tr  class="align-middle">
+    <th scope="row"><a href="/admin/reports/posts/{{$report->comment->post->id}}/{{$report->comment->id}}">Comment</a></th>
+    <td width=45%><a href="/admin/reports/posts/{{$report->comment->post->id}}/{{$report->comment->id}}">{{$report->comment->body}}</a></td>
+    <td width=15%><a href="/user/{{$report->comment->user->id}}">{{$report->comment->user->username}}</a></td>
+    <td>{{$report->number}}</td>
     <td>
         <button type="button" class="btn btn-outline-primary"><i class="far fa-trash-alt"></i></button>
 

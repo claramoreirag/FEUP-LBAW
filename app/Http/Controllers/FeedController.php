@@ -29,7 +29,7 @@ class FeedController extends Controller {
         }
 
         if(Auth::check()){
-        return view('pages.authuserfeed',
+            return view('pages.authuserfeed',
             [
              'posts' => $posts,'categories'=>$categories
              ]

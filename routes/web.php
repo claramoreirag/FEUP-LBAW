@@ -107,6 +107,13 @@ Route::put('/comment/{comment_id}', 'CommentController@editComment')->name('edit
 //Admin
 Route::get('/admin/reports','AdminController@show')->name('reports');
 Route::get('/admin/reports/posts/{post_id}','AdminController@viewPost')->name('reported_post');
+Route::get('/admin/reports/posts/{post_id}/{comment_id}','AdminController@viewComment')->name('reported_comment');
+
+Route::post('/admin/reports/posts/{post_id}', 'ReportController@deletePostAdmin')->name('delete_post_admin');
+Route::post('/admin/reports/posts/{post_id}/{comment_id}', 'ReportController@deleteCommentAdmin')->name('delete_comment_admin');
+
+Route::post('/admin/reports', 'AdminController@updateDashboard');
+
 //---------------------------------------------------
 
 /*Route::post('/post/{post_id}/vote', 'PostController@vote');

@@ -1,3 +1,3 @@
-function changePage(){
-    location.href = "../pages/fullPostPageAdmin.php";
+function deletePost(){
+    console.log("here");
 }
