@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Scout\Searchable;
+use Psy\TabCompletion\Matcher\FunctionsMatcher;
 
 class User extends Authenticatable
 {
@@ -74,13 +75,22 @@ class User extends Authenticatable
         //testar se é admin
         return $this->hasMany('App\Models\Report');
     }
-
-    // public function followedCategories(){
-    //     return $this->h('App\Models\Category')
-    // }
-    
-
    
+    public function followers(){
+        return $this->belongsToMany('App\Models\User', 'follow', 'followed', 'follower');
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany('App\Models\User', 'follow', 'follower', 'followed');
+    }
+
+    public function savedPosts(){
+        return $this->belongsToMany('App\Models\User', 'saved_post', 'user_id', 'post_id');
+    }
+
+    public function upvotedPosts(){
+        return $this->belongsToMany('App\Models\User', 'post_vote', 'user_id', 'post_id')->where('is_up', '=', true);
+    }
+
 }
-
-

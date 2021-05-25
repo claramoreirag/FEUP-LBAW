@@ -102,6 +102,7 @@ Route::post('/post/{post_id}/comment', 'CommentController@newComment')->name('co
 Route::post('/comment/{comment_id}/reply', 'CommentController@replyComment')->name('reply')->where(['comment_id' => '[0-9]+']);
 Route::delete('/comment/{comment_id}', 'CommentController@deleteComment')->name('delete_comment');
 Route::put('/comment/{comment_id}', 'CommentController@editComment')->name('edit_comment');
+Route::post('/comment/{comment_id}/report', 'CommentController@reportComment')->name('report_comment')->where(['comment_id' => '[0-9]+']);
 //Route::get('/get_comment/{comment_id}','CommentController@getComment')->where(['comment_id' => '[0-9]+']);
 
 //Admin

@@ -127,6 +127,18 @@ class ReportController extends Controller
         $report->state='NotAnswered';
         $report->post_id=$post_id;
         $report->save();
+
+    
+    }
+
+    public static function createCommentReport($user_id, $comment_id)
+    {
+        $report=new Report();
+        $report->user_id=$user_id;
+        $report->state='NotAnswered';
+        $report->comment_id=$comment_id;
+        $report->save();
+    
     }
 
     public static function postAlreadyReported($user_id,$post_id){
@@ -182,4 +194,12 @@ class ReportController extends Controller
 
         return redirect()->route('reports');
     }
+
+    public static function commentAlreadyReported($user_id,$comment_id){
+        if (Report::where('comment_id', '=', $comment_id)->where('user_id', '=', $user_id)->exists()) {
+            return true;
+         }
+         else return false;
+    }
+
 }
