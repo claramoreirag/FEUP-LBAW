@@ -21,6 +21,7 @@ class PostController extends Controller
     public function show($id)
     {
       $post = PostController::getPost($id);
+     // $this->authorize('view', $post);
       if ($post->getStatusCode() !== 200) {
         abort($post->getStatusCode());
       }
@@ -46,7 +47,7 @@ class PostController extends Controller
   {
     $post = Post::find($id);
 
-    // $this->authorize('delete', $card);
+    $this->authorize('delete', $post);
     $post->delete();
     return redirect()->route('profile',['user_id'=>Auth::id()]);
    
@@ -76,7 +77,7 @@ class PostController extends Controller
           'header' => 'required|min:10',
           'body' => 'required|min:10',
       ]);
-
+      $this->authorize('create', $post);
       $post->user_id = Auth::id();
       $post->title=$request->input('title');
       $post->header = $request->input('header');
@@ -96,6 +97,7 @@ class PostController extends Controller
 
     public static function getPost($id) {
         $post = Post::find($id);
+       
         if (is_null($post)) {
             return response()->json([
                 'status' => 'failure',
@@ -155,8 +157,10 @@ class PostController extends Controller
       }
 
       $post = json_decode($post->getContent());
-     // $this->authorize('show', $post);
-     $categories=Category::all();
+      // var_dump($post->author->id);
+      // var_dump(Auth::id());
+      //$this->authorize('update', $post);
+      $categories=Category::all();
      
       return view('pages.editpost', ['post' => $post,'categories'=>$categories]); 
     }
@@ -169,6 +173,8 @@ class PostController extends Controller
     public function edit(Request $request,$id){
       
       $post= Post::find($id);
+      
+      $this->authorize('update', $post);
       $post->title=$request->input('title');
       $post->header = $request->input('header');
       $post->body = $request->input('body');

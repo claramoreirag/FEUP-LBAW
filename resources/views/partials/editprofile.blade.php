@@ -32,7 +32,7 @@
           </div>
 
           <div class="modal-body">
-            
+
               <div class="row">
                 <div class="col-4"></div>
                 {{-- <div class="col-4 d-flex justify-content-center" id="editProfilePic">
