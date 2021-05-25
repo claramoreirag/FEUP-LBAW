@@ -2,8 +2,8 @@
 <div class="row mt-5 px-0" style="width: 100%;" >
      
      <div class="col-12 px-0" style="text-align: center;">
-         <form action="/admin/reports/posts/{{$post->id}}" method="post">
-             <button class="btn btn-outline-primary" type="submit"  ><i class="fas fa-trash-alt"></i> Delete Comment </button>@method('post') @csrf
+         <form action="/admin/reports/posts/{{$post->id}}/{{$justcomment['info']->id}}" method="post">
+             <button class="btn btn-outline-primary" type="submit"  ><i class="far fa-trash-alt"></i> Delete Comment </button>@method('post') @csrf
              <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-clock"></i> Suspend User</button>
          <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-slash"></i> Ban User</button>
          <button type="button" class="btn btn-outline-primary"><i class="far fa-check-circle"></i> Dismiss</button>

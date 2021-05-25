@@ -44,8 +44,8 @@
             <div class="col-10 ">
                 <div class="row justify-content-between">
                     <div class="col-4 ">
-                        <h4><a class="row text-white nav-title" id="title" href="../pages/homepage.php">GreeNews</a></h4>
-                        <h6> <a class="row text-white nav-subtitle" id="aboutus" href="../pages/aboutUs.php">About Us</a></h6>
+                        <h4><a class="row text-white nav-title" id="title" href="">GreeNews</a></h4>
+                        <h6> <a class="row text-white nav-subtitle" id="aboutus" href="">About Us</a></h6>
                     </div>
                     <div class="col-md-1 px-0">
                         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

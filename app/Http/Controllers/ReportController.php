@@ -139,12 +139,13 @@ class ReportController extends Controller
     public function deletePostAdmin(Request $request, $id){
         // $this->authorize('delete', $card);
         $post = Post::find($id);
-        $post->setAttribute('isVisible', false);
-        $post->save();
+
+        // TODO meter invisivel:
+       // $post->setAttribute('isVisible', false);
+       // $post->save();
 
         $re=Report::all();
         foreach($re as $n){
-          
           $r=ReportController::getReport($n->id);
           $post=json_decode($r->getContent())->post;
           if($post!=null){
@@ -159,17 +160,18 @@ class ReportController extends Controller
      return redirect()->route('reports');
     }
 
-    public function deleteCommentAdmin(Request $request, $id){
+    public function deleteCommentAdmin(Request $request, $post_id, $id){
         // $this->authorize('delete', $card);
         $comment = Comment::find($id);
-        $comment->setAttribute('isVisible', false);
-        $comment->save();
-
+        // TODO meter invisivel:
+      //  $comment->setAttribute('isVisible', false);
+      //  $comment->save();
         $re=Report::all();
         foreach($re as $n){
           $r=ReportController::getReport($n->id);
           $comment=json_decode($r->getContent())->comment;
           if($comment!=null){
+              echo($comment->id);
           if($comment->id==$id){
             $report=Report::find($n->id);
             $report->setAttribute('state', 'Deleted');
@@ -178,6 +180,6 @@ class ReportController extends Controller
         }
       }
 
-     return redirect()->route('reports');
+        return redirect()->route('reports');
     }
 }
