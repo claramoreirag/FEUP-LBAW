@@ -26,12 +26,12 @@ class AdminController extends Controller {
         foreach($r as $n){
              $p=ReportController::getReport($n->id);
              if(json_decode($p->getContent())->comment!= null){
+                if(json_decode($p->getContent())->state=='NotAnswered'){
                 array_push($reportedComments,json_decode($p->getContent()));
+                }
              }
              else{
                 if(json_decode($p->getContent())->state=='NotAnswered'){
-                    echo(json_decode($p->getContent())->post->id);
-                    echo(json_decode($p->getContent())->state);
                     array_push($reportedPosts,json_decode($p->getContent()));
                 }
              }
@@ -73,33 +73,66 @@ class AdminController extends Controller {
         
         $cmts=Comment::find($comment_id);
         $commentt= array();
-                $replies=Comment::where('comment_id','=',$cmts->id)->get();
-                $co=array();
-                $co['info']=$cmts;
-                $co['replies']=$replies;
-                array_push($commentt,$co);
+        $replies=Comment::where('comment_id','=',$cmts->id)->get();
+        $co=array();
+        $co['info']=$cmts;
+        $co['replies']=$replies;
+        array_push($commentt,$co);
         
+        return view('pages.fullcommentadmin',['post' => $post, 'comments'=>$comments, 'comment'=>$commentt, 'justcomment'=>$co]);
+    }
 
-         return view('pages.fullcommentadmin',['post' => $post, 'comments'=>$comments, 'comment'=>$commentt]);
+    public function undoAction($report_id) {
+        //TODO visibles
+
+        $report=ReportController::getReport($report_id);
+        $re=Report::all();
+        if(json_decode($report->getContent())->comment!= null){
+            $id=json_decode($report->getContent())->comment->id;
+            foreach($re as $n){
+              $r=ReportController::getReport($n->id);
+              $cm=json_decode($r->getContent())->comment;
+              if($cm!=null){
+              if($cm->id==$id){
+                $rr=Report::find($n->id);
+                $rr->setAttribute('state', 'NotAnswered');
+                $rr->save();
+              }
+            }
+        }
+        }
+        else{
+            $id=json_decode($report->getContent())->post->id;
+            foreach($re as $n){
+              $r=ReportController::getReport($n->id);
+              $post=json_decode($r->getContent())->post;
+              if($post!=null){
+              if($post->id==$id){
+                $rr=Report::find($n->id);
+                $rr->setAttribute('state', 'NotAnswered');
+                $rr->save();
+              }
+            }
+        }
+        }
+        
+        return redirect()->route('reports');
     }
 
     public function updateDashboard(Request $request){
         $val=$request->get('searchQuery');
-        
         $r = Report::all();
         $reportedPosts=array();
         $reportedComments=array();
-
 
         if($val==1){
              //get all reports
             foreach($r as $n){
                 $p=ReportController::getReport($n->id);
                 if(json_decode($p->getContent())->comment!= null){
-                // $comment=CommentController::getComment(json_decode($p->getContent())->comment);
-                    //if($comment->isVisible){
+                    if(json_decode($p->getContent())->state=='NotAnswered'){
                         array_push($reportedComments,json_decode($p->getContent()));
-                    //}
+                    }
                 }
                 else{
                     if(json_decode($p->getContent())->state=='NotAnswered'){
@@ -129,15 +162,14 @@ class AdminController extends Controller {
          return response()->json(['html'=>(view('partials.management.unhandled',['reportedPosts' => $reportedPostsFinal, 'reportedComments' => $reportedCommentsFinal])->render())]);
 
             
-        }else{
+    }else{
 
             foreach($r as $n){
                 $p=ReportController::getReport($n->id);
                 if(json_decode($p->getContent())->comment!= null){
-                   // $comment=CommentController::getComment(json_decode($p->getContent())->comment);
-                    //if($comment->isVisible){
+                    if(json_decode($p->getContent())->state!='NotAnswered'){
                         array_push($reportedComments,json_decode($p->getContent()));
-                    //}
+                    }
                 }
                 else{
                     if(json_decode($p->getContent())->state!='NotAnswered'){
@@ -147,7 +179,7 @@ class AdminController extends Controller {
                 }
             }
 
-            $post_ids=array();
+        $post_ids=array();
          $reportedPostsFinal=array();
          foreach($reportedPosts as $rp){
              if(!in_array($rp->post->id,$post_ids)){

@@ -114,6 +114,8 @@ Route::post('/admin/reports/posts/{post_id}/{comment_id}', 'ReportController@del
 
 Route::post('/admin/reports', 'AdminController@updateDashboard');
 
+Route::post('/admin/undo/{report_id}', 'AdminController@undoAction')->name('undo_action');
+
 //---------------------------------------------------
 
 /*Route::post('/post/{post_id}/vote', 'PostController@vote');
