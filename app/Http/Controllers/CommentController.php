@@ -62,8 +62,13 @@ class CommentController extends Controller
          $comment->body = $request->input('body');
          $comment->save();
        
-
-        return response()->json(['success'=>'Form is successfully submitted!','comment'=>$comment->body]);
+         if($request->ajax()){
+        
+             return response()->json(['success'=>'Form is successfully submitted!','comment'=>$comment->body]);
+           
+        }
+        else{ return redirect('/post/'.$request->input('post_id'));
+        }
        // return response()->json(['success'=>'Form is successfully submitted!']);
         // return response()->json(['success'=>'Form is successfully submitted!','comment'=>$view]);
         
@@ -87,8 +92,13 @@ class CommentController extends Controller
         $c=Comment::find($comment->id);
         $view=view('partials.reply',['comment'=>$c])->render();
   
-        return response()->json(['success'=>'Form is successfully submitted!','comment'=>$view]);
-        
+        if($request->ajax()){
+            
+            return response()->json(['success'=>'Form is successfully submitted!','comment'=>$view]);
+           
+        }
+        else{ return redirect('/post/'.$request->input('post_id'));
+        }
     }
 
     
@@ -136,15 +146,21 @@ class CommentController extends Controller
     $this->authorize('delete', $comment);
     
     $comment->delete();
-    return response()->json(['success'=>'Form is successfully submitted!']);
-    // return redirect('/post/'.$request->input('post_id'));
-  }
+    if($request->ajax()){
+        
+        return response()->json(['success'=>'Form is successfully submitted!']);
+    }
+    else{ return redirect('/post/'.$request->input('post_id'));
+    }
+    }
+
 
 
 
   public function reportComment($id){
     ReportController::createCommentReport(Auth::id(),$id);
-    
+    $comment = Comment::find($id);
+    return redirect('/post/'.$comment->post_id);
   }
 
 

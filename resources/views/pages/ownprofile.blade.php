@@ -1,6 +1,16 @@
 @extends('layouts.main_header')
 @include('partials.editprofile')
 @section('content')
+
+  @if ($errors->any())
+  <div class="alert alert-danger">
+     
+          @foreach ($errors->all() as $error)
+              <div>{{ $error }}</div>
+          @endforeach
+    
+  </div>
+@endif
 <div class="row">
   <div class="col-lg-1 md-0"></div>
   <div class="col-lg-2 md-12" id="myInfo">
