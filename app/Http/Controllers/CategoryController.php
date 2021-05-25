@@ -15,10 +15,5 @@ use App\Models\Post;
 class CategoryController extends Controller
 {
  
-    public static function categoryAlreadyFollowed($user_id,$cat_id){
-        if (Report::where('post_id', '=', $post_id)->where('user_id', '=', $user_id)->exists()) {
-            return true;
-         }
-         else return false;
-    }
+   
 }

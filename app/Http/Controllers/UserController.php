@@ -85,10 +85,9 @@ class UserController extends Controller
       //Falta ver como atualizar a palavra passe
 
       $request->validate([
-        'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'image' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'oldPassword' => 'required|min:6',
-        'password'=>'min:6|same:password_confirmation',
-        'password_confirmation'=>'min:6|same:password_confirmation'
+        
       ]);
       
       $id = Auth::id();
@@ -96,11 +95,29 @@ class UserController extends Controller
 
       var_dump($request->file);
       if(password_verify($request->input('oldPassword'), $user->password)){
-      if($request->input('image')!=null){
-        $imageName = Auth::id().'.'.$request->file->extension();
-        $request->file->move(public_path('img/profile'), $imageName);
-        $user->photo=$imageName;
-      }
+
+        if ($request->hasFile('image')) {
+          $filenameWithExt = $request->file('image')->getClientOriginalName ();
+          // Get Filename
+          $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+          // Get just Extension
+          $extension = $request->file('image')->getClientOriginalExtension();
+          // Filename To store
+          $fileNameToStore = $filename. '_'. time().'.'.$extension;
+           
+          $path = $request->file('image')->storeAs('public/image', $fileNameToStore);
+          }
+          // Else add a dummy image
+          else {
+          $fileNameToStore = 'noimage.jpg';
+          }
+          $user->photo = $fileNameToStore;
+
+      // if($request->input('image')!=null){
+      //   $imageName = Auth::id().'.'.$request->file->extension();
+      //   $request->file->move(public_path('img/profile'), $imageName);
+      //   $user->photo=$imageName;
+      // }
       if($request->input('username')!=null){
         $user->username = $request->input('username');
       }
@@ -117,7 +134,7 @@ class UserController extends Controller
     }
     
       $user->save();
-     // return redirect('/user/'.Auth::id());
+      return redirect('/user/'.Auth::id());
     }
 
 

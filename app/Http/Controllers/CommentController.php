@@ -35,44 +35,70 @@ class CommentController extends Controller
         //$this->authorize('storeNewcomment', $comment);
         
         
-  
+        $this->authorize('create', $comment);
         $comment->user_id = Auth::id();
         $comment->body = $request->input('body');
         $comment->post_id = $request->input('post_id');
         
         $comment->save();
-        
+        $c=Comment::find($comment->id);
+        $replies=Comment::where('comment_id','=',$c->id)->get();
+        $comment=array();
+        $comment['info']=$c;
+        $comment['replies']=$replies;
+        $view=view('partials.comment',['comment'=>$comment])->render();
   
-        return redirect('/post/'.$request->input('post_id'));
+        return response()->json(['success'=>'Form is successfully submitted!','comment'=>$view]);
+  
+      
     }
 
-    public function editComment(Request $request){
-        $comment = Comment::find($request->input('id'));
-        //$src = Source().create($request->input('source'));
-        //$this->authorize('storeNewcomment', $comment);
-        var_dump($request->input('post_id'));
-    
-        $comment->body = $request->input('body');
-        $comment->save();
+    public function editComment(Request $request,$comment_id){
+        //var_dump($request);
 
-  
-        return redirect('/post/'.$request->input('post_id'));
+        $comment = Comment::find($request->input('comment_id'));
+        $this->authorize('update', $comment);
+    
+         $comment->body = $request->input('body');
+         $comment->save();
+       
+         if($request->ajax()){
+        
+             return response()->json(['success'=>'Form is successfully submitted!','comment'=>$comment->body]);
+           
+        }
+        else{ return redirect('/post/'.$request->input('post_id'));
+        }
+       // return response()->json(['success'=>'Form is successfully submitted!']);
+        // return response()->json(['success'=>'Form is successfully submitted!','comment'=>$view]);
+        
+       
+       
+        //return redirect('/post/'.$request->input('post_id'));
     }
 
     public function replyComment(Request $request){
+
         $comment = new Comment();
         //$src = Source().create($request->input('source'));
         //$this->authorize('storeNewcomment', $comment);
         
-    
+        $this->authorize('create', $comment);
         $comment->user_id = Auth::id();
         $comment->body = $request->input('body');
         $comment->post_id = $request->input('post_id');
         $comment->comment_id = $request->input('comment_id');
         $comment->save();
-        
+        $c=Comment::find($comment->id);
+        $view=view('partials.reply',['comment'=>$c])->render();
   
-        return redirect('/post/'.$request->input('post_id'));
+        if($request->ajax()){
+            
+            return response()->json(['success'=>'Form is successfully submitted!','comment'=>$view]);
+           
+        }
+        else{ return redirect('/post/'.$request->input('post_id'));
+        }
     }
 
     
@@ -116,10 +142,29 @@ class CommentController extends Controller
   public function deleteComment(Request $request, $id)
   {
     $comment = Comment::find($id);
-    var_dump($comment);
-    // $this->authorize('delete', $card);
+   
+    $this->authorize('delete', $comment);
+    
     $comment->delete();
+    if($request->ajax()){
+        
+        return response()->json(['success'=>'Form is successfully submitted!']);
+    }
+    else{ return redirect('/post/'.$request->input('post_id'));
+    }
+    }
 
-    return redirect('/post/'.$request->input('post_id'));
+
+
+
+  public function reportComment($id){
+    ReportController::createCommentReport(Auth::id(),$id);
+    $comment = Comment::find($id);
+    return redirect('/post/'.$comment->post_id);
   }
+
+
+
+
+
 }
