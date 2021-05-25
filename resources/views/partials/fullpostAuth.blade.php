@@ -76,15 +76,15 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                     <div class="row  post-comment">
                         <h3 class="comments-title">Comments</h3><hr/>
                         
-                        <form action="{{ route('comment',['post_id'=>$post->id]) }}" method="Post">
+                        <form id="comment" action="{{ route('comment',['post_id'=>$post->id]) }}" method="Post">
                             <label for="inputComment" class="form-label">Collaborate with a comment here</label>
                             <div class="row"> 
-                                <div class="col-11">
-                                    <input type="text" class="form-control" name="body" id="inputComment">
+                                <div class="col-10">
+                                    <input type="text" class="form-control" name="body" id="body">
                                 </div>
-                                <input type="hidden" id="custId" name="post_id" value="{{$post->id}}">
-                                <div class="col-1">
-                                    <button type="submit" class="btn btn-success mb-3" formaction="{{ route('comment',['post_id'=>$post->id]) }}">Share</button>
+                                <input type="hidden" id="post_id" name="post_id" value="{{$post->id}}">
+                                <div class="col-2 pl-0">
+                                    <button type="submit" class="btn btn-success ml-0 mb-3" formaction="{{ route('comment',['post_id'=>$post->id]) }}">Comment</button>
                                     @method('POST')
                                     @csrf
                                 </div>
@@ -92,7 +92,7 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                         </form>
     
                     
-                        <ul class="comments">
+                        <ul class="comments" id="comment_list">
                             @each('partials.comment', $comments, 'comment')    
                         </ul>
                     </div>
@@ -152,3 +152,45 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
           </div>
         </div>
       </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript">
+
+        
+         $('#comment').off().on('submit',function(event){
+             event.preventDefault();
+        
+             let body = $('#body').val();
+             let post_id = $('#post_id').val();
+            
+             let url="/post/"+post_id+"/comment";
+        
+             $.ajax({
+               url: url,
+               type:"POST",
+               data:{
+                 "_token": "{{ csrf_token() }}",
+                 body:body,
+                 post_id:post_id,
+               },
+               success:function(response){
+              console.log("done");
+                 let query="#comment_list";
+                 $('#body').empty();
+                  let ul=document.querySelector(query);
+                  let newReply=document.createElement("div");
+                  //console.log(newReply);
+                  newReply.innerHTML=response.comment
+                  console.log(ul);
+                 ul.insertBefore(newReply,ul.firstChild);
+               },
+              })
+              .done(function(data) {
+                  
+                });
+                event.preventDefault();
+        
+             });
+    </script>

@@ -27,17 +27,45 @@ class UserController extends Controller
   public function show($id)
   {
       $user = User::find($id);
-     
+      $followers = $user->followers()->get()->count();
+      $following = $user->following()->get()->count();
+      $posts = $user->posts()->get()->count();
+      $saved_posts_ids = $user->savedPosts()->get();
+      $upvoted_posts_ids = $user->upvotedPosts()->get();
+      
+      $post_list = $user->posts()->get();
+      $count_upvotes = 0;
+      foreach($post_list as $p){
+        $count_upvotes += $p->upvotes;
+      }
+
+      $saved_posts = array();
+      foreach($saved_posts_ids as $sp){
+        $p = PostController::getPost($sp->id);
+        array_push($saved_posts, json_decode($p->getContent()));
+      }
+
+      $upvoted_posts=array();
+      foreach ($upvoted_posts_ids as $up) {
+        $p = PostController::getPost($up->id);
+        array_push($upvoted_posts, json_decode($p->getContent()));
+      }
+
       if(Auth::check() && Auth::id()==$id){
         $ownposts=array();
         foreach($user->posts as $p){
           array_push($ownposts,json_decode(PostController::getPost($p->id)->getContent()));
 
         }
-        return view('pages.ownprofile', ['user' => $user,'ownposts'=>$ownposts]);
+        return view('pages.ownprofile', ['user' => $user,'ownposts'=>$ownposts, 'followers'=>$followers, 'following'=>$following, 'posts'=>$posts, 'upvotes'=>$count_upvotes, 'savedPosts' => $saved_posts, 'upvotedPosts' => $upvoted_posts]);
       }
       else{
-        return view('pages.otherprofile', ['user' => $user]);
+        $otherposts = array();
+        foreach ($user->posts as $p) {
+          array_push($otherposts, json_decode(PostController::getPost($p->id)->getContent()));
+        }
+
+        return view('pages.otherprofile', ['user' => $user, 'otherposts'=> $otherposts, 'followers' => $followers, 'following' => $following, 'posts' => $posts, 'upvotes' => $count_upvotes, 'savedPosts' =>$saved_posts, 'upvotedPosts' => $upvoted_posts]);
       }
     }
 
@@ -62,10 +90,9 @@ class UserController extends Controller
       //Falta ver como atualizar a palavra passe
 
       $request->validate([
-        'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'image' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'oldPassword' => 'required|min:6',
-        'password'=>'min:6|same:password_confirmation',
-        'password_confirmation'=>'min:6|same:password_confirmation'
+        
       ]);
       
       $id = Auth::id();
@@ -73,11 +100,29 @@ class UserController extends Controller
 
       var_dump($request->file);
       if(password_verify($request->input('oldPassword'), $user->password)){
-      if($request->input('image')!=null){
-        $imageName = Auth::id().'.'.$request->file->extension();
-        $request->file->move(public_path('img/profile'), $imageName);
-        $user->photo=$imageName;
-      }
+
+        if ($request->hasFile('image')) {
+          $filenameWithExt = $request->file('image')->getClientOriginalName ();
+          // Get Filename
+          $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+          // Get just Extension
+          $extension = $request->file('image')->getClientOriginalExtension();
+          // Filename To store
+          $fileNameToStore = $filename. '_'. time().'.'.$extension;
+           
+          $path = $request->file('image')->storeAs('public/image', $fileNameToStore);
+          }
+          // Else add a dummy image
+          else {
+          $fileNameToStore = 'noimage.jpg';
+          }
+          $user->photo = $fileNameToStore;
+
+      // if($request->input('image')!=null){
+      //   $imageName = Auth::id().'.'.$request->file->extension();
+      //   $request->file->move(public_path('img/profile'), $imageName);
+      //   $user->photo=$imageName;
+      // }
       if($request->input('username')!=null){
         $user->username = $request->input('username');
       }
@@ -94,7 +139,7 @@ class UserController extends Controller
     }
     
       $user->save();
-     // return redirect('/user/'.Auth::id());
+      return redirect('/user/'.Auth::id());
     }
 
 

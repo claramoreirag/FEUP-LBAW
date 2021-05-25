@@ -32,8 +32,7 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
             </div>
 
         </div>
-
-    <h6 class="card-subtitle mt-2 mb-2 text-muted">By <a  href="/user/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{$post->datetime}}</span></h6>
+        <h6 class="card-subtitle mt-2 mb-2 text-muted">By <a href="/user/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{$post->datetime}}</span></h6>
         <div class="card-text">
             <div class="row">
 
@@ -49,7 +48,7 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
 
         </div>
 
-    
+
         <div class="row justify-content-between text-center">
             <div class="col-md-3 col-sm-4 actions pt-3 pb-3"></i>
                 <div class="row text-secondary actions">
