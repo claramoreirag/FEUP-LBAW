@@ -11,6 +11,9 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\FollowCategory;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 use DateTime;
 use Laravel\Ui\Presets\React;
 
@@ -100,21 +103,23 @@ class UserController extends Controller
 
       var_dump($request->file);
       if(password_verify($request->input('oldPassword'), $user->password)){
-
+        
         if ($request->hasFile('image')) {
           $filenameWithExt = $request->file('image')->getClientOriginalName ();
           // Get Filename
           $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+          
           // Get just Extension
           $extension = $request->file('image')->getClientOriginalExtension();
           // Filename To store
           $fileNameToStore = $filename. '_'. time().'.'.$extension;
            
-          $path = $request->file('image')->storeAs('public/image', $fileNameToStore);
+          $path = $request->file('image')->storeAs('public/img/profile', $fileNameToStore);
+
           }
           // Else add a dummy image
           else {
-          $fileNameToStore = 'noimage.jpg';
+          $fileNameToStore = 'defaultAvatar.jpg';
           }
           $user->photo = $fileNameToStore;
 
@@ -142,6 +147,22 @@ class UserController extends Controller
       return redirect('/user/'.Auth::id());
     }
 
+
+    public function getProfilePic($id){
+      $user = User::find($id);
+      $path = storage_path( 'app/public/img/profile/' . $user->photo);
+      $p='public/img/profile/' . $user->photo;
+      if(!Storage::exists($p)) abort(404);
+   
+  
+      $file = File::get($path);
+      $type = File::mimeType($path);
+  
+      $response = Response::make($file, 200);
+      $response->header("Content-Type", $type);
+      return $response;
+
+    }
 
 
 

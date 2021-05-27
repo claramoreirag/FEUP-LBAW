@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 d-flex justify-content-center" id="profileImg">
-          <img src="../images/profilepic2.jpg" alt="profile picture">
+          <img src="{{route('avatar',['user_id'=>$user->id])}}" alt="profile picture">
         </div>
       </div>
     </div>
