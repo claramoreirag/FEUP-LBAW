@@ -169,7 +169,7 @@ class ReportController extends Controller
         }
       }
 
-     return redirect()->route('reports');
+     return redirect()->route('reports',['deleteSuccess=1']) ;
     }
 
     public function deleteCommentAdmin(Request $request, $post_id, $id){
@@ -192,7 +192,7 @@ class ReportController extends Controller
         }
       }
 
-        return redirect()->route('reports');
+        return redirect()->route('reports',['deleteSuccess=1']);
     }
 
     public static function commentAlreadyReported($user_id,$comment_id){

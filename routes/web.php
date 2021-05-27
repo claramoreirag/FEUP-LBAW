@@ -117,6 +117,8 @@ Route::post('/admin/reports', 'AdminController@updateDashboard');
 
 Route::post('/admin/undo/{report_id}', 'AdminController@undoAction')->name('undo_action');
 
+Route::get('/admin/users','AdminController@showUsers')->name('users');
+
 //---------------------------------------------------
 
 /*Route::post('/post/{post_id}/vote', 'PostController@vote');

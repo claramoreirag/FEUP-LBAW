@@ -55,11 +55,11 @@
 
                     <div class="col-md-6 collapse navbar-collapse justify-content-end" id="navbarNav">
 
-                        <a class="log nav-item nav-link text-white" href="../pages/userManager.php"><i class="fas fa-users-cog"></i> </a>
-                        <a class="log nav-item nav-link text-white" href="../pages/adminDashboard.php"><i class="fas fa-exclamation-circle"></i> </a>
+                        <a class="log nav-item nav-link text-white" href="{{ url('/admin/users') }}"><i class="fas fa-users-cog"></i> </a>
+                        <a class="log nav-item nav-link text-white" href="{{ url('/admin/reports') }}"><i class="fas fa-exclamation-circle"></i> </a>
                         <a class="log nav-item nav-link d-none d-md-block text-white">Admin</a>
                         <span class="d-none d-md-block separator text-white"> | </span>
-                        <a class="log nav-item nav-link text-white" href="../pages/homepage.php"> Sign Out</a>
+                        <a class="log nav-item nav-link text-white" href="{{ url('/logout') }}"> Sign Out</a>
 
                     </div>
 

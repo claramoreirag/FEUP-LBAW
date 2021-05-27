@@ -8,6 +8,7 @@
             <th scope="col">Author</th>
             <th scope="col">x Reported</th>
             <th scope="col">Current State</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>

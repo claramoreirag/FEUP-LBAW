@@ -1,4 +1,13 @@
+
+
+@if(!Auth::user()->isAdmin())
 @extends('layouts.main_header')
+@endif
+
+@if(Auth::user()->isAdmin())
+@extends('layouts.admin_header')
+@endif
+
 
 @section('content')
 <div class="row">

@@ -265,7 +265,6 @@ CREATE TRIGGER comment_on_post
     EXECUTE PROCEDURE comment_on_post();
 
 
-
 DROP EXTENSION IF EXISTS pgcrypto;
 CREATE EXTENSION pgcrypto;
 
@@ -357,7 +356,6 @@ INSERT INTO "comment" (user_id,post_id,body,comment_id) VALUES (7,3,'Indeed',1),
 
 INSERT INTO report(user_id,state,comment_id) VALUES (5,'NotAnswered',1),(6,'NotAnswered',1), (7,'NotAnswered',2);
 INSERT INTO report(user_id,state,post_id) VALUES (8,'NotAnswered',1),(6,'NotAnswered',1), (7,'NotAnswered',2);
-
 
 INSERT INTO "notification"(is_read,receiver,vote_id) VALUES (FALSE,5,2), (TRUE,5,3),(FALSE,4,1), (FALSE,4,4);
 INSERT INTO "notification"(is_read,receiver,comment_id) VALUES (TRUE,5,2), (FALSE,5,3),(FALSE,4,1), (FALSE,4,4);

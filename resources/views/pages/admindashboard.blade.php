@@ -34,9 +34,19 @@ $(document).ready(function() {
         console.log(response.html);
         $('#changeable').html(response.html);
     }
+
+
+    const { search } = window.location;
+const deleteSuccess = (new URLSearchParams(search)).get('deleteSuccess');
+if (deleteSuccess === '1') {
+    $('#toast').toast('show')
+}
 });
 
+
+
 </script>
+
 
 <div class=" row" style="margin-top: 3em; ">
 </div>
@@ -66,7 +76,7 @@ $(document).ready(function() {
                         <th scope="col">Content</th>
                         <th scope="col">Author</th>
                         <th scope="col">x Reported</th>
-                        <th scope="col">Options</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody >
@@ -80,5 +90,22 @@ $(document).ready(function() {
     </div>
 </div>
 
-  
+
+
+  <div id="toast" class="toast" style="position: absolute; top: 20; right: 20;">
+    <div class="toast-header">
+      <img id="suc" src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-512.png" class="rounded mr-2" alt="..." style="width: 20">
+      <strong class="mr-auto">Sucess</strong>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      The records were deleted with success. You can undo this action on the handled reports list.
+    </div>
+  </div>
+
 @endsection
+
+
+
