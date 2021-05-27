@@ -53,7 +53,7 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           Edit Profile
         </button>
-        <a class="btn btn-primary mt-2 ml-1 px-3" href="/newpost">New Post</a>
+        <a class="btn btn-primary mt-2 ml-1 px-3" href="/post/new">New Post</a>
       </div>
       <div class="col-2"></div>
       <!--

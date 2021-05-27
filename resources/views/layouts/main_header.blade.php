@@ -40,13 +40,13 @@
 
 <body >
     <header>
-        <nav class="row mx-0 navbar navbar-expand-md navbar-dark bg-primary">
+        <nav class="row mx-0 navbar navbar-expand-md navbar-dark bg-primary navbar-header">
             <div class="col-1"></div>
             <div class="col-10 ">
                 <div class="row justify-content-between">
                     <div class="col-4 ps-0">
-                        <h4><a class="row text-white nav-title" href="{{ url('/authuserfeed') }}">GreeNews</a></h4>
-                        <h6> <a class="row text-white nav-subtitle" href="{{ url('/aboutus') }}">About Us</a></h6>
+                        <h3><a class="row text-white nav-title mt-1" href="{{ url('/authuserfeed') }}">GreeNews</a></h3>
+                       <!-- <h6> <a class="row text-white nav-subtitle" href="{{ url('/aboutus') }}">About Us</a></h6>-->
                     </div>
                     <div class="col-md-1 px-0">
                         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

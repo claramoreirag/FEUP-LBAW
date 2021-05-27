@@ -46,7 +46,7 @@ Route::get('ownprofile',function(){
     return view('pages.ownprofile');
 });
 
-Route::get('newpost',function(){
+Route::get('post/new',function(){
     return view('pages.newpost');
 });
 
@@ -88,8 +88,8 @@ Route::delete('/post/{post_id}', 'PostController@delete')->where(['post_id' => '
 Route::post('/post/{post_id}/report', 'PostController@report')->where(['post_id' => '[0-9]+'])->name('report_post');
 Route::get('/post/{post_id}/edit', 'PostController@showEdit');
 Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
-Route::get('/newpost', 'PostController@showNewPost');
-Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post');
+Route::get('/post/new', 'PostController@showNewPost');
+Route::post('/post/new', 'PostController@storeNewPost') -> name('create_new_post');
  
 
 

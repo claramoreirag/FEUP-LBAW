@@ -1,16 +1,16 @@
 @extends('layouts.auth_header')
 @section('content')
-<div class="container">
-    <div class="row layout align-items-center">
+<div class="container mt-5">
+    <div class="row layout align-items-center ">
         <div class="col-md-3 col-sm-2"></div>
-        <div class="col-12 col-md-6 col-sm-8">
+        <div class="col-12 col-md-6 col-sm-8 pt-5 pb-5 shadow-lg" style="background-color: #fafffd">
             <div class="row login_form">
                 <div class="col-1"></div>
                 <div class="col-10">
                     <h1 class="title">Sign Up</h1>
                     <form method="POST" action="{{ route('register') }}" class="text-start" data-toggle="validator">
                       {{ csrf_field() }}
-                        <div class="form-floating">
+                        <div class="form-floating mt-4">
                             <input type="username" name="username" class="form-control"  value="{{ old('username') }}" id="username" placeholder="Username" required>
                             <label for="username">Username *</label>
                             @if ($errors->has('username'))
@@ -51,25 +51,10 @@
                             <label for="confirmpassword">Confirm Password *</label>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                        <button type="submit" class="btn btn-block btn-primary mt-4">Sign Up</button>
                     </form>
-                    <div class="row dividing align-items-center">
-                        <div class="col-5">
-                            <hr>
-                        </div>
-                        <div class="col-2">
-                            <h5>or</h5>
-                        </div>
-                        <div class="col-5">
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="row login_google">
-                        <div class="col">
-                            <button onclick="changePage()" type="submit" class="btn btn-primary">Sign Up with Google</button>
-                        </div>
-                    </div>
-                    <div class="row align-items-center ">
+                  
+                    <div class="row align-items-center mt-4 ">
                         <a class="login_link" href="{{ route('login') }}">Already have an account? Log In!</a>
                         <br>
                     </div>
