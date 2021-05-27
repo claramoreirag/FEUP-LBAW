@@ -16,7 +16,7 @@
                 </div>
                 <div class="col align-self-center">
                     <div class="input-group rounded search-container">
-                        <input type="search" class="form-control rounded searchbar" style=" border-radius: 2rem;color: var(--text-color); background-color: var(--background-color);" id="searchbar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <input id = "searchbarusers2" type="search" class="form-control rounded searchbar" style=" border-radius: 2rem;color: var(--text-color); background-color: var(--background-color);" id="searchbar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                         <span class="input-group-text border-0 search-icon">
                             <i class="fas fa-search"></i>
                         </span>
@@ -28,19 +28,15 @@
             <table class="table table-hover mt-4">
                 <thead>
                     <tr>
+                    <th scope="col">Profile Picture</th>
                         <th scope="col">Username</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Picture</th>
-                        <th scope="col">Options</th>
+                        <th scope="col">Current State</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @include('partials.user')
-                    @include('partials.user')
-                    @include('partials.user')
-                    @include('partials.user')
-                    @include('partials.user')
-                    @include('partials.user')
+                <tbody id="userslist">
+                    @each('partials.user', $users, 'user')
                 </tbody>
             </table>
 
@@ -51,3 +47,5 @@
 
   
 @endsection
+
+<script defer type="text/javascript" src="{{ URL::asset('js/search.js') }}" ></script>

@@ -8,12 +8,12 @@
     <!--<form action="/admin/reports/posts/{{$report->comment->post->id}}/{{$report->comment->id}}" method="post">
              <button class="btn btn-outline-primary" type="submit"  ><i class="far fa-trash-alt"></i></button>@method('post') @csrf
         </form>-->
-        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" title="Delete Comment">
         <i class="far fa-trash-alt"></i>
         </button>
-        <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-clock"></i></button>
-        <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-slash"></i></button>
-        <button type="button" class="btn btn-outline-primary"><i class="far fa-check-circle"></i></button>
+        <button type="button" class="btn btn-outline-primary" title="Suspend User"><i class="fas fa-user-clock"></i></button>
+        <button type="button" class="btn btn-outline-primary" title="Ban User"><i class="fas fa-user-slash"></i></button>
+        <button type="button" class="btn btn-outline-primary" title="Dismiss Report"><i class="far fa-check-circle"></i></button>
     </td>
     @endif
 

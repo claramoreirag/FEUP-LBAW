@@ -60,7 +60,8 @@ class AdminController extends Controller {
     }
 
     public function showUsers() {
-        return view('pages.usermanager');
+        $users = User::all();
+        return view('pages.usermanager',['users' => $users]);
     }
 
     public function viewPost($id) {

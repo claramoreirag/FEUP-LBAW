@@ -32,6 +32,7 @@ class User extends Authenticatable
         'name' => 'string',
         'email' => 'string',
         'photo' => 'string',
+        'user_state' => 'string',
         'is_admin' => 'boolean'
     ];
     /**
@@ -91,6 +92,10 @@ class User extends Authenticatable
 
     public function upvotedPosts(){
         return $this->belongsToMany('App\Models\User', 'post_vote', 'user_id', 'post_id')->where('is_up', '=', true);
+    }
+
+    public function state(){
+        return $this->user_state;
     }
 
 }

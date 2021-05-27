@@ -96,6 +96,7 @@ Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post'
 
 Route::get('/searchUsers', 'UserController@searchUsers')->name('searchUsers');
 Route::get('/searchPosts', 'FeedController@searchPosts')->name('searchPosts');
+Route::get('/searchUserManagement', 'UserController@searchUserManagement');
 
 //Comment
 Route::post('/post/{post_id}/comment', 'CommentController@newComment')->name('comment');

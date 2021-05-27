@@ -24,6 +24,12 @@ class UserController extends Controller
     return json_encode($users);
   }
 
+
+  public function searchUserManagement(Request $request){
+    $users = User::where('username', 'like', '%' . $request->get('searchQuery') . '%' )->get();
+    return response()->json(['html'=>view('partials.management.users',['users' => $users])->render()]);
+  }
+
   public function show($id)
   {
       $user = User::find($id);

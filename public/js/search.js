@@ -125,3 +125,19 @@
                 $('#postslist').html(response.html);
             }
         };
+
+
+        $('body').on('keyup','#searchbarusers2', function(){
+            var searchQuery=$(this).val();
+            sendAjaxRequest('GET','/searchUserManagement',{
+                    '_token': '{{csrf_token() }}',
+                    searchQuery:searchQuery,
+                },userSearchUpdateManager);
+               
+        });
+
+        function userSearchUpdateManager(){
+            let response = JSON.parse(this.responseText);
+          
+            $('#userslist').html(response.html);
+        };
