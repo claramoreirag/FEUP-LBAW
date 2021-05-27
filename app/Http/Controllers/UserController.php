@@ -119,7 +119,7 @@ class UserController extends Controller
           }
           // Else add a dummy image
           else {
-          $fileNameToStore = 'defaultAvatar.jpg';
+          $fileNameToStore = 'default.png';
           }
           $user->photo = $fileNameToStore;
 
