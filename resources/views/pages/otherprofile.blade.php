@@ -63,6 +63,9 @@
           @if(!Auth::check())
           @each('partials.post',$otherposts,'post')
           @endif
+          <div class="d-flex justify-content-center">
+            {!! $otherposts->links() !!}
+          </div>
         </div>
         <div class="tab-pane fade" id="upvotes">
           @if(Auth::check())
@@ -71,6 +74,9 @@
           @if(!Auth::check())
             @each('partials.post',$upvotedPosts,'post')
           @endif
+          <div class="d-flex justify-content-center">
+            {!! $upvotedPosts->links() !!}
+        </div>
         </div>
       </div>
     </div>

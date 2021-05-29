@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Source;
 use App\Models\Post;
@@ -47,31 +50,46 @@ class UserController extends Controller
         $p = PostController::getPost($sp->id);
         array_push($saved_posts, json_decode($p->getContent()));
       }
-
+      $savedp=$this->paginate($saved_posts);
+      $savedp->withPath('');
       $upvoted_posts=array();
       foreach ($upvoted_posts_ids as $up) {
         $p = PostController::getPost($up->id);
         array_push($upvoted_posts, json_decode($p->getContent()));
       }
-
+      $upp=$this->paginate($upvoted_posts);
+      $upp->withPath('');
       if(Auth::check() && Auth::id()==$id){
         $ownposts=array();
         foreach($user->posts as $p){
           array_push($ownposts,json_decode(PostController::getPost($p->id)->getContent()));
 
         }
-        return view('pages.ownprofile', ['user' => $user,'ownposts'=>$ownposts, 'followers'=>$followers, 'following'=>$following, 'posts'=>$posts, 'upvotes'=>$count_upvotes, 'savedPosts' => $saved_posts, 'upvotedPosts' => $upvoted_posts]);
+        $ownp=$this->paginate($ownposts);
+        $ownp->withPath('');
+        return view('pages.ownprofile', ['user' => $user,'ownposts'=>$ownp, 'followers'=>$followers, 'following'=>$following, 'posts'=>$posts, 'upvotes'=>$count_upvotes, 'savedPosts' => $savedp
+        , 'upvotedPosts' => $upp]);
       }
       else{
         $otherposts = array();
         foreach ($user->posts as $p) {
           array_push($otherposts, json_decode(PostController::getPost($p->id)->getContent()));
         }
-
-        return view('pages.otherprofile', ['user' => $user, 'otherposts'=> $otherposts, 'followers' => $followers, 'following' => $following, 'posts' => $posts, 'upvotes' => $count_upvotes, 'savedPosts' =>$saved_posts, 'upvotedPosts' => $upvoted_posts]);
+        $op=$this->paginate($otherposts);
+        $op->withPath('');
+        return view('pages.otherprofile', ['user' => $user, 'otherposts'=> $op, 'followers' => $followers, 'following' => $following, 'posts' => $posts, 'upvotes' => $count_upvotes, 'savedPosts' =>$saved_posts, 'upvotedPosts' => $upp]);
       }
     }
 
+
+
+
+  public function paginate($items, $perPage = 5, $page = null, $options = [])
+  {
+      $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+      $items = $items instanceof Collection ? $items : Collection::make($items);
+      return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+  }
 
   public function delete(Request $request)
   {

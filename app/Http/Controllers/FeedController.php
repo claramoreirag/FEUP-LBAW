@@ -7,7 +7,10 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 class FeedController extends Controller {
 
@@ -21,7 +24,7 @@ class FeedController extends Controller {
             array_push($posts,json_decode($p->getContent()));
         }
         $collection=collect($posts);
-        return $collection;
+        return $posts;
 
     }
 
@@ -32,7 +35,7 @@ class FeedController extends Controller {
         $categories = Category::all();
         // random tags
         // $randomTags = Tag::inRandomOrder()->limit(8)->get();
-        $posts=FeedController::listRecent();
+        $posts=$this->paginate(FeedController::listRecent());
         if(Auth::check()){
         return view('pages.authuserfeed',
             [
@@ -47,6 +50,14 @@ class FeedController extends Controller {
             ]
             );
         }   
+    }
+
+
+    public function paginate($items, $perPage = 5, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
 

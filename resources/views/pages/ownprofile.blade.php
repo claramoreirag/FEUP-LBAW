@@ -78,13 +78,25 @@
       <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active show" id="posts">
           @each('partials.ownpost', $ownposts, 'post')
+          <div class="d-flex justify-content-center">
+          
+        {!! $ownposts->links() !!}
+        </div>
         </div>
         <div class="tab-pane fade" id="savedposts">
           @each('partials.authpost', $savedPosts, 'post')
+          <div class="d-flex justify-content-center">
+        
+            {!! $savedPosts->links() !!}
+        </div>
         </div>
         <div class="tab-pane fade" id="upvotes">
           @each('partials.authpost', $upvotedPosts, 'post')
+          <div class="d-flex justify-content-center">
+            {!! $upvotedPosts->links() !!}
         </div>
+        </div>
+       
       </div>
     </div>
   </div>

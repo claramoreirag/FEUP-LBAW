@@ -90,7 +90,7 @@
             <div class="row posts-container" id="postslist">
                 @each('partials.post', $posts, 'post')
                 <div class="d-flex justify-content-center">
-                    {{-- {!! $posts->links() !!} --}}
+                    {!! $posts->links() !!}
                 </div>
             </div>
         </div>
