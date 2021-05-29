@@ -32,8 +32,10 @@
                             </span>
                             @endif
                         </div>
-
-                        <button  type="submit" class="btn btn-block btn-primary mt-4">Login</button>
+                        <div class="row text-sm-right fs-6" >
+                        <a class="" href="">Forgot your password?</a>
+                        </div>
+                        <button  type="submit" class="btn btn-block btn-primary mt-4 font-weight-bold">Login</button>
                     </form>
                     <div class="row align-items-center mt-4 pb-5">
                         <a class="signup_link" href="{{ route('register') }}">Don't have an account? Sign Up!</a>

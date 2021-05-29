@@ -14,8 +14,7 @@
             </div>
             <div class="col text-right">
             <!--<form action="/admin/reports/posts/{{$post->id}}" method="post">
-                <button class="btn btn-outline-primary" type="submit"  ><i class="fas fa-trash-alt"></i> Delete</button>@method('post') @csrf
-                
+                <button class="btn btn-outline-primary" type="submit"  ><i class="fas fa-trash-alt"></i> Delete</button>@method('post') @csrf 
             </form>-->
             <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
         <i class="far fa-trash-alt"></i> Delete Post

@@ -88,7 +88,7 @@ class PostController extends Controller
         if($s!=null)SourceController::create($s,$post->id);
       }
 
-      return redirect('/user/'.Auth::id());
+      return redirect('/user/'.Auth::id().'?postSuccess=1&n='.$post->id);
      }
 
   

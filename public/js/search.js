@@ -79,6 +79,10 @@
                 },postSearchUpdate);
                 timer=0;
             }
+            else{
+                $('#postslist').html('<div class="container d-flex justify-content-center" style="height:10rem"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+
+            }
         });
     
     
@@ -119,7 +123,7 @@
         function postSearchUpdate(){
             let response = JSON.parse(this.responseText);
             if(response.html==""){
-                $('#postslist').html('');
+                $('#postslist').html('<div class="container d-flex justify-content-center align-baseline" style="height:10rem">No results found</div>');
             }
             else{
                 $('#postslist').html(response.html);

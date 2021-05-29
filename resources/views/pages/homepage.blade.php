@@ -4,12 +4,11 @@
 @section('content')
 
 
-<div class=" container homepage " style="margin-top: 4rem;" >
-
-    <div class="row">
+<div class="container homepage" style="margin-top: 4rem;" >
+    <div class="row ">
     <div class="col-md-2 filters-bar d-none d-lg-block ">
-            <div class="filters" style="position: fixed; ">
-                <h3 class="filters-title form-label ">Search filters</h3>
+            <div class="filters" style="position: fixed;">
+                <h3 class="filters-title form-label  ">Search filters</h3>
                 <form id= "formSettings">
                     <div class="form-group">
                        <legend class="form-label label text-left">Categories</legend>

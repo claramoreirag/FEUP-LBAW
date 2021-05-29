@@ -14,31 +14,27 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-3"></div>
-      <div class="col-6 d-flex justify-content-center">
-        <h3 id="name">
+      <div class="col-12 d-flex justify-content-center">
+        <h4 id="name">
           {{$user->name}}
-        </h3>
+        </h4>
       </div>
-      <div class="col-3"></div>
     </div>
     <div class="row">
-      <div class="col-3"></div>
-      <div class="col-6 d-flex justify-content-center">
-        <h4 id="username">@<span>{{$user->username}}</span></h4>
+      <div class="col-12 d-flex justify-content-center">
+        <p id="username">@<span>{{$user->username}}</span></p>
       </div>
-      <div class="col-3"></div>
     </div>
     <div class="row">
       <div class="col-1"></div>
       <div class="col-10 d-flex justify-content-center" id="followButton">
-        <button type="button" class="btn btn-primary">Follow</button>
+        <button type="button" class="btn btn-block btn-primary">Follow</button>
       </div>
       <div class="col-1"></div>
     </div>
     <div class="row">
-      <div class="col-12" id="infoNumbers">
-        <ul>
+      <div class="d-flex" id="infoNumbers">
+        <ul class="list-inline mx-auto justify-content-center" style="padding-top:0 margin-top=0">
           <li> <span class="fas fa-user"></span> {{$followers}} followers </li>
           <li> <span class="fas fa-user"></span> {{$following}} following </li>
           <li> <span class="fas fa-newspaper"></span> {{$posts}} posts </li>

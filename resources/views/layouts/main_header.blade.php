@@ -45,7 +45,7 @@
             <div class="col-10 ">
                 <div class="row justify-content-between">
                     <div class="col-4 ps-0">
-                        <h3><a class="row text-white nav-title mt-1" href="{{ url('/authuserfeed') }}">GreeNews</a></h3>
+                        <h3><a class="row text-white nav-title mt-1 " id="greeNewsLink" href="{{ url('/authuserfeed') }}">GreeNews</a></h3>
                        <!-- <h6> <a class="row text-white nav-subtitle" href="{{ url('/aboutus') }}">About Us</a></h6>-->
                     </div>
                     <div class="col-md-1 px-0">
@@ -56,7 +56,7 @@
                     
                     <div class="col-md-5  collapse navbar-collapse justify-content-end" id="navbarNav">
                         @if (Auth::check())
-
+                           
                             <a class="log nav-item nav-link text-white notification" href="#"><i class="fas fa-bell"></i> </a>
                             <a class="log nav-item nav-link d-none d-md-block text-white" href="/user/{{Auth::id()}}">{{ Auth::user()->username }}</a>
                             <a class="log nav-item nav-link d-md-none text-white" href="/user/{{Auth::id()}}"> My Profile</a>
