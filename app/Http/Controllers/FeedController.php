@@ -11,21 +11,28 @@ use Illuminate\Support\Facades\DB;
 
 class FeedController extends Controller {
 
-    public function show() {
-        
-        // hot posts
-        $request = new Request();
-       // $request->sortBy = "numerical";
-        $recentNews = Post::all();
-        $categories = Category::all();
-        // random tags
-       // $randomTags = Tag::inRandomOrder()->limit(8)->get();
+
+
+    public static function listRecent(){
+        $recentNews = DB::table('post')->orderBy('datetime','desc')->get();
         $posts=array();
         foreach($recentNews as $n){
             $p=PostController::getPost($n->id);
             array_push($posts,json_decode($p->getContent()));
         }
+        $collection=collect($posts);
+        return $collection;
 
+    }
+
+
+    public function show() {
+        
+   
+        $categories = Category::all();
+        // random tags
+        // $randomTags = Tag::inRandomOrder()->limit(8)->get();
+        $posts=FeedController::listRecent();
         if(Auth::check()){
         return view('pages.authuserfeed',
             [

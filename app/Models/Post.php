@@ -27,7 +27,19 @@ class Post extends Model
  
 
     public function comments(){
-        return $this->hasMany('App\Models\Comment');
+        $cmts=Comment::where('post_id','=',$post_id)->where('comment_id','=',null)->get();
+        $comments= array();
+        foreach ($cmts as $c){
+                $replies=Comment::where('comment_id','=',$c->id)->get();
+                $comment=array();
+                $comment['info']=$c;
+                $comment['replies']=$replies;
+                array_push($comments,$comment);
+            }
+            
+      
+        return $comments;
+        //return $this->hasMany('App\Models\Comment');
     }    
 
     public function author(){

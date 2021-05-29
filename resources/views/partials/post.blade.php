@@ -1,3 +1,4 @@
+
 <article class="card mb-3"  data-id="{{ $post->id }}" >
     <div class="card-body ">
         <div class="row mb-2 justify-content-end">
