@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Redirect;
 class LoginController extends Controller
@@ -46,13 +47,22 @@ class LoginController extends Controller
         return route('authuserfeed');
     }
 
+
     protected function authenticated(Request $request, $user)
     {
         if($user->isAdmin()) {
             return redirect()->intended('/admin/reports');
         } 
         else {
-            return redirect()->intended('/authuserfeed');
+            if($user->state()=="Active"){
+                return redirect()->intended('/authuserfeed');
+            }
+            else if($user->state()=="Suspended"){
+                return redirect()->intended('/login/suspended');
+            }
+            else{
+                return redirect()->intended('/login/banned');
+            }
         }
     }
 

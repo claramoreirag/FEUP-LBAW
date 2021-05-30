@@ -1,12 +1,14 @@
 @extends('layouts.main_header')
 @section('content')
 
-<div class=" container homepage d-flex align-items-center" style="margin-top: 6rem;">
+
+
+<div class=" container homepage d-flex align-items-center" style="padding-top: 4rem;">
 
 
     <div class="row">
         <div class="col-md-2 filters-bar d-none d-lg-block ">
-            <div class="filters" style="position: fixed; margin-top:4rem;">
+            <div class="filters" style="position: fixed;">
                 <h3 class="filters-title form-label ">Search filters</h3>
 
                 <form id="formSettings">
@@ -57,7 +59,6 @@
         <div class="row">
                 <div class="input-group rounded search-container mb-3 px-0">
                     <input type="search" class="form-control searchbar mr-2"  id="searchbar" placeholder='Search posts ' aria-label="Search" aria-describedby="search-addon" />
-                    
                     <input type="search" class="form-control searchbar"  id="searchbarusers" list="dlsearchbar" placeholder="Search users" aria-label="Search" aria-describedby="search-addon" />
                     <datalist id="dlsearchbar">
                     </datalist>

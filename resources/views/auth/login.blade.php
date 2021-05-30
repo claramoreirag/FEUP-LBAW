@@ -8,10 +8,10 @@
     <div class="row layout align-items-center">
         <div class="col-md-3 col-lg-4 col-sm-2"></div>
         <div class="col-12 col-md-6 col-lg-4 col-sm-8">
-            <div class="row login_form mt-5">
+            <div class="row login_form mt-5 shadow-lg" style="background-color: #fafffd">
                 <div class="col-1 "></div>
                 <div class="col-10 ">
-                    <h1 class="title">Login</h1>
+                    <h1 class="title mt-5">Login</h1>
                     <form method="POST" action="{{ route('login') }}"  data-toggle="validator">
                         {{ csrf_field() }}
                         <div class="form-floating">
@@ -32,26 +32,12 @@
                             </span>
                             @endif
                         </div>
-
-                        <button  type="submit" class="btn btn-primary">Login</button>
+                        <div class="row text-sm-right fs-6" >
+                        <a class="" href="">Forgot your password?</a>
+                        </div>
+                        <button  type="submit" class="btn btn-block btn-primary mt-4 font-weight-bold">Login</button>
                     </form>
-                    <div class="row dividing align-items-center">
-                        <div class="col-5">
-                            <hr>
-                        </div>
-                        <div class="col-2">
-                            <h5>or</h5>
-                        </div>
-                        <div class="col-5">
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="row login_google">
-                        <div class="col">
-                            <button onclick="changePage()" class="btn btn-primary">Login with Google</button>
-                        </div>
-                    </div>
-                    <div class="row align-items-center ">
+                    <div class="row align-items-center mt-4 pb-5">
                         <a class="signup_link" href="{{ route('register') }}">Don't have an account? Sign Up!</a>
                         <br>
                     </div>
@@ -65,8 +51,57 @@
 
     <script defer src="../js/login.js"></script>
 
-    </body>
 
+    <div id="sus" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Your account has been suspended</h5>
+        <form action="/login" method="get">
+                        <button type="submit" class="close"aria-label="Close" ></button>
+                    </form>
+      
+      </div>
+      <div class="modal-body d-flex">
+        
+          <img class="d-flex"src="https://www.seekpng.com/png/detail/15-159331_sad-faces-clip-art-sad-face-on-black.png" width=200></img>
+
+          
+        <p class="ml-3"> Your account has been suspended for a period of 21 days. For more information please contact us via greenews_official@gmail.com. </p>
+       
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+  
+  <div id="ban" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">You have been banned</h5>
+        <form action="/login" method="get">
+                        <button type="submit" class="close"aria-label="Close" ></button>
+                    </form>
+      
+      </div>
+      <div class="modal-body d-flex">
+        
+          <img class="d-flex"src="https://www.seekpng.com/png/detail/15-159331_sad-faces-clip-art-sad-face-on-black.png" width=200></img>
+
+          
+        <p class="ml-3"> You have been banned from GreeNews due to inappropriate content. For more information please contact us via greenews_official@gmail.com.</p>
+       
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+    </body>
 
 @endsection
 

@@ -65,7 +65,6 @@ class FeedController extends Controller {
         $cat = [];
         $cat = array_map('intval', explode(',', $request->get('categories')));
 
-        
         $po = Post::where('header', 'like', '%' . $request->get('searchQuery') . '%' )->where('title', 'like', '%' . $request->get('searchQuery') . '%' )->whereIn('category',$cat)->get();
         $posts=array();
         foreach($po as $n){
@@ -75,4 +74,5 @@ class FeedController extends Controller {
         
         return response()->json(['html'=>view('partials.management.posts',['posts' => $posts])->render()]);
     }
+    
 }

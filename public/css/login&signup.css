@@ -25,31 +25,12 @@ body{
   .login_form form input {
     border: none;
     background: transparent;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid rgb(192, 191, 191);
     outline: none;
     margin: 1em 0;
   }
   
-  .login_form form input:focus {
-    border: none;
-    background: transparent;
-    border-bottom: 1px solid #fff;
-    outline: none;
-  }
-  
-  .login_form form button, .login_google button{
-    margin: 0 auto; 
-    display:block;
-    padding: 0.6em 1em;
-  }
-  
-  .dividing{
-    margin-bottom:0.75em;
-  }
-  
-  .dividing h5{
-      text-align: center;
-  }
+
   
   
   .signup_link, .login_link{

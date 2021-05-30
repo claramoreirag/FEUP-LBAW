@@ -7,7 +7,7 @@
                         <th scope="col">Content</th>
                         <th scope="col">Author</th>
                         <th scope="col">x Reported</th>
-                        <th scope="col">Options</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>

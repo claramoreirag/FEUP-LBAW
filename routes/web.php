@@ -46,7 +46,7 @@ Route::get('ownprofile',function(){
     return view('pages.ownprofile');
 });
 
-Route::get('newpost',function(){
+Route::get('post/new',function(){
     return view('pages.newpost');
 });
 
@@ -72,7 +72,7 @@ Route::post('register', 'Auth\RegisterController@register')->name('register');
 Route::get('/user/{user_id}', 'UserController@show')->name('profile');
 Route::delete('/settings', 'UserController@delete');
 Route::get('/settings', 'UserController@showEditProfile');
-Route::put('/settings', 'UserController@editProfile'); 
+Route::put('/settings', 'UserController@editProfile');
 Route::post('user/{user_id}/follow_category','UserController@followCategory')->name('follow_cat');
 Route::delete('user/{user_id}/unfollow_category','UserController@unfollowCategory')->name('unfollow_cat');
 Route::get('/user/{user_id}/pic','UserController@getProfilePic')->name('avatar');
@@ -89,14 +89,13 @@ Route::delete('/post/{post_id}', 'PostController@delete')->where(['post_id' => '
 Route::post('/post/{post_id}/report', 'PostController@report')->where(['post_id' => '[0-9]+'])->name('report_post');
 Route::get('/post/{post_id}/edit', 'PostController@showEdit');
 Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
-Route::get('/newpost', 'PostController@showNewPost');
-Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post');
- 
+Route::get('/post/new', 'PostController@showNewPost');
+Route::post('/post/new', 'PostController@storeNewPost') -> name('create_new_post');
 
-
-
+//Search
 Route::get('/searchUsers', 'UserController@searchUsers')->name('searchUsers');
 Route::get('/searchPosts', 'FeedController@searchPosts')->name('searchPosts');
+Route::get('/searchUserManagement', 'UserController@searchUserManagement');
 
 //Comment
 Route::post('/post/{post_id}/comment', 'CommentController@newComment')->name('comment');
@@ -113,10 +112,19 @@ Route::get('/admin/reports/posts/{post_id}/{comment_id}','AdminController@viewCo
 
 Route::post('/admin/reports/posts/{post_id}', 'ReportController@deletePostAdmin')->name('delete_post_admin');
 Route::post('/admin/reports/posts/{post_id}/{comment_id}', 'ReportController@deleteCommentAdmin')->name('delete_comment_admin');
+Route::post('/admin/reports/{report_id}', 'ReportController@dismissReport')->name('dismiss');
 
 Route::post('/admin/reports', 'AdminController@updateDashboard');
 
 Route::post('/admin/undo/{report_id}', 'AdminController@undoAction')->name('undo_action');
+
+Route::get('/admin/users','AdminController@showUsers')->name('users');
+Route::post('/admin/users/ban/{user_id}', 'ReportController@banUser')->name('ban');
+Route::post('/admin/users/suspend/{user_id}', 'ReportController@suspendUser')->name('suspend');
+Route::post('/admin/users/active/{user_id}', 'ReportController@activateUser')->name('active');
+
+Route::get('/login/suspended', 'UserController@suspendedUser');
+Route::get('/login/banned', 'UserController@bannedUser');
 
 //---------------------------------------------------
 

@@ -1,7 +1,6 @@
 <head>
 
     <script src="https://cdn.tiny.cloud/1/up85hjw3nat4fck36d4b8sga07h0hs8y6j1nkiusyctbojab/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
     <script>
         tinymce.init({
             selector: '#mytextarea',
@@ -63,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-      
+                                                
                 <input  type="submit" class="btn btn-primary" value="Publish" formaction="{{ route('create_new_post') }}">
                 @method('POST')
                 @csrf
