@@ -91,10 +91,14 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                             </div>
                         </form>
     
-                    
-                        <ul class="comments" id="comment_list">
-                            @each('partials.comment', $comments, 'comment')    
-                        </ul>
+                    <div id="comments_holder">
+                      <ul class="comments" id="comment_list">
+                        @each('partials.comment', $comments, 'comment')    
+                    </ul>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                 
+                          <button class="see-more btn btn-primary" data-page="2" data-link="/post/{{$post->id}}/?page=" data-div="#posts">See more</button> 
                     </div>
             </div>
         </div>
@@ -106,8 +110,6 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
     <div data-id="{{ $post->id }}" class="modal fade" id="ModalAlreadyReported" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
          
-    
-        
             <div class="modal-content">
                 
                 <div class="modal-body">
@@ -120,9 +122,7 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                   {{-- <a class="btn btn-primary" href="{{route('report_post',['post_id'=>$post->id])}}">Report</a> --}}
                 </div>
               </div>
-           
-    
-           
+
         </div>
       </div>
     
@@ -157,6 +157,24 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script type="text/javascript">
+  
+    $(".see-more").click(function() {
+      $div = document.querySelector('#comments_holder') ; //div to append
+       // console.log($div);
+        $link = $(this).data('link'); //current URL
+        console.log($link);
+        $page = $(this).data('page'); //get the next page #
+       
+        $href = $link + $page; //complete URL
+        $.get($href, function(response) { //append data
+        let ul= document.createElement('ul');
+          $html = $(response).find("#comment_list").html(); 
+          ul.innerHTML=$html;
+         $div.append(ul);
+        });
+      
+        $(this).data('page', (parseInt($page) + 1)); //update page #
+      });
 
         
          $('#comment').off().on('submit',function(event){

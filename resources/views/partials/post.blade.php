@@ -1,3 +1,4 @@
+
 <article class="card mb-3"  data-id="{{ $post->id }}" >
     <div class="card-body ">
         <div class="row mb-2 justify-content-end">
@@ -7,7 +8,7 @@
         </div>
         <div class="row">
             <div class="col-1 " style="margin-right:1rem;">
-            <a href="../pages/otherProfile.php"><img class="" src="https://writestylesonline.com/wp-content/uploads/2016/08/Follow-These-Steps-for-a-Flawless-Professional-Profile-Picture.jpg" alt="profile pic" width="40" height="40" style="border-radius: 50%;"></a>
+            <a href="../pages/otherProfile.php"><img class="" src="{{route('avatar',['user_id'=>$post->author->id])}}" alt="profile pic" width="40" height="40" style="border-radius: 50%;"></a>
             </div>
             <div class="col-10">
                 <h4 class="card-title text-primary">{{$post->title}}</h4>

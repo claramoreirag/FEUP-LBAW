@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 d-flex justify-content-center" id="profileImg">
-          <img src="../images/profilepic2.jpg" alt="profile picture">
+          <img src="{{route('avatar',['user_id'=>$user->id])}}" alt="profile picture">
         </div>
       </div>
     </div>
@@ -63,6 +63,9 @@
           @if(!Auth::check())
           @each('partials.post',$otherposts,'post')
           @endif
+          <div class="d-flex justify-content-center">
+            {!! $otherposts->links() !!}
+          </div>
         </div>
         <div class="tab-pane fade" id="upvotes">
           @if(Auth::check())
@@ -71,6 +74,9 @@
           @if(!Auth::check())
             @each('partials.post',$upvotedPosts,'post')
           @endif
+          <div class="d-flex justify-content-center">
+            {!! $upvotedPosts->links() !!}
+        </div>
         </div>
       </div>
     </div>

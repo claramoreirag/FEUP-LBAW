@@ -9,7 +9,7 @@
   <li id="entireComment{{$comment['info']->id}}" class="clearfix">
     <article class=" mb-3" >
         {{-- TODO change to profile pic --}}
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_rB4VojlEI2f9u8bxiaLmoweo8oeAsROorA&usqp=CAU" class="rounded-circle img-fluid avatar" alt="">
+        <img src="{{route('avatar',['user_id'=>$comment['info']->user->id])}}" class="rounded-circle img-fluid avatar" alt="">
         <div class="post-comments">
             <div class="comment_content" id="{{$id}}">
                 <p class="mb-0" > <a  href="/user/{{$comment['info']->user->id}}"> @<span>{{$comment['info']->user->username}}

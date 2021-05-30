@@ -75,6 +75,7 @@ Route::get('/settings', 'UserController@showEditProfile');
 Route::put('/settings', 'UserController@editProfile'); 
 Route::post('user/{user_id}/follow_category','UserController@followCategory')->name('follow_cat');
 Route::delete('user/{user_id}/unfollow_category','UserController@unfollowCategory')->name('unfollow_cat');
+Route::get('/user/{user_id}/pic','UserController@getProfilePic')->name('avatar');
 
 //Feed
 Route::get('authuserfeed', 'FeedController@show')->name('authuserfeed');

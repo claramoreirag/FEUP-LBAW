@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col-1 " style="margin-right:1rem;">
-                <img class="" src="https://writestylesonline.com/wp-content/uploads/2016/08/Follow-These-Steps-for-a-Flawless-Professional-Profile-Picture.jpg" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
+                <img class="" src="{{route('avatar',['user_id'=>$post->author->id])}}" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
             </div>
             <div class="col-10">
                 <h4 class="card-title text-primary">{{$post->title}}</h4>

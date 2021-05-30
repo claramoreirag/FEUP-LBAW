@@ -25,6 +25,10 @@ class User extends Authenticatable
         'username', 'password', 'name', 'email', 'photo', 'user_state', 'is_admin',
     ];
 
+    protected $attributes = [
+        'photo' => 'default.png',
+     ];
+
     protected $casts = [
         'id' => 'integer',
         'username' => 'string',

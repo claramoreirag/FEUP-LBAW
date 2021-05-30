@@ -1,3 +1,4 @@
+
 @extends('layouts.main_header')
 @include('partials.editprofile')
 @section('content')
@@ -17,7 +18,8 @@
     <div class="container">
       <div class="row">
         <div class="col-12 d-flex justify-content-center" id="profileImg">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU" alt="profile picture">
+        
+          <img src="{{route('avatar',['user_id'=>$user->id])}}" alt="profile picture">
         </div>
       </div>
     </div>
@@ -76,13 +78,25 @@
       <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active show" id="posts">
           @each('partials.ownpost', $ownposts, 'post')
+          <div class="d-flex justify-content-center">
+          
+        {!! $ownposts->links() !!}
+        </div>
         </div>
         <div class="tab-pane fade" id="savedposts">
           @each('partials.authpost', $savedPosts, 'post')
+          <div class="d-flex justify-content-center">
+        
+            {!! $savedPosts->links() !!}
+        </div>
         </div>
         <div class="tab-pane fade" id="upvotes">
           @each('partials.authpost', $upvotedPosts, 'post')
+          <div class="d-flex justify-content-center">
+            {!! $upvotedPosts->links() !!}
         </div>
+        </div>
+       
       </div>
     </div>
   </div>

@@ -8,7 +8,7 @@ $already_reported_reply=ReportController::commentAlreadyReported(Auth::id(),$com
 @endphp
 <li id="entireComment{{$comment->id}}" class=" clearfix">
  
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_rB4VojlEI2f9u8bxiaLmoweo8oeAsROorA&usqp=CAU" class="rounded-circle avatar" alt="">
+    <img src="{{route('avatar',['user_id'=>$comment->user->id])}}" class="rounded-circle avatar" alt="">
     <div class="post-comments " id="{{$id}}">
         <p class="mb-0"> <a  href="/user/{{$comment->user->id}}"> @<span>{{$comment->user->username}}</span></a> replied: <span id="comment_info{{$comment->id}}"> {{$comment->body}} </span></p>
         <form class="hidden" id="edit{{$comment->id}}" action="{{ route("edit_comment",["comment_id"=>$comment->id]) }}" method="Post">

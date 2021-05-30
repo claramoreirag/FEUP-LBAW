@@ -119,6 +119,9 @@
 
             <div class="row posts-container" id="postslist">
                 @each('partials.authpost', $posts, 'post')
+                <div class="d-flex justify-content-center">
+                    {!! $posts->links() !!}
+                </div>
             </div>
         </div>
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class Post extends Model
 {
@@ -29,8 +30,26 @@ class Post extends Model
 
 
     public function comments(){
+       
         return $this->hasMany('App\Models\Comment');
     }    
+
+
+    public function getComments(){
+        $cmts=Comment::where('post_id','=',$this->id)->where('comment_id','=',null)->get();
+        $comments= array();
+        foreach ($cmts as $c){
+                $replies=Comment::where('comment_id','=',$c->id)->get();
+                $comment=array();
+                $comment['info']=$c;
+                $comment['replies']=$replies;
+                array_push($comments,$comment);
+            }
+            
+      
+        return collect($comments);
+        //return $this->hasMany('App\Models\Comment');
+    }   
 
     public function author(){
         return $this->belongsTo('App\Models\User', 'user_id');
