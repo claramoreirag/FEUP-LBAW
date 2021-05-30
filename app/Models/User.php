@@ -102,4 +102,9 @@ class User extends Authenticatable
         return $this->state;
     }
 
+    public function followedCategories(){
+        return $this->belongsToMany('App\Models\User', 'follow_category', 'user_id', 'category_id');
+    }
+
+
 }

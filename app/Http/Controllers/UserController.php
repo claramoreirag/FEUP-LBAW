@@ -44,7 +44,19 @@ class UserController extends Controller
       $posts = $user->posts()->get()->count();
       $saved_posts_ids = $user->savedPosts()->get();
       $upvoted_posts_ids = $user->upvotedPosts()->get();
+      $user=User::find(Auth::id());
+            $followedCats=[];
+           
+            foreach ($user->followedCategories as $cat){
+              array_push($followedCats,$cat->id);
+         
+            }
+          
+            $followedUsers=[];
+            foreach ($user->following as $u){
       
+                array_push($followedUsers,$u->id);
+            }
       $post_list = $user->posts()->get();
       $count_upvotes = 0;
       foreach($post_list as $p){

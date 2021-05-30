@@ -19,10 +19,10 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="form-group">
+                    <div class="form-group"  id=settingsOrder>
                         <legend class="form-label label order-by">Order By</legend>
 
-                        <div class="form-check">
+                        <div class="form-check" >
                             <input class="form-check-input" type="radio" name="feedType" id="top-news">
                             <label class="form-check-label" for="flexRadioDefault1">Most Upvoted News</label>
                         </div>
