@@ -73,6 +73,13 @@ class PostPolicy
         return  $user->id == $post->author->id;
     }
 
+
+
+    public function save(User $user, Post $post)
+    {
+        return  Auth::check() && $user->id != $post->author->id;
+    }
+
     /**
      * Determine whether the user can restore the model.
      *

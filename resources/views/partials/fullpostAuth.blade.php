@@ -154,9 +154,9 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
       </div>
 
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script type="text/javascript">
+    <script defer src="https://code.jquery.com/jquery-3.1.1.min.js">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script defer type="text/javascript">
   
     $(".see-more").click(function() {
       $div = document.querySelector('#comments_holder') ; //div to append

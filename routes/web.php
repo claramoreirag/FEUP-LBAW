@@ -87,6 +87,7 @@ Route::get('search','FeedController@search')->name('search');
 Route::get('/post/{id}', 'PostController@show')->where(['id' => '[0-9]+']);
 Route::delete('/post/{post_id}', 'PostController@delete')->where(['post_id' => '[0-9]+']);
 Route::post('/post/{post_id}/report', 'PostController@report')->where(['post_id' => '[0-9]+'])->name('report_post');
+Route::get('/post/{post_id}/save', 'PostController@save')->where(['post_id' => '[0-9]+'])->name('save_post');
 Route::get('/post/{post_id}/edit', 'PostController@showEdit');
 Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
 Route::get('/post/new', 'PostController@showNewPost');

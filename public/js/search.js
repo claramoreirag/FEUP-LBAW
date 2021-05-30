@@ -79,9 +79,6 @@
                 },postSearchUpdate);
                 timer=0;
             }
-            else{
-                $('#postslist').html('<div class="container d-flex justify-content-center" style="width:58rem; height:10rem"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
-            }
         });
     
     
@@ -122,25 +119,9 @@
         function postSearchUpdate(){
             let response = JSON.parse(this.responseText);
             if(response.html==""){
-                $('#postslist').html('<div class="container d-flex justify-content-center align-baseline" style="width:58rem; height:10rem">No results found</div>');
+                $('#postslist').html('');
             }
             else{
                 $('#postslist').html(response.html);
             }
-        };
-
-
-        $('body').on('keyup','#searchbarusers2', function(){
-            var searchQuery=$(this).val();
-            sendAjaxRequest('GET','/searchUserManagement',{
-                    '_token': '{{csrf_token() }}',
-                    searchQuery:searchQuery,
-                },userSearchUpdateManager);
-               
-        });
-
-        function userSearchUpdateManager(){
-            let response = JSON.parse(this.responseText);
-          
-            $('#userslist').html(response.html);
         };

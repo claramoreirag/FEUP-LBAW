@@ -219,6 +219,11 @@ class UserController extends Controller
      else return false;
     }
 
+    public static function alreadySavedPost( $post){
+      return DB::table('saved_post')->where('user_id','=',Auth::id())->where('post_id','=',$post)->exists();
+      
+    }
+
     public function suspendedUser() {
       Auth::logout();
     return redirect('/login'.'?suspended=1');

@@ -10,6 +10,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Source;
 use App\Models\Post;
+use App\Models\User;
 use DateTime;
 
 class PostController extends Controller
@@ -206,6 +207,22 @@ class PostController extends Controller
       
       ReportController::createPostReport(Auth::id(),$id);
       return redirect('/post/'.$id);
+    }
+
+    public function save(Request $request,$id){
+      $post= Post::find($id);
+      $this->authorize('save', $post);
+      $saved=DB::table('saved_post')->where('user_id','=',Auth::id())->where('post_id','=',$id)->exists();
+      if(!$saved){
+        DB::insert('insert into saved_post (user_id, post_id) values (?, ?)', [Auth::id(), $id]);
+        return response()->json(['success'=>'true','id'=>$id]);
+      }
+      else{
+        DB::delete('delete from saved_post where post_id = ? and user_id = ?' ,[$id, Auth::id()]);
+        return response()->json(['success'=>'false','id'=>$id]);
+      }
+
+      
     }
 
     
