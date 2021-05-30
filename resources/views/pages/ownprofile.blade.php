@@ -41,6 +41,7 @@
     </div>
     <div class="row">
       <div class="col-12" id="infoNumbers">
+       
         <ul>
           <li> <span class="fas fa-user"></span> {{$followers}} followers </li>
           <li> <span class="fas fa-user"></span> {{$following}} following </li>

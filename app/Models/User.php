@@ -97,4 +97,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\User', 'post_vote', 'user_id', 'post_id')->where('is_up', '=', true);
     }
 
+    public function followedCategories(){
+        return $this->belongsToMany('App\Models\User', 'follow_category', 'user_id', 'category_id');
+    }
+
+
 }
