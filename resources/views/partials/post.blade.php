@@ -38,8 +38,8 @@
             </div> -->
             <div class="col-lg-2 col-md-3 col-sm-4 mt-2">
                 <div class="row justify-content-end votes text-secondary">
-                    <div class="col-6 upvote"><a class="text-secondary" href=""><i class="fas fa-arrow-up"></i></a> {{$post->upvotes}} </div>
-                    <div class="col-6 downvote"><a class="text-secondary" href=""><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div>
+                    <div class="col-6 upvote"><a class="text-secondary" href="" title="Upvote"><i class="fas fa-arrow-up"></i></a> {{$post->upvotes}} </div>
+                    <div class="col-6 downvote"><a class="text-secondary" href="" title="Downvote"><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div>
 
                 </div>
             </div>

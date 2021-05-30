@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'password', 'name', 'email', 'photo', 'user_state', 'is_admin',
+        'username', 'password', 'name', 'email', 'photo', 'state', 'is_admin',
     ];
 
     protected $attributes = [
@@ -36,6 +36,7 @@ class User extends Authenticatable
         'name' => 'string',
         'email' => 'string',
         'photo' => 'string',
+        'state' => 'string',
         'is_admin' => 'boolean'
     ];
     /**
@@ -97,9 +98,14 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\User', 'post_vote', 'user_id', 'post_id')->where('is_up', '=', true);
     }
 
+
     public function followedCategories(){
         return $this->belongsToMany('App\Models\User', 'follow_category', 'user_id', 'category_id');
     }
 
+
+    public function state(){
+        return $this->state;
+    }
 
 }

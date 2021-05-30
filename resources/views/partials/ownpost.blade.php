@@ -33,16 +33,15 @@
 
 
         <div class="row post-interactions justify-content-between ">
-            <div class="col-xs-4 col-sm-4 col-md-2 actions mt-2 text-secondary pb-3"></i>
-                <div class="row actions">
-                    <div class="col-md-6 col-xs-6 save action"><a href='/post/{{$post->id}}/edit'><span class="fas fa-edit"> edit</a></div>
+            <div class="col-10 actions mt-2 text-secondary pb-3"></i>
+               
+                    <div class="col-md-6 col-xs-6 save action"><a href='/post/{{$post->id}}/edit'><i class="fas fa-edit"></i> Edit</a></div>
 
-                </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-2 mt-2 text-center">
+            <div class="col-2 mt-2 text-center">
                 <div class="row justify-content-end votes">
-                    <div class="col-6 upvote"><a class="text-secondary" href=""><i class="fas fa-arrow-up"></i></a> {{$post->upvotes}} </div>
-                    <div class="col-6 downvote"><a class="text-secondary" href=""><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div>
+                    <div class="col-6 upvote text-secondary"><i class="fas fa-arrow-up"></i> {{$post->upvotes}} </div>
+                    <div class="col-6 downvote text-secondary"><i class="fas fa-arrow-down"></i> {{$post->downvotes}} </div>
 
                 </div>
             </div>

@@ -1,24 +1,28 @@
 
-<div class="row mt-5 px-0" style="width: 100%;" >
-     
-        <div class="col-12 px-0" style="text-align: center;">
-            <form action="/admin/reports/posts/{{$post->id}}" method="post">
-                <button class="btn btn-outline-primary" type="submit"  ><i class="fas fa-trash-alt"></i> Delete</button>@method('post') @csrf
-                <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-clock"></i> Suspend User</button>
-            <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-slash"></i> Ban User</button>
-            <button type="button" class="btn btn-outline-primary"><i class="far fa-check-circle"></i> Dismiss</button>
-            </form>
-        </div>
-</div>
-   
-
-<div class="container" id="fullpost">
+<div class="row mt-2"></div>
+<div class="container mt-5" id="fullpost">
     
-    <div class="row">
+    <div class="row ">
+
         <div class="col-1 "></div>
         
         <div class="col-10 ">
-            
+
+            <div class="row ">
+            <div class="col-4">
+                 <h3>Reported News</h3>
+            </div>
+            <div class="col text-right">
+            <!--<form action="/admin/reports/posts/{{$post->id}}" method="post">
+                <button class="btn btn-outline-primary" type="submit"  ><i class="fas fa-trash-alt"></i> Delete</button>@method('post') @csrf 
+            </form>-->
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+        <i class="far fa-trash-alt"></i> Delete Post
+        </button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-clock"></i> Suspend User</button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-slash"></i> Ban User</button>
+            </div>
+            </div>
             <div class="row post-header mt-5">
                 <div class="col-md-7 col-lg-1">
                     <a class="fas fa-arrow-left" href="/admin/reports"></a>
@@ -84,4 +88,28 @@
     </div>
 </div>
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Are you sure?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you really want to delete this post? You can undo this action on the handled reports list.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <form action="/admin/reports/posts/{{$post->id}}" method="post">
+                <button class="btn btn-outline-primary" type="submit"  >Delete</button>@method('post') @csrf
+                
+            </form>
+      </div>
+    </div>
+  </div>
 </div>

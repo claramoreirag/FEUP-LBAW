@@ -1,0 +1,1 @@
+@each('partials.user', $users, 'user')

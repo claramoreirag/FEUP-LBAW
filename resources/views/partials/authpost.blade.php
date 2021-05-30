@@ -52,20 +52,20 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
         <div class="row justify-content-between text-center">
             <div class="col-md-3 col-sm-4 actions pt-3 pb-3"></i>
                 <div class="row text-secondary actions">
-                    <div class="col-4 share action icon"><a class="text-secondary" href=""><i class="fas fa-share-alt"></i></a></div>
-                    <div class="col-4 save action icon"><a class="text-secondary" href=""><i class="fas fa-bookmark"></i></a></div>
+                    <div class="col-4 share action icon"><a class="text-secondary" href="" title="Share Post"><i class="fas fa-share-alt"></i></a></div>
+                    <div class="col-4 save action icon"><a class="text-secondary" href="" title="Save Post"><i class="fas fa-bookmark"></i></a></div>
                     @if($already_reported)
-                    <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#ModalAlreadyReported" ><i class="fas fa-exclamation-circle"></i></div>
+                    <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#ModalAlreadyReported" title="Report Post"><i class="fas fa-exclamation-circle"></i></div>
                     @endif
                     @if(!$already_reported)
-                <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#exampleModalCenter{{$post->id}}" ><i class="fas fa-exclamation-circle"></i></div>
+                <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#exampleModalCenter{{$post->id}}" title="Report Post"><i class="fas fa-exclamation-circle"></i></div>
                     @endif
                 </div>
             </div>
             <div class="col-xl-2 col-md-3 col-sm-4 mt-2">
                 <div class="row justify-content-end votes text-secondary">
-                    <div class="col-6 upvote"><a class="text-secondary" href=""><i class="fas fa-arrow-up"></i></a> {{$post->upvotes}} </div>
-                    <div class="col-6 downvote"><a class="text-secondary" href=""><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div>
+                    <div class="col-6 upvote"><a class="text-secondary" href="" title="Upvote"><i class="fas fa-arrow-up"></i></a> {{$post->upvotes}} </div>
+                    <div class="col-6 downvote"><a class="text-secondary" href="" title=Downvote><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div>
 
                 </div>
             </div>

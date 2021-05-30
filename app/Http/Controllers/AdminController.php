@@ -59,6 +59,17 @@ class AdminController extends Controller {
         return view('pages.admindashboard', ['reportedPosts' => $reportedPostsFinal, 'reportedComments' => $reportedCommentsFinal]);
     }
 
+    public function showUsers() {
+        $users = User::all();
+        $usersFinal = array();
+        foreach($users as $u){
+            if(!$u->isAdmin()){
+                array_push($usersFinal,$u);
+            }
+        }
+        return view('pages.usermanager',['users' => $usersFinal]);
+    }
+
     public function viewPost($id) {
         $p=PostController::getPost($id);
         $post = json_decode($p->getContent());
@@ -162,7 +173,7 @@ class AdminController extends Controller {
          return response()->json(['html'=>(view('partials.management.unhandled',['reportedPosts' => $reportedPostsFinal, 'reportedComments' => $reportedCommentsFinal])->render())]);
 
             
-    }else{
+        }else{
 
             foreach($r as $n){
                 $p=ReportController::getReport($n->id);
@@ -202,6 +213,8 @@ class AdminController extends Controller {
         }
         
     }
+
+
 
 
 }

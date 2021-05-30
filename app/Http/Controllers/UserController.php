@@ -30,6 +30,12 @@ class UserController extends Controller
     return json_encode($users);
   }
 
+
+  public function searchUserManagement(Request $request){
+    $users = User::where('username', 'like', '%' . $request->get('searchQuery') . '%' )->get();
+    return response()->json(['html'=>view('partials.management.users',['users' => $users])->render()]);
+  }
+
   public function show($id)
   {
       $user = User::find($id);
@@ -224,4 +230,16 @@ class UserController extends Controller
      }
      else return false;
     }
+
+    public function suspendedUser() {
+      Auth::logout();
+    return redirect('/login'.'?suspended=1');
+  }
+
+  public function bannedUser() {
+    Auth::logout();
+    return redirect('/login'.'?banned=1');
+  }
+
+  
 }
