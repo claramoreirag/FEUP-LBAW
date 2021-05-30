@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'password', 'name', 'email', 'photo', 'user_state', 'is_admin',
+        'username', 'password', 'name', 'email', 'photo', 'state', 'is_admin',
     ];
 
     protected $casts = [
@@ -32,7 +32,7 @@ class User extends Authenticatable
         'name' => 'string',
         'email' => 'string',
         'photo' => 'string',
-        'user_state' => 'string',
+        'state' => 'string',
         'is_admin' => 'boolean'
     ];
     /**
@@ -95,7 +95,7 @@ class User extends Authenticatable
     }
 
     public function state(){
-        return $this->user_state;
+        return $this->state;
     }
 
 }

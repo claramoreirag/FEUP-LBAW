@@ -9,12 +9,30 @@
                 <button class="btn btn-outline-primary" type="submit"  ><i class="far fa-trash-alt"></i></button>@method('post') @csrf
                 
                 </form>-->
+                <div class="row">
+                <div class="col-3">
                 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" title="Delete Post">
         <i class="far fa-trash-alt"></i>
         </button>
-                <button type="button" class="btn btn-outline-primary" title="Suspend User"><i class="fas fa-user-clock"></i></button>
-            <button type="button" class="btn btn-outline-primary" title="Ban User"><i class="fas fa-user-slash"></i></button>
-            <button type="button" class="btn btn-outline-primary" title="Dismiss Report"><i class="far fa-check-circle"></i></button>
+</div>
+<div class="col-3">
+<form action="/admin/users/suspend/{{$report->post->user->id}}" method="post">
+            <button type="submit" class="btn btn-outline-primary" title="Suspend User" ><i class="fas fa-user-clock"></i></button>@method('post') @csrf
+                </form>
+</div>
+<div class="col-3">
+<form action="/admin/users/ban/{{$report->post->user->id}}" method="post">
+            <button type="submit" class="btn btn-outline-primary" title="Ban User" ><i class="fas fa-user-slash"></i></button>@method('post') @csrf
+                </form>
+</div>
+            <div class="col-3">
+            <form action="/admin/reports/{{$report->id}}" method="post">
+            <button type="submit" class="btn btn-outline-primary" title="Dismiss Report" ><i class="far fa-check-circle"></i></button>@method('post') @csrf
+
+                </form>
+</div>
+</div>
+            
         </td>
         @endif
 
@@ -27,9 +45,17 @@
             {{$report->state}}
            
         </td>
-        <td> <form action="/admin/undo/{{$report->id}}" method="post">
+        <td> 
+            @if($report->state == "BanedUser" || $report->state == "SuspendedUser")
+                <form action="/admin/users" method="get">
+                <button class="btn btn-outline-primary" type="submit"  >UserManager</button>
+                </form>
+            @else
+                <form action="/admin/undo/{{$report->id}}" method="post">
                 <button class="btn btn-outline-primary" type="submit"  >Undo</button>@method('post') @csrf
-                </form></td>
+                </form>
+            @endif
+        </td>
         @endif
     </tr>
 
@@ -50,7 +76,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         <form action="/admin/reports/posts/{{$report->post->id}}" method="post">
                 <button class="btn btn-outline-primary" type="submit"  >Delete</button>@method('post') @csrf
-                
+          
                 </form>
       </div>
     </div>

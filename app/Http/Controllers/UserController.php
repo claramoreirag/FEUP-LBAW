@@ -179,4 +179,16 @@ class UserController extends Controller
      }
      else return false;
     }
+
+    public function suspendedUser() {
+      Auth::logout();
+    return redirect('/login'.'?suspended=1');
+  }
+
+  public function bannedUser() {
+    Auth::logout();
+    return redirect('/login'.'?banned=1');
+  }
+
+  
 }

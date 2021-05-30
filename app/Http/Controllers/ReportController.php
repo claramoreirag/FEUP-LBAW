@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Report;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use DateTime;
 
 class ReportController extends Controller
@@ -183,7 +184,7 @@ class ReportController extends Controller
           $r=ReportController::getReport($n->id);
           $comment=json_decode($r->getContent())->comment;
           if($comment!=null){
-              echo($comment->id);
+             
           if($comment->id==$id){
             $report=Report::find($n->id);
             $report->setAttribute('state', 'Deleted');
@@ -193,6 +194,86 @@ class ReportController extends Controller
       }
 
         return redirect()->route('reports',['deleteSuccess=1']);
+    }
+
+
+    public function dismissReport(Request $request, $report_id){
+        // $this->authorize('delete', $card);
+        $report = Report::find($report_id);
+        $report->setAttribute('state', 'Accepted');
+        $report->save();
+
+        return redirect()->route('reports');
+    }
+
+    public function suspendUser(Request $request, $user_id){
+        //TODO visible
+        // $this->authorize('delete', $card);
+        $user = User::find($user_id);
+        $user->setAttribute('state', 'Suspended');
+        $user->save();
+
+        $re=Report::all();
+        foreach($re as $n){
+          $r=Report::find($n->id);
+          if($r->comment!=null){
+              $c=Comment::find($r->comment->id);
+          if( $c->user->id == $user_id){
+              echo($r->state);
+              $r->setAttribute('state','SuspendedUser');
+              $r->save();
+          }
+        }
+        if($r->post!=null){
+            $p=Post::find($r->post->id);
+            if( $p->author->id == $user_id){
+                echo($r->state);
+                $r->setAttribute('state','SuspendedUser');
+                $r->save();
+            }
+          }
+        }
+         
+        return redirect()->route('users');
+    }
+
+    public function banUser(Request $request, $user_id){
+        //TODO Visible
+        // $this->authorize('delete', $card);
+        $user = User::find($user_id);
+        $user->setAttribute('state', 'Banned');
+        $user->save();
+
+        $re=Report::all();
+        foreach($re as $n){
+          $r=Report::find($n->id);
+          if($r->comment!=null){
+              $c=Comment::find($r->comment->id);
+          if( $c->user->id == $user_id){
+              echo($r->state);
+              $r->setAttribute('state','BanedUser');
+              $r->save();
+          }
+        }
+        if($r->post!=null){
+            $p=Post::find($r->post->id);
+            if( $p->author->id == $user_id){
+                echo($r->state);
+                $r->setAttribute('state','BanedUser');
+                $r->save();
+            }
+          }
+        }
+        return redirect()->route('users');
+    }
+
+    public function activateUser(Request $request, $user_id){
+        // $this->authorize('delete', $card);
+        $user = User::find($user_id);
+        $user->setAttribute('state', 'Active');
+        $user->save();
+
+        return redirect()->route('users');
     }
 
     public static function commentAlreadyReported($user_id,$comment_id){

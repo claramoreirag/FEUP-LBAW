@@ -36,7 +36,7 @@ DROP TRIGGER IF EXISTS follow_user on follow;
 
 DROP EXTENSION IF EXISTS pgcrypto;
 
-CREATE TYPE user_state AS ENUM ('Banned', 'Suspended', 'Active');
+CREATE TYPE user_state AS ENUM ('Banned', 'Suspended', 'Active'); 
 CREATE TYPE report_state AS ENUM ('Accepted', 'Deleted', 'SuspendedUser', 'BanedUser', 'NotAnswered');
 
 CREATE TABLE "users"(

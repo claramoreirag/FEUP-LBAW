@@ -21,7 +21,6 @@
         </button>
             <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-clock"></i> Suspend User</button>
             <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-slash"></i> Ban User</button>
-            <button type="button" class="btn btn-outline-primary"><i class="far fa-check-circle"></i> Dismiss</button>
             </div>
             </div>
             <div class="row post-header mt-5">

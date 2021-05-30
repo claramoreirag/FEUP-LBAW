@@ -61,7 +61,13 @@ class AdminController extends Controller {
 
     public function showUsers() {
         $users = User::all();
-        return view('pages.usermanager',['users' => $users]);
+        $usersFinal = array();
+        foreach($users as $u){
+            if(!$u->isAdmin()){
+                array_push($usersFinal,$u);
+            }
+        }
+        return view('pages.usermanager',['users' => $usersFinal]);
     }
 
     public function viewPost($id) {

@@ -51,8 +51,57 @@
 
     <script defer src="../js/login.js"></script>
 
-    </body>
 
+    <div id="sus" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Your account has been suspended</h5>
+        <form action="/login" method="get">
+                        <button type="submit" class="close"aria-label="Close" ></button>
+                    </form>
+      
+      </div>
+      <div class="modal-body d-flex">
+        
+          <img class="d-flex"src="https://www.seekpng.com/png/detail/15-159331_sad-faces-clip-art-sad-face-on-black.png" width=200></img>
+
+          
+        <p class="ml-3"> Your account has been suspended for a period of 21 days. For more information please contact us via greenews_official@gmail.com. </p>
+       
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+  
+  <div id="ban" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">You have been banned</h5>
+        <form action="/login" method="get">
+                        <button type="submit" class="close"aria-label="Close" ></button>
+                    </form>
+      
+      </div>
+      <div class="modal-body d-flex">
+        
+          <img class="d-flex"src="https://www.seekpng.com/png/detail/15-159331_sad-faces-clip-art-sad-face-on-black.png" width=200></img>
+
+          
+        <p class="ml-3"> You have been banned from GreeNews due to inappropriate content. For more information please contact us via greenews_official@gmail.com.</p>
+       
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+    </body>
 
 @endsection
 
