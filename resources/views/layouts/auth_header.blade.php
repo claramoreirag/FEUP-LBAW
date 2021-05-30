@@ -45,8 +45,8 @@
                     <div class="col-10 ">
                         <div class="row justify-content-between">
                             <div class="col-4 ">
-                                <h4><a class="row text-white nav-title" id="title" href="{{ url('/authuserfeed') }}">GreeNews</a></h4>
-                                <h6> <a class="row text-white nav-subtitle" id="aboutus" href="{{ url('/aboutus') }}">About Us</a></h6>
+                                <h3><a class="row text-white nav-title" id="title" href="{{ url('/authuserfeed') }}">GreeNews</a></h3>
+                               <!-- <h6> <a class="row text-white nav-subtitle" id="aboutus" href="{{ url('/aboutus') }}">About Us</a></h6>-->
                             </div>
                             <div class="col-md-1 px-0">
                                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +63,7 @@
                     <div class="col-1"></div>
 
                 </nav>
-</header>
+    </header>
 
     <section class=" " id="content">
         @yield('content')
@@ -72,7 +72,8 @@
     <div class="d-flex flex-column">
         <footer id="sticky-footer" class="py-4 text-50 mt-5">
             <div class="container text-center">
-                <small>LBAW-2021-G54&copy;</small>
+            @extends('layouts.footer')
+                
             </div>
         </footer>
     </div>
