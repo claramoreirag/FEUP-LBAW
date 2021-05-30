@@ -44,7 +44,7 @@
             <div class="col-10 ">
                 <div class="row justify-content-between">
                     <div class="col-4 ">
-                        <h4 class="row text-white" id="title" >GreeNews</h4>
+                        <h3 class="row text-white" id="title" >GreeNews</h3>
                     </div>
                     <div class="col-md-1 px-0">
                         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +56,8 @@
 
                         <a class="log nav-item nav-link text-white" href="{{ url('/admin/users') }}"><i class="fas fa-users-cog"></i> </a>
                         <a class="log nav-item nav-link text-white" href="{{ url('/admin/reports') }}"><i class="fas fa-exclamation-circle"></i> </a>
-                        <div class="log nav-item nav-link d-none d-md-block text-white">Admin</div>
+                        <span class="log nav-item d-none d-md-block text-white">Admin  </span>
+                        <p style="color:#78c2ad">pp</p>
                         <span class="d-none d-md-block separator text-white"> | </span>
                         <a class="log nav-item nav-link text-white" href="{{ url('/logout') }}"> Sign Out</a>
 

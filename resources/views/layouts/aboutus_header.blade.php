@@ -83,6 +83,15 @@
         @yield('content')
     </section>
     
+
+    <div class="d-flex flex-column">
+        <footer id="sticky-footer" class="py-4 text-50 mt-5">
+            <div class="container text-center">
+            @extends('layouts.footer')
+                
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>

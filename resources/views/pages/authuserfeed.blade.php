@@ -8,8 +8,8 @@
 
     <div class="row">
         <div class="col-md-2 filters-bar d-none d-lg-block ">
-            <div class="filters" style="position: fixed;">
-                <h3 class="filters-title form-label ">Search filters</h3>
+            <div class="filters" style="position: sticky; ">
+                <h4 class="filters-title form-label ">Search filters</h4>
 
                 <form id="formSettings">
 
