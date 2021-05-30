@@ -64,9 +64,15 @@
                     
                 
                 
-                    <ul class="comments">
-                        @each('partials.comment', $comments, 'comment')    
-                    </ul>
+                    <div id="comments_holder">
+                        <ul class="comments" id="comment_list">
+                          @each('partials.comment', $comments, 'comment')    
+                      </ul>
+                      </div>
+                      <div class="d-flex justify-content-center">
+                   
+                            <button class="see-more btn btn-primary" data-page="2" data-link="/post/{{$post->id}}/?page=" data-div="#posts">See more</button> 
+                      </div>
                 </div>
 
             </div>
@@ -75,3 +81,28 @@
 </div>
 
 </div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript">
+
+$(".see-more").click(function() {
+  $div = document.querySelector('#comments_holder') ; //div to append
+   // console.log($div);
+    $link = $(this).data('link'); //current URL
+    console.log($link);
+    $page = $(this).data('page'); //get the next page #
+   
+    $href = $link + $page; //complete URL
+    $.get($href, function(response) { //append data
+    let ul= document.createElement('ul');
+      $html = $(response).find("#comment_list").html(); 
+      ul.innerHTML=$html;
+     $div.append(ul);
+    });
+  
+    $(this).data('page', (parseInt($page) + 1)); //update page #
+  });
+
+  </script>

@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Source;
 use App\Models\Post;
@@ -26,11 +28,20 @@ class PostController extends Controller
         abort($post->getStatusCode());
       }
       $post = json_decode($post->getContent());
-      $comments=CommentController::getAllFromPost($id);
-    
+      $comments=$this->paginate(CommentController::getAllFromPost($id));
+      $comments->withPath('');
       return view('pages.fullpost', ['post' => $post, 'comments'=>$comments]);
     }
   
+
+    public function paginate($items, $perPage = 10, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    }
+  
+
 
   /**
    * Shows all posts.
