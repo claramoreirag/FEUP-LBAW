@@ -10876,3 +10876,8 @@ div.hello{
   color: var(--teal)!important;
   cursor: pointer!important;
  }
+
+ div .card-body{
+  padding-bottom: 10px!important;
+  padding-top: 10px!important;
+ }

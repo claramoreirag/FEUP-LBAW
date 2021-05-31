@@ -195,6 +195,6 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
     </button>
   </div>
   <div class="toast-body">
-    The post was successfully added to your saved posts!
+    The post was successfully removed from your saved posts!
   </div>
 </div>
