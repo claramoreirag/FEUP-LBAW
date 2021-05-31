@@ -1,5 +1,4 @@
 
-
 @extends('layouts.main_header')
 
 @section('content')

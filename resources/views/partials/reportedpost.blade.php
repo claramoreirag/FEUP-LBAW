@@ -2,7 +2,7 @@
 @if($report->state == "NotAnswered")
         <th scope="row"><a href="/admin/reports/posts/{{$report->post->id}}">Post</a></th>
         <td width=45%><a href="/admin/reports/posts/{{$report->post->id}}">{{$report->post->title}}</a></td>
-        <td width=15%><a href="/user/{{$report->post->user->id}}">{{$report->post->user->username}}</a></td>
+        <td width=15%><a href="{{route('profile',['user_id'=>$report->post->user->id])}}">{{$report->post->user->username}}</a></td>
         <td>{{$report->number}}</td>
         <td>
         <!--<form action="/admin/reports/posts/{{$report->post->id}}" method="post">

@@ -47,7 +47,7 @@
             <i class="fas fa-gem me-3"></i>GreeNews
           </h6>
           <p>
-          <a href="{{ url('/aboutus') }}" class="text-reset">Homepage</a>
+          <a href="{{ url('/home') }}" class="text-reset">Homepage</a>
           </p>
           <p>
           <a href="{{ url('/aboutus') }}" class="text-reset">About Us</a>
@@ -62,13 +62,10 @@
             Useful links
           </h6>
           <p>
-            <a href="#!" class="text-reset">Login</a>
+            <a href="{{ url('/login') }}" class="text-reset">Login</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Register</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Profile</a>
+            <a href="{{ url('/signup') }}" class="text-reset">Register</a>
           </p>
         </div>
         <!-- Grid column -->

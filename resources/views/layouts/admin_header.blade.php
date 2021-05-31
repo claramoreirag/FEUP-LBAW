@@ -43,19 +43,16 @@
             <div class="col-1"></div>
             <div class="col-10 ">
                 <div class="row justify-content-between">
-                    <div class="col-4 ">
+                    <div class="col-3 ">
                         <h3 class="row text-white" id="title" >GreeNews</h3>
                     </div>
-                    <div class="col-md-1 px-0">
-                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                    </div>
+                    
 
+                    <div class="col-9 collapse navbar-collapse justify-content-end" id="navbarNav">
 
-                    <div class="col-md-6 collapse navbar-collapse justify-content-end" id="navbarNav">
-
-                        <a class="log nav-item nav-link text-white" href="{{ url('/admin/users') }}"><i class="fas fa-users-cog"></i> </a>
-                        <a class="log nav-item nav-link text-white" href="{{ url('/admin/reports') }}"><i class="fas fa-exclamation-circle"></i> </a>
+                        <a class="log nav-item nav-link text-white" href="{{ url('/admin/users') }}"><i class="fas fa-users-cog"></i> User Management </a>
+                        <a class="log nav-item nav-link text-white" href="{{ url('/admin/reports') }}"><i class="fas fa-exclamation-circle"></i> Reported Activity </a>
+                        <p style="color:#78c2ad">pp</p>
                         <span class="log nav-item d-none d-md-block text-white">Admin  </span>
                         <p style="color:#78c2ad">pp</p>
                         <span class="d-none d-md-block separator text-white"> | </span>
@@ -77,6 +74,8 @@
         @yield('content')
     </section>
     
+
 </body>
+
 
 </html>
