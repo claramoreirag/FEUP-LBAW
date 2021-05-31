@@ -10877,3 +10877,8 @@ div.hello{
   color: var(--teal)!important;
   cursor: pointer!important;
  }
+
+
+ .voted{
+   color:var(--pink) !important;
+ }

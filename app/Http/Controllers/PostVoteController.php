@@ -15,12 +15,19 @@ class PostVoteController extends Controller
         $post_vote = new PostVote();
 
         $post_vote->user_id = Auth::id();
-        $post_vote->post_id = $request->input('title');
-        $post_vote->is_up = $request->input('header');
+        $post_vote->post_id = $request->input('post_id');
+        $post_vote->is_up = $request->input('is_up');
+
+        var_dump($post_vote);
 
         $post_vote->save();
 
-        return redirect('/user/' . Auth::id());
+        // if ($request->ajax()) {
+            return response()->json(['success' => 'Form is successfully submitted!', 'id'=> $post_vote->post_id]);
+        // } else {
+        //     return redirect('/post/' . $request->input('post_id'));
+        // }
+
     }
 
 }

@@ -67,18 +67,27 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
       <div class="col-xl-2 col-md-3 col-sm-4 mt-2">
         <div class="row justify-content-end votes text-secondary">
           @if(!$already_downvoted && !$already_upvoted)
-          <div class="col-6 upvote"><a class="text-secondary" href=""><i class="fas fa-arrow-up"></i></a> {{$post->upvotes}} </div>
-          <div class="col-6 downvote"><a class="text-secondary" href=""><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div>
+          <div class="col-6 upvote">
+            <form id="upvote{{$post->id}}" action="{{ route("post_vote",["post_id"=>$post->id]) }}" method="Post">
+              <input type="hidden" id="postId{{$post->id}}" name="post_id" value="{{$post->id}}">
+              <input type="hidden" id="is_up{{$post->id}}" name="is_up" value="{{true}}">
+
+              <button id="upvote_arrow{{$post->id}}" class="btn text-secondary hiddenbutton"><i class="fas fa-arrow-up"></i></button> {{$post->upvotes}}
+
+              @method("post")@csrf
+            </form>
+          </div>
+          <div class="col-6 downvote"><a class="text-secondary" href=""><button class="btn hiddenbutton"><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div></button>
           @endif
 
           @if(!$already_downvoted && $already_upvoted)
-          <div class="col-6 upvote"><a class="text-secondary" href=""><i class=" fas fa-arrow-up"></i></a> {{$post->upvotes}} </div>
-          <div class="col-6 downvote"><a class="text-secondary" href=""><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div>
+          <div class="col-6 upvote"><a class="text-secondary" href=""><button class="btn hiddenbutton"><i class=" fas fa-arrow-up"></i></a> {{$post->upvotes}} </div></button>
+          <div class="col-6 downvote"><a class="text-secondary" href=""><button class="btn hiddenbutton"><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div></button>
           @endif
 
           @if($already_downvoted && !$already_upvoted)
-          <div class="col-6 upvote"><a class="text-secondary" href=""><i class="fas fa-arrow-up"></i></a> {{$post->upvotes}} </div>
-          <div class="col-6 downvote"><a class="text-secondary" href=""><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div>
+          <div class="col-6 upvote"><a class="text-secondary" href=""><button class="btn hiddenbutton"><i class="fas fa-arrow-up"></i></a> {{$post->upvotes}} </div></button>
+          <div class="col-6 downvote"><a class="text-secondary" href=""><button class="btn hiddenbutton"><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div></button>
           @endif
         </div>
       </div>
@@ -176,3 +185,31 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $('#upvote{{$post->id}}').off().on('submit', function(event) {
+    event.preventDefault();
+
+    let post_id = $('#postId{{$post->id}}').val();
+    let is_up = $('#is_up{{$post->id}}').val();
+    let url = '/post/' + post_id + '/vote';
+
+    sendAjaxRequest('POST', url, {
+      "_token": "{{ csrf_token() }}",
+      is_up: is_up,
+      post_id: post_id
+    }, votePostAction);
+
+    event.preventDefault();
+
+  });
+
+  function votePostAction() {
+    console.log(this.responseText)
+    let response = JSON.parse(this.responseText);
+    let arrow = document.querySelector("#upvote_arrow"+response.id);
+    console.log(response.id);
+    console.log(arrow);
+    arrow.classList.add("voted");
+  }
+</script>

@@ -90,7 +90,7 @@ Route::get('/post/{post_id}/edit', 'PostController@showEdit');
 Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
 Route::get('/newpost', 'PostController@showNewPost');
 Route::post('/newpost', 'PostController@storeNewPost') -> name('create_new_post');
- 
+Route::post('/post/{post_id}/vote', 'PostVoteController@storeNewPostVote')->name('post_vote');
 
 
 
