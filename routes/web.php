@@ -119,6 +119,7 @@ Route::post('/admin/reports', 'AdminController@updateDashboard');
 Route::post('/admin/undo/{report_id}', 'AdminController@undoAction')->name('undo_action');
 
 Route::get('/admin/users','AdminController@showUsers')->name('users');
+Route::get('/admin/users/{user_id}','AdminController@showUser');
 Route::post('/admin/users/ban/{user_id}', 'ReportController@banUser')->name('ban');
 Route::post('/admin/users/suspend/{user_id}', 'ReportController@suspendUser')->name('suspend');
 Route::post('/admin/users/active/{user_id}', 'ReportController@activateUser')->name('active');

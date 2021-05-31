@@ -2,7 +2,7 @@
 @if($report->state == "NotAnswered")
     <th scope="row"><a href="/admin/reports/posts/{{$report->comment->post->id}}/{{$report->comment->id}}">Comment</a></th>
     <td width=45%><a href="/admin/reports/posts/{{$report->comment->post->id}}/{{$report->comment->id}}">{{$report->comment->body}}</a></td>
-    <td width=15%><a href="/user/{{$report->comment->user->id}}">{{$report->comment->user->username}}</a></td>
+    <td width=15%><a  href="/admin/users/{{$report->comment->user->id}}">{{$report->comment->user->username}}</a></td>
     <td>{{$report->number}}</td>
     <td>
     <!--<form action="/admin/reports/posts/{{$report->comment->post->id}}/{{$report->comment->id}}" method="post">

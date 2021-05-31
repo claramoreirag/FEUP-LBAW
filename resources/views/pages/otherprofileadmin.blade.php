@@ -1,6 +1,6 @@
 
 
-@extends('layouts.main_header')
+@extends('layouts.admin_header')
 
 @section('content')
 <div class="row">
@@ -27,9 +27,6 @@
     </div>
     <div class="row">
       <div class="col-1"></div>
-      <div class="col-10 d-flex justify-content-center" id="followButton">
-        <button type="button" class="btn btn-block btn-primary">Follow</button>
-      </div>
       <div class="col-1"></div>
     </div>
     <div class="row">
@@ -55,12 +52,9 @@
       </ul>
       <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active show" id="posts">
-          @if(Auth::check())
-          @each('partials.authpost',$otherposts,'post')
-          @endif
-          @if(!Auth::check())
-          @each('partials.post',$otherposts,'post')
-          @endif
+       
+          @each('partials.adminpost',$otherposts,'post')
+         
           <div class="d-flex justify-content-center">
             {!! $otherposts->links() !!}
           </div>

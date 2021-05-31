@@ -3,8 +3,8 @@
         <td>
             <img class="user-pic" src="" alt="template pic" width="40" height="40" style="border-radius:50%;">
         </td>
-        <th scope="row"><a href="/user/{{$user->id}}">{{$user->username}}</a></th>
-        <td><a href="/user/{{$user->id}}">{{$user->name}}</a></td>
+        <th scope="row"><a  href="/admin/users/{{$user->id}}">{{$user->username}}</a></th>
+        <td><a  href="/admin/users/{{$user->id}}">{{$user->name}}</a></td>
         <td>
             {{$user->state}}
         </td>

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\Paginator;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CommentController;
 use App\Models\Category;
@@ -68,6 +71,53 @@ class AdminController extends Controller {
             }
         }
         return view('pages.usermanager',['users' => $usersFinal]);
+    }
+
+    public function paginate($items, $perPage = 5, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    }
+
+    public function showUser($id)
+  {
+      $user = User::find($id);
+      $followers = $user->followers()->get()->count();
+      $following = $user->following()->get()->count();
+      $posts = $user->posts()->get()->count();
+      $saved_posts_ids = $user->savedPosts()->get();
+      $upvoted_posts_ids = $user->upvotedPosts()->get();
+    
+      $post_list = $user->posts()->get();
+      $count_upvotes = 0;
+      foreach($post_list as $p){
+        $count_upvotes += $p->upvotes;
+      }
+
+      $saved_posts = array();
+      foreach($saved_posts_ids as $sp){
+        $p = PostController::getPost($sp->id);
+        array_push($saved_posts, json_decode($p->getContent()));
+      }
+      $savedp=$this->paginate($saved_posts);
+      $savedp->withPath('');
+      $upvoted_posts=array();
+      foreach ($upvoted_posts_ids as $up) {
+        $p = PostController::getPost($up->id);
+        array_push($upvoted_posts, json_decode($p->getContent()));
+      }
+      $upp=$this->paginate($upvoted_posts);
+      $upp->withPath('');
+    
+        $otherposts = array();
+        foreach ($user->posts as $p) {
+          array_push($otherposts, json_decode(PostController::getPost($p->id)->getContent()));
+        }
+        $op=$this->paginate($otherposts);
+        $op->withPath('');
+        return view('pages.otherprofileadmin', ['user' => $user, 'otherposts'=> $op, 'followers' => $followers, 'following' => $following, 'posts' => $posts, 'upvotes' => $count_upvotes, 'savedPosts' =>$saved_posts, 'upvotedPosts' => $upp]);
+      
     }
 
     public function viewPost($id) {
