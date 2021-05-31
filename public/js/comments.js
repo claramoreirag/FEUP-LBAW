@@ -98,12 +98,12 @@
                 b.classList.remove('far');
                 b.classList.add('fas');
                 console.log(b);
-                $('.toast true').toast('show');
+                $('#toast-save').toast('show');
             }
             else{
                 b.classList.remove('fas');
                 b.classList.add('far');
-                $('.toast false').toast('show');
+                $('#toast-unsave').toast('show');
             }
         }
 

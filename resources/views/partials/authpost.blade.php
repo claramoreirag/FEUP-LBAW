@@ -171,21 +171,30 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
   </div>
 
 
-  <div class="toast true">
+  <div id="toast-save" class="toast" style="position: absolute; top: 20; right: 40;">
     <div class="toast-header">
-      Toast Header
+      <img id="suc" src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-512.png" class="rounded mr-2" alt="..." style="width: 20">
+      <strong class="mr-auto">Sucess</strong>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     <div class="toast-body">
-     The post was saved successfully!
+      The post was successfully added to your saved posts!
     </div>
-  </div>
+</div>
 
   
-  <div class="toast false ">
-    <div class="toast-header">
-      Toast Header
-    </div>
-    <div class="toast-body">
-     The post was successfully removed from your saved posts!
-    </div>
+
+<div id="toast-unsave" class="toast" style="position: absolute; top: 20; right: 40;">
+  <div class="toast-header">
+    <img id="suc" src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-512.png" class="rounded mr-2" alt="..." style="width: 20">
+    <strong class="mr-auto">Sucess</strong>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
+  <div class="toast-body">
+    The post was successfully added to your saved posts!
+  </div>
+</div>
