@@ -204,8 +204,8 @@ class UserController extends Controller
     public function unfollowCategory(Request $request){
      
       $category=Category::where('name','=',$request->category)->first();
-      $cat= FollowCategory::where('user_id','=',Auth::id())->where('category_id','=',$category->id)->first();
-      $cat->delete();
+      DB::delete('delete from follow_category where category_id = ? and user_id = ?' ,[$category->id, Auth::id()]);
+    
 
       return redirect('authuserfeed');
     }
