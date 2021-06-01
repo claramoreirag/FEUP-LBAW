@@ -4,10 +4,13 @@ use App\Http\Controllers\UserController;
 $already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
 
 $already_follow= UserController::alreadyFollowCat($post->category);
-
 $already_upvoted= UserController::alreadyUpvotedPost($post->id);
+// $already_upvoted= ($already_upvoted ==true) ? "true" : "false"; 
 
 $already_downvoted= UserController::alreadyDownvotedPost($post->id);
+var_dump($already_upvoted);
+var_dump($already_downvoted);
+// $already_downvoted= ($already_downvoted ==true) ? "true" : "false"; 
 @endphp
 
 
@@ -27,7 +30,7 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
     </div>
     <div class="row">
       <div class="col-1 " style="margin-right:1rem;">
-        <img class="" src="https://expertphotography.com/wp-content/uploads/2018/10/cool-profile-pictures-retouching-1.jpg" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
+        <img class="" onload="checkVotes({{$post->id}})" src="https://expertphotography.com/wp-content/uploads/2018/10/cool-profile-pictures-retouching-1.jpg" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
       </div>
       <div class="col-10">
         <h4 class="card-title text-primary">{{$post->title}}</h4>
@@ -66,20 +69,25 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
       </div>
       <div class="col-xl-2 col-md-3 col-sm-4 mt-2">
         <div class="row justify-content-end votes text-secondary">
-          @if(!$already_downvoted && !$already_upvoted)
+         
           <div class="col-6 upvote">
             <form id="upvote{{$post->id}}" action="{{ route("post_vote",["post_id"=>$post->id]) }}" method="Post">
               <input type="hidden" id="postId{{$post->id}}" name="post_id" value="{{$post->id}}">
-              <input type="hidden" id="is_up{{$post->id}}" name="is_up" value="{{true}}">
-
-              <button id="upvote_arrow{{$post->id}}" class="btn text-secondary hiddenbutton"><i class="fas fa-arrow-up"></i></button> {{$post->upvotes}}
+              <input type="hidden" id="is_up{{$post->id}}" name="is_up" value="true">
+              <button id="upvote_arrow{{$post->id}}" class="btn text-secondary hiddenbutton"><i class="fas fa-arrow-up"></i> <span class="number">{{$post->upvotes}}</span></button>
 
               @method("post")@csrf
             </form>
           </div>
-          <div class="col-6 downvote"><a class="text-secondary" href=""><button class="btn hiddenbutton"><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div></button>
-          @endif
-
+          <div class="col-6 downvote">
+            <form id="downvote{{$post->id}}" action="{{ route("post_vote",["post_id"=>$post->id]) }}" method="Post">
+              <input type="hidden" id="dpostId{{$post->id}}" name="post_id" value="{{$post->id}}">
+              <input type="hidden" id="dis_up{{$post->id}}" name="is_up" value="false">
+              <button id="downvote_arrow{{$post->id}}" class="btn text-secondary hiddenbutton"><i class="fas fa-arrow-down"></i><span class="number"> {{$post->downvotes}}</span> </div></button>
+              @method("post")@csrf
+            </form>
+          
+{{-- 
           @if(!$already_downvoted && $already_upvoted)
           <div class="col-6 upvote"><a class="text-secondary" href=""><button class="btn hiddenbutton"><i class=" fas fa-arrow-up"></i></a> {{$post->upvotes}} </div></button>
           <div class="col-6 downvote"><a class="text-secondary" href=""><button class="btn hiddenbutton"><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div></button>
@@ -88,7 +96,7 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
           @if($already_downvoted && !$already_upvoted)
           <div class="col-6 upvote"><a class="text-secondary" href=""><button class="btn hiddenbutton"><i class="fas fa-arrow-up"></i></a> {{$post->upvotes}} </div></button>
           <div class="col-6 downvote"><a class="text-secondary" href=""><button class="btn hiddenbutton"><i class="fas fa-arrow-down"></i></a> {{$post->downvotes}} </div></button>
-          @endif
+          @endif --}}
         </div>
       </div>
     </div>
@@ -192,11 +200,34 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 
     let post_id = $('#postId{{$post->id}}').val();
     let is_up = $('#is_up{{$post->id}}').val();
+    console.log(is_up);
+    console.log('#is_up{{$post->id}}');
     let url = '/post/' + post_id + '/vote';
 
     sendAjaxRequest('POST', url, {
       "_token": "{{ csrf_token() }}",
-      is_up: is_up,
+      upvote:is_up,
+      post_id: post_id
+    }, votePostAction);
+
+    event.preventDefault();
+
+  });
+
+
+
+  $('#downvote{{$post->id}}').off().on('submit', function(event) {
+    event.preventDefault();
+
+    let post_id = $('#dpostId{{$post->id}}').val();
+    let is_up = $('#dis_up{{$post->id}}').val();
+    console.log(is_up);
+
+    let url = '/post/' + post_id + '/vote';
+
+    sendAjaxRequest('POST', url, {
+      "_token": "{{ csrf_token() }}",
+      upvote:is_up,
       post_id: post_id
     }, votePostAction);
 
@@ -205,11 +236,60 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
   });
 
   function votePostAction() {
-    console.log(this.responseText)
-    let response = JSON.parse(this.responseText);
-    let arrow = document.querySelector("#upvote_arrow"+response.id);
-    console.log(response.id);
-    console.log(arrow);
-    arrow.classList.add("voted");
+
+  console.log(this.responseText)
+  let response = JSON.parse(this.responseText);
+  console.log(response.success)
+  let arrow = document.querySelector("#upvote_arrow"+response.id);
+  let number= arrow.querySelector('.number');
+  let darrow = document.querySelector("#downvote_arrow"+response.id);
+  let dnumber= darrow.querySelector('.number');
+  let n=parseInt(number.innerHTML);
+  let dn=parseInt(dnumber.innerHTML);
+    switch(response.success){
+      case "new_up":
+        arrow.classList.add("voted");
+        number.innerHTML=n+1;
+        break;
+      case "remove_up":
+        arrow.classList.remove("voted");
+        number.innerHTML=n-1;
+        break;
+        case "switch_up":
+          darrow.classList.remove("voted");
+          dnumber.innerHTML=dn-1;
+          arrow.classList.add("voted");
+          number.innerHTML=n+1;
+        break;
+        case "new_down":
+          arrow.classList.add("voted");
+          dnumber.innerHTML=dn+1;
+        break;
+        case "remove_down":
+        darrow.classList.remove("voted");
+        dnumber.innerHTML=dn-1;
+        break;
+        case "switch_down":
+          arrow.classList.remove("voted");
+          number.innerHTML=n-1;
+          darrow.classList.add("voted");
+          dnumber.innerHTML=dn+1;
+        break;
+
+    }
+   
+
+  }
+
+
+  function checkVotes(id){
+   let isUp="{{$already_upvoted}}";
+   let isDown="{{$already_downvoted}}";
+   let arrow = document.querySelector("#upvote_arrow"+id);
+   let darrow = document.querySelector("#downvote_arrow"+id);
+   if(isUp)arrow.classList.add("voted");
+   if(isDown)darrow.classList.add("voted");
+   console.log(isUp==true);
+   console.log(isDown);
   }
 </script>
