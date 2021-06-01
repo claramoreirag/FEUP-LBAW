@@ -54,22 +54,30 @@ class UserController extends Controller
       $saved_posts = array();
       foreach($saved_posts_ids as $sp){
         $p = PostController::getPost($sp->id);
+        $postVisible=Post::find($sp->id);
+          if($postVisible->isvisible){
         array_push($saved_posts, json_decode($p->getContent()));
+          }
       }
       $savedp=$this->paginate($saved_posts);
       $savedp->withPath('');
       $upvoted_posts=array();
       foreach ($upvoted_posts_ids as $up) {
         $p = PostController::getPost($up->id);
+        $postVisible=Post::find($up->id);
+          if($postVisible->isvisible){
         array_push($upvoted_posts, json_decode($p->getContent()));
+          }
       }
       $upp=$this->paginate($upvoted_posts);
       $upp->withPath('');
       if(Auth::check() && Auth::id()==$id){
         $ownposts=array();
         foreach($user->posts as $p){
+          $postVisible=Post::find($p->id);
+          if($postVisible->isvisible){
           array_push($ownposts,json_decode(PostController::getPost($p->id)->getContent()));
-
+          }
         }
         $ownp=$this->paginate($ownposts);
         $ownp->withPath('');
@@ -79,7 +87,10 @@ class UserController extends Controller
       else{
         $otherposts = array();
         foreach ($user->posts as $p) {
+          $postVisible=Post::find($p->id);
+          if($postVisible->isvisible){
           array_push($otherposts, json_decode(PostController::getPost($p->id)->getContent()));
+          }
         }
         $op=$this->paginate($otherposts);
         $op->withPath('');

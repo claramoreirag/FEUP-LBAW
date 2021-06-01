@@ -11,14 +11,24 @@
      <div class="row post-comment" id="com">
             <div class="col-4">
                  <h3 >Reported Comment</h3>
-                 </div>
-                 <div class="col text-right">
-                 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
-        <i class="far fa-trash-alt"></i> Delete Comment
-        </button>
-         <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-clock"></i> Suspend User</button>
-         <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-slash"></i> Ban User</button>
-                 </div>
+            </div>
+            <div class="col text-right">
+                 <div class="d-flex flex-row-reverse bd-highlight">
+                    <div class="m-1">
+                        <button type="button" class="btn btn-outline-primary m-0" data-toggle="modal" data-target="#exampleModal"><i class="far fa-trash-alt"></i> Delete Comment</button>
+                    </div>
+                    <div class="m-1">
+                        <form action="/admin/users/suspend/{{$justcomment['info']->user_id}}" method="post">
+                        <button type="submit" class="btn btn-outline-primary" title="Suspend User" ><i class="fas fa-user-clock"></i> Suspend User</button>@method('post') @csrf
+                        </form>
+                    </div>
+                    <div class="m-1">
+                        <form action="/admin/users/ban/{{$justcomment['info']->user_id}}" method="post">
+                        <button type="submit" class="btn btn-outline-primary" title="Ban User" ><i class="fas fa-user-slash"></i> Ban User</button>@method('post') @csrf
+                        </form>
+                    </div>
+                </div>
+                </div>
                  <ul class="comments" >
                      @each('partials.comment', $comment, 'comment')    
                  </ul>
@@ -30,7 +40,7 @@
              <div class="col-md-7 col-lg-1">
                  <a class="fas fa-arrow-left" href="/admin/reports"></a>
              </div>
-             <div class="col-md-5 col-lg-11"><p class="text-end">By <a  href="/user/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{$post->datetime}}</p></div>
+             <div class="col-md-5 col-lg-11"><p class="text-end">By <a  href="/admin/users/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{$post->datetime}}</p></div>
              <!--Imagem do avatar-->
              <!-- <div class="col-md-1 col-10"><img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg" class="rounded-circle avatar" alt=""></div>-->
              <hr/>

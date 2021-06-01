@@ -154,8 +154,8 @@ class ReportController extends Controller
         $post = Post::find($id);
 
         // TODO meter invisivel:
-       // $post->setAttribute('isVisible', false);
-       // $post->save();
+        $post->setAttribute('isvisible',false);
+        $post->save();
 
         $re=Report::all();
         foreach($re as $n){
@@ -177,8 +177,9 @@ class ReportController extends Controller
         // $this->authorize('delete', $card);
         $comment = Comment::find($id);
         // TODO meter invisivel:
-      //  $comment->setAttribute('isVisible', false);
-      //  $comment->save();
+        $comment->setAttribute('isvisible', false);
+        $comment->save();
+
         $re=Report::all();
         foreach($re as $n){
           $r=ReportController::getReport($n->id);
@@ -217,17 +218,21 @@ class ReportController extends Controller
         foreach($re as $n){
           $r=Report::find($n->id);
           if($r->comment!=null){
-              $c=Comment::find($r->comment->id);
-          if( $c->user->id == $user_id){
-              echo($r->state);
-              $r->setAttribute('state','SuspendedUser');
-              $r->save();
-          }
+            $c=Comment::find($r->comment->id);
+            if( $c->user->id == $user_id){
+                echo($r->state);
+                $c->setAttribute('isvisible',false);
+                $c->save();
+                $r->setAttribute('state','SuspendedUser');
+                $r->save();
+            }
         }
         if($r->post!=null){
             $p=Post::find($r->post->id);
             if( $p->author->id == $user_id){
                 echo($r->state);
+                $p->setAttribute('isvisible',false);
+                $p->save();
                 $r->setAttribute('state','SuspendedUser');
                 $r->save();
             }
@@ -251,6 +256,8 @@ class ReportController extends Controller
               $c=Comment::find($r->comment->id);
           if( $c->user->id == $user_id){
               echo($r->state);
+              $c->setAttribute('isvisible',false);
+                $c->save();
               $r->setAttribute('state','BanedUser');
               $r->save();
           }
@@ -259,6 +266,8 @@ class ReportController extends Controller
             $p=Post::find($r->post->id);
             if( $p->author->id == $user_id){
                 echo($r->state);
+                $p->setAttribute('isvisible',false);
+                $p->save();
                 $r->setAttribute('state','BanedUser');
                 $r->save();
             }

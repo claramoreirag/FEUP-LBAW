@@ -23,7 +23,10 @@ class FeedController extends Controller {
         $posts=array();
         foreach($recentNews as $n){
             $p=PostController::getPost($n->id);
-            array_push($posts,json_decode($p->getContent()));
+            $pp=Post::find($n->id);
+            if($pp->isvisible){
+                array_push($posts,json_decode($p->getContent()));
+            }
         }
         $collection=collect($posts);
         return $posts;
@@ -37,6 +40,10 @@ class FeedController extends Controller {
         $posts=array();
         foreach($recentNews as $n){
             $p=PostController::getPost($n->id);
+            $pp=Post::find($n->id);
+            if($pp->isvisible){
+                array_push($posts,json_decode($p->getContent()));
+            }
             array_push($posts,json_decode($p->getContent()));
         }
        
@@ -135,7 +142,10 @@ class FeedController extends Controller {
         $posts=array();
         foreach($po as $n){
             $p=PostController::getPost($n->id);
-            array_push($posts,json_decode($p->getContent()));
+            $pp=Post::find($n->id);
+           // if($pp->isvisible){
+                array_push($posts,json_decode($p->getContent()));
+            
         }
 
         $p=$this->paginate($posts);

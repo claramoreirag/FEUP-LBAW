@@ -16,18 +16,30 @@
             <!--<form action="/admin/reports/posts/{{$post->id}}" method="post">
                 <button class="btn btn-outline-primary" type="submit"  ><i class="fas fa-trash-alt"></i> Delete</button>@method('post') @csrf 
             </form>-->
-            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+        <div class="d-flex flex-row-reverse bd-highlight">
+                    <div class="m-1">
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
         <i class="far fa-trash-alt"></i> Delete Post
         </button>
-            <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-clock"></i> Suspend User</button>
-            <button type="button" class="btn btn-outline-primary"><i class="fas fa-user-slash"></i> Ban User</button>
+                    </div>
+                    <div class="m-1">
+                        <form action="/admin/users/suspend/{{$post->author->id}}" method="post">
+                        <button type="submit" class="btn btn-outline-primary" title="Suspend User" ><i class="fas fa-user-clock"></i> Suspend User</button>@method('post') @csrf
+                        </form>
+                    </div>
+                    <div class="m-1">
+                        <form action="/admin/users/ban/{{$post->author->id}}" method="post">
+                        <button type="submit" class="btn btn-outline-primary" title="Ban User" ><i class="fas fa-user-slash"></i> Ban User</button>@method('post') @csrf
+                        </form>
+                    </div>
+                </div>
             </div>
             </div>
             <div class="row post-header mt-5">
                 <div class="col-md-7 col-lg-1">
                     <a class="fas fa-arrow-left" href="/admin/reports"></a>
                 </div>
-                <div class="col-md-5 col-lg-11"><p class="text-end">By <a  href="/user/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{$post->datetime}}</p></div>
+                <div class="col-md-5 col-lg-11"><p class="text-end">By <a  href="/admin/users/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{$post->datetime}}</p></div>
                 <!--Imagem do avatar-->
                 <!-- <div class="col-md-1 col-10"><img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg" class="rounded-circle avatar" alt=""></div>-->
                 <hr/>

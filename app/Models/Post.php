@@ -12,7 +12,7 @@ class Post extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = 'post';
-    protected $fillable = ['datetime','user_id', 'title', 'header', 'body', 'category_id', 'upvotes', 'downvotes', 'isVisible',];
+    protected $fillable = ['datetime','user_id', 'title', 'header', 'body', 'category_id', 'upvotes', 'downvotes', 'isvisible',];
 
     protected $casts = [
         'id' => 'integer',
@@ -24,7 +24,7 @@ class Post extends Model
         'category_id' => 'integer',
         'upvotes' => 'integer',
         'downvotes' => 'integer',
-        'isVisible' => 'boolean'
+        'isvisible' => 'boolean'
     ];
  
 
@@ -71,9 +71,8 @@ class Post extends Model
         }
     }
 
-    public function isPostVisible()
-    {
-        return $this->isVisible;
+    public function isVisible(){
+        return $this->isvisible;
     }
 
 

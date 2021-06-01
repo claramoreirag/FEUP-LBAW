@@ -1,8 +1,8 @@
 <tr  class="align-middle">
 @if($report->state == "NotAnswered")
     <th scope="row"><a href="/admin/reports/posts/{{$report->comment->post->id}}/{{$report->comment->id}}">Comment</a></th>
-    <td width=45%><a href="/admin/reports/posts/{{$report->comment->post->id}}/{{$report->comment->id}}">{{$report->comment->body}}</a></td>
-    <td width=15%><a  href="/admin/users/{{$report->comment->user->id}}">{{$report->comment->user->username}}</a></td>
+    <td ><a href="/admin/reports/posts/{{$report->comment->post->id}}/{{$report->comment->id}}">{{$report->comment->body}}</a></td>
+    <td ><a  href="/admin/users/{{$report->comment->user->id}}">{{$report->comment->user->username}}</a></td>
     <td>{{$report->number}}</td>
     <td>
     <!--<form action="/admin/reports/posts/{{$report->comment->post->id}}/{{$report->comment->id}}" method="post">
@@ -42,9 +42,18 @@
             {{$report->state}}
             
     </td>
-    <td><form action="/admin/undo/{{$report->id}}" method="post">
+    <td> 
+            @if($report->state == "BanedUser" || $report->state == "SuspendedUser")
+                <form action="/admin/users" method="get">
+                <button class="btn btn-outline-primary" type="submit"  >UserManager</button>
+                </form>
+            @else
+            <form action="/admin/undo/{{$report->id}}" method="post">
                 <button class="btn btn-outline-primary" type="submit"  >Undo</button>@method('post') @csrf
-            </form></td>
+            </form>
+            @endif
+        </td>
+  
     @endif
 
 </tr>

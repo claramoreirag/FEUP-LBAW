@@ -13,7 +13,7 @@ class Comment extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'user_id', 'post_id', 'comment_id', 'body', 'date_time',
+        'user_id', 'post_id', 'comment_id', 'body', 'date_time', 'isvisible',
     ];
 
     protected $casts = [
@@ -22,7 +22,8 @@ class Comment extends Model
         'post_id' => 'integer',
         'body' => 'string',
         'datetime' => 'datetime',
-        'comment_id' => 'integer'
+        'comment_id' => 'integer',
+        'isvisible'=> 'boolean'
     ];
 
     public function post(){
@@ -35,5 +36,9 @@ class Comment extends Model
 
     public function reports(){
         return $this->hasMany('App\Models\Report');
+    }
+
+    public function isVisible(){
+        return $this->isvisible;
     }
 }

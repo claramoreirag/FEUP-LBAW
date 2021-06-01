@@ -47,7 +47,6 @@ if (deleteSuccess === '1') {
 
 </script>
 
-
 <div class=" row" style="margin-top: 3em; ">
 </div>
 
@@ -66,17 +65,17 @@ if (deleteSuccess === '1') {
             </select>
         </div>
     </div>
-        <div class="table-responsive" id="changeable">
+        <div class="table-responsive " id="changeable">
 
             <!-- show reported things -->
             <table class="table table-hover mt-4">
                 <thead>
                     <tr>
-                        <th scope="col">Type</th>
-                        <th scope="col">Content</th>
-                        <th scope="col">Author</th>
-                        <th scope="col">x Reported</th>
-                        <th scope="col">Actions</th>
+                        <th width=10% scope="col">Type</th>
+                        <th width=40% scope="col">Content</th>
+                        <th width=15% scope="col">Author</th>
+                        <th width=12% scope="col">x Reported</th>
+                        <th  scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody >
@@ -108,4 +107,4 @@ if (deleteSuccess === '1') {
 @endsection
 
 
-
+<!--<script defer type="text/javascript" src="{{ URL::asset('js/admin.js') }}" ></script>-->

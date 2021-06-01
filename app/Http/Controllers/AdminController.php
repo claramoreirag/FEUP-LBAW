@@ -73,8 +73,7 @@ class AdminController extends Controller {
         return view('pages.usermanager',['users' => $usersFinal]);
     }
 
-    public function paginate($items, $perPage = 5, $page = null, $options = [])
-    {
+    public function paginate($items, $perPage = 5, $page = null, $options = []){
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
@@ -156,6 +155,9 @@ class AdminController extends Controller {
               if($cm!=null){
               if($cm->id==$id){
                 $rr=Report::find($n->id);
+                $com=Comment::find($cm->id);
+                $com->setAttribute('isvisible',true);
+                $com->save();
                 $rr->setAttribute('state', 'NotAnswered');
                 $rr->save();
               }
@@ -170,6 +172,9 @@ class AdminController extends Controller {
               if($post!=null){
               if($post->id==$id){
                 $rr=Report::find($n->id);
+                $ppp=Post::find($post->id);
+                $ppp->setAttribute('isvisible',true);
+                $ppp->save();
                 $rr->setAttribute('state', 'NotAnswered');
                 $rr->save();
               }

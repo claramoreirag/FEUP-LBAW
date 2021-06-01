@@ -141,7 +141,7 @@ class PostController extends Controller
         $category=Category::find($post->category)->name;
        // var_dump($category);
         
-       $bool=$post->isPostVisible();
+       $bool=$post->isVisible();
         return response()->json([
             'id' => $post->id,
             'datetime' => $post->datetime,
