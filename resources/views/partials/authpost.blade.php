@@ -4,13 +4,12 @@ use App\Http\Controllers\UserController;
 $already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
 $already_saved=UserController::alreadySavedPost($post->id);
 $already_follow=  UserController::alreadyFollowCat($post->category);
-
 $already_upvoted= UserController::alreadyUpvotedPost($post->id);
-// $already_upvoted= ($already_upvoted ==true) ? "true" : "false"; 
+
 
 $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 
-// $already_downvoted= ($already_downvoted ==true) ? "true" : "false"; 
+
 @endphp
 
 <div class="card mb-3 " data-id="{{ $post->id }}">
@@ -35,17 +34,22 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
                 <h4 class="card-title text-primary">{{$post->title}}</h4>
             </div>
 
-        <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
-          {{$post->header}}
-          <a href="/post/{{$post->id}}" class="read-more">Read More</a>
-          <br>
         </div>
-        {{-- <div class="col-md-4 col-xs-6 post-pic">
+        <h6 class="card-subtitle mt-2 mb-2 text-muted">By <a href="/user/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{$post->datetime}}</span></h6>
+        <div class="card-text">
+            <div class="row">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
+                    {{$post->header}}
+                    <a href="/post/{{$post->id}}" class="read-more">Read More</a>
+                    <br>
+                </div>
+                {{-- <div class="col-md-4 col-xs-6 post-pic">
                     <img class="img-fluid" src="https://images.theconversation.com/files/374780/original/file-20201214-23-1dv2o1f.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip" alt="template pic">
                 </div> --}}
-      </div>
+            </div>
 
-    </div>
+        </div>
 
 
         <div class="row justify-content-between text-center">
@@ -67,75 +71,74 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
                     @endif
                 </div>
             </div>
-            
-       
-      <div class="col-xl-2 col-md-3 col-sm-4 mt-2">
-        <div class="row justify-content-end votes text-secondary">
+            <div class="col-xl-2 col-md-3 col-sm-4 mt-2">
+              <div class="row justify-content-end votes text-secondary">
+               
+                <div class="col-6 upvote">
+                  <form id="upvote{{$post->id}}" action="{{ route("post_vote",["post_id"=>$post->id]) }}" method="Post">
+                    <input type="hidden" id="postId{{$post->id}}" name="post_id" value="{{$post->id}}">
+                    <input type="hidden" id="is_up{{$post->id}}" name="is_up" value="true">
+                    <button id="upvote_arrow{{$post->id}}" class="btn text-secondary hiddenbutton"><i class="fas fa-arrow-up"></i> <span class="number">{{$post->upvotes}}</span></button>
+      
+                    @method("post")@csrf
+                  </form>
+                </div>
+                <div class="col-6 downvote">
+                  <form id="downvote{{$post->id}}" action="{{ route("post_vote",["post_id"=>$post->id]) }}" method="Post">
+                    <input type="hidden" id="dpostId{{$post->id}}" name="post_id" value="{{$post->id}}">
+                    <input type="hidden" id="dis_up{{$post->id}}" name="is_up" value="false">
+                    <button id="downvote_arrow{{$post->id}}" class="btn text-secondary hiddenbutton"><i class="fas fa-arrow-down"></i><span class="number"> {{$post->downvotes}}</span> </div></button>
+                    @method("post")@csrf
+                  </form>
          
-          <div class="col-6 upvote">
-            <form id="upvote{{$post->id}}" action="{{ route("post_vote",["post_id"=>$post->id]) }}" method="Post">
-              <input type="hidden" id="postId{{$post->id}}" name="post_id" value="{{$post->id}}">
-              <input type="hidden" id="is_up{{$post->id}}" name="is_up" value="true">
-              <button id="upvote_arrow{{$post->id}}" class="btn text-secondary hiddenbutton"><i class="fas fa-arrow-up"></i> <span class="number">{{$post->upvotes}}</span></button>
-
-              @method("post")@csrf
-            </form>
-          </div>
-          <div class="col-6 downvote">
-            <form id="downvote{{$post->id}}" action="{{ route("post_vote",["post_id"=>$post->id]) }}" method="Post">
-              <input type="hidden" id="dpostId{{$post->id}}" name="post_id" value="{{$post->id}}">
-              <input type="hidden" id="dis_up{{$post->id}}" name="is_up" value="false">
-              <button id="downvote_arrow{{$post->id}}" class="btn text-secondary hiddenbutton"><i class="fas fa-arrow-down"></i><span class="number"> {{$post->downvotes}}</span> </div></button>
-              @method("post")@csrf
-            </form>
-   
+              </div>
+            </div>
+      
         </div>
-      </div>
+
     </div>
-  </div>
-</div>
-  </div>
 
 </div>
 {{-- @include('partials.reportpost_modal') --}}
 
 <div data-id="{{ $post->id }}" class="modal fade" id="ModalAlreadyReported" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        You already reported this post!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
-      </div>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+              You already reported this post!
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+            </div>
+          </div>
     </div>
   </div>
-</div>
 
 
 
 <div data-id="{{ $post->id }}" class="modal fade" id="exampleModalCenter{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Report</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-
-      </div>
-      <div class="modal-body">
-        Are you sure you want to report this post?
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <form action="{{route('report_post',['post_id'=>$post->id])}}" method="post">
-          <button class="btn btn-primary" type="submit" value="Report">Report</button>
-          @method('post')
-          @csrf
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Report</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          
+        </div>
+        <div class="modal-body">
+          Are you sure you want to report this post?
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <form action="{{route('report_post',['post_id'=>$post->id])}}" method="post">
+            <button class="btn btn-primary" type="submit" value="Report" >Report</button>
+            @method('post')
+            @csrf
         </form>
-
+         
+        </div>
       </div>
     </div>
   </div>
@@ -147,42 +150,43 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 
 
 <div class="modal fade" id="followTag{{$post->id}}" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        Do you want to follow this tag?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <form action="{{route('follow_cat',['user_id'=>Auth::id()])}}" method="post">
-          <input type="hidden" id="category" name="category" value="{{$post->category}}">
-          <button class="btn btn-primary" type="submit" value="Yes">Yes</button>
-          @method('post')
-          @csrf
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+          Do you want to follow this tag?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <form action="{{route('follow_cat',['user_id'=>Auth::id()])}}" method="post">
+            <input type="hidden" id="category"  name="category" value="{{$post->category}}"> 
+            <button class="btn btn-primary" type="submit" value="Yes" >Yes</button>
+            @method('post')
+            @csrf
         </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
 
-<div data-id="{{ $post->id }}" class="modal fade" id="unfollowTag{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        You already follow this tag! Do you want to unfollow?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <form action="{{route('unfollow_cat',['user_id'=>Auth::id()])}}" method="post">
-          <input type="hidden" id="category" name="category" value="{{$post->category}}">
-          <button class="btn btn-primary" type="submit" value="Yes">Yes</button>
-          @method('delete')
-          @csrf
-        </form>
-      </div>
+  <div data-id="{{ $post->id }}" class="modal fade" id="unfollowTag{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+              You already follow this tag! Do you want to unfollow?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <form action="{{route('unfollow_cat',['user_id'=>Auth::id()])}}" method="post">
+                <input type="hidden" id="category"  name="category" value="{{$post->category}}"> 
+                <button class="btn btn-primary" type="submit" value="Yes" >Yes</button>
+                @method('delete')
+                @csrf
+            </form>
+            </div>
+          </div>
     </div>
   </div>
 
@@ -214,8 +218,8 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
     The post was successfully removed from your saved posts!
   </div>
 </div>
-</div>
 
+<script defer type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
 <script type="text/javascript">
   $('#upvote{{$post->id}}').off().on('submit', function(event) {
     event.preventDefault();
