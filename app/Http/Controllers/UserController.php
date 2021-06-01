@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Source;
-use App\Models\Post;
 use App\Models\User;
 use App\Models\FollowCategory;
 use App\Models\Category;
@@ -19,6 +16,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use DateTime;
 use Laravel\Ui\Presets\React;
+use App\Models\PostVote;
 
 class UserController extends Controller
 {
@@ -235,4 +233,17 @@ class UserController extends Controller
   }
 
   
+    public static function alreadyUpvotedPost($post_id)
+    {
+      if (PostVote::where('post_id', '=', $post_id)->where('user_id', '=', Auth::id())->where('is_up', '=', true)->exists()) {
+        return true;
+      } else return false;
+    }
+
+    public static function alreadyDownvotedPost($post_id)
+    {
+      if (PostVote::where('post_id', '=', $post_id)->where('user_id', '=', Auth::id())->where('is_up', '=', false)->exists()) {
+        return true;
+      } else return false;
+    }
 }

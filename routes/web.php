@@ -91,7 +91,10 @@ Route::get('/post/{post_id}/save', 'PostController@save')->where(['post_id' => '
 Route::get('/post/{post_id}/edit', 'PostController@showEdit');
 Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
 Route::get('/post/new', 'PostController@showNewPost');
-Route::post('/post/new', 'PostController@storeNewPost') -> name('create_new_post');
+Route::post('/post/new', 'PostController@storeNewPost')->name('create_new_post');
+Route::post('/post/{post_id}/vote', 'PostVoteController@storeNewPostVote')->name('post_vote');
+
+
 
 //Search
 Route::get('/searchUsers', 'UserController@searchUsers')->name('searchUsers');
