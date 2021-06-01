@@ -20,7 +20,7 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                 <div class="col-md-7 col-lg-1">
                     <a class="fas fa-arrow-left" href="{{ url('/authuserfeed') }}"></a>
                 </div>
-                <div class="col-md-5 col-lg-11"><p class="text-end">By <a  href="/user/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{$post->datetime}}</p></div>
+                <div class="col-md-5 col-lg-11"><p class="text-end">By <a  href="/user/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{ date('d-m-Y', strtotime($post->datetime)) }}</p></div>
                 <!--Imagem do avatar-->
                 <!-- <div class="col-md-1 col-10"><img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg" class="rounded-circle avatar" alt=""></div>-->
                 <hr/>

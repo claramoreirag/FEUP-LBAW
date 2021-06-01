@@ -58,7 +58,7 @@
       <div class="modal-header">
         <h5 class="modal-title">Your account has been suspended</h5>
         <form action="/login" method="get">
-                        <button type="submit" class="close"aria-label="Close" ></button>
+                        <button type="submit" class="btn-close" aria-label="Close" ></button>
                     </form>
       
       </div>
@@ -83,7 +83,7 @@
       <div class="modal-header">
         <h5 class="modal-title">You have been banned</h5>
         <form action="/login" method="get">
-                        <button type="submit" class="close"aria-label="Close" ></button>
+        <button type="submit" class="btn-close" aria-label="Close" ></button>
                     </form>
       
       </div>

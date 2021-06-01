@@ -1,3 +1,4 @@
+
 <article class="card mb-3" data-id="{{ $post->id }}">
     <div class="card-body ">
         <div class="row mb-2 justify-content-end">
@@ -15,7 +16,7 @@
 
         </div>
 
-        <h6 class="card-subtitle mt-2 mb-2 text-muted">By you on <span>{{$post->datetime}}</span></h6>
+        <h6 class="card-subtitle mt-2 mb-2 text-muted">By you on <span id="date">{{ date('d-m-Y', strtotime($post->datetime) )}}</span></h6>
         <div class="card-text">
             <div class="row">
 
