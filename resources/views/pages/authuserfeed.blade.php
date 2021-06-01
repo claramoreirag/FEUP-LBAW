@@ -119,7 +119,7 @@
             </form>
 
             <div class="row posts-container" id="postslist">
-                @each('partials.authpost', $posts, 'post')
+                @each('partials.switchposts', $posts, 'post')
                 <div class="d-flex justify-content-center">
                     {!! $posts->links() !!}
                 </div>

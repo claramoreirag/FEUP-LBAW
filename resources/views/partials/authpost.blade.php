@@ -3,11 +3,10 @@
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 $already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
-
+$already_saved=UserController::alreadySavedPost($post->id);
 $already_follow=  UserController::alreadyFollowCat($post->category);
 
 @endphp
-
 
 <div class="card mb-3 " data-id="{{ $post->id }}">
     <div class="card-body ">
@@ -53,12 +52,18 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
             <div class="col-md-3 col-sm-4 actions pt-3 pb-3"></i>
                 <div class="row text-secondary actions">
                     <div class="col-4 share action icon"><a class="text-secondary" href="" title="Share Post"><i class="fas fa-share-alt"></i></a></div>
-                    <div class="col-4 save action icon"><a class="text-secondary" href="" title="Save Post"><i class="fas fa-bookmark"></i></a></div>
+                    @if($already_saved)
+                <div class="col-4 save action icon" id="save-post{{$post->id}}" onclick="savePost({{$post->id}})"><a class="text-secondary"  title="Save Post"><i id="bookmark{{$post->id}}" class="fas fa-bookmark"></i></a></div>
+                    @endif
+                    @if(!$already_saved)
+                      <div class="col-4 save action icon" id="save-post{{$post->id}}" onclick="savePost({{$post->id}})"><a class="text-secondary"  title="Save Post"><i id="bookmark{{$post->id}}" class="far fa-bookmark"></i></a></div>
+                   
+                    @endif
                     @if($already_reported)
                     <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#ModalAlreadyReported" title="Report Post"><i class="fas fa-exclamation-circle"></i></div>
                     @endif
                     @if(!$already_reported)
-                <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#exampleModalCenter{{$post->id}}" title="Report Post"><i class="fas fa-exclamation-circle"></i></div>
+                    <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#exampleModalCenter{{$post->id}}" title="Report Post"><i class="fas fa-exclamation-circle"></i></div>
                     @endif
                 </div>
             </div>
@@ -117,8 +122,9 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
       </div>
     </div>
   </div>
-  {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script defer type="text/javascript" src="{{ URL::asset('js/comments.js') }}"></script>
+
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
 
 
@@ -163,3 +169,32 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
           </div>
     </div>
   </div>
+
+
+  <div id="toast-save" class="toast" style="position: absolute; top: 20; right: 40;">
+    <div class="toast-header">
+      <img id="suc" src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-512.png" class="rounded mr-2" alt="..." style="width: 20">
+      <strong class="mr-auto">Sucess</strong>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      The post was successfully added to your saved posts!
+    </div>
+</div>
+
+  
+
+<div id="toast-unsave" class="toast" style="position: absolute; top: 20; right: 40;">
+  <div class="toast-header">
+    <img id="suc" src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-512.png" class="rounded mr-2" alt="..." style="width: 20">
+    <strong class="mr-auto">Sucess</strong>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    The post was successfully removed from your saved posts!
+  </div>
+</div>
