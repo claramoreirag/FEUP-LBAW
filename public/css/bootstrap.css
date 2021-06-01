@@ -10881,3 +10881,7 @@ div.hello{
   padding-bottom: 10px!important;
   padding-top: 10px!important;
  }
+ 
+ .voted{
+   color:var(--pink) !important;
+ }

@@ -78,39 +78,40 @@
     <div class="row" id="postOptions">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#posts"> My Posts</a>
+          <a class="nav-link active" data-toggle="tab" href="#posts-tab"> My Posts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#savedposts">Saved Posts</a>
+          <a class="nav-link" data-toggle="tab" href="#savedposts-tab">Saved Posts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#upvotes">Upvotes</a>
+          <a class="nav-link" data-toggle="tab" href="#upvotes-tab">Upvotes</a>
         </li>
       </ul>
       <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade active show" id="posts">
+        <div class="tab-pane fade active show" id="posts-tab">
           @each('partials.ownpost', $ownposts, 'post')
           <div class="d-flex justify-content-center">
           
-        {!! $ownposts->links() !!}
+          {!! $ownposts->links() !!}
+          </div>
         </div>
-        </div>
-        <div class="tab-pane fade" id="savedposts">
+        <div class="tab-pane fade" id="savedposts-tab">
           @each('partials.authpost', $savedPosts, 'post')
           <div class="d-flex justify-content-center">
         
             {!! $savedPosts->links() !!}
+          </div>
         </div>
-        </div>
-        <div class="tab-pane fade" id="upvotes">
+      </div>
+        <div class="tab-pane fade" id="upvotes-tab">
           @each('partials.authpost', $upvotedPosts, 'post')
           <div class="d-flex justify-content-center">
             {!! $upvotedPosts->links() !!}
-        </div>
-        </div>
-       
+          </div>
+      
       </div>
-    </div>
+      </div>
+    
   </div>
   <div class="col-1"></div>
 </div>
