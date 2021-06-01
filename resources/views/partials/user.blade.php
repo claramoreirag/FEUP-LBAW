@@ -1,7 +1,7 @@
 
     <tr class="align-middle">
         <td>
-            <img class="user-pic" src="" alt="template pic" width="40" height="40" style="border-radius:50%;">
+        <img class="" src="{{route('avatar',['user_id'=>$user->id])}}" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
         </td>
         <th scope="row"><a  href="/admin/users/{{$user->id}}">{{$user->username}}</a></th>
         <td><a  href="/admin/users/{{$user->id}}">{{$user->name}}</a></td>
