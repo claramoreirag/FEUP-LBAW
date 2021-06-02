@@ -44,7 +44,6 @@ class FeedController extends Controller {
             if($pp->isvisible){
                 array_push($posts,json_decode($p->getContent()));
             }
-            array_push($posts,json_decode($p->getContent()));
         }
        
         $p= $this->paginate($posts);
@@ -121,42 +120,38 @@ class FeedController extends Controller {
         }
         else{
             if(Auth::check()){
-            $user=User::find(Auth::id());
-            $followedCats=array();
-            foreach ($user->followedCategories as $c){
-                array_push($followedCats,$c->id);
-            }
+                $user=User::find(Auth::id());
+                $followedCats=array();
+                foreach ($user->followedCategories as $c){
+                    array_push($followedCats,$c->id);
+                }
 
-            $followedUsers=array();
-            foreach ($user->following as $u){
-                array_push($followedUsers,$u->id);
-            }
-            if($request->get('order')=="top-news"){
-                $po = Post::where('header', 'like', '%' . $request->get('searchQuery') . '%' )->where('title', 'like', '%' . $request->get('searchQuery') . '%' )->whereIn('category',$cat)->whereIn('category',$followedCats)->orwhereIn('user_id',$followedUsers)->orderBy('upvotes','desc')->orderBy('downvotes','asc')->get();
-            }
-            else{
-                $po = Post::where('header', 'like', '%' . $request->get('searchQuery') . '%' )->where('title', 'like', '%' . $request->get('searchQuery') . '%' )->whereIn('category',$cat)->whereIn('category',$followedCats)->orwhereIn('user_id',$followedUsers)->orderBy('datetime','desc')->get();
+                $followedUsers=array();
+                foreach ($user->following as $u){
+                    array_push($followedUsers,$u->id);
+                }
+                if($request->get('order')=="top-news"){
+                    $po = Post::where('header', 'like', '%' . $request->get('searchQuery') . '%' )->where('title', 'like', '%' . $request->get('searchQuery') . '%' )->whereIn('category',$cat)->whereIn('category',$followedCats)->orwhereIn('user_id',$followedUsers)->orderBy('upvotes','desc')->orderBy('downvotes','asc')->get();
+                }
+                else{
+                    $po = Post::where('header', 'like', '%' . $request->get('searchQuery') . '%' )->where('title', 'like', '%' . $request->get('searchQuery') . '%' )->whereIn('category',$cat)->whereIn('category',$followedCats)->orwhereIn('user_id',$followedUsers)->orderBy('datetime','desc')->get();
+                }
             }
         }
-        }
+
         $posts=array();
         foreach($po as $n){
             $p=PostController::getPost($n->id);
             $pp=Post::find($n->id);
-           // if($pp->isvisible){
+           if($pp->isvisible){
                 array_push($posts,json_decode($p->getContent()));
+           }
             
         }
 
         $p=$this->paginate($posts);
         $p->withPath('');
-        
         return response()->json(['html'=>view('partials.management.posts',['posts' => $p])->render()]);
     }
-
-
-
-
-
 
 }

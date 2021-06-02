@@ -153,7 +153,7 @@ class PostController extends Controller
             'upvotes'=> $post->upvotes,
             'downvotes' => $post->downvotes,
             'sources'=>$sources,
-            'isVisible'=>$bool
+            'isvisible'=>$bool
         ], 200);
 
     }

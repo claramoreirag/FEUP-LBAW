@@ -208,6 +208,24 @@ class ReportController extends Controller
     }
 
     public function suspendUser(Request $request, $user_id){
+        $allposts=Post::all();
+        $allcomments=Comment::all();
+        foreach($allposts as $post){
+            $ppp=Post::find($post->id);
+            if( $ppp->author->id == $user_id){
+            $ppp->setAttribute('isvisible',false);
+            $ppp->save();
+            }
+        }
+        foreach($allcomments as $comment){
+            $ccc=Comment::find($comment->id);
+            if( $ccc->user->id == $user_id){
+            $ccc->setAttribute('isvisible',false);
+            $ccc->save();
+            }
+        }
+
+
         //TODO visible
         // $this->authorize('delete', $card);
         $user = User::find($user_id);
@@ -220,9 +238,7 @@ class ReportController extends Controller
           if($r->comment!=null){
             $c=Comment::find($r->comment->id);
             if( $c->user->id == $user_id){
-                echo($r->state);
-                $c->setAttribute('isvisible',false);
-                $c->save();
+                
                 $r->setAttribute('state','SuspendedUser');
                 $r->save();
             }
@@ -230,9 +246,7 @@ class ReportController extends Controller
         if($r->post!=null){
             $p=Post::find($r->post->id);
             if( $p->author->id == $user_id){
-                echo($r->state);
-                $p->setAttribute('isvisible',false);
-                $p->save();
+              
                 $r->setAttribute('state','SuspendedUser');
                 $r->save();
             }

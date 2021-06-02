@@ -73,12 +73,17 @@
                 sendAjaxRequest('GET','/searchPosts',{
                         '_token': '{{csrf_token() }}',
                         categories:categories,
-                    preference:preference,
-                    order:order,
+                        preference:preference,
+                        order:order,
                         searchQuery:searchQuery,
                 },postSearchUpdate);
                 timer=0;
             }
+            else{
+                $('#postslist').html('<div class="container d-flex justify-content-center" style="height:10rem; width:53rem;"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+
+            }
+
         });
     
     
@@ -97,6 +102,7 @@
             $("#settingsOrder input[type='radio']:checked").each((_, {id}) => {
                 order = id;
             });
+            console.log(searchQuery);
             console.log(categories);
             console.log(preference);
             console.log(order);
@@ -118,8 +124,9 @@
     
         function postSearchUpdate(){
             let response = JSON.parse(this.responseText);
-            if(response.html==""){
-                $('#postslist').html('');
+            console.log(response);
+            if(response.html=="<div class=\"d-flex justify-content-center\">\r\n    \r\n</div>"){
+                $('#postslist').html('<div class="container d-flex justify-content-center align-baseline" style="height:10rem; width:53rem;">No results found</div>');
             }
             else{
                 $('#postslist').html(response.html);
