@@ -71,18 +71,28 @@ class UserController extends Controller
         }
         $ownp=$this->paginate($ownposts);
         $ownp->withPath('');
+        $follusers = $user->following()->paginate(10);
+        $follusers->withPath('');
         return view('pages.ownprofile', ['user' => $user,'ownposts'=>$ownp, 'followers'=>$followers, 'following'=>$following, 'posts'=>$posts, 'upvotes'=>$count_upvotes, 'savedPosts' => $savedp
-        , 'upvotedPosts' => $upp]);
+        , 'upvotedPosts' => $upp, 'follusers'=>$follusers]);
       }
       else{
+
         $otherposts = array();
         foreach ($user->posts as $p) {
           array_push($otherposts, json_decode(PostController::getPost($p->id)->getContent()));
         }
         $op=$this->paginate($otherposts);
         $op->withPath('');
+        
+        if(Auth::check()){
+          $follows=DB::table('follow')->where('follower','=',Auth::id())->where('followed','=',$user->id)->exists();
+        return view('pages.otherprofile', ['user' => $user, 'otherposts'=> $op, 'followers' => $followers, 'following' => $following, 'posts' => $posts, 'upvotes' => $count_upvotes, 'savedPosts' =>$saved_posts, 'upvotedPosts' => $upp,'follows'=>$follows]);
+      }
+      else{
         return view('pages.otherprofile', ['user' => $user, 'otherposts'=> $op, 'followers' => $followers, 'following' => $following, 'posts' => $posts, 'upvotes' => $count_upvotes, 'savedPosts' =>$saved_posts, 'upvotedPosts' => $upp]);
       }
+    }
     }
 
 
@@ -246,4 +256,19 @@ class UserController extends Controller
         return true;
       } else return false;
     }
+
+
+
+    public function followUser(Request $request){
+     if(DB::table('follow')->where('follower','=',Auth::id())->where('followed','=',$request->get('user_id'))->exists()){
+      DB::delete('delete from follow where follower = ? and followed = ?' ,[Auth::id(), $request->get('user_id')]);
+      return response()->json(['success'=>'deleted']);
+     }
+     else{
+      DB::insert('insert into follow (follower, followed) values (?, ?)', [Auth::id(), $request->get('user_id')]);
+      return response()->json(['success'=>'added']);
+     }
+    }
+
+   
 }

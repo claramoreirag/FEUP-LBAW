@@ -5,11 +5,10 @@ $already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
 $already_saved=UserController::alreadySavedPost($post->id);
 $already_follow=  UserController::alreadyFollowCat($post->category);
 $already_upvoted= UserController::alreadyUpvotedPost($post->id);
-
-
 $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 
-
+var_dump($already_upvoted);
+var_dump($already_downvoted);
 @endphp
 
 <div class="card mb-3 " data-id="{{ $post->id }}">
@@ -220,7 +219,23 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 </div>
 
 <script defer type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
-<script type="text/javascript">
+<script defer type="text/javascript">
+
+
+
+
+function checkVotes(id){
+   let isUp="{{$already_upvoted}}";
+   let isDown="{{$already_downvoted}}";
+   let arrow = document.querySelector("#upvote_arrow"+id);
+   let darrow = document.querySelector("#downvote_arrow"+id);
+   if(isUp)arrow.classList.add("voted");
+   if(isDown)darrow.classList.add("voted");
+   console.log(isUp==true);
+   console.log(isDown);
+  }
+
+  
   $('#upvote{{$post->id}}').off().on('submit', function(event) {
     event.preventDefault();
 
@@ -307,15 +322,4 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 
   }
 
-
-  function checkVotes(id){
-   let isUp="{{$already_upvoted}}";
-   let isDown="{{$already_downvoted}}";
-   let arrow = document.querySelector("#upvote_arrow"+id);
-   let darrow = document.querySelector("#downvote_arrow"+id);
-   if(isUp)arrow.classList.add("voted");
-   if(isDown)darrow.classList.add("voted");
-   console.log(isUp==true);
-   console.log(isDown);
-  }
 </script>
