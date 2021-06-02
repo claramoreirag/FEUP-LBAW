@@ -219,6 +219,7 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
   </div>
 </div>
 
+
 <script type="text/javascript">
   $('#upvote{{$post->id}}').off().on('submit', function(event) {
     event.preventDefault();
