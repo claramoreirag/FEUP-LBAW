@@ -201,8 +201,30 @@ class ReportController extends Controller
     public function dismissReport(Request $request, $report_id){
         // $this->authorize('delete', $card);
         $report = Report::find($report_id);
-        $report->setAttribute('state', 'Accepted');
-        $report->save();
+        $post = $report->post;
+        $comment = $report->comment;
+
+        $re=Report::all();
+        foreach($re as $n){
+          $r=ReportController::getReport($n->id);
+          $rep=Report::find($n->id);
+          $p=json_decode($r->getContent())->post;
+          $c=json_decode($r->getContent())->comment;
+          if($p!=null  && $post!=null){
+              if($p->id==$post->id){
+                $rep->setAttribute('state', 'Accepted');
+                $rep->save();
+              }
+          }
+          if($c!=null && $comment!=null){
+              if($c->id==$comment->id ){
+                $rep->setAttribute('state', 'Accepted');
+                $rep->save();
+              }
+            
+        }
+        }
+
 
         return redirect()->route('reports');
     }
@@ -296,6 +318,11 @@ class ReportController extends Controller
         $user->setAttribute('state', 'Active');
         $user->save();
 
+        $re=Report::all();
+        foreach($re as $n){
+          $r=Report::find($n->id);
+        }
+        
         return redirect()->route('users');
     }
 
