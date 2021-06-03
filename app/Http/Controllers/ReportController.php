@@ -321,8 +321,37 @@ class ReportController extends Controller
         $re=Report::all();
         foreach($re as $n){
           $r=Report::find($n->id);
+          if($r->post!=null){
+              if($r->post->author->id==$user_id){
+                $r->setAttribute('state','NotAnswered');
+                $r->save();
+              }
+          }
+          if($r->comment!=null){
+            if($r->comment->user==$user_id){
+                $r->setAttribute('state','NotAnswered');
+                $r->save();
+            }
         }
-        
+        }
+
+        $allposts=Post::all();
+        $allcomments=Comment::all();
+        foreach($allposts as $post){
+            $ppp=Post::find($post->id);
+            if( $ppp->author->id == $user_id){
+            $ppp->setAttribute('isvisible',true);
+            $ppp->save();
+            }
+        }
+        foreach($allcomments as $comment){
+            $ccc=Comment::find($comment->id);
+            if( $ccc->user->id == $user_id){
+            $ccc->setAttribute('isvisible',true);
+            $ccc->save();
+            }
+        }
+
         return redirect()->route('users');
     }
 
