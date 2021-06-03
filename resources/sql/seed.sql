@@ -278,7 +278,7 @@ INSERT INTO "users" (username,password,name,email,state,is_admin,photo) VALUES
 ('marcioduarte',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Márcio Duarte','marcio.duarte@gmail.com','Active',FALSE,'default.png'),
 ('joaoluiscarvalhal',crypt('YPJ17AJZ0YL', gen_salt('bf')),'João Carvalhal','joao.carvalhal@gmail.com','Active',FALSE,'default.png'),
 ('sofiaferreiraleite',crypt('hello', gen_salt('bf')),'Sofia Ferreira Leite','sofia.fl@gmail.com','Active',FALSE,'default.png'),
-('euricosantos',crypt('12345', gen_salt('bf')),'Afonso Eurico Santos','afonso.eurico.santos@gmail.com','Active',FALSE,'default.png'),
+('euricosantos',crypt('123456', gen_salt('bf')),'Afonso Eurico Santos','afonso.eurico.santos@gmail.com','Active',FALSE,'default.png'),
 ('jorgetavares',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Jorge Tavares','jorge.tavares@gmail.com','Active',FALSE,'default.png'),
 ('inesribeiro',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Inês Ribeiro','ines.ribeiro@gmail.com','Active',FALSE,'default.png');
 

@@ -80,10 +80,20 @@ class UserController extends Controller
         }
         $ownp=$this->paginate($ownposts);
         $ownp->withPath('');
+        $follusers = $user->following()->paginate(5);
+        $follusers->withPath('');
+        $followerusers = $user->followers()->paginate(5);
+        $followerusers->withPath('');
+        $categories=Category::all();
+        $followedCat=array();
+        foreach($categories as $c){
+          if(DB::table('follow_category')->where('category_id','=',$c->id)->where('user_id','=',$user->id)->exists()){array_push($followedCat,$c->id);}
+        }
         return view('pages.ownprofile', ['user' => $user,'ownposts'=>$ownp, 'followers'=>$followers, 'following'=>$following, 'posts'=>$posts, 'upvotes'=>$count_upvotes, 'savedPosts' => $savedp
-        , 'upvotedPosts' => $upp]);
+        , 'upvotedPosts' => $upp, 'follusers'=>$follusers,'followerusers'=>$followerusers,'categories'=>$categories,'followedCat'=>$followedCat]);
       }
       else{
+
         $otherposts = array();
         foreach ($user->posts as $p) {
           $postVisible=Post::find($p->id);
@@ -93,8 +103,15 @@ class UserController extends Controller
         }
         $op=$this->paginate($otherposts);
         $op->withPath('');
+        
+        if(Auth::check()){
+          $follows=DB::table('follow')->where('follower','=',Auth::id())->where('followed','=',$user->id)->exists();
+        return view('pages.otherprofile', ['user' => $user, 'otherposts'=> $op, 'followers' => $followers, 'following' => $following, 'posts' => $posts, 'upvotes' => $count_upvotes, 'savedPosts' =>$saved_posts, 'upvotedPosts' => $upp,'follows'=>$follows]);
+      }
+      else{
         return view('pages.otherprofile', ['user' => $user, 'otherposts'=> $op, 'followers' => $followers, 'following' => $following, 'posts' => $posts, 'upvotes' => $count_upvotes, 'savedPosts' =>$saved_posts, 'upvotedPosts' => $upp]);
       }
+    }
     }
 
 
@@ -221,6 +238,27 @@ class UserController extends Controller
     }
 
 
+    public function manageCategory(Request $request){
+      
+      if(DB::table('follow_category')->where('category_id','=',$request->get('cat_id'))->where('user_id','=',Auth::id())->exists()){
+      
+        DB::delete('delete from follow_category where category_id = ? and user_id = ?' ,[$request->get('cat_id'), Auth::id()]);
+        return response()->json(['success'=>'deleted','id'=>$request->get('cat_id')]);
+
+      }
+      else{
+        $cat= new FollowCategory();
+      $cat->user_id=Auth::id();
+      $category=Category::where('id','=',$request->get('cat_id'))->first();
+    
+      $cat->category_id=$category->id;
+      $cat->save();
+      return response()->json(['success'=>'added','id'=>$request->get('cat_id')]);
+      
+      }
+    }
+
+
     public static function alreadyFollowCat( $cat){
       $category=Category::where('name','=',$cat)->first();
       if (FollowCategory::where('user_id','=',Auth::id())->where('category_id','=',$category->id)->exists()) {
@@ -258,4 +296,19 @@ class UserController extends Controller
         return true;
       } else return false;
     }
+
+
+
+    public function followUser(Request $request){
+     if(DB::table('follow')->where('follower','=',Auth::id())->where('followed','=',$request->get('user_id'))->exists()){
+      DB::delete('delete from follow where follower = ? and followed = ?' ,[Auth::id(), $request->get('user_id')]);
+      return response()->json(['success'=>'deleted','id'=>$request->get('user_id')]);
+     }
+     else{
+      DB::insert('insert into follow (follower, followed) values (?, ?)', [Auth::id(), $request->get('user_id')]);
+      return response()->json(['success'=>'added','id'=>$request->get('user_id')]);
+     }
+    }
+
+   
 }
