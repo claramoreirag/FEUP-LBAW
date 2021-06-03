@@ -318,22 +318,6 @@ class ReportController extends Controller
         $user->setAttribute('state', 'Active');
         $user->save();
 
-        $re=Report::all();
-        foreach($re as $n){
-          $r=Report::find($n->id);
-          if($r->post!=null){
-              if($r->post->author->id==$user_id){
-                $r->setAttribute('state','NotAnswered');
-                $r->save();
-              }
-          }
-          if($r->comment!=null){
-            if($r->comment->user==$user_id){
-                $r->setAttribute('state','NotAnswered');
-                $r->save();
-            }
-        }
-        }
 
         $allposts=Post::all();
         $allcomments=Comment::all();
@@ -350,6 +334,26 @@ class ReportController extends Controller
             $ccc->setAttribute('isvisible',true);
             $ccc->save();
             }
+        }
+
+
+        $re=Report::all();
+        foreach($re as $n){
+          $r=Report::find($n->id);
+          if($r->post!=null){
+              if($r->post->author->id==$user_id){
+                $p=Post::find($r->post->id);
+                $p->setAttribute('isvisible',false);
+                $p->save();
+              }
+          }
+          if($r->comment!=null){
+            if($r->comment->user_id==$user_id){
+                $c=Comment::find($r->comment->id);
+                $c->setAttribute('isvisible',false);
+                $c->save();
+            }
+        }
         }
 
         return redirect()->route('users');

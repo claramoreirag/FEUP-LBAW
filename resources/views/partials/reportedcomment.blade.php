@@ -10,19 +10,15 @@
         </form>-->
         <div class="row">
           <div class="col-3">
-        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" title="Delete Comment">
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal" title="Delete Comment">
         <i class="far fa-trash-alt"></i>
         </button>
 </div>
 <div class="col-3">
-<form action="/admin/users/suspend/{{$report->comment->user->id}}" method="post">
-            <button type="submit" class="btn btn-outline-primary" title="Suspend User" ><i class="fas fa-user-clock"></i></button>@method('post') @csrf
-                </form>
+<button type="button" class="btn btn-outline-secondary" data-dismis="examplemodal" data-toggle="modal" data-target="#susmodal" title="Suspend User"><i class="fas fa-user-clock"></i></button>
 </div>
 <div class="col-3">
-<form action="/admin/users/ban/{{$report->comment->user->id}}" method="post">
-            <button type="submit" class="btn btn-outline-primary" title="Ban User" ><i class="fas fa-user-slash"></i></button>@method('post') @csrf
-                </form>
+<button type="button" class="btn btn-outline-secondary" data-dismis="examplemodal" data-toggle="modal" data-target="#banmodal" title="Ban User"><i class="fas fa-user-slash"></i></button>
 </div>
 <div class="col-3">
         <form action="/admin/reports/{{$report->id}}" method="post">
@@ -35,18 +31,21 @@
 
     @if($report->state != "NotAnswered")
     <th scope="row">Comment</th>
-    <td width=45%>{{$report->comment->body}}</td>
-    <td width=15%>{{$report->comment->user->username}}</td>
+    <td >{{$report->comment->body}}</td>
+    <td >{{$report->comment->user->username}}</td>
     <td>{{$report->number}}</td>
     <td>
-            {{$report->state}}
+    @if($report->state == "BanedUser" || $report->state == "SuspendedUser")
+                This content was permanent deleted due to suspension or banishment of the user.
+                 
+                @else
+                {{$report->state}}
+                @endif 
             
     </td>
-    <td> 
+    <td class="text-center align-middle"> 
             @if($report->state == "BanedUser" || $report->state == "SuspendedUser")
-                <form action="/admin/users" method="get">
-                <button class="btn btn-outline-primary" type="submit"  >UserManager</button>
-                </form>
+                ---
             @else
             <form action="/admin/undo/{{$report->id}}" method="post">
                 <button class="btn btn-outline-primary" type="submit"  >Undo</button>@method('post') @csrf
@@ -77,6 +76,52 @@
         <form action="/admin/reports/posts/{{$report->comment->post->id}}/{{$report->comment->id}}" method="post">
              <button class="btn btn-primary" type="submit">Delete</button>@method('post') @csrf
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="banmodal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>The banishment of an user is not permenent, you can undo this action at any time. However all his content that was once reported will be deleted permenently. If you decide to reactivate this user again all his inoffensive will be public again. </p>
+      </div>
+      <div class="modal-footer">
+      <form action="/admin/users/ban/{{$report->comment->user->id}}" method="post">
+            <button type="submit" class="btn btn-outline-primary" title="Ban User" ><i class="fas fa-user-slash"></i></button>@method('post') @csrf
+                </form>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="susmodal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>The suspension of an user for 21 days is not permenent, you can undo this action at any time. However all his content that was once reported will be deleted permenently. If you decide to reactivate this user again all his inoffensive will be public again. </p>
+      </div>
+      <div class="modal-footer">
+      <form action="/admin/users/suspend/{{$report->comment->user->id}}" method="post">
+            <button type="submit" class="btn btn-outline-primary" title="Suspend User" ><i class="fas fa-user-clock"></i></button>@method('post') @csrf
+                </form>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>

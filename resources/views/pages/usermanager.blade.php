@@ -45,7 +45,7 @@
     </div>
 </div>
 
-  
+
 @endsection
 
 <script defer type="text/javascript" src="{{ URL::asset('js/search.js') }}" ></script>

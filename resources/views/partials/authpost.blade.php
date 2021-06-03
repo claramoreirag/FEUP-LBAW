@@ -54,7 +54,7 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
         <div class="row justify-content-between text-center">
             <div class="col-md-3 col-sm-4 actions pt-3 pb-3"></i>
                 <div class="row text-secondary actions">
-                    <div class="col-4 share action icon"><a class="text-secondary" href="" title="Share Post"><i class="fas fa-share-alt"></i></a></div>
+                <div class="col-4 share action icon" data-toggle="modal" data-target="#sharebtn" title="Share Post"><i class="fas fa-share-alt"></i></div>
                     @if($already_saved)
                 <div class="col-4 save action icon" id="save-post{{$post->id}}" onclick="savePost({{$post->id}})"><a class="text-secondary"  title="Save Post"><i id="bookmark{{$post->id}}" class="fas fa-bookmark"></i></a></div>
                     @endif
@@ -146,6 +146,25 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
   {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
 
+
+
+
+
+  <div id="sharebtn" class="modal fade" id="myModel" tabindex="-1" aria-labelledby="myModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModelLabel">Share Modal</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p style="padding:2">Share this link via</p>
+                <div class="d-flex align-items-center icons"> <a href="#" class="fs-5 d-flex align-items-center justify-content-center"> <span class="fab fa-facebook-f"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center"> <span class="fab fa-twitter"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center"> <span class="fab fa-instagram"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center"> <span class="fab fa-whatsapp"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center"> <span class="fab fa-telegram-plane"></span> </a> </div>
+                <p style="padding:2">Or copy link</p>
+                <div class="field d-flex align-items-center justify-content-between"> <span class="fas fa-link text-center"></span> <input type="text" value="some.com/share"> <button>Copy</button> </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <div class="modal fade" id="followTag{{$post->id}}" tabindex="-1" role="dialog" aria-hidden="true">
