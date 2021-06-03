@@ -26,13 +26,27 @@
         <p id="username">@<span>{{$user->username}}</span></p>
       </div>
     </div>
+    @if(Auth::check())
     <div class="row">
       <div class="col-1"></div>
+      
       <div class="col-10 d-flex justify-content-center" id="followButton">
-        <button type="button" class="btn btn-block btn-primary">Follow</button>
+        <form action="{{route('follow',['user_id'=>$user->id])}}" method="post">
+          <input type="hidden" id="followuser_id" name="user_id" value="{{$user->id}}">
+          <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+          @if($follows)
+          <button type="button" id="follow-btn" onclick="follow()" class="btn btn-block btn-primary">Unfollow</button>
+          @endif
+          @if(!$follows)
+          <button type="button" id="follow-btn" onclick="follow()" class="btn btn-block btn-primary">Follow</button>
+          @endif
+          @method('post')
+          @csrf
+      </form>
       </div>
       <div class="col-1"></div>
     </div>
+    @endif
     <div class="row">
       <div class="d-flex" id="infoNumbers">
         <ul class="list-inline mx-auto justify-content-center" style="padding-top:0 margin-top=0">
@@ -149,7 +163,7 @@
 @endif
 
 
-@if($user->state == 'Baned')
+@if($user->state == 'Banned')
 
 <div class="row">
   <div class="col-lg-1 md-0"></div>
@@ -211,3 +225,40 @@
 @endif
 
 @endsection
+
+
+
+
+
+
+
+<div id="toast-follow" class="toast" style="position: absolute; top: 20; right: 40;">
+  <div class="toast-header">
+    <img id="suc" src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-512.png" class="rounded mr-2" alt="..." style="width: 20">
+    <strong class="mr-auto">Sucess</strong>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    You started following <span>{{$user->username}}</span>!
+  </div>
+</div>
+
+
+
+<div id="toast-unfollow" class="toast" style="position: absolute; top: 20; right: 40;">
+  <div class="toast-header">
+    <img id="suc" src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-512.png" class="rounded mr-2" alt="..." style="width: 20">
+    <strong class="mr-auto">Sucess</strong>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    You stopped following <span>{{$user->username}}</span>!
+  </div>
+</div>
+
+<script defer type="text/javascript" src="{{ URL::asset('js/app.js') }}" ></script>
+<script defer type="text/javascript" src="{{ URL::asset('js/otherprofile.js') }}" ></script>

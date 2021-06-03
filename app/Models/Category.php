@@ -28,4 +28,9 @@ class Category extends Model
     public function name(){
         return 'name';
     }
+
+    
+    // public function follower(){
+    //     return $this->belongsToMany('App\Models\User', 'follow_category', 'user_id', 'category_id');
+    // }
 }

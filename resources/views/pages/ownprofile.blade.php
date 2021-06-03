@@ -1,6 +1,7 @@
 
 @extends('layouts.main_header')
 @include('partials.editprofile')
+@include('partials.managefollow')
 @section('content')
 
   @if ($errors->any())
@@ -61,19 +62,27 @@
         </ul>
       </div>
     </div>
-    <div class="row mt=1">
+    <div class="row mt-1 mb-2">
     <div class="col-2"></div>
       <div class="col-8 d-flex justify-content-center">
         <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#exampleModal">
           Edit Profile
         </button>
-       <!-- <a class="btn btn-primary mt-2 ml-1 px-3" href="/post/new">New Post</a>-->
       </div>
       <div class="col-2"></div>
-      <!--
-          <a class="fas fa-edit editProfilePage" id="editProfilePage" href="../pages/editProfile.php">Edit profile</a>-->
     </div>
-  </div>
+    <div class="row mt=1">
+      <div class="col-2"></div>
+        <div class="col-8 d-flex justify-content-center">
+          <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#manageFollowsModal">
+            Manage Followings
+          </button>
+        </div>
+        <div class="col-2"></div>
+      </div>
+    </div>
+
+ 
   <div class="col-lg-8 md-12" id="myPosts">
     <div class="row" id="postOptions">
       <ul class="nav nav-tabs">
@@ -96,7 +105,7 @@
         </div>
         </div>
         <div class="tab-pane fade" id="savedposts">
-          @each('partials.authpost', $savedPosts, 'post')
+          @each('partials.switchposts', $savedPosts, 'post')
           <div class="d-flex justify-content-center">
         
             {!! $savedPosts->links() !!}
