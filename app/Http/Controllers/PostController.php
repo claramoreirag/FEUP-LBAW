@@ -12,6 +12,10 @@ use App\Models\Source;
 use App\Models\Post;
 use App\Models\User;
 use DateTime;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
+use Laravel\Ui\Presets\React;
 
 class PostController extends Controller
 {
@@ -94,8 +98,25 @@ class PostController extends Controller
       $post->header = $request->input('header');
       $post->body = $request->input('body');
       $post->category = $request->input('categories');
-      
+
+      var_dump($request->file);
+      if ($request->hasFile('image')) {
+        $filenameWithExt = $request->file('image')->getClientOriginalName ();
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $fileNameToStore = $filename. '_'. time().'.'.$extension;
+        $path = $request->file('image')->storeAs('public/img/posts', $fileNameToStore);
+
+        }
+        else {
+          $fileNameToStore = 'default.png';
+        }
+        $post->photo = $fileNameToStore;
+        $post->isvisible = 1;
+
       $post->save();
+
+    
       foreach($request->input('source') as $s){
         if($s!=null)SourceController::create($s,$post->id);
       }
@@ -103,6 +124,20 @@ class PostController extends Controller
       return redirect('/user/'.Auth::id().'?postSuccess=1&n='.$post->id);
      }
 
+
+     public function getPostPic($id){
+      $post = Post::find($id);
+      $path = storage_path( 'app/public/img/posts/' . $post->photo);
+      $p='public/img/posts/' . $post->photo;
+      if(!Storage::exists($p)) abort(404);
+   
+      $file = File::get($path);
+      $type = File::mimeType($path);
+  
+      $response = Response::make($file, 200);
+      $response->header("Content-Type", $type);
+      return $response;
+    }
   
 
 
@@ -153,7 +188,8 @@ class PostController extends Controller
             'upvotes'=> $post->upvotes,
             'downvotes' => $post->downvotes,
             'sources'=>$sources,
-            'isvisible'=>$bool
+            'isvisible'=>$bool,
+            'photo' => $post->photo
         ], 200);
 
     }

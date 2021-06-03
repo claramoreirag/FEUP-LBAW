@@ -14,7 +14,7 @@
         <div class="col-md-1 col-xs-0"></div>
         <div class="col-md-10 col-xs-12 newsFormContent">
             {{ method_field('POST') }}
-            <form action="{{ route('create_new_post') }}" method="Post">
+            <form action="{{ route('create_new_post') }}"  enctype="multipart/form-data" method="Post">
                 <input name="_method" type="hidden" value="POST">
                 <div class="title-section">
                     <label for="inputNewsTitle">News Title</label>
@@ -49,8 +49,8 @@
                 
 
   <div class="form-group mt-4 mb-4">
-    <label for="exampleFormControlFile1">Post preview image</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  <input id="post_image" type="file" class="form-control" name="image">
+                        <label for="floatingInput">Post preview picture</label>
   </div>
 
                 <div class="form-group source-section mt-4">

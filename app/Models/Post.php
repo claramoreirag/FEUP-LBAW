@@ -27,6 +27,10 @@ class Post extends Model
         'isvisible' => 'boolean'
     ];
  
+    protected $attributes = [
+        'photo' => 'default.png',
+     ];
+
 
 
     public function comments(){
