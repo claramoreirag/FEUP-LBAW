@@ -23,10 +23,11 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 
             <div class="col align-self-center d-flex justify-content-end">
               @if($already_follow)
-              <span class="badge badge-primary action-bg-green tag p-2" data-toggle="modal" data-target="#unfollowTag{{$post->id}}"> {{$post->category}}</span>
+              <span class="badge badge-primary action-bg-green tag p-2" data-toggle="modal" data-target="#unfollowTag{{$post->id}}" title="Unfollow"> {{$post->category}}  <i class="fas fa-bell"></i>
+</span>
               @endif
               @if(!$already_follow)
-              <span class="badge badge-primary action-bg-green tag p-2" data-toggle="modal" data-target="#followTag{{$post->id}}"> {{$post->category}}</span>
+              <span class="badge badge-primary action-bg-green tag p-2" data-toggle="modal" data-target="#followTag{{$post->id}}" title="Follow"> {{$post->category}}</span>
               @endif
 
                 </ul>
