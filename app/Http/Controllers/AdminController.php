@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller {
 
     public function show() {
+        $this->authorize('show');
          $r = Report::all();
        
          $reportedPosts=array();

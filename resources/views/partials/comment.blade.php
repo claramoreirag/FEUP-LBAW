@@ -42,12 +42,12 @@
                     <div class="col-3 col-xs-3 pr-1 icon" >
                         <form id="delete{{$comment['info']->id}}" action="{{ route("delete_comment",["comment_id"=>$comment["info"]->id]) }}" method="Post">
                             <input type="hidden" id="postId"  name="post_id" value="{{$comment["info"]->post_id}}"> 
-                            <button type="submit"  class="hiddenbutton ">d<i class=" text-secodary green action-green fas fa-trash-alt"></i></button>
+                            <button type="submit"  class="hiddenbutton "><i class=" text-secodary green action-green fas fa-trash-alt"></i></button>
                           @method("delete")@csrf
                         </form>
                     </div>
                         <div class="col-3 col-xs-3 px-1 icon"  onclick="edit('{{$id}}')"><i class="fas fa-edit action-green text-primary "></i></div>
-                        <div class="col-3 col-xs-3 pl-1" onclick="addReply('{{$reply_id}}')">r<i class="text-primary action-green fa fa-reply"></i></div>
+                        <div class="col-3 col-xs-3 pl-1" onclick="addReply('{{$reply_id}}')"><i class="text-primary action-green fa fa-reply"></i></div>
                     @endif
                     @if($comment['info']->user->id!=Auth::id() && Auth::check())
                         @if($already_reported_comment)

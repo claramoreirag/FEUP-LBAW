@@ -220,9 +220,6 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 
 <script defer type="text/javascript">
 
-
-
-
 function checkVotes(id){
    let isUp="{{$already_upvoted}}";
    let isDown="{{$already_downvoted}}";

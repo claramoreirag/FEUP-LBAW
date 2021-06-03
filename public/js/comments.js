@@ -40,35 +40,22 @@
 
 
 
-
-        // var xhttp = new XMLHttpRequest();
-        // xhttp.onreadystatechange = function() {
-        //     if (this.readyState == 4 && this.status == 200) {
-        //         let res= xhttp.responseText;
-        //         let comment=JSON.parse(res);
-        //         let element = document.getElementById(id);
-        //     if(  element.querySelector("#reply") == null){
-        //     let li = document.createElement('li')
-        //     li.innerHTML = ' <form id="reply" action="{{ route("reply",["comment_id"=>$comment["info"]->id]) }}" method="Post"><div class="row"> <div class="col-10"><input type="text" class="form-control" name="body" value="{{$comment["info"]->id}}" id="inputComment"></div><input type="hidden" id="custId" name="post_id" value="{{$comment["info"]->post_id}}"><input type="hidden" id="custId" name="comment_id" value="{{$comment["info"]->id}}"><div class="col-1"><button type="submit" class="btn btn-success py-1" formaction="{{ route("reply",["comment_id"=>$comment["info"]->id]) }}">Share</button>@method("POST")@csrf</div></div></form>';
-        //     let form =li.querySelector("#reply");
-        //     let btn =form.querySelector("button");
-        //     let route='{{ route("reply",["comment_id"=>'+comment.id+']) }}';
-        //     form.setAttribute('action', route);
-        //     btn.setAttribute('action',route);
-        //     element.appendChild(li);
-        //     }
-        //     else{
-        //         var rep= element.querySelector("#reply");
-        //         rep.remove();
-        //     }
-        //     }
-        // };
-        // let url= "/get_comment/"+id;
-        // xhttp.open("GET", url, true);
-        // //xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-        // xhttp.send();
-       
-       
+         function encodeForAjax(data) {
+            if (data == null) return null;
+            return Object.keys(data).map(function(k){
+              return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+            }).join('&');
+          }
+          
+          function sendAjaxRequest(method, url, data, handler) {
+            let request = new XMLHttpRequest();
+          
+            request.open(method, url, true);
+            request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.addEventListener('load', handler);
+            request.send(encodeForAjax(data));
+          }
 
 
         function savePost(id){
