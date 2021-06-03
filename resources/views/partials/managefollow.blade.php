@@ -77,7 +77,7 @@
                         @foreach($followerusers as $f)
                           <tr>
                           <td>{{$f->name}}</td>
-                            <td><a href="/user/{{$u->id}}">{{$u->username}}</a></td>
+                            <td><a href="/user/{{$f->id}}">{{$f->username}}</a></td>
                             <td>  
                                 <form class="mb-0" style="margin-bottom:0px!important"action="{{route('follow',['user_id'=>$f->id])}}" method="post">
                                     <input type="hidden" id="fuser_id{{$f->id}}" name="user_id" value="{{$f->id}}">
