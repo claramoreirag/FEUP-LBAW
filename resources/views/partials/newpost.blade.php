@@ -47,6 +47,12 @@
                     <textarea id="mytextarea" class="text-muted" name="body" >Write your post here!</textarea>
                 </div>
                 
+
+  <div class="form-group mt-4 mb-4">
+    <label for="exampleFormControlFile1">Post preview image</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+
                 <div class="form-group source-section mt-4">
                     <label for="inputNewsSource">News Source</label>
                     <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>

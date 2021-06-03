@@ -154,13 +154,20 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModelLabel">Share Modal</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h4 class="modal-title" id="myModelLabel">Share this news</h4> 
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+                </button>
             </div>
             <div class="modal-body">
-                <p style="padding:2">Share this link via</p>
-                <div class="d-flex align-items-center icons"> <a href="#" class="fs-5 d-flex align-items-center justify-content-center"> <span class="fab fa-facebook-f"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center"> <span class="fab fa-twitter"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center"> <span class="fab fa-instagram"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center"> <span class="fab fa-whatsapp"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center"> <span class="fab fa-telegram-plane"></span> </a> </div>
-                <p style="padding:2">Or copy link</p>
-                <div class="field d-flex align-items-center justify-content-between"> <span class="fas fa-link text-center"></span> <input type="text" value="some.com/share"> <button>Copy</button> </div>
+                <h6 class="pb-1">Share this via</h6>
+                <div class="d-flex align-items-center icons"> <a href="#" class="fs-5 d-flex align-items-center justify-content-center m-2"> <span class="fab fa-facebook-f"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center m-2"> <span class="fab fa-twitter"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center m-2"> <span class="fab fa-instagram"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center m-2"> <span class="fab fa-whatsapp"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center m-2"> <span class="fab fa-telegram-plane"></span> </a> </div>
+                <h6 class="pt-4 pb-1">Or copy the link</h6>
+                <div class="field d-flex align-items-center justify-content-between"> <input class="form-control mr-1" type="text" placeholder="Default input" value="/post/{{$post->id}}">
+                <button id="copybtn" class="btn btn-secondary">Copy</button>
+                </div>
             </div>
         </div>
     </div>
@@ -238,7 +245,6 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 </div>
 
 <script defer type="text/javascript">
-
 
 
 
