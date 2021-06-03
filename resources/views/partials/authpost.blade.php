@@ -7,8 +7,8 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
 $already_upvoted= UserController::alreadyUpvotedPost($post->id);
 $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 
-var_dump($already_upvoted);
-var_dump($already_downvoted);
+// var_dump($already_upvoted);
+// var_dump($already_downvoted);
 @endphp
 
 <div class="card mb-3 " data-id="{{ $post->id }}">
@@ -235,7 +235,7 @@ function checkVotes(id){
    console.log(isDown);
   }
 
-  
+
   $('#upvote{{$post->id}}').off().on('submit', function(event) {
     event.preventDefault();
 
