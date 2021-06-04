@@ -270,14 +270,14 @@ DROP EXTENSION IF EXISTS pgcrypto;
 CREATE EXTENSION pgcrypto;
 
 INSERT INTO "users" (username,password,name,email,state,is_admin,photo) VALUES 
-('claramoreirag',crypt('LIA7AJZ0YL', gen_salt('bf')),'Clara Moreira','clara.moreira@gmail.com','Active',TRUE,'default.png'),
-('leonormgomes',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Leonor Gomes','leonor.gomes@gmail.com','Active',TRUE,'default.png'),
-('marianaramos',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Mariana Ramos','mariana.ramos@gmail.com','Active',TRUE,'default.png'),
-('flaviacarvalhido',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Flávia Carvalhido','flavia.carvalhido@gmail.com','Active',TRUE,'default.png'),
-('joaorosario',crypt('YPJ17AJZ0YL', gen_salt('bf')),'João Rosário','joao.rosario@gmail.com','Active',FALSE,'default.png'),
-('bernardoramalho',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Bernardo Ramalho','bernardo.ramalho@gmail.com','Active',FALSE,'default.png'),
-('marcioduarte',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Márcio Duarte','marcio.duarte@gmail.com','Active',FALSE,'default.png'),
-('joaoluiscarvalhal',crypt('YPJ17AJZ0YL', gen_salt('bf')),'João Carvalhal','joao.carvalhal@gmail.com','Active',FALSE,'default.png'),
+('claramoreirag',crypt('123456', gen_salt('bf')),'Clara Moreira','clara.moreira@gmail.com','Active',TRUE,'default.png'),
+('leonormgomes',crypt('123456', gen_salt('bf')),'Leonor Gomes','leonor.gomes@gmail.com','Active',TRUE,'default.png'),
+('marianaramos',crypt('123456', gen_salt('bf')),'Mariana Ramos','mariana.ramos@gmail.com','Active',TRUE,'default.png'),
+('flaviacarvalhido',crypt('123456', gen_salt('bf')),'Flávia Carvalhido','flavia.carvalhido@gmail.com','Active',TRUE,'default.png'),
+('joaorosario',crypt('pipoca123', gen_salt('bf')),'João Rosário','joao.rosario@gmail.com','Active',FALSE,'default.png'),
+('bernardoramalho',crypt('bernardinho', gen_salt('bf')),'Bernardo Ramalho','bernardo.ramalho@gmail.com','Active',FALSE,'default.png'),
+('marcioduarte',crypt('marcio2000', gen_salt('bf')),'Márcio Duarte','marcio.duarte@gmail.com','Active',FALSE,'default.png'),
+('joaoluiscarvalhal',crypt('luisjoao', gen_salt('bf')),'João Carvalhal','joao.carvalhal@gmail.com','Active',FALSE,'default.png'),
 ('sofiaferreiraleite',crypt('hello', gen_salt('bf')),'Sofia Ferreira Leite','sofia.fl@gmail.com','Active',FALSE,'default.png'),
 ('euricosantos',crypt('123456', gen_salt('bf')),'Afonso Eurico Santos','afonso.eurico.santos@gmail.com','Active',FALSE,'default.png'),
 ('jorgetavares',crypt('YPJ17AJZ0YL', gen_salt('bf')),'Jorge Tavares','jorge.tavares@gmail.com','Active',FALSE,'default.png'),

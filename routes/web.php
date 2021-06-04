@@ -10,54 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Home
-Route::get('/','FeedController@show')->name('homepage');
 
 
-//Homepage
-Route::get('home',function(){
-    return view('pages.homepage');
-});
 
 Route::get('aboutus',function(){
     return view('pages.aboutus');
 });
-
-Route::get('fullpost',function(){
-    return view('pages.fullpost');
-});
-
-Route::get('fullpostadmin',function(){
-    return view('pages.fullpostadmin');
-});
-
-Route::get('admindashboard',function(){
-    return view('pages.admindashboard');
-});
-
-Route::get('authuserfeed',function(){
-    return view('pages.authuserfeed');
-});
-Route::get('editpost',function(){
-    return view('pages.editpost');
-});
-
-Route::get('ownprofile',function(){
-    return view('pages.ownprofile');
-});
-
-Route::get('post/new',function(){
-    return view('pages.newpost');
-});
-
-Route::get('otherprofile',function(){
-    return view('pages.otherprofile');
-});
-
-Route::get('usermanager',function(){
-    return view('pages.usermanager');
-});
-
 
 //---------------------------------------------------
 
