@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Laravel\Ui\Presets\React;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -27,6 +28,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
+
+      if (Gate::allows('is_admin')) {return redirect('admin/reports');}
+
       $post = PostController::getPost($id);
      // $this->authorize('view', $post);
       if ($post->getStatusCode() !== 200) {
@@ -77,6 +81,7 @@ class PostController extends Controller
 
      public function showNewPost()
      {
+      if (Gate::allows('is_admin')) {return redirect('admin/reports');}
       $categories=Category::all();
       return view('pages.newpost',['categories'=>$categories]);
      }
@@ -205,6 +210,8 @@ class PostController extends Controller
 
 
     public function showEdit($id){
+       
+      if (Gate::allows('is_admin')) {return redirect('admin/reports');}
       $post = PostController::getPost($id);
       if ($post->getStatusCode() !== 200) {
         abort($post->getStatusCode());

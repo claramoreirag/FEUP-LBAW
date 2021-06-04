@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Response;
 use DateTime;
 use Laravel\Ui\Presets\React;
 use App\Models\PostVote;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -41,8 +42,11 @@ array_push($finalusers,$u);
     return response()->json(['html'=>view('partials.management.users',['users' => $users])->render()]);
   }
 
+  /*See an user profile followes and following posts saved upvoted */
+
   public function show($id)
   {
+    if (Gate::allows('is_admin')) {return redirect('admin/reports');}
       $user = User::find($id);
       $followers = $user->followers()->get()->count();
       $following = $user->following()->get()->count();
@@ -130,6 +134,7 @@ array_push($finalusers,$u);
       return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
   }
 
+  /*When an user deletes is own account, this action cannot be undon */
   public function delete(Request $request)
   {
     $user =User::find(Auth::id());

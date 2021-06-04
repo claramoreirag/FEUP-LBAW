@@ -6,15 +6,17 @@ use App\Models\PostVote;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 
 class PostVoteController extends Controller
 {
 
+    /*A post vote is created as well as added to the count of votes on a post*/
+    /*It changes the previous vote if it already existed*/
+
     public function storeNewPostVote(Request $request)
-    {
-        
-       
+    {  
         $vote =PostVote::where('post_id', '=',  $request->input('post_id'))->where('user_id', '=', Auth::id()) ->first();
         $post=Post::find($request->input('post_id'));
         if($request->input('upvote')=="true"){

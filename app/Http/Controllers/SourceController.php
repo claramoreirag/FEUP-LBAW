@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Source;
 use App\Models\PostSource;
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 
 class SourceController extends Controller
 {
@@ -48,27 +49,6 @@ class SourceController extends Controller
     
   }
 
-    /**
-     * Updates the state of an individual item.
-     *
-     * @param  int  $id
-     * @param  Request request containing the new state
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-     
-    }
-
-    /**
-     * Deletes an individual item.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function delete(Request $request, $id)
-    {
-      
-    }
+    
 
 }

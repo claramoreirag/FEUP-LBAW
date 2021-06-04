@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 use DateTime;
+use Illuminate\Support\Facades\Gate;
 
 class ReportController extends Controller
 {
@@ -25,14 +26,7 @@ class ReportController extends Controller
 
 
   public function delete(Request $request, $id)
-  {
-   // $post = Post::find($id);
-
-    // $this->authorize('delete', $card);
-    //$post->delete();
-   // return redirect()->route('profile',['user_id'=>Auth::id()]);
-   
-  }
+  {}
 
     public static function getReport($id) {
         $report = Report::find($id);
@@ -149,6 +143,8 @@ class ReportController extends Controller
          else return false;
     }
 
+    /*Delete posts, stays invisible, this action can be undon*/
+
     public function deletePostAdmin(Request $request, $id){
         // $this->authorize('delete', $card);
         $post = Post::find($id);
@@ -172,6 +168,8 @@ class ReportController extends Controller
 
      return redirect()->route('reports',['deleteSuccess=1']) ;
     }
+
+    /*Delete comment, stays invisible, this action can be undon*/
 
     public function deleteCommentAdmin(Request $request, $post_id, $id){
         // $this->authorize('delete', $card);
@@ -198,6 +196,7 @@ class ReportController extends Controller
     }
 
 
+    /*Dismiss a report, this action can be undon, reported changes state*/
     public function dismissReport(Request $request, $report_id){
         // $this->authorize('delete', $card);
         $report = Report::find($report_id);
@@ -229,6 +228,7 @@ class ReportController extends Controller
         return redirect()->route('reports');
     }
 
+    /*Suspending a user, first all post invisible, second reports deleted, third account suspended*/
     public function suspendUser(Request $request, $user_id){
         $allposts=Post::all();
         $allcomments=Comment::all();
@@ -278,6 +278,7 @@ class ReportController extends Controller
         return redirect()->route('users');
     }
 
+    /*Banning a user, first all post invisible, second reports deleted, third account banned*/
     public function banUser(Request $request, $user_id){
         //TODO Visible
         // $this->authorize('delete', $card);
@@ -329,6 +330,7 @@ class ReportController extends Controller
         return redirect()->route('users');
     }
 
+    /*Activate a user, first all post visible, second reports not visible, third account active*/
     public function activateUser(Request $request, $user_id){
         // $this->authorize('delete', $card);
         $user = User::find($user_id);

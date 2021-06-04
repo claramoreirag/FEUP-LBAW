@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\Gate;
 
 class FeedController extends Controller {
 
@@ -75,7 +76,7 @@ class FeedController extends Controller {
 
     public function show() {
         
-   
+        if (Gate::allows('is_admin')) {return redirect('admin/reports');}
         $categories = Category::all();
         // random tags
         // $randomTags = Tag::inRandomOrder()->limit(8)->get();

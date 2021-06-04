@@ -9,10 +9,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
 use App\Models\Post;
 use DateTime;
+use Illuminate\Support\Facades\Gate;
 
 class CommentController extends Controller
 {
 
+    /*This gets all the comments from a post*/
     public static function getAllFromPost($post_id)
     {
         $cmts=Comment::where('post_id','=',$post_id)->where('comment_id','=',null)->orderBy('datetime','desc')->get();
@@ -29,12 +31,11 @@ class CommentController extends Controller
       return $comments;
     }
 
+    /*Editing, posting and replying to a comment using ajax: */
+
     public function newComment(Request $request){
         $comment = new Comment();
-        //$src = Source().create($request->input('source'));
-        //$this->authorize('storeNewcomment', $comment);
-        
-        
+      
         $this->authorize('create', $comment);
         $comment->user_id = Auth::id();
         $comment->body = $request->input('body');
@@ -53,8 +54,7 @@ class CommentController extends Controller
     }
 
     public function editComment(Request $request,$comment_id){
-        //var_dump($request);
-
+     
         $comment = Comment::find($comment_id);
      
 
@@ -67,19 +67,12 @@ class CommentController extends Controller
         else{ 
             return redirect('/post/'.$request->input('post_id'));
         }
-       // return response()->json(['success'=>'Form is successfully submitted!']);
-        // return response()->json(['success'=>'Form is successfully submitted!','comment'=>$view]);
-        
-       
-       
-        //return redirect('/post/'.$request->input('post_id'));
     }
 
     public function replyComment(Request $request){
 
         $comment = new Comment();
-        //$src = Source().create($request->input('source'));
-        //$this->authorize('storeNewcomment', $comment);
+       
         
         $this->authorize('create', $comment);
         $comment->user_id = Auth::id();
@@ -136,7 +129,7 @@ class CommentController extends Controller
     }
 
 
-    
+    /*Deleting a comment, this action cannot be undon*/
   public function deleteComment(Request $request, $id)
   {
     $comment = Comment::find($id);
@@ -154,7 +147,7 @@ class CommentController extends Controller
 
 
 
-
+/*Reporting a comment*/
   public function reportComment($id){
     ReportController::createCommentReport(Auth::id(),$id);
     $comment = Comment::find($id);

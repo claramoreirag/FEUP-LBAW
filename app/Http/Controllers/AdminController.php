@@ -20,9 +20,7 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller {
   
-
-
-
+/*Show admin Dashboard*/
     public function show() {
        
         if (Gate::denies('is_admin')) {abort(403);}
@@ -68,6 +66,7 @@ class AdminController extends Controller {
         return view('pages.admindashboard', ['reportedPosts' => $reportedPostsFinal, 'reportedComments' => $reportedCommentsFinal]);
     }
 
+    /*Show users dashboard*/
     public function showUsers() {
         if (Gate::denies('is_admin')) {abort(403);}
         $users = User::all();
@@ -86,8 +85,11 @@ class AdminController extends Controller {
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
+    /*Show the user profile in the admin form*/
+
     public function showUser($id)
   {
+      /*gate to */
     if (Gate::denies('is_admin')) {abort(403);}
       $user = User::find($id);
       $followers = $user->followers()->get()->count();
