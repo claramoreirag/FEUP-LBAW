@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('aboutus',function(){
+    return view('pages.aboutus');
+});
 
 // Home
 Route::get('/','FeedController@show')->name('homepage');
