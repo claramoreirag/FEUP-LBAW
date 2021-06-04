@@ -9,6 +9,22 @@ docker run -it -p 8000:80 lbaw2076/lbaw2076
 
 Link to the release with the final version of the source code in the group's git repository: https://git.fe.up.pt/lbaw/lbaw2021/lbaw2154
 
+Link for the production image: http://lbaw2154.lbaw-prod.fe.up.pt/
+
+#### 2.1. Administration Credentials
+
+| Email | Password |
+|----------|----------|
+| clara.moreira@gmail.com | 123456CA |
+| flavia.carvalhido@gmail.com | 123456FL |
+
+#### 2.2. User Credentials
+
+| Type | Email | Password |
+|------|----------|----------|
+| basic account | joao.rosario@gmail.com | pipoca123 |
+| basic account | bernardo.ramalho@gmail.com  | bernardinho |
+
 ### Run PostgresSQL local server
 
 ```
