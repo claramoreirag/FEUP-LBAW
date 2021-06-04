@@ -50,34 +50,63 @@
                     <label for="inputNewsSource">News Source</label>
                  
                     <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>
-                    <div class="container">
-                        <div class="row">
+                    
+
+
+                    <div class="row">
                             <input type="hidden" name="count" value="1" />
                             <div class="control-group" id="fields">
                                 <div class="controls" id="profs">
-                                   
-                                        <div id="source"><input autocomplete="off" class=" form-text form-control" id="source1" name="source[]" type="text" placeholder="Type something" data-items="8" /><button id="b1" class=" py-0 px-1 btn btn-primary add-more" type="button">+</button></div>
-                                  
-                                   
-
+                                        <div id="source">
+                                            <input  class=" form-text form-control" id="source1" name="source[]" type="text" placeholder="http://" data-items="8" />
+                                            <button id="b1" class="py-1 px-1 btn btn-light add-more" type="button">Add another source</button>
+                                        </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <input  type="submit" class="btn-sm btn-primary" value="Publish" formaction="{{ route('editpost', ['post_id'=>$post->id])}}">
+                <div class="row">
+                <div class="col-10">
+                <input  type="submit" class="btn btn-primary" value="Publish"  formaction="{{ route('editpost', ['post_id'=>$post->id])}}">
                 @method('put')
                 @csrf
             </form>
-            <form action="/post/{{$post->id}}" method="post">
-                <!-- <a class="btn-sm btn-danger" href="/post/{{$post->id}}">DeletePost</a> -->
-                <input class="btn-sm btn-danger" type="submit" value="Delete" >
-                @method('delete')
-                @csrf
-            </form>
+                                            </div>
+                                            <div class="col-2 ">
+           
+            <button type="button" class="btn btn-outline-secondary" data-dismis="examplemodal" data-toggle="modal" data-target="#deletemodal" title="Delete Post" ><i class="fas fa-trash"></i> Delete Post</button>
+                                            </div>
+                                            </div>
         </div>
         <div class="col-md-1 col-xs-0"></div>
     </div>
 </div>
+
+
+<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> Are you sure?</h5>
+        </div>
+        <div class="modal-body">
+        Are you sure you want to delete this post? This is a permanent action.
+        </div>
+       
+        
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+        <form action="/post/{{$post->id}}" method="post">
+                <button type="submit" class="btn btn-outline-secondary" title="Delete Post" ><i class="fas fa-trash"></i> Delete Post</button>
+                @method('delete')
+                @csrf
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script defer type="text/javascript" src="{{ URL::asset('js/sources.js') }}"></script>
 {{-- <script defer type="text/javascript" src="{{ URL::asset('js/tinymce.js') }}"></script> --}}

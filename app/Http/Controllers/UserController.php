@@ -26,7 +26,13 @@ class UserController extends Controller
     
     $users = User::where('username', 'like', '%' . $request->get('searchQuery') . '%' )->get();
 
-    return json_encode($users);
+    $finalusers=array();
+    foreach($users as $u){
+      if(!$u->isAdmin()){
+array_push($finalusers,$u);
+      }
+    }
+    return json_encode($finalusers);
   }
 
 

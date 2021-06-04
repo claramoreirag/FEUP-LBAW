@@ -37,7 +37,7 @@ $already_reported_reply=ReportController::commentAlreadyReported(Auth::id(),$com
                     <div class="col-3 col-xs-3  pr-1 icon" >
                         <form id="delete{{$comment->id}}" action="{{ route("delete_comment",["comment_id"=>$comment->id]) }}" method="Post">
                             <input type="hidden" id="postId"  name="post_id" value="{{$comment->post_id}}"> 
-                        <button type="submit"  class="hiddenbutton">d<i class="action-green green fas fa-trash-alt"></i></button>
+                        <button type="submit"  class="hiddenbutton"><i class="action-green green fas fa-trash-alt"></i></button>
                           @method("delete")@csrf
                         </form>
                     </div>

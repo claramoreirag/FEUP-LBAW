@@ -58,6 +58,20 @@ if (deleteSuccess === '1') {
         <div class="col-9 ">
             <h1 class="title">Reported Activity</h1>
         </div>
+      
+                     
+      <!--  <div class="col-4 " id="settingsCategory" >
+                                <div class="row align-baseline">
+                                <div class="col">
+                                <input class="pr-0" type="checkbox" checked id="posts" name="posts" value="posts">
+                                <label for="posts"> Posts</label><br>
+                                </div>
+                                <div class="col">
+                                <input class="pr-0" type="checkbox" checked id="comments" name="comments" value="comments">
+                                <label for="comments"> Comments</label><br>
+                                </div>
+                                </div>
+        </div>-->
         <div class="col align-self-center">
             <select class="form-select"  id="changeDashboard" aria-label="Topic" name="dashboard">
                 <option value="1">Unhandled reports</option>
@@ -68,7 +82,7 @@ if (deleteSuccess === '1') {
         <div class="table-responsive " id="changeable">
 
             <!-- show reported things -->
-            <table class="table table-hover mt-4">
+            <table class="table table-hover mt-4"   >
                 <thead>
                     <tr>
                         <th width=10% scope="col">Type</th>
@@ -85,7 +99,7 @@ if (deleteSuccess === '1') {
             </table>
         </div>
         <div class=" col-1 "></div>
-
+        <div class="row m-5"><div>
     </div>
 </div>
 

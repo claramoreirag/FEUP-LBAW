@@ -15,11 +15,17 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller {
+  
+
+
 
     public function show() {
+       
+        if (Gate::denies('is_admin')) {abort(403);}
          $r = Report::all();
        
          $reportedPosts=array();
@@ -63,6 +69,7 @@ class AdminController extends Controller {
     }
 
     public function showUsers() {
+        if (Gate::denies('is_admin')) {abort(403);}
         $users = User::all();
         $usersFinal = array();
         foreach($users as $u){
@@ -81,6 +88,7 @@ class AdminController extends Controller {
 
     public function showUser($id)
   {
+    if (Gate::denies('is_admin')) {abort(403);}
       $user = User::find($id);
       $followers = $user->followers()->get()->count();
       $following = $user->following()->get()->count();
@@ -120,6 +128,7 @@ class AdminController extends Controller {
     }
 
     public function viewPost($id) {
+        if (Gate::denies('is_admin')) {abort(403);}
         $p=PostController::getPost($id);
         $post = json_decode($p->getContent());
         $comments=CommentController::getAllFromPost($id);
@@ -127,6 +136,7 @@ class AdminController extends Controller {
     }
 
     public function viewComment($post_id,$comment_id) {
+        if (Gate::denies('is_admin')) {abort(403);}
         $p=PostController::getPost($post_id);
         $post = json_decode($p->getContent());
         $comments=CommentController::getAllFromPost($post_id);
@@ -144,7 +154,7 @@ class AdminController extends Controller {
 
     public function undoAction($report_id) {
         //TODO visibles
-
+        if (Gate::denies('is_admin')) {abort(403);}
         $report=ReportController::getReport($report_id);
         $re=Report::all();
         if(json_decode($report->getContent())->comment!= null){
@@ -186,6 +196,7 @@ class AdminController extends Controller {
     }
 
     public function updateDashboard(Request $request){
+        if (Gate::denies('is_admin')) {abort(403);}
         $val=$request->get('searchQuery');
         $r = Report::all();
         $reportedPosts=array();

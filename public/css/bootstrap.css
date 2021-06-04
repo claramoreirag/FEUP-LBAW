@@ -10885,3 +10885,7 @@ div.hello{
  .voted{
    color:var(--pink) !important;
  }
+
+ .grey{
+  color:var(--gray) !important;
+}

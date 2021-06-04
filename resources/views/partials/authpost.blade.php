@@ -11,41 +11,49 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 // var_dump($already_downvoted);
 @endphp
 
-<div class="card mb-3 " data-id="{{ $post->id }}">
+<div class="card mb-3 shadow p-2 bg-white rounded" data-id="{{ $post->id }}">
     <div class="card-body ">
-        <div class="row mb-2 justify-content-end">
-            <div class="col-sm-3 col-md-3  " style="text-align:end">
+        <div class="row pt-3 pb-2">
+            <div class="col-1 " style="margin-right:1rem;">
+                <img class=""  src="{{route('avatar',['user_id'=>$post->author->id])}}" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
+            </div>
+            <div class="col-8 align-self-center">
+                <h4 class="card-title text-primary mb-0">{{$post->title}}</h4>
+            </div>
+
+            <div class="col align-self-center d-flex justify-content-end">
               @if($already_follow)
-              <span class="badge badge-primary action-bg-green tag p-1" data-toggle="modal" data-target="#unfollowTag{{$post->id}}"> {{$post->category}}</span>
+              <span class="badge badge-primary action-bg-green tag p-2" data-toggle="modal" data-target="#unfollowTag{{$post->id}}" title="Unfollow"> {{$post->category}}  <i class="fas fa-bell"></i>
+</span>
               @endif
               @if(!$already_follow)
-              <span class="badge badge-primary action-bg-green tag p-1" data-toggle="modal" data-target="#followTag{{$post->id}}"> {{$post->category}}</span>
+              <span class="badge badge-primary action-bg-green tag p-2" data-toggle="modal" data-target="#followTag{{$post->id}}" title="Follow"> {{$post->category}}</span>
               @endif
 
                 </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-1 " style="margin-right:1rem;">
-                <img class="" onload="checkVotes({{$post->id}})" src="{{route('avatar',['user_id'=>$post->author->id])}}" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
-            </div>
-            <div class="col-10">
-                <h4 class="card-title text-primary">{{$post->title}}</h4>
             </div>
 
         </div>
         <h6 class="card-subtitle mt-2 mb-2 text-muted">By <a href="/user/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{ date('d-m-Y', strtotime($post->datetime) )}}</span></h6>
         <div class="card-text">
             <div class="row">
-
-                <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
-                    {{$post->header}}
-                    <a href="/post/{{$post->id}}" class="read-more">Read More</a>
-                    <br>
+                @if($post->photo!=null)
+                <div class="col-lg-8 col-md-8 col-sm-6 ">
+                    <p class="mb-0">{{$post->header}}  <a href="/post/{{$post->id}}" class="read-more">  Read More</a>
+                    <br></p>
+                   
                 </div>
-                {{-- <div class="col-md-4 col-xs-6 post-pic">
-                    <img class="img-fluid" src="https://images.theconversation.com/files/374780/original/file-20201214-23-1dv2o1f.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip" alt="template pic">
-                </div> --}}
+                <div class="col-md-4 col-xs-6 post-pic" style="display: flex; justify-content: center; align-items: center; overflow: hidden">
+                    <img class="img-thumbnail mt-2 mb-2" style="object-fit:cover; flex-shrink: 0; min-width: 100%; min-height: 100%;" src="{{route('previewpic',['post_id'=>$post->id])}}" alt="default.png">
+                </div>
+                @else
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
+    
+                    <p class="mb-0">{{$post->header}} <a href="/post/{{$post->id}}" class="read-more">  Read More</a>
+                    <br></p>
+                    
+                </div>
+                @endif
             </div>
 
         </div>
@@ -141,10 +149,7 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
       </div>
     </div>
   </div>
-    <script defer type="text/javascript" src="{{ URL::asset('js/comments.js') }}"></script>
-
-  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
+    
 
 
 
@@ -258,7 +263,7 @@ function checkVotes(id){
    console.log(isUp==true);
    console.log(isDown);
   }
-
+  checkVotes({{$post->id}});
 
   $('#upvote{{$post->id}}').off().on('submit', function(event) {
     event.preventDefault();

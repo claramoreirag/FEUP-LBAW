@@ -33,7 +33,8 @@
                             @endif
                         </div>
                         <div class="row text-sm-right fs-6" >
-                        <a class="" href="">Forgot your password?</a>
+                        <a data-toggle="modal" data-target="#pass" class="" href="">Forgot your password?</a>
+                    
                         </div>
                         <button  type="submit" class="btn btn-block btn-primary mt-4 font-weight-bold">Login</button>
                     </form>
@@ -96,6 +97,28 @@
        
       </div>
      
+    </div>
+  </div>
+</div>
+
+
+
+<div id="pass" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Password Recovery</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <label for="inputNewsTitle">E-mail</label>
+                    <input type="text-box" class="form-control" name="title" id="inputNewsTitle" placeholder="email@address.com">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-block btn-outline-secondary">Send Email</button>
+      </div>
     </div>
   </div>
 </div>

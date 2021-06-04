@@ -70,8 +70,9 @@
                       </ul>
                       </div>
                       <div class="d-flex justify-content-center">
-                   
-                            <button class="see-more btn btn-primary" data-page="2" data-link="/post/{{$post->id}}/?page=" data-div="#posts">See more</button> 
+                        @if($comments->hasMorePages())
+                        <button class="see-more btn btn-primary" data-page="2" data-link="/post/{{$post->id}}/?page=" data-div="#posts">See more</button> 
+                  @endif
                       </div>
                 </div>
 

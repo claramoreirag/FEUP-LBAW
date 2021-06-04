@@ -4,7 +4,8 @@
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 $already_reported=ReportController::postAlreadyReported(Auth::id(),$post->id);
-
+$already_upvoted= UserController::alreadyUpvotedPost($post->id);
+$already_downvoted= UserController::alreadyDownvotedPost($post->id);
 $already_follow=  UserController::alreadyFollowCat($post->category);
 
 @endphp
@@ -53,8 +54,15 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                     <div class="row post-interactions justify-content-between mt-4">
                         <div class="col-md-2 col-sm-4 actions"></i>
                             <div class="row ">
-                                <div class="col-4 share action"><i class="fas fa-share-alt"></i></div>
-                                <div class="col-4 save action"><i class="fas fa-bookmark"></i></div>
+                                <div class="col-4 share action"><i class="fas fa-share-alt"></i></div> 
+                                @if($saved)
+                                <div class="col-4 save action icon" id="save-post{{$post->id}}" onclick="savePost({{$post->id}})"><a class="text-secondary"  title="Save Post"><i id="bookmark{{$post->id}}" class="fas fa-bookmark"></i></a></div>
+                                @endif
+                                @if(!$saved)
+                                <div class="col-4 save action icon" id="save-post{{$post->id}}" onclick="savePost({{$post->id}})"><a class="text-secondary"  title="Save Post"><i id="bookmark{{$post->id}}" class="far fa-bookmark"></i></a></div>
+                                   
+                                @endif
+                            
                                 @if($already_reported)
                                     <div class="col-4 report action icon text-secondary" data-toggle="modal" data-target="#ModalAlreadyReported" ><i class="fas fa-exclamation-circle"></i></div>
                                     @endif
@@ -63,12 +71,27 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                                     @endif
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4" style="margin: 0.5rem 0rem; padding:0rem ;">
-                            <div class="row justify-content-end votes">
-                                <div class="col-6 upvote"><i class="fas fa-arrow-up"></i>  {{$post->upvotes}} </div>
-                                <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> {{$post->downvotes}} </div>
-                                
+                        <div class="col-xl-2 col-md-3 col-sm-4 mt-2">
+                          <div class="row justify-content-end votes text-secondary">
+                           
+                            <div class="col-6 upvote">
+                              <form id="upvote{{$post->id}}" action="{{ route("post_vote",["post_id"=>$post->id]) }}" method="Post">
+                                <input type="hidden" id="postId{{$post->id}}" name="post_id" value="{{$post->id}}">
+                                <input type="hidden" id="is_up{{$post->id}}" name="is_up" value="true">
+                                <button id="upvote_arrow{{$post->id}}" class="btn text-secondary hiddenbutton"><i class="fas fa-arrow-up"></i> <span class="number">{{$post->upvotes}}</span></button>
+                  
+                                @method("post")@csrf
+                              </form>
                             </div>
+                            <div class="col-6 downvote">
+                              <form id="downvote{{$post->id}}" action="{{ route("post_vote",["post_id"=>$post->id]) }}" method="Post">
+                                <input type="hidden" id="dpostId{{$post->id}}" name="post_id" value="{{$post->id}}">
+                                <input type="hidden" id="dis_up{{$post->id}}" name="is_up" value="false">
+                                <button id="downvote_arrow{{$post->id}}" class="btn text-secondary hiddenbutton"><i class="fas fa-arrow-down"></i><span class="number"> {{$post->downvotes}}</span> </div></button>
+                                @method("post")@csrf
+                              </form>
+                     
+                          </div>
                         </div>
                     </div>
 
@@ -97,9 +120,10 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                     </ul>
                     </div>
                     <div class="d-flex justify-content-center">
-                 
+                     @if($comments->hasMorePages())
                           <button class="see-more btn btn-primary" data-page="2" data-link="/post/{{$post->id}}/?page=" data-div="#posts">See more</button> 
-                    </div>
+                    @endif
+                        </div>
             </div>
         </div>
     </div>
@@ -153,9 +177,39 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
         </div>
       </div>
 
+      <div id="toast-save" class="toast" style="position: absolute; top: 20; right: 40;">
+        <div class="toast-header">
+          
+          <strong class="mr-auto">Sucess</strong>
+          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body">
+          The post was successfully added to your saved posts!
+        </div>
+    </div>
+    
+      
+    
+    <div id="toast-unsave" class="toast" style="position: absolute; top: 20; right: 40;">
+      <div class="toast-header">
+       
+        <strong class="mr-auto">Sucess</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        The post was successfully removed from your saved posts!
+      </div>
+    </div>
+    
+   
 
-    <script defer src="https://code.jquery.com/jquery-3.1.1.min.js">
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+    <script defer type="text/javascript" src="{{ URL::asset('js/comments.js') }}"></script>
+   
     <script defer type="text/javascript">
   
     $(".see-more").click(function() {
@@ -212,3 +266,107 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
         
              });
     </script>
+
+<script defer type="text/javascript">
+
+  function checkVotes(id){
+   
+     let isUp="{{$already_upvoted}}";
+     let isDown="{{$already_downvoted}}";
+     let arrow = document.querySelector("#upvote_arrow"+id);
+     let darrow = document.querySelector("#downvote_arrow"+id);
+     if(isUp)arrow.classList.add("voted");
+     if(isDown)darrow.classList.add("voted");
+     console.log(isUp==true);
+     console.log(isDown);
+    }
+  
+    checkVotes('{{$post->id}}');
+    $('#upvote{{$post->id}}').off().on('submit', function(event) {
+      event.preventDefault();
+  
+      let post_id = $('#postId{{$post->id}}').val();
+      let is_up = $('#is_up{{$post->id}}').val();
+      console.log(is_up);
+      console.log('#is_up{{$post->id}}');
+      let url = '/post/' + post_id + '/vote';
+  
+      sendAjaxRequest('POST', url, {
+        "_token": "{{ csrf_token() }}",
+        upvote:is_up,
+        post_id: post_id
+      }, votePostAction);
+  
+      event.preventDefault();
+  
+    });
+  
+  
+  
+    $('#downvote{{$post->id}}').off().on('submit', function(event) {
+      event.preventDefault();
+  
+      let post_id = $('#dpostId{{$post->id}}').val();
+      let is_up = $('#dis_up{{$post->id}}').val();
+      console.log(is_up);
+  
+      let url = '/post/' + post_id + '/vote';
+  
+      sendAjaxRequest('POST', url, {
+        "_token": "{{ csrf_token() }}",
+        upvote:is_up,
+        post_id: post_id
+      }, votePostAction);
+  
+      event.preventDefault();
+  
+    });
+  
+    function votePostAction() {
+  
+    console.log(this.responseText)
+    let response = JSON.parse(this.responseText);
+    console.log(response.success)
+    let arrow = document.querySelector("#upvote_arrow"+response.id);
+    let number= arrow.querySelector('.number');
+    let darrow = document.querySelector("#downvote_arrow"+response.id);
+    let dnumber= darrow.querySelector('.number');
+    let n=parseInt(number.innerHTML);
+    let dn=parseInt(dnumber.innerHTML);
+      switch(response.success){
+        case "new_up":
+          arrow.classList.add("voted");
+          number.innerHTML=n+1;
+          break;
+        case "remove_up":
+          arrow.classList.remove("voted");
+          number.innerHTML=n-1;
+          break;
+          case "switch_up":
+            darrow.classList.remove("voted");
+            dnumber.innerHTML=dn-1;
+            arrow.classList.add("voted");
+            number.innerHTML=n+1;
+          break;
+          case "new_down":
+            arrow.classList.add("voted");
+            dnumber.innerHTML=dn+1;
+          break;
+          case "remove_down":
+          darrow.classList.remove("voted");
+          dnumber.innerHTML=dn-1;
+          break;
+          case "switch_down":
+            arrow.classList.remove("voted");
+            number.innerHTML=n-1;
+            darrow.classList.add("voted");
+            dnumber.innerHTML=dn+1;
+          break;
+  
+      }
+     
+  
+    }
+  
+  </script>
+  

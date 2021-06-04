@@ -260,5 +260,5 @@
   </div>
 </div>
 
-<script defer type="text/javascript" src="{{ URL::asset('js/app.js') }}" ></script>
+
 <script defer type="text/javascript" src="{{ URL::asset('js/otherprofile.js') }}" ></script>

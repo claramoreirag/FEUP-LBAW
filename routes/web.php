@@ -15,6 +15,13 @@ Route::get('aboutus',function(){
     return view('pages.aboutus');
 });
 
+// Home
+Route::get('/','FeedController@show')->name('homepage');
+
+
+
+
+
 //---------------------------------------------------
 
 // Authentication
@@ -51,7 +58,7 @@ Route::put('/post/{post_id}', 'PostController@edit')->name('editpost');
 Route::get('/post/new', 'PostController@showNewPost');
 Route::post('/post/new', 'PostController@storeNewPost')->name('create_new_post');
 Route::post('/post/{post_id}/vote', 'PostVoteController@storeNewPostVote')->name('post_vote');
-
+Route::get('/post/{post_id}/pic','PostController@getPostPic')->name('previewpic');
 
 
 //Search
