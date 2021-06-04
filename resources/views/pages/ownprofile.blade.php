@@ -27,6 +27,17 @@
         document.getElementById("linkk").setAttribute('href',"../post/"+n);
     }
   });
+
+  $(document).ready(function(){
+    console.log();
+    $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+        localStorage.setItem('activeTab', $(e.target).attr('href'));
+    });
+    var activeTab = localStorage.getItem('activeTab');
+    if(activeTab){
+        $('#rowTab a[href="' + activeTab + '"]').tab('show');
+    }
+});
 </script>
 
 <div class="row">
@@ -85,8 +96,8 @@
  
   <div class="col-lg-8 md-12" id="myPosts">
     <div class="row" id="postOptions">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
+      <ul class="nav nav-tabs" id="rowTab">
+        <li class="nav-item active">
           <a class="nav-link active" data-toggle="tab" href="#posts"> My Posts</a>
         </li>
         <li class="nav-item">
@@ -104,8 +115,20 @@
         {!! $ownposts->links() !!}
         </div>
         </div>
+
+
         <div class="tab-pane fade" id="savedposts">
-          @each('partials.switchposts', $savedPosts, 'post')
+          <div id="savedposts_list">
+            @each('partials.switchposts', $savedPosts, 'post')
+          </div>
+
+          
+    <div class="d-flex justify-content-center">
+      @if($savedPosts->hasMorePages())
+    <button class="see-more btn btn-primary" data-page="2" data-link="/user/{{$user->id}}/?page=" data-div="#savedposts">See more</button> 
+      @endif
+    </div>
+          
           <div class="d-flex justify-content-center">
         
             {!! $savedPosts->links() !!}
@@ -146,3 +169,15 @@ New Post
 </a>
 
 @endsection
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script defer type="text/javascript" src="{{ URL::asset('js/ownprofile.js') }}" ></script>
+
+
+<script defer>
+
+
+  
+</script>
