@@ -11,14 +11,14 @@ Link to the release with the final version of the source code in the group's git
 
 Link for the production image: http://lbaw2154.lbaw-prod.fe.up.pt/
 
-#### 2.1. Administration Credentials
+**Administration Credentials**
 
 | Email | Password |
 |----------|----------|
 | clara.moreira@gmail.com | 123456CA |
 | flavia.carvalhido@gmail.com | 123456FL |
 
-#### 2.2. User Credentials
+**User Credentials**
 
 | Type | Email | Password |
 |------|----------|----------|
