@@ -21,7 +21,7 @@ GreeNews intends to promote an online information system that can compile news f
 | basic account | bernardo.ramalho@gmail.com  | bernardinho |
 
 
-To run the project image locally tun the following command:
+To run the project image locally, run the following command:
 ```
 docker run -it -p 8000:80 lbaw2076/lbaw2076
 ```
