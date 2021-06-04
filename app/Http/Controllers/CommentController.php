@@ -134,7 +134,7 @@ class CommentController extends Controller
   {
     $comment = Comment::find($id);
    
-    $this->authorize('delete', $comment);
+  
     
     $comment->delete();
     if($request->ajax()){

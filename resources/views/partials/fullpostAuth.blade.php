@@ -213,6 +213,23 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
    
     <script defer type="text/javascript">
   
+  function encodeForAjax(data) {
+            if (data == null) return null;
+            return Object.keys(data).map(function(k){
+              return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+            }).join('&');
+          }
+          
+          function sendAjaxRequest(method, url, data, handler) {
+            let request = new XMLHttpRequest();
+          
+            request.open(method, url, true);
+            request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.addEventListener('load', handler);
+            request.send(encodeForAjax(data));
+          }
+
     $(".see-more").click(function() {
       $div = document.querySelector('#comments_holder') ; //div to append
        // console.log($div);
@@ -240,17 +257,18 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
             
              let url="/post/"+post_id+"/comment";
         
-             $.ajax({
-               url: url,
-               type:"POST",
-               data:{
-                 "_token": "{{ csrf_token() }}",
-                 body:body,
-                 post_id:post_id,
-               },
-               success:function(response){
-              console.log("done");
+             
 
+          sendAjaxRequest('POST',url,{
+                '_token': '{{csrf_token() }}',
+                body:body,
+                 post_id:post_id,
+               
+            },functionnnnn);
+
+            function functionnnnn(){
+              let response = JSON.parse(this.responseText);
+            console.log(response);
                  let query="#comment_list";
                  $('#body').empty();
                   let ul=document.querySelector(query);
@@ -259,13 +277,9 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                   newReply.innerHTML=response.comment
                   console.log(ul);
                  ul.insertBefore(newReply,ul.firstChild);
-                 
-               },
-              })
-              .done(function(data) {
-                  
-                });
-                event.preventDefault();
+            }
+
+            
         
              });
     </script>
