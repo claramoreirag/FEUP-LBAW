@@ -12,10 +12,12 @@
 */
 
 
+// Home
+Route::get('/','FeedController@show')->name('homepage');
 
-Route::get('aboutus',function(){
-    return view('pages.aboutus');
-});
+
+
+
 
 //---------------------------------------------------
 
