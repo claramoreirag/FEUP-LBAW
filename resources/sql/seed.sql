@@ -270,10 +270,10 @@ DROP EXTENSION IF EXISTS pgcrypto;
 CREATE EXTENSION pgcrypto;
 
 INSERT INTO "users" (username,password,name,email,state,is_admin,photo) VALUES 
-('claramoreirag',crypt('123456', gen_salt('bf')),'Clara Moreira','clara.moreira@gmail.com','Active',TRUE,'default.png'),
-('leonormgomes',crypt('123456', gen_salt('bf')),'Leonor Gomes','leonor.gomes@gmail.com','Active',TRUE,'default.png'),
-('marianaramos',crypt('123456', gen_salt('bf')),'Mariana Ramos','mariana.ramos@gmail.com','Active',TRUE,'default.png'),
-('flaviacarvalhido',crypt('123456', gen_salt('bf')),'Flávia Carvalhido','flavia.carvalhido@gmail.com','Active',TRUE,'default.png'),
+('claramoreirag',crypt('123456CA', gen_salt('bf')),'Clara Moreira','clara.moreira@gmail.com','Active',TRUE,'default.png'),
+('leonormgomes',crypt('123456LE', gen_salt('bf')),'Leonor Gomes','leonor.gomes@gmail.com','Active',TRUE,'default.png'),
+('marianaramos',crypt('123456MA', gen_salt('bf')),'Mariana Ramos','mariana.ramos@gmail.com','Active',TRUE,'default.png'),
+('flaviacarvalhido',crypt('123456FL', gen_salt('bf')),'Flávia Carvalhido','flavia.carvalhido@gmail.com','Active',TRUE,'default.png'),
 ('joaorosario',crypt('pipoca123', gen_salt('bf')),'João Rosário','joao.rosario@gmail.com','Active',FALSE,'default.png'),
 ('bernardoramalho',crypt('bernardinho', gen_salt('bf')),'Bernardo Ramalho','bernardo.ramalho@gmail.com','Active',FALSE,'default.png'),
 ('marcioduarte',crypt('marcio2000', gen_salt('bf')),'Márcio Duarte','marcio.duarte@gmail.com','Active',FALSE,'default.png'),

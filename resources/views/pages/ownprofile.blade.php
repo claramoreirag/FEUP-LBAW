@@ -133,7 +133,6 @@
 
           
           <div class="d-flex justify-content-center">
-        
             {!! $savedPosts->links() !!}
         </div>
         </div>

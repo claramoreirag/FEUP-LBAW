@@ -15,7 +15,7 @@ class CommentController extends Controller
 
     public static function getAllFromPost($post_id)
     {
-        $cmts=Comment::where('post_id','=',$post_id)->where('comment_id','=',null)->get();
+        $cmts=Comment::where('post_id','=',$post_id)->where('comment_id','=',null)->orderBy('datetime','desc')->get();
         $comments= array();
         foreach ($cmts as $c){
                 $replies=Comment::where('comment_id','=',$c->id)->get();
@@ -48,26 +48,24 @@ class CommentController extends Controller
         $comment['replies']=$replies;
         $view=view('partials.comment',['comment'=>$comment])->render();
   
+        
         return response()->json(['success'=>'Form is successfully submitted!','comment'=>$view]);
-  
-      
     }
 
     public function editComment(Request $request,$comment_id){
         //var_dump($request);
 
-        $comment = Comment::find($request->input('comment_id'));
-        $this->authorize('update', $comment);
-    
+        $comment = Comment::find($comment_id);
+     
+
          $comment->body = $request->input('body');
          $comment->save();
        
          if($request->ajax()){
-        
              return response()->json(['success'=>'Form is successfully submitted!','comment'=>$comment->body]);
-           
         }
-        else{ return redirect('/post/'.$request->input('post_id'));
+        else{ 
+            return redirect('/post/'.$request->input('post_id'));
         }
        // return response()->json(['success'=>'Form is successfully submitted!']);
         // return response()->json(['success'=>'Form is successfully submitted!','comment'=>$view]);

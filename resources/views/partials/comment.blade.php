@@ -162,7 +162,6 @@
          post_id:post_id,
        },
        success:function(response){
-      
          let query="#formreply"+comment_id;
             let rep  =document.querySelector(query);
             if(  rep.classList.contains("hidden") ){
@@ -177,6 +176,7 @@
           newReply.innerHTML=response.comment
           
          ul.insertBefore(newReply,ul.childNodes[2]);
+         
        },
       })
       .done(function(data) {

@@ -7,7 +7,7 @@
             
             <div class="row post-header mt-5">
                 <div class="col-md-7 col-lg-1">
-                    <a class="fas fa-arrow-left" href="{{ url('/authuserfeed') }}"></a>
+                  
                 </div>
                 <div class="col-md-5 col-lg-11"><p class="text-end">By <a  href="/user/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{ date('d-m-Y', strtotime($post->datetime)) }}</p></div>
                 <!--Imagem do avatar-->
@@ -41,7 +41,7 @@
                 <div class="row post-interactions justify-content-between mt-4">
                     <div class="col-md-2 col-sm-4 actions"></i>
                         <div class="row ">
-                            <div class="col-md-6 col-xs-6 save action"><a href='/post/{{$post->id}}/edit' ><span class="fas fa-edit"> edit</a></div>
+                            <div class="col-md-6 col-xs-6 save action"><a href='/post/{{$post->id}}/edit' > <i class="fas fa-edit"></i> Edit</a></div>
                             
                         </div>
                     </div>

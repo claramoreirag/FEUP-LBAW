@@ -62,7 +62,7 @@
             Useful links
           </h6>
           <p>
-            <a href="{{ url('/login') }}" class="text-reset">Login</a>
+            <a href="{{ url('/login') }}" class="text-reset">Login / Homepage</a>
           </p>
           <p>
             <a href="{{ url('/signup') }}" class="text-reset">Register</a>

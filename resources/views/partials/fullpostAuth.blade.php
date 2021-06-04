@@ -19,7 +19,7 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
             
             <div class="row post-header mt-5">
                 <div class="col-md-7 col-lg-1">
-                    <a class="fas fa-arrow-left" href="{{ url('/authuserfeed') }}"></a>
+                   
                 </div>
                 <div class="col-md-5 col-lg-11"><p class="text-end">By <a  href="/user/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{ date('d-m-Y', strtotime($post->datetime)) }}</p></div>
                 <!--Imagem do avatar-->
@@ -96,6 +96,7 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                     </div>
 
 
+                    <script defer type="text/javascript" src="{{ URL::asset('js/comments.js') }}"></script>
                     <div class="row  post-comment">
                         <h3 class="comments-title">Comments</h3><hr/>
                         
@@ -249,6 +250,7 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                },
                success:function(response){
               console.log("done");
+
                  let query="#comment_list";
                  $('#body').empty();
                   let ul=document.querySelector(query);
@@ -257,6 +259,7 @@ $already_follow=  UserController::alreadyFollowCat($post->category);
                   newReply.innerHTML=response.comment
                   console.log(ul);
                  ul.insertBefore(newReply,ul.firstChild);
+                 
                },
               })
               .done(function(data) {

@@ -9,7 +9,7 @@
             
             <div class="row post-header mt-5">
                 <div class="col-md-7 col-lg-1">
-                    <a class="fas fa-arrow-left" href="{{ url('/authuserfeed') }}"></a>
+                  
                 </div>
                 <div class="col-md-5 col-lg-11"><p class="text-end">By <a  href="/user/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{ date('d-m-Y', strtotime($post->datetime)) }}</p></div>
                 <!--Imagem do avatar-->

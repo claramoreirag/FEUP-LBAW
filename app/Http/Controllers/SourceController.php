@@ -26,10 +26,16 @@ class SourceController extends Controller
   
     if(Source::where('name', '=', $link)->exists()){
         $source = Source::where('name', '=', $link)->first();
-        $psource=new PostSource();
-        $psource->post_id = $post_id;
-        $psource->source_id = $source->id;
-        $psource->save();
+        if(PostSource::where('post_id', '=', $post_id)->where('source_id','=',$source->id)->exists()){
+
+        }
+        else{
+          $psource=new PostSource();
+          $psource->post_id = $post_id;
+          $psource->source_id = $source->id;
+          $psource->save();
+        }
+       
     }
     else{
         $source = new Source();

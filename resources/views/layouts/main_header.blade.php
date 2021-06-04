@@ -59,7 +59,7 @@
                     <div class="col-md-5  collapse navbar-collapse justify-content-end" id="navbarNav">
                         @if (Auth::check())
                            
-                            <a class="log nav-item nav-link text-white notification disabled" title="Comming soon! " href="#"><i class="far fa-bell"></i> </a>
+                          
                             <a class="log nav-item nav-link d-none d-md-block text-white" href="/user/{{Auth::id()}}">{{ Auth::user()->username }}</a>
                             <a class="log nav-item nav-link d-md-none text-white" href="/user/{{Auth::id()}}"> My Profile</a>
                             <span class="d-none d-md-block separator text-white"> | </span>

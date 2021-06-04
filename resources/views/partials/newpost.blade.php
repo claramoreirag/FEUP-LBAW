@@ -9,10 +9,20 @@
     </script>
 
 </head>
+
 <div class="container" id="fullNewsForm">
     <div class="row mt-3 pb-5 mb-2">
         <div class="col-md-1 col-xs-0"></div>
         <div class="col-md-10 col-xs-12 newsFormContent">
+        @if ($errors->any())
+  <div class="alert alert-danger">
+
+          @foreach ($errors->all() as $error)
+              <div>{{ $error }}</div>
+          @endforeach
+
+  </div>
+@endif
             {{ method_field('POST') }}
             <form action="{{ route('create_new_post') }}"  enctype="multipart/form-data" method="Post">
                 <input name="_method" type="hidden" value="POST">

@@ -92,10 +92,11 @@ class PostController extends Controller
       $validatedData = [];
       
       $validatedData = $request->validate([
-        'image' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          'image' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
           'title' => 'required|min:5',
           'header' => 'required|min:10',
           'body' => 'required|min:10',
+          
       ]);
       $this->authorize('create', $post);
       $post->user_id = Auth::id();
@@ -114,14 +115,14 @@ class PostController extends Controller
 
         }
         else {
-          $fileNameToStore = 'default.png';
+          $fileNameToStore = null;
         }
         $post->photo = $fileNameToStore;
         $post->isvisible = 1;
 
       $post->save();
 
-    
+     
       foreach($request->input('source') as $s){
         if($s!=null)SourceController::create($s,$post->id);
       }
@@ -227,6 +228,12 @@ class PostController extends Controller
       
       $post= Post::find($id);
       
+      $validatedData = $request->validate([
+          'title' => 'required|min:5',
+          'header' => 'required|min:10',
+          'body' => 'required|min:10',
+      ]);
+
       $this->authorize('update', $post);
       $post->title=$request->input('title');
       $post->header = $request->input('header');

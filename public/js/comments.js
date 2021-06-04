@@ -29,6 +29,8 @@
                      rep.classList.add("hidden");
                      info.innerHTML=innerinfo;
                  }
+
+
             
          //    if(element.querySelector("#edit") == null){
          
@@ -78,6 +80,7 @@
         }
 
         function savePostAction(){
+           
             let response = JSON.parse(this.responseText);
             console.log(response.success);
             let b=document.querySelector('#bookmark'+response.id);

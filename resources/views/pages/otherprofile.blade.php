@@ -232,7 +232,7 @@
 
 
 
-<div id="toast-follow" class="toast" style="position: absolute; top: 20; right: 40;">
+<div id="toast-follow" class="toast" style="position: absolute; top: 65; right: 40;">
   <div class="toast-header">
     <img id="suc" src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-512.png" class="rounded mr-2" alt="..." style="width: 20">
     <strong class="mr-auto">Sucess</strong>
@@ -247,7 +247,7 @@
 
 
 
-<div id="toast-unfollow" class="toast" style="position: absolute; top: 20; right: 40;">
+<div id="toast-unfollow" class="toast" style="position: absolute; top: 65; right: 40;">
   <div class="toast-header">
     <img id="suc" src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-512.png" class="rounded mr-2" alt="..." style="width: 20">
     <strong class="mr-auto">Sucess</strong>
