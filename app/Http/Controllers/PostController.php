@@ -35,6 +35,10 @@ class PostController extends Controller
       $post = json_decode($post->getContent());
       $comments=$this->paginate(CommentController::getAllFromPost($id));
       $comments->withPath('');
+      if(Auth::check()){
+        $saved=DB::table('saved_post')->where('user_id','=',Auth::id())->where('post_id','=',$post->id)->exists();
+        return view('pages.fullpost', ['post' => $post, 'comments'=>$comments,'saved'=>$saved]);
+      }
       return view('pages.fullpost', ['post' => $post, 'comments'=>$comments]);
     }
   

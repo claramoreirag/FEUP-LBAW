@@ -1,7 +1,11 @@
 
 @extends('layouts.main_header')
 @include('partials.editprofile')
-@include('partials.managefollow')
+@include('partials.manageCatFollow')
+@include('partials.manageFollowing')
+@include('partials.manageFollowers')
+
+
 @section('content')
 
   @if ($errors->any())
@@ -27,6 +31,17 @@
         document.getElementById("linkk").setAttribute('href',"../post/"+n);
     }
   });
+
+  $(document).ready(function(){
+    console.log();
+    $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+        localStorage.setItem('activeTab', $(e.target).attr('href'));
+    });
+    var activeTab = localStorage.getItem('activeTab');
+    if(activeTab){
+        $('#rowTab a[href="' + activeTab + '"]').tab('show');
+    }
+});
 </script>
 
 <div class="row">
@@ -55,8 +70,13 @@
     <div class="row" style="padding-top:0 margin-top=0">
       <div class="d-flex" id="infoNumbers" style="padding-top:0 margin-top=0">
         <ul class="list-inline mx-auto justify-content-center" style="padding-top:0 margin-top=0">
-          <li><span class="fas fa-user"></span>  {{$followers}} followers </li>
-          <li> <span class="fas fa-user"></span>  {{$following}} following </li>
+          
+            <li><button type="button" class="grey hiddenbutton action-green" data-toggle="modal" data-target="#manageFollowersModal">
+              <span class="fas fa-user"></span>  {{$followers}} followers </button></li>
+
+              <li><button type="button" class="grey hiddenbutton action-green" data-toggle="modal" data-target="#manageFollowingModal">
+             <span class="fas fa-user"></span>  {{$following}} following  </button></li>
+
           <li> <span class="fas fa-newspaper"></span>  {{$posts}} posts </li>
           <li> <span class="fas fa-arrow-up"></span>  {{$upvotes}} upvotes </li>
         </ul>
@@ -74,8 +94,8 @@
     <div class="row mt=1">
       <div class="col-2"></div>
         <div class="col-8 d-flex justify-content-center">
-          <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#manageFollowsModal">
-            Manage Followings
+          <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#manageCatModal">
+            Manage Categories
           </button>
         </div>
         <div class="col-2"></div>
@@ -85,8 +105,8 @@
  
   <div class="col-lg-8 md-12" id="myPosts">
     <div class="row" id="postOptions">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
+      <ul class="nav nav-tabs" id="rowTab">
+        <li class="nav-item active">
           <a class="nav-link active" data-toggle="tab" href="#posts"> My Posts</a>
         </li>
         <li class="nav-item">
@@ -104,8 +124,14 @@
         {!! $ownposts->links() !!}
         </div>
         </div>
+
+
         <div class="tab-pane fade" id="savedposts">
-          @each('partials.switchposts', $savedPosts, 'post')
+          <div id="savedposts_list">
+            @each('partials.switchposts', $savedPosts, 'post')
+          </div>
+
+          
           <div class="d-flex justify-content-center">
         
             {!! $savedPosts->links() !!}
@@ -146,3 +172,15 @@ New Post
 </a>
 
 @endsection
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script defer type="text/javascript" src="{{ URL::asset('js/ownprofile.js') }}" ></script>
+
+
+<script defer>
+
+
+  
+</script>

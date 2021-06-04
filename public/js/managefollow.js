@@ -97,7 +97,7 @@ function follow(id){
     console.log(this.responseText);
     let response = JSON.parse(this.responseText);
     let button= document.querySelector("#c-btn"+response.id);
-    console.log(response);
+    console.log(button);
     if(response.success=="added"){
         button.innerHTML="Unfollow";
       

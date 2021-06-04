@@ -22,45 +22,37 @@
                     <div class="row font-weight-bold mt-4 mb-4">{{$post->header}} </div>
                 </div>
                 
-              
-                    
+    
+                <p class="row">
+                    <div class="col-md-12 ps-0 text-justify col-12"> 
+                        @php
+                        echo $post->body;
+                        @endphp
+                    </div>
+                </p>
                 
-                    <p class="row">
-                        <div class="col-md-12 ps-0 text-justify col-12"> 
-                            @php
-                            echo $post->body;
-                            @endphp
-                        </div>
-                    </p>
-                    
-                    
-                    
-                    
-                    
-                    <h6 class="row"> Story Sources: </h6>
-                    <div class="row post-font">  
-                        @foreach($post->sources  as $s)
-                            <a href="{{$s}}">{{$s}}</a>
-                        @endforeach
-                    </div>
-                    
-                    
-
-                    <div class="row post-interactions justify-content-between mt-4">
-                        <div class="col-md-2 col-sm-4 actions"></i>
-                            <div class="row ">
-                                <div class="col-md-6 col-xs-6 save action"><a href='/post/{{$post->id}}/edit' ><span class="fas fa-edit"> edit</a></div>
-                                
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4" style="margin: 0.5rem 0rem; padding:0rem ;">
-                            <div class="row justify-content-end votes">
-                                <div class="col-6 upvote"><i class="fas fa-arrow-up"></i> 10 </div>
-                                <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> 3 </div>
-                                
-                            </div>
+                <h6 class="row"> Story Sources: </h6>
+                <div class="row post-font">  
+                    @foreach($post->sources  as $s)
+                        <a href="{{$s}}">{{$s}}</a>
+                    @endforeach
+                </div>
+                
+                <div class="row post-interactions justify-content-between mt-4">
+                    <div class="col-md-2 col-sm-4 actions"></i>
+                        <div class="row ">
+                            <div class="col-md-6 col-xs-6 save action"><a href='/post/{{$post->id}}/edit' ><span class="fas fa-edit"> edit</a></div>
+                            
                         </div>
                     </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4" style="margin: 0.5rem 0rem; padding:0rem ;">
+                        <div class="row justify-content-end votes">
+                            <div class="col-6 upvote"><i class="fas fa-arrow-up"></i> 10 </div>
+                            <div class="col-6 downvote"><i class="fas fa-arrow-down"></i> 3 </div>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="row  post-comment">
@@ -87,8 +79,9 @@
             </ul>
             </div>
             <div class="d-flex justify-content-center">
-         
-                  <button class="see-more btn btn-primary" data-page="2" data-link="/post/{{$post->id}}/?page=" data-div="#posts">See more</button> 
+              @if($comments->hasMorePages())
+              <button class="see-more btn btn-primary" data-page="2" data-link="/post/{{$post->id}}/?page=" data-div="#posts">See more</button> 
+        @endif
             </div>
     </div>
         </div>

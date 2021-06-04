@@ -15,7 +15,7 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
     <div class="card-body ">
         <div class="row pt-3 pb-2">
             <div class="col-1 " style="margin-right:1rem;">
-                <img class="" onload="checkVotes({{$post->id}})" src="{{route('avatar',['user_id'=>$post->author->id])}}" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
+                <img class=""  src="{{route('avatar',['user_id'=>$post->author->id])}}" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
             </div>
             <div class="col-8 align-self-center">
                 <h4 class="card-title text-primary mb-0">{{$post->title}}</h4>
@@ -269,7 +269,7 @@ function checkVotes(id){
    console.log(isUp==true);
    console.log(isDown);
   }
-
+  checkVotes({{$post->id}});
 
   $('#upvote{{$post->id}}').off().on('submit', function(event) {
     event.preventDefault();

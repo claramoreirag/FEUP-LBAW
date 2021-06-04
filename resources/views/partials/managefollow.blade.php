@@ -101,6 +101,11 @@
                         {!! $follusers->links() !!}
                         </div>
                   </div>
+
+
+
+
+
                 </div>
                   <h5 class="mt-2">Categories</h5>
                       <table class="table">
@@ -152,4 +157,9 @@
 
 </body>
 
-<script defer type="text/javascript" src="{{ URL::asset('js/managefollow.js') }}" ></script>
+
+
+
+
+
+
