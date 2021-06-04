@@ -14,7 +14,7 @@
         <div class="col-md-1 col-xs-0"></div>
         <div class="col-md-10 col-xs-12 newsFormContent">
             {{ method_field('POST') }}
-            <form action="{{ route('create_new_post') }}" method="Post">
+            <form action="{{ route('create_new_post') }}"  enctype="multipart/form-data" method="Post">
                 <input name="_method" type="hidden" value="POST">
                 <div class="title-section">
                     <label for="inputNewsTitle">News Title</label>
@@ -47,6 +47,12 @@
                     <textarea id="mytextarea" class="text-muted" name="body" >Write your post here!</textarea>
                 </div>
                 
+
+  <div class="form-group mt-4 mb-4">
+  <input id="post_image" type="file" class="form-control" name="image">
+                        <label for="floatingInput">Post preview picture</label>
+  </div>
+
                 <div class="form-group source-section mt-4">
                     <label for="inputNewsSource">News Source</label>
                     <small id="sourceHelp" class="form-text text-muted">It has to be a valid source, otherwise the post may be deleted</small>

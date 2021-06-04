@@ -1,7 +1,11 @@
 
 @extends('layouts.main_header')
 @include('partials.editprofile')
-@include('partials.managefollow')
+@include('partials.manageCatFollow')
+@include('partials.manageFollowing')
+@include('partials.manageFollowers')
+
+
 @section('content')
 
   @if ($errors->any())
@@ -66,8 +70,13 @@
     <div class="row" style="padding-top:0 margin-top=0">
       <div class="d-flex" id="infoNumbers" style="padding-top:0 margin-top=0">
         <ul class="list-inline mx-auto justify-content-center" style="padding-top:0 margin-top=0">
-          <li><span class="fas fa-user"></span>  {{$followers}} followers </li>
-          <li> <span class="fas fa-user"></span>  {{$following}} following </li>
+          
+            <li><button type="button" class="grey hiddenbutton action-green" data-toggle="modal" data-target="#manageFollowersModal">
+              <span class="fas fa-user"></span>  {{$followers}} followers </button></li>
+
+              <li><button type="button" class="grey hiddenbutton action-green" data-toggle="modal" data-target="#manageFollowingModal">
+             <span class="fas fa-user"></span>  {{$following}} following  </button></li>
+
           <li> <span class="fas fa-newspaper"></span>  {{$posts}} posts </li>
           <li> <span class="fas fa-arrow-up"></span>  {{$upvotes}} upvotes </li>
         </ul>
@@ -85,8 +94,8 @@
     <div class="row mt=1">
       <div class="col-2"></div>
         <div class="col-8 d-flex justify-content-center">
-          <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#manageFollowsModal">
-            Manage Followings
+          <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#manageCatModal">
+            Manage Categories
           </button>
         </div>
         <div class="col-2"></div>
@@ -122,12 +131,6 @@
             @each('partials.switchposts', $savedPosts, 'post')
           </div>
 
-          
-    <div class="d-flex justify-content-center">
-      @if($savedPosts->hasMorePages())
-    <button class="see-more btn btn-primary" data-page="2" data-link="/user/{{$user->id}}/?page=" data-div="#savedposts">See more</button> 
-      @endif
-    </div>
           
           <div class="d-flex justify-content-center">
         

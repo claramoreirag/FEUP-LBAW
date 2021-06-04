@@ -16,9 +16,9 @@
     </div>
     <div class="row">
       <div class="col-12 d-flex justify-content-center">
-        <h4 id="name">
+        <h5 id="name">
           {{$user->name}}
-        </h4>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -112,9 +112,9 @@
     </div>
     <div class="row">
       <div class="col-12 d-flex justify-content-center">
-        <h4 id="name">
+        <h5 id="name">
           {{$user->name}}
-        </h4>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -177,9 +177,9 @@
     </div>
     <div class="row">
       <div class="col-12 d-flex justify-content-center">
-        <h4 id="name">
+        <h5 id="name">
           {{$user->name}}
-        </h4>
+        </h5>
       </div>
     </div>
     <div class="row">

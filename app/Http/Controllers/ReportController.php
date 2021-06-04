@@ -201,8 +201,30 @@ class ReportController extends Controller
     public function dismissReport(Request $request, $report_id){
         // $this->authorize('delete', $card);
         $report = Report::find($report_id);
-        $report->setAttribute('state', 'Accepted');
-        $report->save();
+        $post = $report->post;
+        $comment = $report->comment;
+
+        $re=Report::all();
+        foreach($re as $n){
+          $r=ReportController::getReport($n->id);
+          $rep=Report::find($n->id);
+          $p=json_decode($r->getContent())->post;
+          $c=json_decode($r->getContent())->comment;
+          if($p!=null  && $post!=null){
+              if($p->id==$post->id){
+                $rep->setAttribute('state', 'Accepted');
+                $rep->save();
+              }
+          }
+          if($c!=null && $comment!=null){
+              if($c->id==$comment->id ){
+                $rep->setAttribute('state', 'Accepted');
+                $rep->save();
+              }
+            
+        }
+        }
+
 
         return redirect()->route('reports');
     }
@@ -295,6 +317,44 @@ class ReportController extends Controller
         $user = User::find($user_id);
         $user->setAttribute('state', 'Active');
         $user->save();
+
+
+        $allposts=Post::all();
+        $allcomments=Comment::all();
+        foreach($allposts as $post){
+            $ppp=Post::find($post->id);
+            if( $ppp->author->id == $user_id){
+            $ppp->setAttribute('isvisible',true);
+            $ppp->save();
+            }
+        }
+        foreach($allcomments as $comment){
+            $ccc=Comment::find($comment->id);
+            if( $ccc->user->id == $user_id){
+            $ccc->setAttribute('isvisible',true);
+            $ccc->save();
+            }
+        }
+
+
+        $re=Report::all();
+        foreach($re as $n){
+          $r=Report::find($n->id);
+          if($r->post!=null){
+              if($r->post->author->id==$user_id){
+                $p=Post::find($r->post->id);
+                $p->setAttribute('isvisible',false);
+                $p->save();
+              }
+          }
+          if($r->comment!=null){
+            if($r->comment->user_id==$user_id){
+                $c=Comment::find($r->comment->id);
+                $c->setAttribute('isvisible',false);
+                $c->save();
+            }
+        }
+        }
 
         return redirect()->route('users');
     }

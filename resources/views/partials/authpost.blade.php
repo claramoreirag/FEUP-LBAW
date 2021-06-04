@@ -11,26 +11,26 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 // var_dump($already_downvoted);
 @endphp
 
-<div class="card mb-3 " data-id="{{ $post->id }}">
+<div class="card mb-3 shadow p-2 bg-white rounded" data-id="{{ $post->id }}">
     <div class="card-body ">
-        <div class="row mb-2 justify-content-end">
-            <div class="col-sm-3 col-md-3  " style="text-align:end">
+        <div class="row pt-3 pb-2">
+            <div class="col-1 " style="margin-right:1rem;">
+                <img class=""  src="{{route('avatar',['user_id'=>$post->author->id])}}" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
+            </div>
+            <div class="col-8 align-self-center">
+                <h4 class="card-title text-primary mb-0">{{$post->title}}</h4>
+            </div>
+
+            <div class="col align-self-center d-flex justify-content-end">
               @if($already_follow)
-              <span class="badge badge-primary action-bg-green tag p-1" data-toggle="modal" data-target="#unfollowTag{{$post->id}}"> {{$post->category}}</span>
+              <span class="badge badge-primary action-bg-green tag p-2" data-toggle="modal" data-target="#unfollowTag{{$post->id}}" title="Unfollow"> {{$post->category}}  <i class="fas fa-bell"></i>
+</span>
               @endif
               @if(!$already_follow)
-              <span class="badge badge-primary action-bg-green tag p-1" data-toggle="modal" data-target="#followTag{{$post->id}}"> {{$post->category}}</span>
+              <span class="badge badge-primary action-bg-green tag p-2" data-toggle="modal" data-target="#followTag{{$post->id}}" title="Follow"> {{$post->category}}</span>
               @endif
 
                 </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-1 " style="margin-right:1rem;">
-                <img class="" onload="checkVotes({{$post->id}})" src="{{route('avatar',['user_id'=>$post->author->id])}}" alt="profile pic" width="40" height="40" style="border-radius: 50%;">
-            </div>
-            <div class="col-10">
-                <h4 class="card-title text-primary">{{$post->title}}</h4>
             </div>
 
         </div>
@@ -38,14 +38,25 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
         <div class="card-text">
             <div class="row">
 
-                <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
-                    {{$post->header}}
-                    <a href="/post/{{$post->id}}" class="read-more">Read More</a>
-                    <br>
+                
+
+                @if($post->photo!=null)
+                <div class="col-lg-8 col-md-8 col-sm-6 ">
+                    <p class="mb-0">{{$post->header}}  <a href="/post/{{$post->id}}" class="read-more">  Read More</a>
+                    <br></p>
+                   
                 </div>
-                {{-- <div class="col-md-4 col-xs-6 post-pic">
-                    <img class="img-fluid" src="https://images.theconversation.com/files/374780/original/file-20201214-23-1dv2o1f.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip" alt="template pic">
-                </div> --}}
+                <div class="col-md-4 col-xs-6 post-pic" style="display: flex; justify-content: center; align-items: center; overflow: hidden">
+                    <img class="img-thumbnail mt-2 mb-2" style="object-fit:cover; flex-shrink: 0; min-width: 100%; min-height: 100%;" src="{{route('previewpic',['post_id'=>$post->id])}}" alt="default.png">
+                </div>
+                @else
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
+    
+                    <p class="mb-0">{{$post->header}} <a href="/post/{{$post->id}}" class="read-more">  Read More</a>
+                    <br></p>
+                    
+                </div>
+                @endif
             </div>
 
         </div>
@@ -54,7 +65,7 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
         <div class="row justify-content-between text-center">
             <div class="col-md-3 col-sm-4 actions pt-3 pb-3"></i>
                 <div class="row text-secondary actions">
-                    <div class="col-4 share action icon"><a class="text-secondary" href="" title="Share Post"><i class="fas fa-share-alt"></i></a></div>
+                <div class="col-4 share action icon" data-toggle="modal" data-target="#sharebtn" title="Share Post"><i class="fas fa-share-alt"></i></div>
                     @if($already_saved)
                 <div class="col-4 save action icon" id="save-post{{$post->id}}" onclick="savePost({{$post->id}})"><a class="text-secondary"  title="Save Post"><i id="bookmark{{$post->id}}" class="fas fa-bookmark"></i></a></div>
                     @endif
@@ -148,6 +159,32 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 
 
 
+
+
+  <div id="sharebtn" class="modal fade" id="myModel" tabindex="-1" aria-labelledby="myModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModelLabel">Share this news</h4> 
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+                </button>
+            </div>
+            <div class="modal-body">
+                <h6 class="pb-1">Share this via</h6>
+                <div class="d-flex align-items-center icons"> <a href="#" class="fs-5 d-flex align-items-center justify-content-center m-2"> <span class="fab fa-facebook-f"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center m-2"> <span class="fab fa-twitter"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center m-2"> <span class="fab fa-instagram"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center m-2"> <span class="fab fa-whatsapp"></span> </a> <a href="#" class="fs-5 d-flex align-items-center justify-content-center m-2"> <span class="fab fa-telegram-plane"></span> </a> </div>
+                <h6 class="pt-4 pb-1">Or copy the link</h6>
+                <div class="field d-flex align-items-center justify-content-between"> <input class="form-control mr-1" type="text" placeholder="Default input" value="/post/{{$post->id}}">
+                <button id="copybtn" class="btn btn-secondary">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="modal fade" id="followTag{{$post->id}}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -220,6 +257,8 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
 
 <script defer type="text/javascript">
 
+
+
 function checkVotes(id){
    let isUp="{{$already_upvoted}}";
    let isDown="{{$already_downvoted}}";
@@ -230,7 +269,7 @@ function checkVotes(id){
    console.log(isUp==true);
    console.log(isDown);
   }
-
+  checkVotes({{$post->id}});
 
   $('#upvote{{$post->id}}').off().on('submit', function(event) {
     event.preventDefault();

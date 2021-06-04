@@ -3,12 +3,12 @@
 
 
 
-<div class=" container homepage d-flex align-items-center" style="padding-top: 4rem;">
+<div class="container homepage d-flex align-items-center" style="padding-top: 4rem; ">
 
 
     <div class="row">
         <div class="col-md-2 filters-bar d-none d-lg-block ">
-            <div class="filters" style="position: sticky; ">
+            <div class="filters" style="position: sticky; background-color:#ffffff !important; ">
                 <h4 class="filters-title form-label ">Search filters</h4>
 
                 <form id="formSettings">
