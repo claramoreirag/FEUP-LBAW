@@ -106,6 +106,8 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
     </div>
 
 </div>
+
+
 {{-- @include('partials.reportpost_modal') --}}
 
 <div data-id="{{ $post->id }}" class="modal fade" id="ModalAlreadyReported" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -348,6 +350,59 @@ function checkVotes(id){
 
     }
    
+    function encodeForAjax(data) {
+            if (data == null) return null;
+            return Object.keys(data).map(function(k){
+              return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+            }).join('&');
+          }
+          
+          function sendAjaxRequest(method, url, data, handler) {
+            let request = new XMLHttpRequest();
+          
+            request.open(method, url, true);
+            request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.addEventListener('load', handler);
+            request.send(encodeForAjax(data));
+          }
+
+
+        function savePost(id){
+            
+            let post_id = id;
+          
+            let url="/post/"+post_id+'/save';
+
+
+            sendAjaxRequest('GET',url,{
+                '_token': '{{csrf_token() }}',
+                post_id:post_id,
+               
+            },savePostAction);
+
+
+
+       
+            
+        }
+
+        function savePostAction(){
+            let response = JSON.parse(this.responseText);
+            console.log(response.success);
+            let b=document.querySelector('#bookmark'+response.id);
+            if(response.success=='true'){
+                b.classList.remove('far');
+                b.classList.add('fas');
+                console.log(b);
+                $('#toast-save').toast('show');
+            }
+            else{
+                b.classList.remove('fas');
+                b.classList.add('far');
+                $('#toast-unsave').toast('show');
+            }
+        }
 
   }
 

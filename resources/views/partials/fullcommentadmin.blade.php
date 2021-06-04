@@ -18,14 +18,11 @@
                         <button type="button" class="btn btn-outline-primary m-0" data-toggle="modal" data-target="#exampleModal"><i class="far fa-trash-alt"></i> Delete Comment</button>
                     </div>
                     <div class="m-1">
-                        <form action="/admin/users/suspend/{{$justcomment['info']->user_id}}" method="post">
-                        <button type="submit" class="btn btn-outline-primary" title="Suspend User" ><i class="fas fa-user-clock"></i> Suspend User</button>@method('post') @csrf
-                        </form>
+                 
+                        <button type="button" class="btn btn-outline-secondary" data-dismis="examplemodal" data-toggle="modal" data-target="#susmodal" title="Suspend User"><i class="fas fa-user-clock"></i> Suspend User</button>
                     </div>
                     <div class="m-1">
-                        <form action="/admin/users/ban/{{$justcomment['info']->user_id}}" method="post">
-                        <button type="submit" class="btn btn-outline-primary" title="Ban User" ><i class="fas fa-user-slash"></i> Ban User</button>@method('post') @csrf
-                        </form>
+                    <button type="button" class="btn btn-outline-secondary" data-dismis="examplemodal" data-toggle="modal" data-target="#banmodal" title="Ban User"><i class="fas fa-user-slash"></i> Ban User</button>
                     </div>
                 </div>
                 </div>
@@ -121,6 +118,53 @@
         <form action="/admin/reports/posts/{{$post->id}}/{{$justcomment['info']->id}}" method="post">
              <button class="btn btn-outline-primary" type="submit"  > Delete</button>@method('post') @csrf
          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="banmodal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure ?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>The banishment of an user is not permenent, you can undo this action at any time. However all his content that was once reported will be deleted permenently. If you decide to reactivate this user again all his inoffensive will be public again. </p>
+      </div>
+      <div class="modal-footer">
+      <form action="/admin/users/ban/{{$justcomment['info']->user_id}}" method="post">
+                        <button type="submit" class="btn btn-outline-primary" title="Ban User" >Continue</button>@method('post') @csrf
+                        </form>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="susmodal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>The suspension of an user for 21 days is not permenent, you can undo this action at any time. However all his content that was once reported will be deleted permenently. If you decide to reactivate this user again all his inoffensive will be public again. </p>
+      </div>
+      <div class="modal-footer">
+     
+      <form action="/admin/users/suspend/{{$justcomment['info']->user_id}}" method="post">
+                        <button type="submit" class="btn btn-outline-primary" title="Suspend User" >Continue</button>@method('post') @csrf
+                        </form>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>

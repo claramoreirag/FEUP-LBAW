@@ -125,7 +125,7 @@
         function postSearchUpdate(){
             let response = JSON.parse(this.responseText);
             console.log(response);
-            if(response.html=="<div class=\"d-flex justify-content-center\">\r\n    \r\n</div>"){
+            if(response.html=="<div class=\"d-flex justify-content-center\">\r\n    \r\n</div>" || response.html=="<div class=\"d-flex justify-content-center\">\r\n                    \r\n                </div>"){
                 $('#postslist').html('<div class="container d-flex justify-content-center align-baseline" style="height:10rem; width:53rem;">No results found</div>');
             }
             else{
@@ -134,5 +134,40 @@
         };
 
 
+        function savePost(id){
+            
+            let post_id = id;
+          
+            let url="/post/"+post_id+'/save';
+
+
+            sendAjaxRequest('GET',url,{
+                '_token': '{{csrf_token() }}',
+                post_id:post_id,
+               
+            },savePostAction);
+
+
+
+       
+            
+        }
+
+        function savePostAction(){
+            let response = JSON.parse(this.responseText);
+            console.log(response.success);
+            let b=document.querySelector('#bookmark'+response.id);
+            if(response.success=='true'){
+                b.classList.remove('far');
+                b.classList.add('fas');
+                console.log(b);
+                $('#toast-save').toast('show');
+            }
+            else{
+                b.classList.remove('fas');
+                b.classList.add('far');
+                $('#toast-unsave').toast('show');
+            }
+        }
 
   
