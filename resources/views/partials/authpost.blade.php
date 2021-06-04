@@ -37,9 +37,6 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
         <h6 class="card-subtitle mt-2 mb-2 text-muted">By <a href="/user/{{$post->author->id}}"> @<span>{{$post->author->username}}</span></a> on <span>{{ date('d-m-Y', strtotime($post->datetime) )}}</span></h6>
         <div class="card-text">
             <div class="row">
-
-                
-
                 @if($post->photo!=null)
                 <div class="col-lg-8 col-md-8 col-sm-6 ">
                     <p class="mb-0">{{$post->header}}  <a href="/post/{{$post->id}}" class="read-more">  Read More</a>
@@ -152,10 +149,7 @@ $already_downvoted= UserController::alreadyDownvotedPost($post->id);
       </div>
     </div>
   </div>
-    <script defer type="text/javascript" src="{{ URL::asset('js/comments.js') }}"></script>
-
-  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
+    
 
 
 
