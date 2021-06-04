@@ -88,6 +88,7 @@ class PostController extends Controller
       $validatedData = [];
       
       $validatedData = $request->validate([
+        'image' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
           'title' => 'required|min:5',
           'header' => 'required|min:10',
           'body' => 'required|min:10',

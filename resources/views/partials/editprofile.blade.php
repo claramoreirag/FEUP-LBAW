@@ -50,9 +50,9 @@
                   <div class="row align-items-center">
                     <div class="col-lg-md-3 sm-1"></div>
                     <div class="col-lg-md-6 sm-10" id="newInfo">
-                      <div class="form-floating">
+                      <div class="form pr-3 pl-3">
+                      <label for="floatingInput">Profile Photo</label>
                         <input id="profile_image" type="file" class="form-control" name="image">
-                        <label for="floatingInput">Profile Photo</label>
                       </div>
                       <div class="form-floating">
                         <input type="password" class="form-control" id="floatingInput" required placeholder="Old Password Required" required name="oldPassword">
